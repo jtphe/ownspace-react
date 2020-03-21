@@ -1,0 +1,20 @@
+{
+    "ownspace": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-ownspacemobile-ownspace-204709-authRole",
+            "UnauthRoleArn": "arn:aws:iam::286499764187:role/amplify-ownspacemobile-ownspace-204709-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::286499764187:role/amplify-ownspacemobile-ownspace-204709-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-ownspacemobile-ownspace-204709-deployment",
+            "UnauthRoleName": "amplify-ownspacemobile-ownspace-204709-unauthRole",
+            "StackName": "amplify-ownspacemobile-ownspace-204709",
+            "StackId": "arn:aws:cloudformation:eu-west-1:286499764187:stack/amplify-ownspacemobile-ownspace-204709/81d94910-6563-11ea-bd39-0ae0d664c880",
+            "AmplifyAppId": "d17w821z323yom"
+        },
+        "categories": {
+            "auth": {
+                "ownspacemobile218f8b48": {}
+            }
+        }
+    }
+}
