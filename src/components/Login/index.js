@@ -100,29 +100,27 @@ const Login = () => {
           />
         </TouchableWithoutFeedback>
       </View>
-      <View style={styles.bottom}>
-        <View style={styles.buttonContainer}>
-          <Button
-            mode={'contained'}
-            uppercase={false}
-            labelStyle={{ color: '#fff' }}
-            style={styles.btnSignIn}
-            onPress={() => {
-              signIn()
-            }}
-          >
-            Connexion
+      <View style={styles.buttonContainer}>
+        <Button
+          mode={'contained'}
+          uppercase={false}
+          labelStyle={{ color: '#fff' }}
+          style={styles.btnSignIn}
+          onPress={() => {
+            signIn()
+          }}
+        >
+          Connexion
           </Button>
-          <TouchableOpacity
-            style={styles.containerHelp}
-            onPress={() => sendEmail()}
-          >
-            <Text style={styles.btnHelp}>Besoin d'aide ?</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.logo}>
-          <Logo />
-        </View>
+        <TouchableOpacity
+          style={styles.containerHelp}
+          onPress={() => sendEmail()}
+        >
+          <Text style={styles.btnHelp}>Besoin d'aide ?</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.logo}>
+        <Logo />
       </View>
     </View>
   )
@@ -174,9 +172,6 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     marginBottom: 25
   },
-  bottom: {
-    flexDirection: 'column'
-  },
   buttonContainer: { flexDirection: 'row' },
   btnSignIn: {
     backgroundColor: '#4788D3',
@@ -195,7 +190,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: 'white'
   },
-  logo: { flex: 1, justifyContent: 'center', marginTop: 150 }
+  logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' }
 });
 
 export default Login;

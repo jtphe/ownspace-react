@@ -3,6 +3,8 @@ import React from 'react';
 import Login from '../components/Login';
 import SecondAuthScreen from '../components/Login/secondAuthScreen';
 import Home from '../components/Home';
+import CreateFile from '../components/Home/createFile';
+
 
 const AppRouter = () => {
     return (
@@ -28,6 +30,13 @@ const AppRouter = () => {
                     type={ActionConst.REPLACE}
                     component={Home}
                     title="HomeScreen"
+                    hideNavBar
+                />
+                <Scene
+                    key="createFile"
+                    type={ActionConst.JUMP}
+                    component={CreateFile}
+                    title="CreateFileScreen"
                     hideNavBar
                 />
             </Scene>
