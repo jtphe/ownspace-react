@@ -110,7 +110,7 @@ const SecondAuthScreen = ({ user }) => {
                         </View> : <GenerateTotp user={user} setHasAuthApp={value => setHasAuthApp(value)} />}
                 </View>}
             </View>
-            <View style={styles.footer}>
+            <View style={styles.logo}>
                 <Logo />
             </View>
         </View>
@@ -170,9 +170,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontWeight: 'bold'
     },
-    footer: {
-        flex: 1
-    }
+    logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' }
 });
 
 export default SecondAuthScreen;

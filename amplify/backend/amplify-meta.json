@@ -1,0 +1,54 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-ownspacemobile-ownspace-204709-authRole",
+			"UnauthRoleArn": "arn:aws:iam::286499764187:role/amplify-ownspacemobile-ownspace-204709-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::286499764187:role/amplify-ownspacemobile-ownspace-204709-authRole",
+			"Region": "eu-west-1",
+			"DeploymentBucketName": "amplify-ownspacemobile-ownspace-204709-deployment",
+			"UnauthRoleName": "amplify-ownspacemobile-ownspace-204709-unauthRole",
+			"StackName": "amplify-ownspacemobile-ownspace-204709",
+			"StackId": "arn:aws:cloudformation:eu-west-1:286499764187:stack/amplify-ownspacemobile-ownspace-204709/81d94910-6563-11ea-bd39-0ae0d664c880",
+			"AmplifyAppId": "d17w821z323yom"
+		}
+	},
+	"auth": {
+		"ownspacemobile218f8b48": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-ownspacemobile-ownspace-204709-deployment/amplify-cfn-templates/auth/ownspacemobile218f8b48-cloudformation-template.yml",
+				"logicalId": "authownspacemobile218f8b48"
+			},
+			"lastPushTimeStamp": "2020-03-21T17:29:08.308Z",
+			"output": {
+				"AppClientSecret": "14dptorvu81d0nmaotmd8lgsn9irq5hjg4tf9r26b6jodkpfno5i",
+				"UserPoolId": "eu-west-1_L6PEfsXZM",
+				"AppClientIDWeb": "7hfm4tn0rdj3ckohntafe15s0u",
+				"AppClientID": "1ovkig5n3i64fsnjg3oljis2lu",
+				"IdentityPoolId": "eu-west-1:e6c5dc68-5be7-4dad-b166-9bb3647c62a0",
+				"IdentityPoolName": "ownspacemobile218f8b48_identitypool_218f8b48__ownspace",
+				"UserPoolName": "ownspacemobile218f8b48_userpool_218f8b48",
+				"CreatedSNSRole": "arn:aws:iam::286499764187:role/sns204709-ownspace"
+			},
+			"lastPushDirHash": "KcvrCrkXfII9mlvHCpgYhRwwyAw="
+		}
+	},
+	"storage": {
+		"ownspaceStorage": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-ownspacemobile-ownspace-204709-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"logicalId": "storageownspaceStorage"
+			},
+			"lastPushTimeStamp": "2020-03-21T17:29:08.311Z",
+			"output": {
+				"BucketName": "ownspacemobile97f1dc2026c74db38c9da6caae4c290c204709-ownspace",
+				"Region": "eu-west-1"
+			},
+			"lastPushDirHash": "xI2rS9ETJsYn5bmtVxmnchlDz50="
+		}
+	}
+}

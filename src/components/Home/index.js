@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
-import { Button } from 'react-native-paper';
 import {
     StyleSheet,
     Text,
     View,
     TextInput
 } from 'react-native';
-
+import { Auth, Storage } from 'aws-amplify';
+import { Button } from 'react-native-paper';
+import { Actions } from 'react-native-router-flux';
+import Header from '../../shared/Header/index';
 
 const Home = () => {
+
     return (
-    <View style={styles.container}>
-        <Text>
-            HOLA je suis sur home
-        </Text>
-    </View>
+        <View style={styles.container}>
+            <Header />
+            <View>
+                <Button onPress={() => Actions.createFile()}>
+                    Créer un fichier txt
+                </Button>
+            </View>
+        </View>
     )
 }
 
@@ -22,8 +28,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: "column",
-        justifyContent: 'center',
-        alignItems: 'center'
+        backgroundColor: 'white'
+    },
+    input: {
+        height: 50,
+        borderColor: 'black',
+        color: 'grey',
+        borderWidth: 1,
+        borderRadius: 6,
+        marginBottom: 20
     }
 })
 

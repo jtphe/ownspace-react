@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginLeft: -10,
         resizeMode: 'contain',
-        width: 100
+        width: 100,
+        height: 100
     }
 });
 export default Logo;
