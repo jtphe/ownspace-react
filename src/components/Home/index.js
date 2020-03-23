@@ -9,17 +9,20 @@ import { Auth, Storage } from 'aws-amplify';
 import { Button } from 'react-native-paper';
 import { Actions } from 'react-native-router-flux';
 import Header from '../../shared/Header/index';
+import Menu from '../Menu';
 
 const Home = () => {
 
     return (
         <View style={styles.container}>
             <Header />
-            <View>
+            <View style={{ flex: 1 }}>
                 <Button onPress={() => Actions.createFile()}>
                     Créer un fichier txt
                 </Button>
+                <Menu />
             </View>
+
         </View>
     )
 }
