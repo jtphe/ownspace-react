@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     Text,
     View
 } from 'react-native';
 import { Button } from 'react-native-paper';
+import { Auth } from 'aws-amplify';
+
 
 const GenerateTotp = ({ user, setHasAuthApp }) => {
-    // To setup TOTP, first you need to get a `authorization code` from Amazon Cognito
-    // `user` is the current Authenticated user
-    // Auth.setupTOTP(user)
-    // .then((code) => {
-    //     console.log('code', code);
-    //     // You can directly display the `code` to the user or convert it to a QR code to be scanned.
-    //     // E.g., use following code sample to render a QR code with `qrcode.react` component:  
-    //     // str = "otpauth://totp/AWSCognito:" + username + "?secret=" + code + "&issuer=" + issuer;
-    //     totpCode = code
-    // });
+    const [code, setCode] = useState('');
+
+    useEffect(() => {
+        // To setup TOTP, first you need to get a `authorization code` from Amazon Cognito
+        // `user` is the current Authenticated user
+        Auth.setupTOTP(user).then((code) => {
+            console.log('code', code)
+            // You can directly display the `code` to the user or convert it to a QR code to be scanned.
+            // E.g., use following code sample to render a QR code with `qrcode.react` component:  
+            setCode(code)
+        });
+    }, [])
 
     return (
         <View style={styles.container}>
             <Text style={styles.titleCode}>Entrez ce code dans votre app d'authentification :</Text>
             <View style={styles.codeContainer}>
-                <Text style={styles.code} />
+                <Text style={styles.code}>{code}</Text>
             </View>
             {/* <View style={styles.helper}>
                 <Text style={styles.helperText}>Cliquez sur le code pour le copier !</Text>

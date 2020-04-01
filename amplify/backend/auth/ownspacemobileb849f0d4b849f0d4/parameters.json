@@ -1,12 +1,12 @@
 {
-    "identityPoolName": "ownspacemobile218f8b48_identitypool_218f8b48",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "ownspa218f8b48",
-    "userPoolName": "ownspacemobile218f8b48_userpool_218f8b48",
+    "identityPoolName": "ownspacemobileb849f0d4_identitypool_b849f0d4",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "ownspab849f0d4",
+    "userPoolName": "ownspacemobileb849f0d4_userpool_b849f0d4",
     "autoVerifiedAttributes": [
         "email"
     ],
-    "mfaConfiguration": "OPTIONAL",
+    "mfaConfiguration": "ON",
     "mfaTypes": [
         "TOTP"
     ],
@@ -28,10 +28,22 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "ownspa218f8b48_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "ownspab849f0d4_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "ownspacemobile218f8b48",
+    "useDefault": "manual",
     "authSelections": "identityPoolAndUserPool",
+    "resourceName": "ownspacemobileb849f0d4b849f0d4",
+    "thirdPartyAuth": false,
+    "usernameAttributes": [
+        "email"
+    ],
+    "userPoolGroups": true,
+    "adminQueries": false,
+    "triggers": "{}",
+    "hostedUI": false,
+    "userPoolGroupList": [
+        "ownspacemobile"
+    ],
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -44,21 +56,9 @@
             "Arn"
         ]
     },
-    "useDefault": "manual",
-    "usernameAttributes": [
-        "email"
-    ],
-    "triggers": "{}",
-    "userPoolGroupList": [
-        "ownspaceuser"
-    ],
     "parentStack": {
         "Ref": "AWS::StackId"
     },
     "permissions": [],
-    "dependsOn": [],
-    "thirdPartyAuth": false,
-    "userPoolGroups": true,
-    "adminQueries": false,
-    "hostedUI": false
+    "dependsOn": []
 }

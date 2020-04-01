@@ -1,17 +1,12 @@
 {
 	"auth": {
-		"ownspacemobile218f8b48": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": []
-		},
 		"userPoolGroups": {
 			"service": "Cognito-UserPool-Groups",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [
 				{
 					"category": "auth",
-					"resourceName": "ownspacemobile218f8b48",
+					"resourceName": "ownspacemobileb849f0d4b849f0d4",
 					"attributes": [
 						"UserPoolId",
 						"AppClientIDWeb",
@@ -20,6 +15,11 @@
 					]
 				}
 			]
+		},
+		"ownspacemobileb849f0d4b849f0d4": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
 		}
 	},
 	"storage": {
