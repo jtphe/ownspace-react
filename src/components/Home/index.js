@@ -11,7 +11,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from '../../shared/Header/index';
 import Menu from '../Menu';
 
-const Home = () => {
+const Home = ({ loggedUser }) => {
 
     return (
         <View style={styles.container}>
