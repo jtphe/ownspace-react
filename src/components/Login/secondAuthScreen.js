@@ -14,7 +14,7 @@ import { Actions } from 'react-native-router-flux';
 import QRCode from 'qrcode.react';
 
 
-const RenewPwdScreen = ({ pwd, setNewPassword, confirmNewPwd }) => {
+const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
     return (
         <View>
             <Text style={styles.text}>
@@ -28,7 +28,7 @@ const RenewPwdScreen = ({ pwd, setNewPassword, confirmNewPwd }) => {
                 secureTextEntry={true}
                 value={pwd}
                 onChangeText={txt => {
-                    setNewPassword(txt);
+                    setNewPasswordRequired(txt);
                 }}
             />
             <View style={styles.buttonsContainer}>
@@ -50,18 +50,11 @@ const RenewPwdScreen = ({ pwd, setNewPassword, confirmNewPwd }) => {
 
 const SecondAuthScreen = ({ user }) => {
     const [token, setToken] = useState('');
-    const [hasAuthApp, setHasAuthApp] = useState(false);
+    const [hasAuthApp, setHasAuthApp] = useState(user.challengeName === 'SOFTWARE_TOKEN_MFA');
     const [newPassword, setNewPassword] = useState('');
-    const [newUser, setNewUser] = useState(user.challengeName === 'NEW_PASSWORD_REQUIRED');
+    const [newPasswordRequired, setNewPasswordRequired] = useState(user.challengeName === 'NEW_PASSWORD_REQUIRED');
 
     console.log('user', user)
-
-    const confirmSignIn = async () => {
-        Actions.home();
-        // await Auth.confirmSignIn(user, token)
-        //     .then(() => console.log('successful confirm sign in !'))
-        //     .catch(err => console.log('error while confirming sign in =>', err))
-    }
 
     const confirmNewPwd = async () => {
         await Auth.completeNewPassword(
@@ -69,7 +62,23 @@ const SecondAuthScreen = ({ user }) => {
             newPassword
         )
         setNewPassword('');
+        setNewPasswordRequired(false)
+    }
 
+    const verifyTotpToken = () => {
+        console.log('token', token)
+        // Then you will have your TOTP account in your TOTP-generating app (like Google Authenticator)
+        // Use the generated one-time password to verify the setup
+        Auth.verifyTotpToken(user, token).then(() => {
+            Auth.setPreferredMFA(user, 'TOTP').then((data) => {
+                console.log('data', data)
+                if(data === 'SUCCESS'){
+                    Actions.home()
+                }
+            })
+        }).catch(e => {
+            console.log('Token is not verified =>', e)
+        });
     }
 
     return (
@@ -79,7 +88,7 @@ const SecondAuthScreen = ({ user }) => {
                 <Text style={styles.welcomeTitle}>On y est presque !</Text>
             </View>
             <View style={styles.textInputContainer}>
-                {newUser ? <RenewPwdScreen pwd={newPassword} setNewPassword={pwd => setNewPassword(pwd)} confirmNewPwd={() => confirmNewPwd()} /> : <View>
+                {newPasswordRequired ? <RenewPwdScreen pwd={newPassword} setNewPasswordRequired={pwd => setNewPassword(pwd)} confirmNewPwd={() => confirmNewPwd()} /> : <View>
                     {hasAuthApp ?
                         <View>
                             <Text style={styles.text}>
@@ -102,7 +111,7 @@ const SecondAuthScreen = ({ user }) => {
                                     labelStyle={{ color: '#fff' }}
                                     style={styles.btnSignIn}
                                     onPress={() => {
-                                        confirmSignIn()
+                                        verifyTotpToken()
                                     }}>
                                     Valider
                                 </Button>

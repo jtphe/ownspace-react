@@ -4,7 +4,6 @@ import awsconfig from './aws-exports';
 import AppRouter from './src/router';
 import { YellowBox } from 'react-native';
 YellowBox.ignoreWarnings(['Remote debugger']);
-import { withAuthenticator } from 'aws-amplify-react-native';
 
 Amplify.configure(awsconfig);
 
@@ -14,4 +13,4 @@ const App = () => {
   );
 };
 
-export default withAuthenticator(App);
+export default App;
