@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         borderColor: 'transparent',
         backgroundColor: '#F7D8D3',
     },
-    code: { fontSize: 28, color: 'white' },
+    code: { fontSize: 17, color: 'white' },
     titleCode: {
         fontSize: 17, color: 'white'
     },
