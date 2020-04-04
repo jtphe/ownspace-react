@@ -1,0 +1,65 @@
+type User @model {
+  id: ID!
+  firstname: String
+  lastname: String
+  email: String!
+  password: String!
+  picture: String
+  notification: Boolean
+  role: String!
+  rootFolder: ID
+  group: ID
+  limitedStorage: Boolean
+  storageSpaceUsed: Float
+  totalStorageSpace: Float
+}
+
+type Group @model {
+  id: ID!
+  name: String
+  userGroup: [User]
+}
+
+type File @model {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  name: String!
+  owner: ID!
+  sharedList: [User]
+  password: String
+  parent: ID
+  uuid: String
+  size: Float
+  mimeType: String
+  type: String
+}
+
+type Folder @model {
+  id: ID!
+  createdAt: String
+  updatedAt: String
+  name: String!
+  owner: ID!
+  sharedList: [User]
+  password: String
+  parent: ID
+  nbFiles: Int
+  content: [File]
+}
+
+type Right @model {
+  read: Boolean
+  edit: Boolean
+  documentId: ID
+}
+
+type App @model {
+  groupId: ID!
+  subscription: String!
+  pack: Int!
+  custom: Boolean
+  headerColor: String
+  iconeUrl: String
+  font: String
+}
