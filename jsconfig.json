@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "target": "es2017",
+        "baseUrl": "./",
+        "module": "commonjs",
+        "paths": {
+            "@components/*": [
+                "src/components/*"
+            ],
+            "@router/*": [
+                "src/config/*"
+            ],
+            "@utils/*": [
+                "src/utils/*"
+            ],
+            "@shared/*": [
+                "src/shared/*"
+            ],
+            "@store/*": [
+                "src/store/*"
+            ]
+        }
+    },
+    "exclude": [
+        "nodes_modules",
+        "assets"
+    ]
+}
