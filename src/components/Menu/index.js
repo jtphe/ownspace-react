@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Auth } from 'aws-amplify';
 import IconMenu from './IconMenu';
-import { Actions } from 'react-native-router-flux';
 
 const Menu = () => {
     const [home, setHome] = useState(true);
     const [options, setOptions] = useState(false);
     const [userProfile, setUserProfile] = useState(false);
-
-    const logOut = () => {
-        Auth.signOut().then(Actions.login())
-    }
 
     const setSelected = name => {
         switch (name) {
@@ -29,7 +23,6 @@ const Menu = () => {
                 setHome(false);
                 setOptions(false);
                 setUserProfile(true);
-                logOut()
                 break;
             default:
                 setHome(true);
@@ -38,7 +31,6 @@ const Menu = () => {
         }
 
     }
-
     return (
         <View style={styles.menuContainer}>
             <IconMenu name={'home'} size={40} selected={home} setSelected={name => setSelected(name)} />

@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     StyleSheet,
-    Text,
     View,
-    TextInput
 } from 'react-native';
-import { Auth, Storage } from 'aws-amplify';
 import { Button } from 'react-native-paper';
 import { Actions } from 'react-native-router-flux';
 import Header from '../../shared/Header/index';
