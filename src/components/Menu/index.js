@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import IconMenu from './IconMenu';
-import { Actions } from 'react-native-router-flux';
-import { useDispatch } from 'react-redux';
-import { testUser } from '../../store/modules/documents/actions';
 
 const Menu = () => {
     const [home, setHome] = useState(true);
     const [options, setOptions] = useState(false);
     const [userProfile, setUserProfile] = useState(false);
-    const dispatch = useDispatch()
-
-    const test = { "email": Auth.userAttributes.name }
 
     const setSelected = name => {
         switch (name) {
@@ -24,7 +18,6 @@ const Menu = () => {
                 setHome(false);
                 setOptions(true);
                 setUserProfile(false);
-                dispatch(testUser(test))
                 break;
             case 'user':
                 setHome(false);

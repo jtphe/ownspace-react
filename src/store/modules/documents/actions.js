@@ -1,7 +1,7 @@
-export const M_SET_DOCUMENTS = 'M_SET_DOCUMENTS';
-export const U_SET_DOCUMENTS= 'U_SET_DOCUMENTS';
+export const U_CREATE_FILE = 'U_CREATE_FILE';
+export const M_CREATE_FILE = 'M_CREATE_FILE';
 
-export const testUser = test => ({
-    type: U_SET_DOCUMENTS,
-    test
+export const createFile = payload => ({
+    type: U_CREATE_FILE,
+    payload
 });

@@ -4,5 +4,6 @@ import watchDocuments from './modules/documents/sagas';
 export default function* rootSaga() {
     yield all([
         fork(watchDocuments)
+
     ]);
 }

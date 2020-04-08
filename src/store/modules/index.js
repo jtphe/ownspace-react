@@ -1,4 +1,4 @@
-import { persistCombineReducers, persistReducer } from 'redux-persist';
+import { persistCombineReducers } from 'redux-persist';
 import app from './app';
 import documents from './documents';
 // import AsyncStorage from '@react-native-community/async-storage';

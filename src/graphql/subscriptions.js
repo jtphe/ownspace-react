@@ -134,6 +134,7 @@ export const onCreateFile = /* GraphQL */ `
       createdAt
       updatedAt
       name
+      content
       owner
       sharedList {
         id
@@ -166,6 +167,7 @@ export const onUpdateFile = /* GraphQL */ `
       createdAt
       updatedAt
       name
+      content
       owner
       sharedList {
         id
@@ -198,6 +200,7 @@ export const onDeleteFile = /* GraphQL */ `
       createdAt
       updatedAt
       name
+      content
       owner
       sharedList {
         id
@@ -254,6 +257,7 @@ export const onCreateFolder = /* GraphQL */ `
         createdAt
         updatedAt
         name
+        content
         owner
         sharedList {
           id
@@ -311,6 +315,7 @@ export const onUpdateFolder = /* GraphQL */ `
         createdAt
         updatedAt
         name
+        content
         owner
         sharedList {
           id
@@ -368,6 +373,7 @@ export const onDeleteFolder = /* GraphQL */ `
         createdAt
         updatedAt
         name
+        content
         owner
         sharedList {
           id

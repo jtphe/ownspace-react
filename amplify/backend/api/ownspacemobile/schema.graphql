@@ -1,3 +1,11 @@
+type Query {
+
+}
+
+type Mutation{
+  createTxtFile(name: String!, content: String!): File!
+}
+
 type User @model {
   id: ID!
   firstname: String
@@ -25,6 +33,7 @@ type File @model {
   createdAt: String
   updatedAt: String
   name: String!
+  content: String
   owner: ID!
   sharedList: [User]
   password: String
