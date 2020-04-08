@@ -7,22 +7,25 @@ import {
     Keyboard
 } from 'react-native';
 import Header from '../../shared/Header/index';
-import { Storage } from 'aws-amplify';
 import CustomButton from '../../shared/CustomButton';
-import { Actions } from 'react-native-router-flux';
 import Toast from "react-native-root-toast";
+import { createFile } from '@store/modules/documents/actions'
+import { useDispatch } from 'react-redux';
+
 
 const CreateFile = () => {
     const [text, setText] = useState('')
     const [title, setTitle] = useState('');
+    const dispatch = useDispatch()
 
-    const createFile = () => {
+    const createTxtFile = () => {
         if (title.trim().length > 0 && text.trim().length > 0) {
             if (title.trim().length > 6 && text.trim().length > 6) {
-                Storage.put(title.concat('.txt'), text)
-                    .then(result => console.log(result)) // {key: "test.txt"}
-                    .catch(err => console.log(err));
-                Actions.pop();
+                const payload = {
+                    name: title.trim() + ".txt",
+                    content: text
+                }
+                dispatch(createFile(payload))
             } else {
                 Toast.show("Le nom du fichier et son contenu doivent contenir au moins 6 caractères", {
                     duration: Toast.durations.LONG,
@@ -61,7 +64,6 @@ const CreateFile = () => {
                 <TextInput
                     style={styles.input}
                     placeholder="Tapez votre texte ici..."
-                    autoCapitalize="true"
                     multiline={true}
                     value={text}
                     onSubmitEditing={() => Keyboard.dismiss()}
@@ -70,7 +72,7 @@ const CreateFile = () => {
                     }}
                 />
             </View>
-            <CustomButton confirmFunction={() => createFile()} />
+            <CustomButton confirmFunction={() => createTxtFile()} />
         </View>
     )
 }
