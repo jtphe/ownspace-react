@@ -7,7 +7,7 @@ import {
     Keyboard
 } from 'react-native';
 import Header from '../../shared/Header/index';
-import CustomButton from '../../shared/CustomButton';
+import CustomButton from '@shared/CustomButton';
 import Toast from "react-native-root-toast";
 import { createFile } from '@store/modules/documents/actions'
 import { useDispatch } from 'react-redux';

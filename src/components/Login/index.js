@@ -7,25 +7,31 @@ import {
   View,
   TextInput,
   Linking,
-  Keyboard
+  Keyboard,
+  ImageBackground
 } from 'react-native';
 import Logo from '../../shared/Logo/index';
 import { Auth } from 'aws-amplify';
 import { Actions } from 'react-native-router-flux';
 import Toast from "react-native-root-toast";
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { ifIphoneX } from 'react-native-iphone-x-helper'
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, setUser] = useState({});
 
+  /**
+   * Check if the email is valid or not
+   */
   const _validateEmail = () => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
 
+  /**
+   * Sign in to the app
+   */
   const signIn = async () => {
     if (_validateEmail() && password.trim().length >= 8) {
       await Auth.signIn({
@@ -33,7 +39,6 @@ const Login = () => {
         password
       })
         .then(user => {
-          setUser(user);
           Actions.twoFactor({ user });
           console.log('successful sign in !');
         })
@@ -58,12 +63,15 @@ const Login = () => {
 
   }
 
+  /**
+   * Open the user mail app
+   */
   const sendEmail = async () => {
     await Linking.openURL("mailto:ownspaceco@gmail.com")
   }
 
   return (
-    <View style={styles.container}>
+    <ImageBackground source={require('@images/background_authentication.png')} style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.companyName}>OwnSpace</Text>
         <Text style={styles.welcomeTitle}>Bienvenue !</Text>
@@ -122,7 +130,7 @@ const Login = () => {
       <View style={styles.logo}>
         <Logo />
       </View>
-    </View>
+    </ImageBackground>
   )
 }
 
@@ -130,7 +138,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#F2BDB6',
     paddingLeft: 50,
     paddingRight: 50,
   },
@@ -141,10 +148,10 @@ const styles = StyleSheet.create({
   },
   header: {
     ...ifIphoneX({
-      paddingTop: 170,
-      paddingBottom: 40
+      paddingTop: 100,
+      paddingBottom: 70
     }, {
-      paddingTop: 120,
+      paddingTop: 60,
       paddingBottom: 40
     })
   },

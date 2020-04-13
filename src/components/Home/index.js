@@ -5,8 +5,8 @@ import {
 } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Actions } from 'react-native-router-flux';
-import Header from '../../shared/Header/index';
-import Menu from '../Menu';
+import Header from '@shared/Header/index';
+import Menu from '@components/Menu';
 
 const Home = ({ loggedUser }) => {
 

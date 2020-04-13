@@ -4,10 +4,11 @@ import {
     StyleSheet,
     Text,
     View,
-    TextInput
+    TextInput,
+    ImageBackground
 } from 'react-native';
-import Logo from '../../shared/Logo/index';
-import GenerateTotp from '../Login/generateTotp';
+import Logo from '@shared/Logo/index';
+import GenerateTotp from '@components/Login/generateTotp';
 import { Auth } from 'aws-amplify';
 import { ifIphoneX } from 'react-native-iphone-x-helper'
 import { Actions } from 'react-native-router-flux';
@@ -19,7 +20,7 @@ const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
     return (
         <View>
             <Text style={styles.text}>
-                Veuillez entrer un nouveau mot de passe
+                Veuillez entrer un nouveau mot de passe:
                 </Text>
             <TextInput
                 style={styles.input}
@@ -53,6 +54,9 @@ const SecondAuthScreen = ({ user }) => {
     const [newPassword, setNewPassword] = useState('');
     const [newPasswordRequired, setNewPasswordRequired] = useState(user.challengeName === 'NEW_PASSWORD_REQUIRED');
 
+    /**
+     * Confirm the new password
+     */
     const confirmNewPwd = async () => {
         await Auth.completeNewPassword(
             user,
@@ -62,6 +66,9 @@ const SecondAuthScreen = ({ user }) => {
         setNewPasswordRequired(false)
     }
 
+    /**
+     * Check if the token is correct
+     */
     const verifyTotpToken = async () => {
         try {
             if (user.challengeName === 'SOFTWARE_TOKEN_MFA') {
@@ -109,7 +116,7 @@ const SecondAuthScreen = ({ user }) => {
     }
 
     return (
-        <View style={styles.container}>
+        <ImageBackground source={require('@images/background_authentication.png')} style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.companyName}>OwnSpace</Text>
                 <Text style={styles.welcomeTitle}>On y est presque !</Text>
@@ -124,7 +131,7 @@ const SecondAuthScreen = ({ user }) => {
             <View style={styles.logo}>
                 <Logo />
             </View>
-        </View>
+        </ImageBackground>
     )
 }
 
@@ -132,16 +139,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: '#F2BDB6',
         paddingLeft: 50,
         paddingRight: 50,
     },
     header: {
         ...ifIphoneX({
-            paddingTop: 170,
-            paddingBottom: 40
+            paddingTop: 100,
+            paddingBottom: 70
         }, {
-            paddingTop: 120,
+            paddingTop: 60,
             paddingBottom: 40
         })
     },

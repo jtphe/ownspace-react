@@ -11,7 +11,8 @@
       "@shared/*": ["src/shared/*"],
       "@store/*": ["src/store/*"],
       "@backend/*": ["backend/backend/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@images/*": ["src/images/*"]
     }
   },
   "exclude": ["nodes_modules", "assets"]
