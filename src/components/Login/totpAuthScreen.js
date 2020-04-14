@@ -6,17 +6,17 @@ import {
     View,
     TextInput
 } from 'react-native';
-
+import i18n from '@i18n/i18n';
 
 const TotpAuthScreen = ({ setToken, verifyTotpToken }) => {
     return (
         <View>
             <Text style={styles.text}>
-                Saisissez le code d'authentification de l'application d'authentification à deux facteurs sur votre appareil
+                {i18n.t('totp.titleAuth')}
             </Text>
             <TextInput
                 style={styles.input}
-                placeholder="Code d'authentification"
+                placeholder={i18n.t('totp.placeholder')}
                 textContentType="password"
                 autoCapitalize="none"
                 secureTextEntry={true}
@@ -32,7 +32,7 @@ const TotpAuthScreen = ({ setToken, verifyTotpToken }) => {
                 onPress={() => {
                     verifyTotpToken()
                 }}>
-                Valider
+                {i18n.t('button.validate')} 
             </Button>
         </View>
     )

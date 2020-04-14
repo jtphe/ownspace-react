@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper'
 import { Actions } from 'react-native-router-flux';
+import i18n from '@i18n/i18n';
 
 const CustomButton = ({ confirmFunction }) => {
     return (
@@ -14,8 +15,8 @@ const CustomButton = ({ confirmFunction }) => {
                 style={styles.btnCancel}
                 onPress={() => Actions.pop()}
             >
-                Annuler
-        </Button>
+                {i18n.t('button.cancel')}
+            </Button>
             <Button
                 mode={'contained'}
                 uppercase={false}
@@ -24,8 +25,8 @@ const CustomButton = ({ confirmFunction }) => {
                 style={styles.btnConfirm}
                 onPress={() => confirmFunction()}
             >
-                Valider
-        </Button>
+                {i18n.t('button.validate')}
+            </Button>
         </View>
     )
 }

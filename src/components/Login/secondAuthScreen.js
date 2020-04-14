@@ -14,17 +14,17 @@ import { ifIphoneX } from 'react-native-iphone-x-helper'
 import { Actions } from 'react-native-router-flux';
 import Toast from "react-native-root-toast";
 import TotpAuthScreen from './totpAuthScreen';
-
+import i18n from '@i18n/i18n';
 
 const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
     return (
         <View>
             <Text style={styles.text}>
-                Veuillez entrer un nouveau mot de passe:
-                </Text>
+                {i18n.t('newPassword.title')}
+            </Text>
             <TextInput
                 style={styles.input}
-                placeholder="Nouveau mot de passe"
+                placeholder={i18n.t('newPassword.placeholder')}
                 textContentType="password"
                 autoCapitalize="none"
                 secureTextEntry={true}
@@ -42,8 +42,8 @@ const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
                     confirmNewPwd()
                 }}
             >
-                Valider
-          </Button>
+                {i18n.t('button.validate')}
+            </Button>
         </View>
     )
 }
@@ -118,8 +118,8 @@ const SecondAuthScreen = ({ user }) => {
     return (
         <ImageBackground source={require('@images/background_authentication.png')} style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.companyName}>OwnSpace</Text>
-                <Text style={styles.welcomeTitle}>On y est presque !</Text>
+                <Text style={styles.companyName}>{i18n.t('loginPage.ownspace')}</Text>
+                <Text style={styles.welcomeTitle}>{i18n.t('loginPage.almostDone')}</Text>
             </View>
             <View style={styles.textInputContainer}>
                 {newPasswordRequired ? <RenewPwdScreen pwd={newPassword} setNewPasswordRequired={pwd => setNewPassword(pwd)} confirmNewPwd={() => confirmNewPwd()} /> : <View>

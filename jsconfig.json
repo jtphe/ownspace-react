@@ -12,7 +12,8 @@
       "@store/*": ["src/store/*"],
       "@backend/*": ["backend/backend/*"],
       "@api/*": ["src/api/*"],
-      "@images/*": ["src/images/*"]
+      "@images/*": ["src/images/*"],
+      "@i18n/*": ["src/i18n/*"]
     }
   },
   "exclude": ["nodes_modules", "assets"]

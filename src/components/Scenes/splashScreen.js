@@ -3,6 +3,7 @@ import { ImageBackground, Text, StyleSheet, Animated, Image } from 'react-native
 import Logo from '@shared/Logo/images/os_logo.png';
 import { ifIphoneX } from 'react-native-iphone-x-helper'
 import { Actions } from 'react-native-router-flux';
+import i18n from '@i18n/i18n';
 
 class SplashScreen extends React.Component {
     state = {
@@ -45,11 +46,11 @@ class SplashScreen extends React.Component {
                 </Animated.View>
                 <Animated.View style={[{ opacity: this.state.logoText }, styles.containerSlogan]}>
                     <Text style={styles.sloganPartOne}>
-                        A place of
-                        </Text>
+                        {i18n.t('splashScreen.sloganPartOne')}
+                    </Text>
                     <Text style={styles.sloganPartTwo}>
-                        security
-                        </Text>
+                        {i18n.t('splashScreen.sloganPartTwo')}
+                    </Text>
                 </Animated.View>
             </ImageBackground>
         )

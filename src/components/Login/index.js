@@ -16,6 +16,7 @@ import { Actions } from 'react-native-router-flux';
 import Toast from "react-native-root-toast";
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
+import i18n from '@i18n/i18n';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -73,14 +74,14 @@ const Login = () => {
   return (
     <ImageBackground source={require('@images/background_authentication.png')} style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.companyName}>OwnSpace</Text>
-        <Text style={styles.welcomeTitle}>Bienvenue !</Text>
+        <Text style={styles.companyName}>{i18n.t('loginPage.ownspace')}</Text>
+        <Text style={styles.welcomeTitle}>{i18n.t('loginPage.welcome')}</Text>
       </View>
       <View style={styles.textInputContainer}>
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           <TextInput
             style={styles.input}
-            placeholder="E-mail"
+            placeholder={i18n.t('loginPage.email')}
             textContentType="emailAddress"
             keyboardType="email-address"
             onChangeText={txt => {
@@ -98,7 +99,7 @@ const Login = () => {
               passwordTextInput = input;
             }}
             style={styles.input}
-            placeholder="Mot de passe"
+            placeholder={i18n.t('loginPage.password')}
             textContentType="password"
             autoCapitalize="none"
             secureTextEntry={true}
@@ -118,13 +119,13 @@ const Login = () => {
             signIn()
           }}
         >
-          Connexion
+          {i18n.t('loginPage.login')}
           </Button>
         <TouchableOpacity
           style={styles.containerHelp}
           onPress={() => sendEmail()}
         >
-          <Text style={styles.btnHelp}>Besoin d'aide ?</Text>
+          <Text style={styles.btnHelp}>{i18n.t('loginPage.needHelp')}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.logo}>
