@@ -21,18 +21,15 @@ const CreateFile = () => {
         };
         dispatch(createFile(payload));
       } else {
-        Toast.show(
-          'Le nom du fichier et son contenu doivent contenir au moins 6 caractères',
-          {
-            duration: Toast.durations.LONG,
-            position: Toast.positions.TOP + 30,
-            shadow: false,
-            opacity: 1
-          }
-        );
+        Toast.show(i18n.t('createFile.tooShort'), {
+          duration: Toast.durations.LONG,
+          position: Toast.positions.TOP + 30,
+          shadow: false,
+          opacity: 1
+        });
       }
     } else {
-      Toast.show('Les champs ne peuvent pas être vide', {
+      Toast.show(i18n.t('createFile.noEmpty'), {
         duration: Toast.durations.LONG,
         position: Toast.positions.TOP + 30,
         shadow: false,

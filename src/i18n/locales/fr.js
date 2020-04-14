@@ -10,13 +10,16 @@ export default {
     password: 'Mot de passe',
     login: 'Connexion',
     needHelp: "Besoin d'aide ?",
-    almostDone: 'On y est presque !'
+    almostDone: 'On y est presque !',
+    wrongPassword: 'Mot de passe incorrect',
+    invalidPasswordEmail: 'Email invalide ou mot de passe incorrect'
   },
   totp: {
     titleGenerate: "Entrez ce code dans votre application d'authentification",
     titleAuth:
       "Saisissez le code d'authentification de l'application d'authentification à deux facteurs sur votre appareil",
-    placeholder: "Code d'authentification"
+    placeholder: "Code d'authentification",
+    invalidToken: 'Token invalide'
   },
   newPassword: {
     title: 'Veuillez entrer un nouveau mot de passe',
@@ -27,7 +30,10 @@ export default {
   },
   createFile: {
     placeholderName: 'Nom du fichier',
-    placeholderContent: 'Tapez votre texte ici...'
+    placeholderContent: 'Tapez votre texte ici...',
+    tooShort:
+      'Le nom du fichier et son contenu doivent contenir au moins 6 caractères',
+    noEmpty: 'Les champs ne peuvent pas être vide'
   },
   button: {
     validate: 'Valider',

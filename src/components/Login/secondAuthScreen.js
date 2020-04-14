@@ -35,7 +35,7 @@ const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
       <Button
         mode="contained"
         uppercase={false}
-        labelStyle={{ color: '#fff' }}
+        labelStyle={styles.btnColor}
         style={styles.btnSignIn}
         onPress={() => {
           confirmNewPwd();
@@ -105,7 +105,7 @@ const SecondAuthScreen = ({ user }) => {
       } else if (err.code === 'UserNotFoundException') {
         // The error happens when the supplied username/email does not exist in the Cognito user pool
       } else {
-        Toast.show('Token invalide', {
+        Toast.show(i18n.t('totp.invalidToken'), {
           duration: Toast.durations.LONG,
           position: Toast.positions.TOP + 30,
           shadow: false,
@@ -138,7 +138,7 @@ const SecondAuthScreen = ({ user }) => {
           <View>
             {hasAuthApp ? (
               <TotpAuthScreen
-                setToken={token => setToken(token)}
+                setToken={tkn => setToken(tkn)}
                 verifyTotpToken={() => verifyTotpToken()}
               />
             ) : (
@@ -212,7 +212,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold'
   },
-  logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' }
+  logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
+  btnColor: { color: '#fff' }
 });
 
 export default SecondAuthScreen;
