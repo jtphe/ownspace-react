@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { Button } from 'react-native-paper';
 import {
@@ -13,7 +14,7 @@ import {
 import Logo from '../../shared/Logo/index';
 import { Auth } from 'aws-amplify';
 import { Actions } from 'react-native-router-flux';
-import Toast from "react-native-root-toast";
+import Toast from 'react-native-root-toast';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import i18n from '@i18n/i18n';
@@ -28,7 +29,7 @@ const Login = () => {
   const _validateEmail = () => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-  }
+  };
 
   /**
    * Sign in to the app
@@ -44,35 +45,36 @@ const Login = () => {
           console.log('successful sign in !');
         })
         .catch(err => {
-          Toast.show("Identifiants incorrects", {
+          Toast.show('Identifiants incorrects', {
             duration: Toast.durations.LONG,
             position: Toast.positions.TOP + 30,
             shadow: false,
             opacity: 1
           });
           console.log('error while signing in =>', err);
-        }
-        )
+        });
     } else {
-      Toast.show("Email invalide ou mot de passe incorrect", {
+      Toast.show('Email invalide ou mot de passe incorrect', {
         duration: Toast.durations.LONG,
         position: Toast.positions.TOP + 30,
         shadow: false,
         opacity: 1
       });
     }
-
-  }
+  };
 
   /**
    * Open the user mail app
    */
   const sendEmail = async () => {
-    await Linking.openURL("mailto:ownspaceco@gmail.com")
-  }
+    await Linking.openURL('mailto:ownspaceco@gmail.com');
+  };
 
   return (
-    <ImageBackground source={require('@images/background_authentication.png')} style={styles.container}>
+    <ImageBackground
+      source={require('@images/background_authentication.png')}
+      style={styles.container}
+    >
       <View style={styles.header}>
         <Text style={styles.companyName}>{i18n.t('loginPage.ownspace')}</Text>
         <Text style={styles.welcomeTitle}>{i18n.t('loginPage.welcome')}</Text>
@@ -88,7 +90,7 @@ const Login = () => {
               setEmail(txt);
             }}
             autoCapitalize="none"
-            returnKeyType={'next'}
+            returnKeyType="next"
             onSubmitEditing={() => {
               passwordTextInput.focus();
             }}
@@ -111,16 +113,16 @@ const Login = () => {
       </View>
       <View style={styles.buttonContainer}>
         <Button
-          mode={'contained'}
+          mode="contained"
           uppercase={false}
-          labelStyle={{ color: '#fff' }}
+          labelStyle={styles.btnColor}
           style={styles.btnSignIn}
           onPress={() => {
-            signIn()
+            signIn();
           }}
         >
           {i18n.t('loginPage.login')}
-          </Button>
+        </Button>
         <TouchableOpacity
           style={styles.containerHelp}
           onPress={() => sendEmail()}
@@ -132,15 +134,15 @@ const Login = () => {
         <Logo />
       </View>
     </ImageBackground>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
     paddingLeft: 50,
-    paddingRight: 50,
+    paddingRight: 50
   },
   headerContainer: {
     backgroundColor: 'blue',
@@ -148,13 +150,16 @@ const styles = StyleSheet.create({
     paddingBottom: 50
   },
   header: {
-    ...ifIphoneX({
-      paddingTop: 100,
-      paddingBottom: 70
-    }, {
-      paddingTop: 60,
-      paddingBottom: 40
-    })
+    ...ifIphoneX(
+      {
+        paddingTop: 100,
+        paddingBottom: 70
+      },
+      {
+        paddingTop: 60,
+        paddingBottom: 40
+      }
+    )
   },
   companyName: {
     fontWeight: 'bold',
@@ -198,7 +203,8 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: 'white'
   },
-  logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' }
+  logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
+  btnColor: { color: '#fff' }
 });
 
 export default Login;

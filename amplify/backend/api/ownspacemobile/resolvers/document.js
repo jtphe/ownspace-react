@@ -1,4 +1,4 @@
-import { API, graphqlOperation } from "aws-amplify";
+import { API, graphqlOperation } from 'aws-amplify';
 
 const document = {
   Mutation: {
@@ -23,10 +23,10 @@ const document = {
                   type
                 }
               }`;
-      const res = await API.graphql(graphqlOperation(query, { name, content }))
+      const res = await API.graphql(graphqlOperation(query, { name, content }));
       return res.data.createFile;
     }
   }
-}
+};
 
 export default document;

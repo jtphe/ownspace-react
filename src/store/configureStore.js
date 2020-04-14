@@ -12,7 +12,6 @@ Reactotron.configure({ name: 'ownspace' })
 
 Reactotron.connect();
 
-
 export default () => {
   // create the saga middleware
   const sagaMiddleware = createSagaMiddleware();
