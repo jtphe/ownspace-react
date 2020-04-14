@@ -1,39 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTxtFile = /* GraphQL */ `
-  query CreateTxtFile($name: String!, $content: String!) {
-    createTxtFile(name: $name, content: $content) {
-      id
-      createdAt
-      updatedAt
-      name
-      content
-      owner
-      sharedList {
-        id
-        firstname
-        lastname
-        email
-        password
-        picture
-        notification
-        role
-        rootFolder
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
-      password
-      parent
-      uuid
-      size
-      mimeType
-      type
-    }
-  }
-`;
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {

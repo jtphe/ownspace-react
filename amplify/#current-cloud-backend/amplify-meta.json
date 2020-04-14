@@ -32,7 +32,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-ownspacemobile-ownspace-204709-deployment/amplify-cfn-templates/auth/template.json",
 				"logicalId": "authuserPoolGroups"
 			},
-			"lastPushTimeStamp": "2020-04-06T19:25:42.848Z",
+			"lastPushTimeStamp": "2020-04-14T16:31:19.205Z",
 			"output": {
 				"ownspacemobileGroupRole": "arn:aws:iam::286499764187:role/eu-west-1_4pGQ4jV3y-ownspacemobileGroupRole"
 			},
@@ -46,7 +46,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-ownspacemobile-ownspace-204709-deployment/amplify-cfn-templates/auth/ownspacemobileb849f0d4b849f0d4-cloudformation-template.yml",
 				"logicalId": "authownspacemobileb849f0d4b849f0d4"
 			},
-			"lastPushTimeStamp": "2020-04-06T19:25:42.851Z",
+			"lastPushTimeStamp": "2020-04-14T16:31:19.207Z",
 			"output": {
 				"CreatedSNSRole": "arn:aws:iam::286499764187:role/sns204709-ownspace",
 				"AppClientSecret": "ic1pi5o7k9rkglsnddi7qi1g2qqtafq1poa0jvgg49ktrfp0lo5",
@@ -68,7 +68,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-ownspacemobile-ownspace-204709-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
 				"logicalId": "storageownspaceStorage"
 			},
-			"lastPushTimeStamp": "2020-04-06T19:25:42.852Z",
+			"lastPushTimeStamp": "2020-04-14T16:31:19.207Z",
 			"output": {
 				"BucketName": "ownspacemobile97f1dc2026c74db38c9da6caae4c290c204709-ownspace",
 				"Region": "eu-west-1"
@@ -77,7 +77,7 @@
 		}
 	},
 	"api": {
-		"ownspacemobile": {
+		"ownspaceapi": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {
@@ -87,20 +87,20 @@
 						"authenticationType": "API_KEY",
 						"apiKeyConfig": {
 							"description": "",
-							"apiKeyExpirationDays": 7
+							"apiKeyExpirationDays": "365"
 						}
 					}
 				},
-				"GraphQLAPIIdOutput": "yg7obrxvabbabevuj4agnww77u",
-				"GraphQLAPIEndpointOutput": "https://ypfeuijoubchrddcjdg7mrlnhi.appsync-api.eu-west-1.amazonaws.com/graphql",
-				"GraphQLAPIKeyOutput": "da2-3lnngllibndp3jxayaek56xhxu"
+				"GraphQLAPIIdOutput": "4dq2klgsgngkhnmptwdmftz4wy",
+				"GraphQLAPIEndpointOutput": "https://bniv4uw62feuroesi6tvflwpnu.appsync-api.eu-west-1.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-islsceqgg5gzveejyg3uih4m64"
 			},
 			"providerMetadata": {
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-ownspacemobile-ownspace-204709-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-				"logicalId": "apiownspacemobile"
+				"logicalId": "apiownspaceapi"
 			},
-			"lastPushTimeStamp": "2020-04-06T19:25:45.077Z",
-			"lastPushDirHash": "DiWqch5nBAJUPMFE2e9IT3g4Tg8="
+			"lastPushTimeStamp": "2020-04-14T16:31:21.719Z",
+			"lastPushDirHash": "lSg9o6LtvN6E33+L8U/ctX+8jYI="
 		}
 	}
 }

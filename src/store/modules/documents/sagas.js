@@ -16,11 +16,13 @@ import { Actions } from 'react-native-router-flux';
 import { U_CREATE_FILE, M_CREATE_FILE } from './actions';
 
 function* createFile({ payload }) {
+  console.log('payload sagas', payload);
   try {
     const file = yield call(api.createFileTxt, payload);
     if (file) {
       Storage.put(file.name, file.content, {
         progressCallback(progress) {
+          // TODO
           console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
         }
       })
