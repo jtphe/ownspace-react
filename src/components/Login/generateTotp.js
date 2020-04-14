@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Auth } from 'aws-amplify';
+import i18n from '@i18n/i18n';
 
 
 const GenerateTotp = ({ user, setHasAuthApp }) => {
@@ -24,7 +25,7 @@ const GenerateTotp = ({ user, setHasAuthApp }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.titleCode}>Entrez ce code dans votre app d'authentification :</Text>
+            <Text style={styles.titleCode}>{i18n.t('totp.titleGenerate')}</Text>
             <View style={styles.codeContainer}>
                 <Text style={styles.code}>{code}</Text>
             </View>
@@ -40,7 +41,7 @@ const GenerateTotp = ({ user, setHasAuthApp }) => {
                     onPress={() => {
                         setHasAuthApp(true)
                     }}>
-                    Suivant
+                    {i18n.t('button.next')}
                 </Button>
             </View>
         </View>

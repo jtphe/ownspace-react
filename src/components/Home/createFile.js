@@ -11,7 +11,7 @@ import CustomButton from '@shared/CustomButton';
 import Toast from "react-native-root-toast";
 import { createFile } from '@store/modules/documents/actions'
 import { useDispatch } from 'react-redux';
-
+import i18n from '@i18n/i18n';
 
 const CreateFile = () => {
     const [text, setText] = useState('')
@@ -48,10 +48,10 @@ const CreateFile = () => {
         <View style={styles.container}>
             <Header />
             <View style={styles.inputContainer}>
-                <Text style={styles.title}>Créer un fichier texte</Text>
+                <Text style={styles.title}>{i18n.t('options.createFile')}</Text>
                 <TextInput
                     style={styles.inputFileName}
-                    placeholder="Nom du fichier"
+                    placeholder={i18n.t('createFile.placeholderName')}
                     placeholderTextColor="grey"
                     selectionColor="grey"
                     autoCapitalize="none"
@@ -63,7 +63,7 @@ const CreateFile = () => {
                 />
                 <TextInput
                     style={styles.input}
-                    placeholder="Tapez votre texte ici..."
+                    placeholder={i18n.t('createFile.placeholderContent')}
                     multiline={true}
                     value={text}
                     onSubmitEditing={() => Keyboard.dismiss()}
