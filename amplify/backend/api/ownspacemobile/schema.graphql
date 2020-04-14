@@ -1,4 +1,4 @@
-type Mutation{
+type Query {
   createTxtFile(name: String!, content: String!): File!
 }
 
