@@ -1,4 +1,4 @@
-import document from '@backend/api/ownspacemobile/resolvers/document';
+import document from '@backend/api/ownspaceapi/resolvers/document';
 
 const api = {
   // DOCUMENT
@@ -7,6 +7,7 @@ const api = {
    * @param {Object} payload - Name and content of the file
    */
   createFileTxt(payload) {
+    console.log('payload api index', payload);
     return Promise.resolve(
       document.Mutation.createFileTxt({
         name: payload.name,

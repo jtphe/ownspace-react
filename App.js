@@ -2,9 +2,10 @@ import React from 'react';
 import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import AppRouter from './src/router';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import { YellowBox } from 'react-native';
 import configureStore from './src/store/configureStore';
+
 YellowBox.ignoreWarnings(['Remote debugger']);
 Amplify.configure(awsconfig);
 
