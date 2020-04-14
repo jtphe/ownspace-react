@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
 import { Button } from 'react-native-paper';
@@ -45,7 +46,7 @@ const Login = () => {
           console.log('successful sign in !');
         })
         .catch(err => {
-          Toast.show('Identifiants incorrects', {
+          Toast.show(i18n.t('loginPage.wrongPassword'), {
             duration: Toast.durations.LONG,
             position: Toast.positions.TOP + 30,
             shadow: false,
@@ -54,7 +55,7 @@ const Login = () => {
           console.log('error while signing in =>', err);
         });
     } else {
-      Toast.show('Email invalide ou mot de passe incorrect', {
+      Toast.show(i18n.t('loginPage.invalidPasswordEmail'), {
         duration: Toast.durations.LONG,
         position: Toast.positions.TOP + 30,
         shadow: false,
