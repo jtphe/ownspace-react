@@ -4,6 +4,7 @@ import awsconfig from './aws-exports';
 import AppRouter from './src/router';
 import { Provider } from 'react-redux';
 import { YellowBox } from 'react-native';
+import { MenuProvider } from 'react-native-popup-menu';
 import configureStore from './src/store/configureStore';
 
 YellowBox.ignoreWarnings(['Remote debugger']);
@@ -14,7 +15,16 @@ export const { store, persistor } = configureStore();
 const App = () => {
   return (
     <Provider store={store}>
-      <AppRouter />
+      <MenuProvider
+        customStyles={{
+          backdrop: {
+            backgroundColor: 'black',
+            opacity: 0.5
+          }
+        }}
+      >
+        <AppRouter />
+      </MenuProvider>
     </Provider>
   );
 };

@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
   btnCancel: {
     justifyContent: 'center',
     backgroundColor: 'white',
-    borderColor: '#42688B',
+    borderColor: '#003466',
     borderWidth: 1,
     color: '#42688B'
   },
   btnConfirm: {
     justifyContent: 'center',
-    backgroundColor: '#42688B',
+    backgroundColor: '#003466',
     borderColor: 'black'
   },
   btnDimension: {

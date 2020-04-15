@@ -25,8 +25,11 @@ export default {
     title: 'Veuillez entrer un nouveau mot de passe',
     placeholder: 'Nouveau mot de passe'
   },
-  options: {
-    createFile: 'Créer un fichier texte'
+  menuPlus: {
+    importFile: 'Importer un fichier',
+    createFile: 'Créer un fichier texte',
+    createFolder: 'Créer un dossier',
+    takePicture: 'Prendre une photo'
   },
   createFile: {
     placeholderName: 'Nom du fichier',

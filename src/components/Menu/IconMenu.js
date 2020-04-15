@@ -5,6 +5,9 @@ import DotIcon from 'react-native-vector-icons/Entypo';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const IconMenu = ({ name, size, selected, setSelected }) => {
+  /**
+   * Get the color of the icon
+   */
   const getColor = () => {
     if (selected) {
       return '#E30043';
@@ -13,26 +16,24 @@ const IconMenu = ({ name, size, selected, setSelected }) => {
     }
   };
 
+  /**
+   * Get the style of the icon when it's selected
+   */
   const getStyle = () => {
-    if (!selected) {
-      return { marginBottom: 10 };
-    } else {
+    if (selected) {
       return { marginTop: 20 };
+    } else {
+      return null;
     }
   };
 
   return (
-    <View style={styles.containerIcon}>
+    <View style={[styles.containerIcon, getStyle()]}>
       <TouchableOpacity onPress={() => setSelected(name)}>
-        <Icon
-          style={[styles.icon, getStyle()]}
-          name={name}
-          size={size}
-          color={getColor()}
-        />
+        <Icon style={styles.icon} name={name} size={size} color={getColor()} />
       </TouchableOpacity>
       {selected ? (
-        <DotIcon name="dot-single" size={30} color="#E30043" />
+        <DotIcon name="dot-single" size={20} color="#E30043" />
       ) : null}
     </View>
   );
@@ -43,9 +44,6 @@ const styles = StyleSheet.create({
   icon: {
     paddingLeft: 30,
     paddingRight: 30
-  },
-  iconNotSelected: {
-    paddingBottom: 10
   }
 });
 
