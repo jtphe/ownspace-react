@@ -19,7 +19,9 @@ export default {
     titleAuth:
       "Saisissez le code d'authentification de l'application d'authentification à deux facteurs sur votre appareil",
     placeholder: "Code d'authentification",
-    invalidToken: 'Token invalide'
+    invalidToken: 'Token invalide',
+    copied: 'Copié dans le presse-papier !',
+    copyToClipboard: 'Cliquez sur le code pour le copier !'
   },
   newPassword: {
     title: 'Veuillez entrer un nouveau mot de passe',
