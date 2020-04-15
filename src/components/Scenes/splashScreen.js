@@ -1,12 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
-import {
-  ImageBackground,
-  Text,
-  StyleSheet,
-  Animated,
-  Image
-} from 'react-native';
+import { ImageBackground, StyleSheet, Animated, Image } from 'react-native';
+import Text from '@shared/Text';
 import Logo from '@shared/Logo/images/os_logo.png';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import { Actions } from 'react-native-router-flux';

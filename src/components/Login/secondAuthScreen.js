@@ -1,13 +1,8 @@
 /* eslint-disable global-require */
 import React, { useState } from 'react';
 import { Button } from 'react-native-paper';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  ImageBackground
-} from 'react-native';
+import { StyleSheet, View, TextInput, ImageBackground } from 'react-native';
+import Text from '@shared/Text';
 import Logo from '@shared/Logo/index';
 import GenerateTotp from '@components/Login/generateTotp';
 import { Auth } from 'aws-amplify';
@@ -16,8 +11,14 @@ import { Actions } from 'react-native-router-flux';
 import Toast from 'react-native-root-toast';
 import TotpAuthScreen from './totpAuthScreen';
 import i18n from '@i18n/i18n';
+import { useFonts } from '@use-expo/font';
 
 const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
+  useFonts({
+    // eslint-disable-next-line global-require
+    HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
+  });
+
   return (
     <View>
       <Text style={styles.text}>{i18n.t('newPassword.title')}</Text>
@@ -35,7 +36,7 @@ const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
       <Button
         mode="contained"
         uppercase={false}
-        labelStyle={styles.btnColor}
+        labelStyle={styles.btnText}
         style={styles.btnSignIn}
         onPress={() => {
           confirmNewPwd();
@@ -213,7 +214,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
-  btnColor: { color: '#fff' }
+  btnText: { color: 'red', fontFamily: 'HelveticaNeue' }
 });
 
 export default SecondAuthScreen;

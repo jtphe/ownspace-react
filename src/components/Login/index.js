@@ -5,7 +5,6 @@ import { Button } from 'react-native-paper';
 import {
   StyleSheet,
   TouchableOpacity,
-  Text,
   View,
   TextInput,
   Linking,
@@ -19,8 +18,14 @@ import Toast from 'react-native-root-toast';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import i18n from '@i18n/i18n';
+import Text from '@shared/Text';
+import { useFonts } from '@use-expo/font';
 
 const Login = () => {
+  useFonts({
+    // eslint-disable-next-line global-require
+    HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
+  });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -116,7 +121,7 @@ const Login = () => {
         <Button
           mode="contained"
           uppercase={false}
-          labelStyle={styles.btnColor}
+          labelStyle={styles.btnText}
           style={styles.btnSignIn}
           onPress={() => {
             signIn();
@@ -178,6 +183,7 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     paddingLeft: 15,
+    fontFamily: 'HelveticaNeue',
     borderColor: 'transparent',
     backgroundColor: '#F7D8D3',
     color: 'grey',
@@ -205,7 +211,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
-  btnColor: { color: '#fff' }
+  btnText: { fontFamily: 'HelveticaNeue', color: '#fff' }
 });
 
 export default Login;

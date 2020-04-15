@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Keyboard } from 'react-native';
+import { StyleSheet, View, TextInput, Keyboard } from 'react-native';
+import Text from '@shared/ClientText';
 import Header from '@shared/Header/index';
 import CustomButton from '@shared/CustomButton';
 import Toast from 'react-native-root-toast';
 import { createFile } from '@store/modules/documents/actions';
 import { useDispatch } from 'react-redux';
 import i18n from '@i18n/i18n';
+import { useFonts } from '@use-expo/font';
 
 const CreateFile = () => {
+  useFonts({
+    // eslint-disable-next-line global-require
+    DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
+  });
   const [text, setText] = useState('');
   const [title, setTitle] = useState('');
   const dispatch = useDispatch();
@@ -80,8 +86,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   inputContainer: { flex: 1, paddingLeft: 35, paddingRight: 35 },
-  title: { marginTop: 15, marginBottom: 15, fontWeight: 'bold', fontSize: 28 },
+  title: {
+    fontWeight: 'bold',
+    marginTop: 15,
+    marginBottom: 15,
+    fontSize: 28
+  },
   inputFileName: {
+    fontFamily: 'DejaVuSans',
     backgroundColor: '#DBDBDB',
     borderRadius: 6,
     padding: 15,
