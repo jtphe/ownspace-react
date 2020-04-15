@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Clipboard } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Auth } from 'aws-amplify';
 import i18n from '@i18n/i18n';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Toast from 'react-native-root-toast';
 
 const GenerateTotp = ({ user, setHasAuthApp }) => {
-  const [code, setCode] = useState('');
+  const [copiedText, setCopiedText] = useState('');
+
+  const copyToClipboard = () => {
+    Clipboard.setString(copiedText);
+    Toast.show(i18n.t('totp.copied'), {
+      duration: Toast.durations.LONG,
+      position: Toast.positions.TOP + 30,
+      shadow: false,
+      opacity: 1
+    });
+  };
 
   useEffect(() => {
-    // To setup TOTP, first you need to get a `authorization code` from Amazon Cognito
-    // `user` is the current Authenticated user
     Auth.setupTOTP(user).then(generatedCode => {
-      console.log('code', generatedCode);
-      // You can directly display the `code` to the user or convert it to a QR code to be scanned.
-      // E.g., use following code sample to render a QR code with `qrcode.react` component:
-      setCode(generatedCode);
+      setCopiedText(generatedCode);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -23,11 +30,13 @@ const GenerateTotp = ({ user, setHasAuthApp }) => {
     <View style={styles.container}>
       <Text style={styles.titleCode}>{i18n.t('totp.titleGenerate')}</Text>
       <View style={styles.codeContainer}>
-        <Text style={styles.code}>{code}</Text>
+        <TouchableOpacity onPress={() => copyToClipboard()}>
+          <Text style={styles.code}>{copiedText}</Text>
+        </TouchableOpacity>
       </View>
-      {/* <View style={styles.helper}>
-                <Text style={styles.helperText}>Cliquez sur le code pour le copier !</Text>
-            </View> */}
+      <View style={styles.helper}>
+        <Text style={styles.helperText}>{i18n.t('totp.copyToClipboard')}</Text>
+      </View>
       <View style={styles.buttonsContainer}>
         <Button
           mode="contained"

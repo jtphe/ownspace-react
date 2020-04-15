@@ -19,7 +19,9 @@ export default {
     titleAuth:
       'Enter the authentication code of the two-factor authentication application on your device',
     placeholder: 'Authentication code ',
-    invalidToken: 'Invalid token'
+    invalidToken: 'Invalid token',
+    copied: 'Copied to clipboard !',
+    copyToClipboard: 'Click on the code to copy it!'
   },
   newPassword: {
     title: 'Please enter a new password',
