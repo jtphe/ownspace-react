@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import IconMenu from './IconMenu';
 
-const Menu = () => {
+const NavMenu = ({ openPlusMenu }) => {
   const [home, setHome] = useState(true);
   const [options, setOptions] = useState(false);
   const [userProfile, setUserProfile] = useState(false);
 
+  /**
+   * Set the right icon to selected
+   * @param {String} name - Icon name
+   */
   const setSelected = name => {
     switch (name) {
       case 'home':
@@ -18,6 +22,7 @@ const Menu = () => {
         setHome(false);
         setOptions(true);
         setUserProfile(false);
+        openPlusMenu();
         break;
       case 'user':
         setHome(false);
@@ -34,19 +39,19 @@ const Menu = () => {
     <View style={styles.menuContainer}>
       <IconMenu
         name="home"
-        size={40}
+        size={30}
         selected={home}
         setSelected={name => setSelected(name)}
       />
       <IconMenu
         name="plus-circle"
-        size={40}
+        size={30}
         selected={options}
         setSelected={name => setSelected(name)}
       />
       <IconMenu
         name="user"
-        size={40}
+        size={30}
         selected={userProfile}
         setSelected={name => setSelected(name)}
       />
@@ -60,16 +65,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 40,
     alignSelf: 'center',
-    backgroundColor: '#42688B',
-    paddingLeft: 30,
-    paddingRight: 30,
+    backgroundColor: '#003466',
+    paddingLeft: 5,
+    paddingRight: 5,
     marginLeft: 10,
     marginRight: 10,
-    borderRadius: 90,
+    borderRadius: 30,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
   }
 });
 
-export default Menu;
+export default NavMenu;

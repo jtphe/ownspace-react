@@ -17,7 +17,7 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#42688B',
+    backgroundColor: '#003466',
     paddingBottom: 30,
     ...ifIphoneX(
       {

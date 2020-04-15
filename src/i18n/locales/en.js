@@ -25,8 +25,11 @@ export default {
     title: 'Please enter a new password',
     placeholder: 'New password'
   },
-  options: {
-    createFile: 'Create a text file'
+  menuPlus: {
+    importFile: 'Import a file',
+    createFile: 'Create a text file',
+    createFolder: 'Create a folder',
+    takePicture: 'Take a picture'
   },
   createFile: {
     placeholderName: 'File name',

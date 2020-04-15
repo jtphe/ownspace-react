@@ -12,6 +12,9 @@ const CreateFile = () => {
   const [title, setTitle] = useState('');
   const dispatch = useDispatch();
 
+  /**
+   * Creates a file in a txt format
+   */
   const createTxtFile = () => {
     if (title.trim().length > 0 && text.trim().length > 0) {
       if (title.trim().length > 6 && text.trim().length > 6) {
@@ -42,7 +45,7 @@ const CreateFile = () => {
     <View style={styles.container}>
       <Header />
       <View style={styles.inputContainer}>
-        <Text style={styles.title}>{i18n.t('options.createFile')}</Text>
+        <Text style={styles.title}>{i18n.t('menuPlus.createFile')}</Text>
         <TextInput
           style={styles.inputFileName}
           placeholder={i18n.t('createFile.placeholderName')}
@@ -85,7 +88,7 @@ const styles = StyleSheet.create({
     marginBottom: 25
   },
   input: {
-    flex: 2,
+    flex: 1,
     height: 50,
     borderColor: '#DBDBDB',
     color: 'black',
