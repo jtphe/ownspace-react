@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Text from '@shared/ClientText';
 import {
   Menu,
   MenuOptions,

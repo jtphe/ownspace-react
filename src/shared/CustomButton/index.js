@@ -3,14 +3,19 @@ import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Actions } from 'react-native-router-flux';
 import i18n from '@i18n/i18n';
+import { useFonts } from '@use-expo/font';
 
 const CustomButton = ({ confirmFunction }) => {
+  useFonts({
+    // eslint-disable-next-line global-require
+    DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
+  });
   return (
     <View style={styles.btnContainer}>
       <Button
         mode="contained"
         uppercase={false}
-        labelStyle={styles.cancelColor}
+        labelStyle={styles.cancelText}
         contentStyle={styles.btnDimension}
         style={styles.btnCancel}
         onPress={() => Actions.pop()}
@@ -20,7 +25,7 @@ const CustomButton = ({ confirmFunction }) => {
       <Button
         mode="contained"
         uppercase={false}
-        labelStyle={styles.confirmColor}
+        labelStyle={styles.confirmText}
         contentStyle={styles.btnDimension}
         style={styles.btnConfirm}
         onPress={() => confirmFunction()}
@@ -56,8 +61,8 @@ const styles = StyleSheet.create({
     height: 45,
     width: 100
   },
-  cancelColor: { color: '#42688B' },
-  confirmColor: { color: '#fff' }
+  cancelText: { fontFamily: 'DejaVuSans', color: '#42688B' },
+  confirmText: { fontFamily: 'DejaVuSans', color: '#fff' }
 });
 
 export default CustomButton;
