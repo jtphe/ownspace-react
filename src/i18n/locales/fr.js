@@ -21,11 +21,13 @@ export default {
     placeholder: "Code d'authentification",
     invalidToken: 'Token invalide',
     copied: 'Copié dans le presse-papier !',
-    copyToClipboard: 'Cliquez sur le code pour le copier !'
+    copyToClipboard: 'Cliquez sur le code pour le copier !',
+    noEmpty: 'Le champ de texte ne peut être vide'
   },
   newPassword: {
     title: 'Veuillez entrer un nouveau mot de passe',
-    placeholder: 'Nouveau mot de passe'
+    placeholder: 'Nouveau mot de passe',
+    lengthError: 'Le mot de passe doit faire au minimum 8 caractères'
   },
   menuPlus: {
     importFile: 'Importer un fichier',
@@ -38,7 +40,7 @@ export default {
     placeholderContent: 'Tapez votre texte ici...',
     tooShort:
       'Le nom du fichier et son contenu doivent contenir au moins 6 caractères',
-    noEmpty: 'Les champs ne peuvent pas être vide'
+    noEmpty: 'Les champs de texte ne peuvent pas être vide'
   },
   button: {
     validate: 'Valider',

@@ -8,10 +8,13 @@ import GenerateTotp from '@components/Login/generateTotp';
 import { Auth } from 'aws-amplify';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import { Actions } from 'react-native-router-flux';
-import Toast from 'react-native-root-toast';
 import TotpAuthScreen from './totpAuthScreen';
 import i18n from '@i18n/i18n';
 import { useFonts } from '@use-expo/font';
+import { useDispatch } from 'react-redux';
+import { createUser } from '@store/modules/user/actions';
+import { ROLE_ONE, ROLE_TWO, RECURRING_ROLE } from '@constants';
+import showToast from '@utils/showToast';
 
 const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
   useFonts({
@@ -49,22 +52,47 @@ const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
 };
 
 const SecondAuthScreen = ({ user }) => {
+  const dispatch = useDispatch();
   const [token, setToken] = useState('');
-  const [hasAuthApp, setHasAuthApp] = useState(
-    user.challengeName === 'SOFTWARE_TOKEN_MFA'
-  );
   const [newPassword, setNewPassword] = useState('');
   const [newPasswordRequired, setNewPasswordRequired] = useState(
     user.challengeName === 'NEW_PASSWORD_REQUIRED'
+  );
+  const [hasAuthApp, setHasAuthApp] = useState(
+    user.challengeName === 'SOFTWARE_TOKEN_MFA'
   );
 
   /**
    * Confirm the new password
    */
   const confirmNewPwd = async () => {
-    await Auth.completeNewPassword(user, newPassword);
-    setNewPassword('');
-    setNewPasswordRequired(false);
+    if (newPassword.trim().length >= 8) {
+      await Auth.completeNewPassword(user, newPassword);
+      setNewPasswordRequired(false);
+    } else {
+      showToast(i18n.t('newPassword.lengthError'), true);
+    }
+  };
+
+  /**
+   * Create the user to add to the DynamoDB
+   */
+  const createUserObject = async () => {
+    await Auth.currentUserInfo().then(userInfo => {
+      let role = '';
+      if (userInfo.attributes.email.substr(0, 6) === RECURRING_ROLE) {
+        role = ROLE_ONE;
+      } else {
+        role = ROLE_TWO;
+      }
+      const payload = {
+        id: userInfo.attributes.sub,
+        email: userInfo.attributes.email,
+        password: newPassword !== '' ? newPassword : 'password',
+        role
+      };
+      dispatch(createUser(payload));
+    });
   };
 
   /**
@@ -84,11 +112,12 @@ const SecondAuthScreen = ({ user }) => {
           await Auth.verifyTotpToken(user, token).then(() => {
             Auth.setPreferredMFA(user, 'TOTP').then(data => {
               if (data === 'SUCCESS') {
-                Actions.home();
+                createUserObject();
               }
             });
           });
         } catch (e) {
+          showToast(i18n.t('totp.invalidToken'), true);
           console.log('Token is not verified =>', e);
         }
       }
@@ -106,12 +135,7 @@ const SecondAuthScreen = ({ user }) => {
       } else if (err.code === 'UserNotFoundException') {
         // The error happens when the supplied username/email does not exist in the Cognito user pool
       } else {
-        Toast.show(i18n.t('totp.invalidToken'), {
-          duration: Toast.durations.LONG,
-          position: Toast.positions.TOP + 30,
-          shadow: false,
-          opacity: 1
-        });
+        showToast(i18n.t('totp.invalidToken'), true);
         console.log(err);
       }
     }

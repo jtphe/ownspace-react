@@ -6,7 +6,7 @@ API.configure(awsconfig);
 const document = {
   Mutation: {
     createFileTxt: async ({ name, content }) => {
-      const query = `mutation createFile($name:String! $content: String!) {
+      const query = `mutation createFile($name: String! $content: String!) {
                 createFile(input:{
                   name:$name
                   owner: "7f863e6e-c834-4dca-aec4-89c9d71c0976"

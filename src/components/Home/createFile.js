@@ -3,11 +3,11 @@ import { StyleSheet, View, TextInput, Keyboard } from 'react-native';
 import Text from '@shared/ClientText';
 import Header from '@shared/Header/index';
 import CustomButton from '@shared/CustomButton';
-import Toast from 'react-native-root-toast';
 import { createFile } from '@store/modules/documents/actions';
 import { useDispatch } from 'react-redux';
 import i18n from '@i18n/i18n';
 import { useFonts } from '@use-expo/font';
+import showToast from '@utils/showToast';
 
 const CreateFile = () => {
   useFonts({
@@ -30,20 +30,10 @@ const CreateFile = () => {
         };
         dispatch(createFile(payload));
       } else {
-        Toast.show(i18n.t('createFile.tooShort'), {
-          duration: Toast.durations.LONG,
-          position: Toast.positions.TOP + 30,
-          shadow: false,
-          opacity: 1
-        });
+        showToast(i18n.t('createFile.tooShort'), true);
       }
     } else {
-      Toast.show(i18n.t('createFile.noEmpty'), {
-        duration: Toast.durations.LONG,
-        position: Toast.positions.TOP + 30,
-        shadow: false,
-        opacity: 1
-      });
+      showToast(i18n.t('createFile.noEmpty'), true);
     }
   };
 
