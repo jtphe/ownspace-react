@@ -4,19 +4,14 @@ import { Button } from 'react-native-paper';
 import { Auth } from 'aws-amplify';
 import i18n from '@i18n/i18n';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Toast from 'react-native-root-toast';
+import showToast from '@utils/showToast';
 
 const GenerateTotp = ({ user, setHasAuthApp }) => {
   const [copiedText, setCopiedText] = useState('');
 
   const copyToClipboard = () => {
     Clipboard.setString(copiedText);
-    Toast.show(i18n.t('totp.copied'), {
-      duration: Toast.durations.LONG,
-      position: Toast.positions.TOP + 30,
-      shadow: false,
-      opacity: 1
-    });
+    showToast(i18n.t('totp.copied'), true);
   };
 
   useEffect(() => {

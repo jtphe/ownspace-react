@@ -14,12 +14,12 @@ import {
 import Logo from '../../shared/Logo/index';
 import { Auth } from 'aws-amplify';
 import { Actions } from 'react-native-router-flux';
-import Toast from 'react-native-root-toast';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import i18n from '@i18n/i18n';
 import Text from '@shared/Text';
 import { useFonts } from '@use-expo/font';
+import showToast from '@utils/showToast';
 
 const Login = () => {
   useFonts({
@@ -33,7 +33,7 @@ const Login = () => {
    * Check if the email is valid or not
    */
   const _validateEmail = () => {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   };
 
@@ -47,25 +47,15 @@ const Login = () => {
         password
       })
         .then(user => {
-          Actions.twoFactor({ user });
           console.log('successful sign in !');
+          Actions.twoFactor({ user });
         })
         .catch(err => {
-          Toast.show(i18n.t('loginPage.wrongPassword'), {
-            duration: Toast.durations.LONG,
-            position: Toast.positions.TOP + 30,
-            shadow: false,
-            opacity: 1
-          });
+          showToast(i18n.t('loginPage.wrongPassword'), true);
           console.log('error while signing in =>', err);
         });
     } else {
-      Toast.show(i18n.t('loginPage.invalidPasswordEmail'), {
-        duration: Toast.durations.LONG,
-        position: Toast.positions.TOP + 30,
-        shadow: false,
-        opacity: 1
-      });
+      showToast(i18n.t('loginPage.invalidPasswordEmail'), true);
     }
   };
 

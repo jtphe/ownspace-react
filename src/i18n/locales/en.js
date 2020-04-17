@@ -21,11 +21,13 @@ export default {
     placeholder: 'Authentication code ',
     invalidToken: 'Invalid token',
     copied: 'Copied to clipboard !',
-    copyToClipboard: 'Click on the code to copy it!'
+    copyToClipboard: 'Click on the code to copy it!',
+    noEmpty: 'Field cannot be empty'
   },
   newPassword: {
     title: 'Please enter a new password',
-    placeholder: 'New password'
+    placeholder: 'New password',
+    lengthError: 'The password must be at least 8 characters long'
   },
   menuPlus: {
     importFile: 'Import a file',

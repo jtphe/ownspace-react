@@ -4,7 +4,7 @@ import Header from '@shared/Header/index';
 import NavMenu from '@components/Menu';
 import MenuPlus from './menuPlus';
 
-const Home = ({ loggedUser }) => {
+const Home = () => {
   const [menuPlus, setMenuPlus] = useState('');
 
   /**

@@ -1,4 +1,5 @@
 import document from '@backend/api/ownspaceapi/resolvers/document';
+import user from '@backend/api/ownspaceapi/resolvers/user';
 
 const api = {
   // DOCUMENT
@@ -7,16 +8,25 @@ const api = {
    * @param {Object} payload - Name and content of the file
    */
   createFileTxt(payload) {
-    console.log('payload api index', payload);
     return Promise.resolve(
       document.Mutation.createFileTxt({
         name: payload.name,
         content: payload.content
       })
     );
-  }
+  },
 
   // USER
+  createUser(payload) {
+    return Promise.resolve(
+      user.Mutation.createUser({
+        id: payload.id,
+        email: payload.email,
+        password: payload.password,
+        role: payload.role
+      })
+    );
+  }
   // GROUP
   // RIGHTS
 };
