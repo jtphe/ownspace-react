@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
-  btnText: { color: 'red', fontFamily: 'HelveticaNeue' }
+  btnText: { color: 'white', fontFamily: 'HelveticaNeue' }
 });
 
 export default SecondAuthScreen;
