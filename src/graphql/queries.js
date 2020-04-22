@@ -123,9 +123,9 @@ export const getFile = /* GraphQL */ `
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
-      uuid
       size
       mimeType
       type
@@ -161,9 +161,9 @@ export const listFiles = /* GraphQL */ `
           storageSpaceUsed
           totalStorageSpace
         }
+        isProtected
         password
         parent
-        uuid
         size
         mimeType
         type
@@ -220,9 +220,9 @@ export const getFolder = /* GraphQL */ `
           storageSpaceUsed
           totalStorageSpace
         }
+        isProtected
         password
         parent
-        uuid
         size
         mimeType
         type
@@ -268,9 +268,9 @@ export const listFolders = /* GraphQL */ `
           name
           content
           owner
+          isProtected
           password
           parent
-          uuid
           size
           mimeType
           type

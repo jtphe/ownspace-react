@@ -11,6 +11,9 @@ const document = {
                   name:$name
                   owner: "7f863e6e-c834-4dca-aec4-89c9d71c0976"
                   content:$content
+                  mimeType: "sprite-brut"
+                  type: "text/plain"
+                  isProtected: false
                 }){
                   id,
                   createdAt,
@@ -18,11 +21,12 @@ const document = {
                   name,
                   content,
                   owner,
+                  sharedList{id},
+                  isProtected,
                   password,
                   parent,
                   size,
                   mimeType,
-                  uuid,
                   type
                 }
               }`;

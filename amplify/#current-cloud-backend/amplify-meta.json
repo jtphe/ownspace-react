@@ -32,7 +32,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-ownspacemobile-ownspace-204709-deployment/amplify-cfn-templates/auth/template.json",
 				"logicalId": "authuserPoolGroups"
 			},
-			"lastPushTimeStamp": "2020-04-14T16:31:19.205Z",
+			"lastPushTimeStamp": "2020-04-22T07:57:24.209Z",
 			"output": {
 				"ownspacemobileGroupRole": "arn:aws:iam::286499764187:role/eu-west-1_4pGQ4jV3y-ownspacemobileGroupRole"
 			},
@@ -46,7 +46,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-ownspacemobile-ownspace-204709-deployment/amplify-cfn-templates/auth/ownspacemobileb849f0d4b849f0d4-cloudformation-template.yml",
 				"logicalId": "authownspacemobileb849f0d4b849f0d4"
 			},
-			"lastPushTimeStamp": "2020-04-14T16:31:19.207Z",
+			"lastPushTimeStamp": "2020-04-22T07:57:24.210Z",
 			"output": {
 				"CreatedSNSRole": "arn:aws:iam::286499764187:role/sns204709-ownspace",
 				"AppClientSecret": "ic1pi5o7k9rkglsnddi7qi1g2qqtafq1poa0jvgg49ktrfp0lo5",
@@ -68,7 +68,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-ownspacemobile-ownspace-204709-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
 				"logicalId": "storageownspaceStorage"
 			},
-			"lastPushTimeStamp": "2020-04-14T16:31:19.207Z",
+			"lastPushTimeStamp": "2020-04-22T07:57:24.211Z",
 			"output": {
 				"BucketName": "ownspacemobile97f1dc2026c74db38c9da6caae4c290c204709-ownspace",
 				"Region": "eu-west-1"
@@ -99,8 +99,8 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-ownspacemobile-ownspace-204709-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apiownspaceapi"
 			},
-			"lastPushTimeStamp": "2020-04-14T16:31:21.719Z",
-			"lastPushDirHash": "lSg9o6LtvN6E33+L8U/ctX+8jYI="
+			"lastPushTimeStamp": "2020-04-22T07:57:28.721Z",
+			"lastPushDirHash": "c4KPdxA1vzLA2G7sFU6iHIb8+Rc="
 		}
 	}
 }

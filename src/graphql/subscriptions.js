@@ -151,9 +151,9 @@ export const onCreateFile = /* GraphQL */ `
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
-      uuid
       size
       mimeType
       type
@@ -184,9 +184,9 @@ export const onUpdateFile = /* GraphQL */ `
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
-      uuid
       size
       mimeType
       type
@@ -217,9 +217,9 @@ export const onDeleteFile = /* GraphQL */ `
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
-      uuid
       size
       mimeType
       type
@@ -274,9 +274,9 @@ export const onCreateFolder = /* GraphQL */ `
           storageSpaceUsed
           totalStorageSpace
         }
+        isProtected
         password
         parent
-        uuid
         size
         mimeType
         type
@@ -332,9 +332,9 @@ export const onUpdateFolder = /* GraphQL */ `
           storageSpaceUsed
           totalStorageSpace
         }
+        isProtected
         password
         parent
-        uuid
         size
         mimeType
         type
@@ -390,9 +390,9 @@ export const onDeleteFolder = /* GraphQL */ `
           storageSpaceUsed
           totalStorageSpace
         }
+        isProtected
         password
         parent
-        uuid
         size
         mimeType
         type

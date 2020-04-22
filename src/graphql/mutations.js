@@ -25,9 +25,9 @@ export const createTxtFile = /* GraphQL */ `
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
-      uuid
       size
       mimeType
       type
@@ -205,9 +205,9 @@ export const createFile = /* GraphQL */ `
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
-      uuid
       size
       mimeType
       type
@@ -241,9 +241,9 @@ export const updateFile = /* GraphQL */ `
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
-      uuid
       size
       mimeType
       type
@@ -277,9 +277,9 @@ export const deleteFile = /* GraphQL */ `
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
-      uuid
       size
       mimeType
       type
@@ -337,9 +337,9 @@ export const createFolder = /* GraphQL */ `
           storageSpaceUsed
           totalStorageSpace
         }
+        isProtected
         password
         parent
-        uuid
         size
         mimeType
         type
@@ -398,9 +398,9 @@ export const updateFolder = /* GraphQL */ `
           storageSpaceUsed
           totalStorageSpace
         }
+        isProtected
         password
         parent
-        uuid
         size
         mimeType
         type
@@ -459,9 +459,9 @@ export const deleteFolder = /* GraphQL */ `
           storageSpaceUsed
           totalStorageSpace
         }
+        isProtected
         password
         parent
-        uuid
         size
         mimeType
         type

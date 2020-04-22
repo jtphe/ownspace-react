@@ -3,13 +3,20 @@ import { StyleSheet, View, TextInput, Keyboard } from 'react-native';
 import Text from '@shared/ClientText';
 import Header from '@shared/Header/index';
 import CustomButton from '@shared/CustomButton';
-import { createFile } from '@store/modules/documents/actions';
-import { useDispatch } from 'react-redux';
+import { createFile } from '@store/modules/document/actions';
+import { useDispatch, connect } from 'react-redux';
 import i18n from '@i18n/i18n';
 import { useFonts } from '@use-expo/font';
 import showToast from '@utils/showToast';
+// import ProgressBar from '@shared/ProgressBar';
 
-const CreateFile = () => {
+const mapStateToProps = state => {
+  return {
+    isUploading: state.document.upload.isUploading
+  };
+};
+
+const CreateFile = ({ isUploading }) => {
   useFonts({
     // eslint-disable-next-line global-require
     DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
@@ -40,6 +47,7 @@ const CreateFile = () => {
   return (
     <View style={styles.container}>
       <Header />
+      {/* {isUploading ? <ProgressBar /> : null} */}
       <View style={styles.inputContainer}>
         <Text style={styles.title}>{i18n.t('menuPlus.createFile')}</Text>
         <TextInput
@@ -101,4 +109,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CreateFile;
+export default connect(mapStateToProps)(CreateFile);

@@ -51,11 +51,11 @@ const Login = () => {
           Actions.twoFactor({ user });
         })
         .catch(err => {
-          showToast(i18n.t('loginPage.wrongPassword'), true);
+          showToast(i18n.t('loginPage.invalidPasswordEmail'), true);
           console.log('error while signing in =>', err);
         });
     } else {
-      showToast(i18n.t('loginPage.invalidPasswordEmail'), true);
+      showToast(i18n.t('loginPage.wrongPassword'), true);
     }
   };
 

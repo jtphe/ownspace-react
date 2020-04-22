@@ -32,9 +32,9 @@ type File @model {
   content: String
   owner: ID!
   sharedList: [User]
+  isProtected: Boolean
   password: String
   parent: ID
-  uuid: String
   size: Float
   mimeType: String
   type: String

@@ -46,5 +46,8 @@ export default {
     validate: 'Validate',
     cancel: 'Cancel',
     next: 'Next'
+  },
+  progressBar: {
+    createFile: 'Creating the file'
   }
 };
