@@ -6,6 +6,26 @@ import Logo from '@shared/Logo/images/os_logo.png';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import { Actions } from 'react-native-router-flux';
 import i18n from '@i18n/i18n';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
+import { getToken } from '@store/modules/user/selectors';
+import * as Font from 'expo-font';
+
+const mapStateToProps = createSelector(getToken, token => {
+  return {
+    isLoggedIn: token !== null
+  };
+});
+
+const clientFont = {
+  // eslint-disable-next-line global-require
+  DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
+};
+
+const helveticaFont = {
+  // eslint-disable-next-line global-require
+  HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
+};
 
 class SplashScreen extends React.Component {
   constructor(props) {
@@ -16,8 +36,14 @@ class SplashScreen extends React.Component {
     };
   }
 
+  UNSAFE_componentWillMount() {
+    this.loadClientFont();
+    this.loadOwnSpaceFont();
+  }
+
   componentDidMount() {
     const { logoAnime, logoText } = this.state;
+    const { isLoggedIn } = this.props;
 
     Animated.parallel([
       Animated.spring(logoAnime, {
@@ -32,9 +58,17 @@ class SplashScreen extends React.Component {
         duration: 2000
       })
     ]).start(() => {
-      Actions.login();
+      isLoggedIn ? Actions.home({ isLoggedIn }) : Actions.login();
     });
   }
+
+  loadClientFont = async () => {
+    await Font.loadAsync(clientFont);
+  };
+
+  loadOwnSpaceFont = async () => {
+    await Font.loadAsync(helveticaFont);
+  };
 
   render() {
     const { logoAnime, logoText } = this.state;
@@ -99,4 +133,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SplashScreen;
+export default connect(mapStateToProps)(SplashScreen);

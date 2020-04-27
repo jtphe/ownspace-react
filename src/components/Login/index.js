@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'react-native-paper';
 import {
   StyleSheet,
@@ -20,6 +20,8 @@ import i18n from '@i18n/i18n';
 import Text from '@shared/Text';
 import { useFonts } from '@use-expo/font';
 import showToast from '@utils/showToast';
+import { useDispatch } from 'react-redux';
+import { resetAllStore } from '@store/modules/app/actions';
 
 const Login = () => {
   useFonts({
@@ -28,6 +30,12 @@ const Login = () => {
   });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetAllStore());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /**
    * Check if the email is valid or not

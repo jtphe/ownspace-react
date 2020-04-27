@@ -46,5 +46,25 @@ export default {
     validate: 'Valider',
     cancel: 'Annuler',
     next: 'Suivant'
+  },
+  userProfile: {
+    lastname: 'Nom',
+    firstname: 'Prénom',
+    email: 'E-mail',
+    password: 'Mot de passe',
+    signOut: 'Déconnexion',
+    edit: 'Modifier',
+    help: 'Aide',
+    firstnamePlaceholder: 'Entrez votre prénom...',
+    lastnamePlaceholder: 'Entrez votre nom...',
+    nothingToUdpate: 'Profil déjà à jour',
+    profileUpdated: 'Profil mis à jour !',
+    oldPassword: 'Ancien mot de passe',
+    newPassword: 'Nouveau mot de passe',
+    wrongOldPassword: 'Ancien mot de passe incorrect',
+    oldNotEmpty: "L'ancien mot de passe ne peut être vide",
+    newNotEmpty: 'Le nouveau mot de passe ne peut être vide',
+    confirmSignOut: 'Confirmer la déconnexion',
+    cancel: 'Annuler'
   }
 };

@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     marginBottom: 25
   },
   input: {
+    fontFamily: 'DejaVuSans',
     flex: 1,
     height: 50,
     borderColor: '#DBDBDB',

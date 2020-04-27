@@ -46,5 +46,25 @@ export default {
     validate: 'Validate',
     cancel: 'Cancel',
     next: 'Next'
+  },
+  userProfile: {
+    lastname: 'Lastname',
+    firstname: 'Firstname',
+    email: 'E-mail',
+    password: 'Password',
+    signOut: 'Sign out',
+    edit: 'Edit',
+    help: 'Help',
+    firstnamePlaceholder: 'Enter your firstname...',
+    lastnamePlaceholder: 'Enter your lastname...',
+    nothingToUdpate: 'Profile already up-to-date',
+    profileUpdated: 'Profile updated !',
+    oldPassword: 'Old password',
+    newPassword: 'New password',
+    wrongOldPassword: 'Old password incorrect',
+    oldNotEmpty: 'The old password cannot be empty',
+    newNotEmpty: 'The new password cannot be empty',
+    confirmSignOut: 'Confirm the sign out',
+    cancel: 'Cancel'
   }
 };
