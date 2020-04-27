@@ -106,7 +106,8 @@ const SecondAuthScreen = ({ user }) => {
           token,
           'SOFTWARE_TOKEN_MFA'
         );
-        Actions.home({ loggedUser });
+        const isLoggedIn = true;
+        Actions.home({ loggedUser, isLoggedIn });
       } else {
         try {
           await Auth.verifyTotpToken(user, token).then(() => {

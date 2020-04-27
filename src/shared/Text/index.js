@@ -1,37 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import * as Font from 'expo-font';
-import { Text, StyleSheet } from 'react-native';
+import React from 'react';
 
-const helveticaFont = {
-  // eslint-disable-next-line global-require
-  HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
-};
+import { Text, StyleSheet } from 'react-native';
+import { useFonts } from '@use-expo/font';
 
 const TextHelvetica = props => {
-  const [fontIsLoaded, setFontIsLoaded] = useState(false);
-  const loadFontAsync = async () => {
-    await Font.loadAsync(helveticaFont);
-    setFontIsLoaded(true);
-  };
-
-  useEffect(() => {
-    loadFontAsync();
-  }, []);
+  useFonts({
+    // eslint-disable-next-line global-require
+    HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
+  });
 
   const { style, ellipsizeMode, selectable, children } = props;
-  if (fontIsLoaded) {
-    return (
-      <Text
-        style={[style, styles.fontStyle]}
-        ellipsizeMode={ellipsizeMode}
-        selectable={selectable}
-      >
-        {children}
-      </Text>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <Text
+      style={[style, styles.fontStyle]}
+      ellipsizeMode={ellipsizeMode}
+      selectable={selectable}
+    >
+      {children}
+    </Text>
+  );
 };
 
 const styles = StyleSheet.create({

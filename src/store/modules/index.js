@@ -3,12 +3,12 @@ import app from './app';
 import document from './document';
 import user from './user';
 // import AsyncStorage from '@react-native-community/async-storage';
-import { AsyncStorage } from 'react-native';
+import ExpoFileSystemStorage from 'redux-persist-expo-filesystem';
 
 const config = {
   key: 'root',
-  storage: AsyncStorage,
-  blacklist: ['app', 'document', 'user']
+  storage: ExpoFileSystemStorage,
+  blacklist: ['app', 'documents']
 };
 
 export default persistCombineReducers(config, {

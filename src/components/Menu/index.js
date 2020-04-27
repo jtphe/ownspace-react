@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import IconMenu from './IconMenu';
+import { Actions } from 'react-native-router-flux';
 
 const NavMenu = ({ openPlusMenu }) => {
   const [home, setHome] = useState(true);
@@ -28,6 +29,10 @@ const NavMenu = ({ openPlusMenu }) => {
         setHome(false);
         setOptions(false);
         setUserProfile(true);
+        Actions.userProfile();
+        setHome(true);
+        setOptions(false);
+        setUserProfile(false);
         break;
       default:
         setHome(true);
@@ -35,6 +40,7 @@ const NavMenu = ({ openPlusMenu }) => {
         setUserProfile(false);
     }
   };
+
   return (
     <View style={styles.menuContainer}>
       <IconMenu

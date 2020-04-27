@@ -5,6 +5,7 @@ import SecondAuthScreen from '@components/Login/secondAuthScreen';
 import Home from '@components/Home';
 import CreateFile from '@components/Home/createFile';
 import SplashScreen from '@components/Scenes/splashScreen';
+import UserProfile from '@components/UserProfile';
 
 const AppRouter = () => {
   return (
@@ -44,6 +45,13 @@ const AppRouter = () => {
           type={ActionConst.JUMP}
           component={CreateFile}
           title="CreateFileScreen"
+          hideNavBar
+        />
+        <Scene
+          key="userProfile"
+          type={ActionConst.PUSH}
+          component={UserProfile}
+          title="UserProfile"
           hideNavBar
         />
       </Scene>

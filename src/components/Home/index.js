@@ -1,11 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Header from '@shared/Header/index';
 import NavMenu from '@components/Menu';
 import MenuPlus from './menuPlus';
+import { useDispatch } from 'react-redux';
+import { loadUser } from '@store/modules/user/actions';
+import { Auth } from 'aws-amplify';
 
-const Home = () => {
+const Home = ({ loggedUser, isLoggedIn }) => {
   const [menuPlus, setMenuPlus] = useState('');
+  const dispatch = useDispatch();
+
+  console.log('isLoggedIn', isLoggedIn);
+
+  useEffect(() => {
+    console.log('je suis dans le useEffect');
+    if (!isLoggedIn) {
+      initLoad();
+    } else {
+      console.log('dans le else');
+      loadCurrentAuthenticatedUser();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  });
+
+  const initLoad = () => {
+    const payload = {
+      userId: loggedUser.username,
+      token: loggedUser.signInUserSession.idToken.jwtToken
+    };
+    dispatch(loadUser(payload));
+  };
+
+  const loadCurrentAuthenticatedUser = async () => {
+    console.log('load');
+    const user = await Auth.currentAuthenticatedUser();
+    if (user) {
+      loadConnectedUser(user);
+    }
+  };
+
+  const loadConnectedUser = user => {
+    const payload = {
+      userId: user.attributes.sub,
+      token: user.signInUserSession.idToken.jwtToken
+    };
+    dispatch(loadUser(payload));
+  };
 
   /**
    * Open the plus menu
