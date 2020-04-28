@@ -19,6 +19,8 @@ export default function reducer(state = initialState, action) {
           $push: [action.file]
         }
       });
+    case 'M_RESET_DOCUMENT_STORE':
+      return initialState;
     default:
       return state;
   }

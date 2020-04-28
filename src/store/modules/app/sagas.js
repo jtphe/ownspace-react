@@ -5,6 +5,7 @@ import { U_RESET_ALL_STORE } from './actions';
 function* resetAllStore() {
   try {
     yield put({ type: 'M_RESET_USER_STORE' });
+    yield put({ type: 'M_RESET_DOCUMENT_STORE' });
   } catch (e) {
     console.log('Error while reseting all store =>', e);
   }
