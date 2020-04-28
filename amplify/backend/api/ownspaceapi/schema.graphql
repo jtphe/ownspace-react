@@ -1,7 +1,3 @@
-type Mutation{
-  createTxtFile(name: String!, content: String!): File!
-}
-
 type User @model {
   id: ID!
   firstname: String

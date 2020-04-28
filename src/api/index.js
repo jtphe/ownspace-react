@@ -12,7 +12,8 @@ const api = {
     return Promise.resolve(
       document.Mutation.createFileTxt({
         name: payload.name,
-        content: payload.content
+        content: payload.content,
+        owner: payload.owner
       })
     );
   },

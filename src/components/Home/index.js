@@ -11,14 +11,10 @@ const Home = ({ loggedUser, isLoggedIn }) => {
   const [menuPlus, setMenuPlus] = useState('');
   const dispatch = useDispatch();
 
-  console.log('isLoggedIn', isLoggedIn);
-
   useEffect(() => {
-    console.log('je suis dans le useEffect');
     if (!isLoggedIn) {
       initLoad();
     } else {
-      console.log('dans le else');
       loadCurrentAuthenticatedUser();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,7 +29,6 @@ const Home = ({ loggedUser, isLoggedIn }) => {
   };
 
   const loadCurrentAuthenticatedUser = async () => {
-    console.log('load');
     const user = await Auth.currentAuthenticatedUser();
     if (user) {
       loadConnectedUser(user);
