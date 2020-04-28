@@ -5,11 +5,11 @@ API.configure(awsconfig);
 
 const document = {
   Mutation: {
-    createFileTxt: async ({ name, content }) => {
-      const query = `mutation createFile($name: String! $content: String!) {
+    createFileTxt: async ({ name, content, owner }) => {
+      const query = `mutation createFile($name: String! $content: String!, $owner: ID!) {
                 createFile(input:{
                   name:$name
-                  owner: "7f863e6e-c834-4dca-aec4-89c9d71c0976"
+                  owner:$owner
                   content:$content
                   mimeType: "sprite-brut"
                   type: "text/plain"
@@ -30,7 +30,9 @@ const document = {
                   type
                 }
               }`;
-      const res = await API.graphql(graphqlOperation(query, { name, content }));
+      const res = await API.graphql(
+        graphqlOperation(query, { name, content, owner })
+      );
       return res.data.createFile;
     }
   }

@@ -8,7 +8,6 @@ import { useDispatch, connect } from 'react-redux';
 import i18n from '@i18n/i18n';
 import { useFonts } from '@use-expo/font';
 import showToast from '@utils/showToast';
-// import ProgressBar from '@shared/ProgressBar';
 
 const mapStateToProps = state => {
   return {

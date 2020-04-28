@@ -4,5 +4,5 @@ import watchUser from './modules/user/sagas';
 import watchApp from './modules/app/sagas';
 
 export default function* rootSaga() {
-  yield all([fork(watchDocuments), fork(watchUser), fork(watchApp)]);
+  yield all([fork(watchDocument), fork(watchUser), fork(watchApp)]);
 }

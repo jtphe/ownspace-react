@@ -1,39 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTxtFile = /* GraphQL */ `
-  mutation CreateTxtFile($name: String!, $content: String!) {
-    createTxtFile(name: $name, content: $content) {
-      id
-      createdAt
-      updatedAt
-      name
-      content
-      owner
-      sharedList {
-        id
-        firstname
-        lastname
-        email
-        password
-        picture
-        notification
-        role
-        rootFolder
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
-      isProtected
-      password
-      parent
-      size
-      mimeType
-      type
-    }
-  }
-`;
 export const createUser = /* GraphQL */ `
   mutation CreateUser(
     $input: CreateUserInput!

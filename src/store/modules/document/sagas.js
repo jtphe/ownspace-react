@@ -1,11 +1,15 @@
-import { takeLatest, put, call } from 'redux-saga/effects';
+import { takeLatest, put, call, select } from 'redux-saga/effects';
 import api from '@api';
 import { Storage } from 'aws-amplify';
 import { Actions } from 'react-native-router-flux';
 import { U_CREATE_FILE, M_CREATE_FILE } from './actions';
+import { getUser } from '@store/modules/user/selectors';
 
 function* createFile({ payload }) {
   try {
+    const user = yield select(getUser);
+    // eslint-disable-next-line no-param-reassign
+    payload.owner = user.id;
     // Add file to DynamoDB
     const file = yield call(api.createFileTxt, payload);
 
