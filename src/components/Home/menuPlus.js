@@ -14,9 +14,20 @@ import IconFeather from 'react-native-vector-icons/Feather';
 import i18n from '@i18n/i18n';
 import { Actions } from 'react-native-router-flux';
 
+/**
+ * Animation that makes slide in the menu from the bottom of the screen.
+ */
 const { SlideInMenu } = renderers;
 
+/**
+ * The MenuPlus component
+ * @param {function} setRefPlus - Set the ref to the plus menu
+ */
 const MenuPlus = ({ setRefPlus }) => {
+  /**
+   * Render the MenuPlus component
+   * @returns {React.Component} - MenuPlus component
+   */
   return (
     <View>
       <Menu ref={setRefPlus} renderer={SlideInMenu}>
@@ -102,6 +113,9 @@ const MenuPlus = ({ setRefPlus }) => {
   );
 };
 
+/**
+ * Styles of CreateFile component
+ */
 const styles = StyleSheet.create({
   menuOptions: {
     margin: 7,

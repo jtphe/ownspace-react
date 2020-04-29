@@ -3,7 +3,14 @@ import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 
+/**
+ * The Header component
+ */
 const Header = () => {
+  /**
+   * Render the Header component
+   * @returns {React.Component} - Header component
+   */
   return (
     <View style={styles.container}>
       <Image
@@ -15,6 +22,9 @@ const Header = () => {
   );
 };
 
+/**
+ * Styles of Header component
+ */
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#003466',

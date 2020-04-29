@@ -7,6 +7,9 @@ import CreateFile from '@components/Home/createFile';
 import SplashScreen from '@components/Scenes/splashScreen';
 import UserProfile from '@components/UserProfile';
 
+/**
+ * AppRouter defines all the routes of OwnSpace app
+ */
 const AppRouter = () => {
   return (
     <Router>

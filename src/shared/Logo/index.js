@@ -2,7 +2,14 @@
 import React from 'react';
 import { StyleSheet, Image } from 'react-native';
 
+/**
+ * The Logo component
+ */
 const Logo = () => {
+  /**
+   * Render the Logo component
+   * @returns {React.Component} - Logo component
+   */
   return (
     <Image
       source={require('./images/os_logo.png')}
@@ -12,6 +19,9 @@ const Logo = () => {
   );
 };
 
+/**
+ * Styles of Logo component
+ */
 const styles = StyleSheet.create({
   logo: {
     alignSelf: 'center',

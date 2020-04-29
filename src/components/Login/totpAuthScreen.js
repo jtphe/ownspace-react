@@ -5,11 +5,21 @@ import Text from '@shared/Text';
 import i18n from '@i18n/i18n';
 import { useFonts } from '@use-expo/font';
 
+/**
+ * The TotpAuthScreen component
+ * @param {function} setToken - Set the token
+ * @param {function} verifyTotpToken - Verify the totp token
+ */
 const TotpAuthScreen = ({ setToken, verifyTotpToken }) => {
   useFonts({
     // eslint-disable-next-line global-require
     HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
   });
+
+  /**
+   * Render the TotpAuthScreen component
+   * @returns {React.Component} - TotpAuthScreen component
+   */
   return (
     <View>
       <Text style={styles.text}>{i18n.t('totp.titleAuth')}</Text>
@@ -38,6 +48,9 @@ const TotpAuthScreen = ({ setToken, verifyTotpToken }) => {
   );
 };
 
+/**
+ * Styles of TotpAuthScreen component
+ */
 const styles = StyleSheet.create({
   text: {
     color: 'white',

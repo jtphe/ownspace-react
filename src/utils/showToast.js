@@ -2,8 +2,8 @@ import Toast from 'react-native-root-toast';
 
 /**
  * Show a toast message
- * @param {String} content - The message to display
- * @param {Boolean} long - True for long else short
+ * @param {string} content - The message to display
+ * @param {boolean} long - True for long else short
  */
 const showToast = (content, long) => {
   if (long) {

@@ -1,3 +1,6 @@
+/**
+ * Object that contains all the mimeType extensions
+ */
 const mimeType = {
   extensions: [
     {

@@ -16,12 +16,22 @@ import { createUser } from '@store/modules/user/actions';
 import { ROLE_ONE, ROLE_TWO, RECURRING_ROLE } from '@constants';
 import showToast from '@utils/showToast';
 
+/**
+ * The RenewPwdScreen component
+ * @param {string} pwd - The default password
+ * @param {function} setNewPasswordRequired - Set the new password
+ * @param {function} confirmNewPwd - Confirm the new password
+ */
 const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
   useFonts({
     // eslint-disable-next-line global-require
     HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
   });
 
+  /**
+   * Render RenewPwdScreen component
+   * @returns {React.Component} - RenewPwdScreen component
+   */
   return (
     <View>
       <Text style={styles.text}>{i18n.t('newPassword.title')}</Text>
@@ -51,6 +61,10 @@ const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
   );
 };
 
+/**
+ * The SecondAuthScreen component
+ * @param {object} user - The user object
+ */
 const SecondAuthScreen = ({ user }) => {
   const dispatch = useDispatch();
   const [token, setToken] = useState('');
@@ -142,6 +156,10 @@ const SecondAuthScreen = ({ user }) => {
     }
   };
 
+  /**
+   * Render SecondAuthScreen
+   * @returns {React.Component} - SecondAuthScreen component
+   */
   return (
     <ImageBackground
       source={require('@images/background_authentication.png')}
@@ -183,6 +201,9 @@ const SecondAuthScreen = ({ user }) => {
   );
 };
 
+/**
+ * Styles of SecondAuthScreen and RenewPwdScreen components
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

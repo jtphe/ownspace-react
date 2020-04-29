@@ -9,13 +9,19 @@ import i18n from '@i18n/i18n';
 import { useFonts } from '@use-expo/font';
 import showToast from '@utils/showToast';
 
+/**
+ * Connect to the store and extract data
+ */
 const mapStateToProps = state => {
   return {
     isUploading: state.document.upload.isUploading
   };
 };
 
-const CreateFile = ({ isUploading }) => {
+/**
+ * The CreateFile component
+ */
+const CreateFile = () => {
   useFonts({
     // eslint-disable-next-line global-require
     DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
@@ -43,10 +49,13 @@ const CreateFile = ({ isUploading }) => {
     }
   };
 
+  /**
+   * Render the CreateFile component
+   * @returns {React.Component} - CreateFile component
+   */
   return (
     <View style={styles.container}>
       <Header />
-      {/* {isUploading ? <ProgressBar /> : null} */}
       <View style={styles.inputContainer}>
         <Text style={styles.title}>{i18n.t('menuPlus.createFile')}</Text>
         <TextInput
@@ -77,6 +86,9 @@ const CreateFile = ({ isUploading }) => {
   );
 };
 
+/**
+ * Styles of CreateFile component
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

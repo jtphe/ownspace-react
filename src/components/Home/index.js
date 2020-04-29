@@ -7,6 +7,11 @@ import { useDispatch } from 'react-redux';
 import { loadUser } from '@store/modules/user/actions';
 import { Auth } from 'aws-amplify';
 
+/**
+ * The Home component
+ * @param {object} loggedUser - The user logged object
+ * @param {boolean} isLoggedIn - If the user is log in or not
+ */
 const Home = ({ loggedUser, isLoggedIn }) => {
   const [menuPlus, setMenuPlus] = useState('');
   const dispatch = useDispatch();
@@ -20,6 +25,9 @@ const Home = ({ loggedUser, isLoggedIn }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   });
 
+  /**
+   * Load the user to the user store if the user is not already logged in
+   */
   const initLoad = () => {
     const payload = {
       userId: loggedUser.username,
@@ -28,6 +36,9 @@ const Home = ({ loggedUser, isLoggedIn }) => {
     dispatch(loadUser(payload));
   };
 
+  /**
+   * Load the current user that is authenticated
+   */
   const loadCurrentAuthenticatedUser = async () => {
     const user = await Auth.currentAuthenticatedUser();
     if (user) {
@@ -35,6 +46,10 @@ const Home = ({ loggedUser, isLoggedIn }) => {
     }
   };
 
+  /**
+   * Load the connected user
+   * @param {object} user - The user object
+   */
   const loadConnectedUser = user => {
     const payload = {
       userId: user.attributes.sub,
@@ -52,11 +67,16 @@ const Home = ({ loggedUser, isLoggedIn }) => {
 
   /**
    * Set the menu reference
-   * @param {Object} ref - Menu reference
+   * @param {object} ref - Menu reference
    */
   const setRefPlus = ref => {
     setMenuPlus(ref);
   };
+
+  /**
+   * Render the Home component
+   * @returns {React.Component} - Home component
+   */
   return (
     <View style={styles.container}>
       <Header />
@@ -68,6 +88,9 @@ const Home = ({ loggedUser, isLoggedIn }) => {
   );
 };
 
+/**
+ * Styles of Home component
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

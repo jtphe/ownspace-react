@@ -2,11 +2,14 @@ import document from '@backend/api/ownspaceapi/resolvers/document';
 import user from '@backend/api/ownspaceapi/resolvers/user';
 import { Auth } from 'aws-amplify';
 
+/**
+ * Api object that return all the promises
+ */
 const api = {
   // DOCUMENT
   /**
    * Create a file in txt format
-   * @param {Object} payload - Name and content of the file
+   * @param {object} payload - Name and content of the file
    */
   createFileTxt(payload) {
     return Promise.resolve(
@@ -21,7 +24,7 @@ const api = {
   // USER
   /**
    * Create the user object when the user log for the first time
-   * @param {Object} payload - User informations
+   * @param {object} payload - Id, email, password and role of the user
    */
   createUser(payload) {
     return Promise.resolve(
@@ -35,7 +38,7 @@ const api = {
   },
   /**
    * Get the user
-   * @param {*} payload - User
+   * @param {Object} payload - Id of the user
    */
   loadUser(payload) {
     return Promise.resolve(
@@ -59,7 +62,7 @@ const api = {
   },
   /**
    * Update the user password
-   * @param {Object} payload - Id and password of the user
+   * @param {object} payload - Id and password of the user
    */
   updateUserPwdDB(payload) {
     return Promise.resolve(
@@ -69,9 +72,10 @@ const api = {
       })
     );
   },
+
   /**
-   * C
-   * @param {Object} payload
+   * Change the user password in cognito
+   * @param {object} payload - Id, old password and new password of the user
    */
   changeUserPassword(payload) {
     return Promise.resolve(
@@ -82,6 +86,9 @@ const api = {
       })
     );
   },
+  /**
+   * Sign out the user from the application
+   */
   async signOutUser() {
     try {
       await Auth.signOut();

@@ -1,0 +1,4637 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 6038,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 341,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 6038,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 341,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 82,
+        "end": 392,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "line": 22,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 89,
+          "end": 392,
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 22,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 95,
+              "end": 391,
+              "loc": {
+                "start": {
+                  "line": 4,
+                  "column": 13
+                },
+                "end": {
+                  "line": 22,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 95,
+                "end": 102,
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 20
+                  },
+                  "identifierName": "getUser"
+                },
+                "name": "getUser",
+                "leadingComments": null
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 119,
+                "end": 391,
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 37
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 120,
+                    "end": 390,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 38
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query GetUser($id: ID!) {\n    getUser(id: $id) {\n      id\n      firstname\n      lastname\n      email\n      password\n      picture\n      notification\n      role\n      rootFolder\n      group\n      limitedStorage\n      storageSpaceUsed\n      totalStorageSpace\n    }\n  }\n",
+                      "cooked": "\n  query GetUser($id: ID!) {\n    getUser(id: $id) {\n      id\n      firstname\n      lastname\n      email\n      password\n      picture\n      notification\n      role\n      rootFolder\n      group\n      limitedStorage\n      storageSpaceUsed\n      totalStorageSpace\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 105,
+                    "end": 118,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 23
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 36
+                      }
+                    }
+                  }
+                ]
+              },
+              "leadingComments": null
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": " eslint-disable ",
+              "start": 0,
+              "end": 20,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20
+                }
+              }
+            },
+            {
+              "type": "CommentLine",
+              "value": " this is an auto generated file. This will be overwritten",
+              "start": 21,
+              "end": 80,
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 0
+                },
+                "end": {
+                  "line": 2,
+                  "column": 59
+                }
+              }
+            }
+          ],
+          "trailingComments": []
+        },
+        "leadingComments": [
+          {
+            "type": "CommentBlock",
+            "value": " eslint-disable ",
+            "start": 0,
+            "end": 20,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 20
+              }
+            }
+          },
+          {
+            "type": "CommentLine",
+            "value": " this is an auto generated file. This will be overwritten",
+            "start": 21,
+            "end": 80,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 0
+              },
+              "end": {
+                "line": 2,
+                "column": 59
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 393,
+        "end": 887,
+        "loc": {
+          "start": {
+            "line": 23,
+            "column": 0
+          },
+          "end": {
+            "line": 48,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 400,
+          "end": 887,
+          "loc": {
+            "start": {
+              "line": 23,
+              "column": 7
+            },
+            "end": {
+              "line": 48,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 406,
+              "end": 886,
+              "loc": {
+                "start": {
+                  "line": 23,
+                  "column": 13
+                },
+                "end": {
+                  "line": 48,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 406,
+                "end": 415,
+                "loc": {
+                  "start": {
+                    "line": 23,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 22
+                  },
+                  "identifierName": "listUsers"
+                },
+                "name": "listUsers"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 432,
+                "end": 886,
+                "loc": {
+                  "start": {
+                    "line": 23,
+                    "column": 39
+                  },
+                  "end": {
+                    "line": 48,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 433,
+                    "end": 885,
+                    "loc": {
+                      "start": {
+                        "line": 23,
+                        "column": 40
+                      },
+                      "end": {
+                        "line": 48,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query ListUsers(\n    $filter: ModelUserFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n      nextToken\n    }\n  }\n",
+                      "cooked": "\n  query ListUsers(\n    $filter: ModelUserFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n      nextToken\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 418,
+                    "end": 431,
+                    "loc": {
+                      "start": {
+                        "line": 23,
+                        "column": 25
+                      },
+                      "end": {
+                        "line": 23,
+                        "column": 38
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 888,
+        "end": 1273,
+        "loc": {
+          "start": {
+            "line": 49,
+            "column": 0
+          },
+          "end": {
+            "line": 71,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 895,
+          "end": 1273,
+          "loc": {
+            "start": {
+              "line": 49,
+              "column": 7
+            },
+            "end": {
+              "line": 71,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 901,
+              "end": 1272,
+              "loc": {
+                "start": {
+                  "line": 49,
+                  "column": 13
+                },
+                "end": {
+                  "line": 71,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 901,
+                "end": 909,
+                "loc": {
+                  "start": {
+                    "line": 49,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 49,
+                    "column": 21
+                  },
+                  "identifierName": "getGroup"
+                },
+                "name": "getGroup"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 926,
+                "end": 1272,
+                "loc": {
+                  "start": {
+                    "line": 49,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 71,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 927,
+                    "end": 1271,
+                    "loc": {
+                      "start": {
+                        "line": 49,
+                        "column": 39
+                      },
+                      "end": {
+                        "line": 71,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query GetGroup($id: ID!) {\n    getGroup(id: $id) {\n      id\n      name\n      userGroup {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n    }\n  }\n",
+                      "cooked": "\n  query GetGroup($id: ID!) {\n    getGroup(id: $id) {\n      id\n      name\n      userGroup {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 912,
+                    "end": 925,
+                    "loc": {
+                      "start": {
+                        "line": 49,
+                        "column": 24
+                      },
+                      "end": {
+                        "line": 49,
+                        "column": 37
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 1274,
+        "end": 1852,
+        "loc": {
+          "start": {
+            "line": 72,
+            "column": 0
+          },
+          "end": {
+            "line": 101,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 1281,
+          "end": 1852,
+          "loc": {
+            "start": {
+              "line": 72,
+              "column": 7
+            },
+            "end": {
+              "line": 101,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 1287,
+              "end": 1851,
+              "loc": {
+                "start": {
+                  "line": 72,
+                  "column": 13
+                },
+                "end": {
+                  "line": 101,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 1287,
+                "end": 1297,
+                "loc": {
+                  "start": {
+                    "line": 72,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 72,
+                    "column": 23
+                  },
+                  "identifierName": "listGroups"
+                },
+                "name": "listGroups"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 1314,
+                "end": 1851,
+                "loc": {
+                  "start": {
+                    "line": 72,
+                    "column": 40
+                  },
+                  "end": {
+                    "line": 101,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 1315,
+                    "end": 1850,
+                    "loc": {
+                      "start": {
+                        "line": 72,
+                        "column": 41
+                      },
+                      "end": {
+                        "line": 101,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query ListGroups(\n    $filter: ModelGroupFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        name\n        userGroup {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n      }\n      nextToken\n    }\n  }\n",
+                      "cooked": "\n  query ListGroups(\n    $filter: ModelGroupFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        name\n        userGroup {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n      }\n      nextToken\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 1300,
+                    "end": 1313,
+                    "loc": {
+                      "start": {
+                        "line": 72,
+                        "column": 26
+                      },
+                      "end": {
+                        "line": 72,
+                        "column": 39
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 1853,
+        "end": 2377,
+        "loc": {
+          "start": {
+            "line": 102,
+            "column": 0
+          },
+          "end": {
+            "line": 134,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 1860,
+          "end": 2377,
+          "loc": {
+            "start": {
+              "line": 102,
+              "column": 7
+            },
+            "end": {
+              "line": 134,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 1866,
+              "end": 2376,
+              "loc": {
+                "start": {
+                  "line": 102,
+                  "column": 13
+                },
+                "end": {
+                  "line": 134,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 1866,
+                "end": 1873,
+                "loc": {
+                  "start": {
+                    "line": 102,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 102,
+                    "column": 20
+                  },
+                  "identifierName": "getFile"
+                },
+                "name": "getFile"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 1890,
+                "end": 2376,
+                "loc": {
+                  "start": {
+                    "line": 102,
+                    "column": 37
+                  },
+                  "end": {
+                    "line": 134,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 1891,
+                    "end": 2375,
+                    "loc": {
+                      "start": {
+                        "line": 102,
+                        "column": 38
+                      },
+                      "end": {
+                        "line": 134,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query GetFile($id: ID!) {\n    getFile(id: $id) {\n      id\n      createdAt\n      updatedAt\n      name\n      content\n      owner\n      sharedList {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n      isProtected\n      password\n      parent\n      size\n      mimeType\n      type\n    }\n  }\n",
+                      "cooked": "\n  query GetFile($id: ID!) {\n    getFile(id: $id) {\n      id\n      createdAt\n      updatedAt\n      name\n      content\n      owner\n      sharedList {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n      isProtected\n      password\n      parent\n      size\n      mimeType\n      type\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 1876,
+                    "end": 1889,
+                    "loc": {
+                      "start": {
+                        "line": 102,
+                        "column": 23
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 36
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 2378,
+        "end": 3114,
+        "loc": {
+          "start": {
+            "line": 135,
+            "column": 0
+          },
+          "end": {
+            "line": 174,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 2385,
+          "end": 3114,
+          "loc": {
+            "start": {
+              "line": 135,
+              "column": 7
+            },
+            "end": {
+              "line": 174,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 2391,
+              "end": 3113,
+              "loc": {
+                "start": {
+                  "line": 135,
+                  "column": 13
+                },
+                "end": {
+                  "line": 174,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 2391,
+                "end": 2400,
+                "loc": {
+                  "start": {
+                    "line": 135,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 135,
+                    "column": 22
+                  },
+                  "identifierName": "listFiles"
+                },
+                "name": "listFiles"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 2417,
+                "end": 3113,
+                "loc": {
+                  "start": {
+                    "line": 135,
+                    "column": 39
+                  },
+                  "end": {
+                    "line": 174,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 2418,
+                    "end": 3112,
+                    "loc": {
+                      "start": {
+                        "line": 135,
+                        "column": 40
+                      },
+                      "end": {
+                        "line": 174,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query ListFiles(\n    $filter: ModelFileFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listFiles(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        createdAt\n        updatedAt\n        name\n        content\n        owner\n        sharedList {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n        isProtected\n        password\n        parent\n        size\n        mimeType\n        type\n      }\n      nextToken\n    }\n  }\n",
+                      "cooked": "\n  query ListFiles(\n    $filter: ModelFileFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listFiles(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        createdAt\n        updatedAt\n        name\n        content\n        owner\n        sharedList {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n        isProtected\n        password\n        parent\n        size\n        mimeType\n        type\n      }\n      nextToken\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 2403,
+                    "end": 2416,
+                    "loc": {
+                      "start": {
+                        "line": 135,
+                        "column": 25
+                      },
+                      "end": {
+                        "line": 135,
+                        "column": 38
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 3115,
+        "end": 4090,
+        "loc": {
+          "start": {
+            "line": 175,
+            "column": 0
+          },
+          "end": {
+            "line": 232,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 3122,
+          "end": 4090,
+          "loc": {
+            "start": {
+              "line": 175,
+              "column": 7
+            },
+            "end": {
+              "line": 232,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 3128,
+              "end": 4089,
+              "loc": {
+                "start": {
+                  "line": 175,
+                  "column": 13
+                },
+                "end": {
+                  "line": 232,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 3128,
+                "end": 3137,
+                "loc": {
+                  "start": {
+                    "line": 175,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 175,
+                    "column": 22
+                  },
+                  "identifierName": "getFolder"
+                },
+                "name": "getFolder"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 3154,
+                "end": 4089,
+                "loc": {
+                  "start": {
+                    "line": 175,
+                    "column": 39
+                  },
+                  "end": {
+                    "line": 232,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 3155,
+                    "end": 4088,
+                    "loc": {
+                      "start": {
+                        "line": 175,
+                        "column": 40
+                      },
+                      "end": {
+                        "line": 232,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query GetFolder($id: ID!) {\n    getFolder(id: $id) {\n      id\n      createdAt\n      updatedAt\n      name\n      owner\n      sharedList {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n      password\n      parent\n      nbFiles\n      content {\n        id\n        createdAt\n        updatedAt\n        name\n        content\n        owner\n        sharedList {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n        isProtected\n        password\n        parent\n        size\n        mimeType\n        type\n      }\n    }\n  }\n",
+                      "cooked": "\n  query GetFolder($id: ID!) {\n    getFolder(id: $id) {\n      id\n      createdAt\n      updatedAt\n      name\n      owner\n      sharedList {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n      password\n      parent\n      nbFiles\n      content {\n        id\n        createdAt\n        updatedAt\n        name\n        content\n        owner\n        sharedList {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n        isProtected\n        password\n        parent\n        size\n        mimeType\n        type\n      }\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 3140,
+                    "end": 3153,
+                    "loc": {
+                      "start": {
+                        "line": 175,
+                        "column": 25
+                      },
+                      "end": {
+                        "line": 175,
+                        "column": 38
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 4091,
+        "end": 5009,
+        "loc": {
+          "start": {
+            "line": 233,
+            "column": 0
+          },
+          "end": {
+            "line": 282,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 4098,
+          "end": 5009,
+          "loc": {
+            "start": {
+              "line": 233,
+              "column": 7
+            },
+            "end": {
+              "line": 282,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 4104,
+              "end": 5008,
+              "loc": {
+                "start": {
+                  "line": 233,
+                  "column": 13
+                },
+                "end": {
+                  "line": 282,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 4104,
+                "end": 4115,
+                "loc": {
+                  "start": {
+                    "line": 233,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 233,
+                    "column": 24
+                  },
+                  "identifierName": "listFolders"
+                },
+                "name": "listFolders"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 4132,
+                "end": 5008,
+                "loc": {
+                  "start": {
+                    "line": 233,
+                    "column": 41
+                  },
+                  "end": {
+                    "line": 282,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 4133,
+                    "end": 5007,
+                    "loc": {
+                      "start": {
+                        "line": 233,
+                        "column": 42
+                      },
+                      "end": {
+                        "line": 282,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query ListFolders(\n    $filter: ModelFolderFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listFolders(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        createdAt\n        updatedAt\n        name\n        owner\n        sharedList {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n        password\n        parent\n        nbFiles\n        content {\n          id\n          createdAt\n          updatedAt\n          name\n          content\n          owner\n          isProtected\n          password\n          parent\n          size\n          mimeType\n          type\n        }\n      }\n      nextToken\n    }\n  }\n",
+                      "cooked": "\n  query ListFolders(\n    $filter: ModelFolderFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listFolders(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        createdAt\n        updatedAt\n        name\n        owner\n        sharedList {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n        password\n        parent\n        nbFiles\n        content {\n          id\n          createdAt\n          updatedAt\n          name\n          content\n          owner\n          isProtected\n          password\n          parent\n          size\n          mimeType\n          type\n        }\n      }\n      nextToken\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 4118,
+                    "end": 4131,
+                    "loc": {
+                      "start": {
+                        "line": 233,
+                        "column": 27
+                      },
+                      "end": {
+                        "line": 233,
+                        "column": 40
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 5010,
+        "end": 5154,
+        "loc": {
+          "start": {
+            "line": 283,
+            "column": 0
+          },
+          "end": {
+            "line": 291,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 5017,
+          "end": 5154,
+          "loc": {
+            "start": {
+              "line": 283,
+              "column": 7
+            },
+            "end": {
+              "line": 291,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 5023,
+              "end": 5153,
+              "loc": {
+                "start": {
+                  "line": 283,
+                  "column": 13
+                },
+                "end": {
+                  "line": 291,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 5023,
+                "end": 5031,
+                "loc": {
+                  "start": {
+                    "line": 283,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 283,
+                    "column": 21
+                  },
+                  "identifierName": "getRight"
+                },
+                "name": "getRight"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 5048,
+                "end": 5153,
+                "loc": {
+                  "start": {
+                    "line": 283,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 291,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 5049,
+                    "end": 5152,
+                    "loc": {
+                      "start": {
+                        "line": 283,
+                        "column": 39
+                      },
+                      "end": {
+                        "line": 291,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query GetRight($id: ID!) {\n    getRight(id: $id) {\n      read\n      edit\n      documentId\n    }\n  }\n",
+                      "cooked": "\n  query GetRight($id: ID!) {\n    getRight(id: $id) {\n      read\n      edit\n      documentId\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 5034,
+                    "end": 5047,
+                    "loc": {
+                      "start": {
+                        "line": 283,
+                        "column": 24
+                      },
+                      "end": {
+                        "line": 283,
+                        "column": 37
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 5155,
+        "end": 5464,
+        "loc": {
+          "start": {
+            "line": 292,
+            "column": 0
+          },
+          "end": {
+            "line": 307,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 5162,
+          "end": 5464,
+          "loc": {
+            "start": {
+              "line": 292,
+              "column": 7
+            },
+            "end": {
+              "line": 307,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 5168,
+              "end": 5463,
+              "loc": {
+                "start": {
+                  "line": 292,
+                  "column": 13
+                },
+                "end": {
+                  "line": 307,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 5168,
+                "end": 5178,
+                "loc": {
+                  "start": {
+                    "line": 292,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 292,
+                    "column": 23
+                  },
+                  "identifierName": "listRights"
+                },
+                "name": "listRights"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 5195,
+                "end": 5463,
+                "loc": {
+                  "start": {
+                    "line": 292,
+                    "column": 40
+                  },
+                  "end": {
+                    "line": 307,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 5196,
+                    "end": 5462,
+                    "loc": {
+                      "start": {
+                        "line": 292,
+                        "column": 41
+                      },
+                      "end": {
+                        "line": 307,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query ListRights(\n    $filter: ModelRightFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listRights(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        read\n        edit\n        documentId\n      }\n      nextToken\n    }\n  }\n",
+                      "cooked": "\n  query ListRights(\n    $filter: ModelRightFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listRights(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        read\n        edit\n        documentId\n      }\n      nextToken\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 5181,
+                    "end": 5194,
+                    "loc": {
+                      "start": {
+                        "line": 292,
+                        "column": 26
+                      },
+                      "end": {
+                        "line": 292,
+                        "column": 39
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 5465,
+        "end": 5665,
+        "loc": {
+          "start": {
+            "line": 308,
+            "column": 0
+          },
+          "end": {
+            "line": 320,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 5472,
+          "end": 5665,
+          "loc": {
+            "start": {
+              "line": 308,
+              "column": 7
+            },
+            "end": {
+              "line": 320,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 5478,
+              "end": 5664,
+              "loc": {
+                "start": {
+                  "line": 308,
+                  "column": 13
+                },
+                "end": {
+                  "line": 320,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 5478,
+                "end": 5484,
+                "loc": {
+                  "start": {
+                    "line": 308,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 308,
+                    "column": 19
+                  },
+                  "identifierName": "getApp"
+                },
+                "name": "getApp"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 5501,
+                "end": 5664,
+                "loc": {
+                  "start": {
+                    "line": 308,
+                    "column": 36
+                  },
+                  "end": {
+                    "line": 320,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 5502,
+                    "end": 5663,
+                    "loc": {
+                      "start": {
+                        "line": 308,
+                        "column": 37
+                      },
+                      "end": {
+                        "line": 320,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query GetApp($id: ID!) {\n    getApp(id: $id) {\n      groupId\n      subscription\n      pack\n      custom\n      headerColor\n      iconeUrl\n      font\n    }\n  }\n",
+                      "cooked": "\n  query GetApp($id: ID!) {\n    getApp(id: $id) {\n      groupId\n      subscription\n      pack\n      custom\n      headerColor\n      iconeUrl\n      font\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 5487,
+                    "end": 5500,
+                    "loc": {
+                      "start": {
+                        "line": 308,
+                        "column": 22
+                      },
+                      "end": {
+                        "line": 308,
+                        "column": 35
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 5666,
+        "end": 6037,
+        "loc": {
+          "start": {
+            "line": 321,
+            "column": 0
+          },
+          "end": {
+            "line": 340,
+            "column": 2
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 5673,
+          "end": 6037,
+          "loc": {
+            "start": {
+              "line": 321,
+              "column": 7
+            },
+            "end": {
+              "line": 340,
+              "column": 2
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 5679,
+              "end": 6036,
+              "loc": {
+                "start": {
+                  "line": 321,
+                  "column": 13
+                },
+                "end": {
+                  "line": 340,
+                  "column": 1
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 5679,
+                "end": 5687,
+                "loc": {
+                  "start": {
+                    "line": 321,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 321,
+                    "column": 21
+                  },
+                  "identifierName": "listApps"
+                },
+                "name": "listApps"
+              },
+              "init": {
+                "type": "TemplateLiteral",
+                "start": 5704,
+                "end": 6036,
+                "loc": {
+                  "start": {
+                    "line": 321,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 340,
+                    "column": 1
+                  }
+                },
+                "expressions": [],
+                "quasis": [
+                  {
+                    "type": "TemplateElement",
+                    "start": 5705,
+                    "end": 6035,
+                    "loc": {
+                      "start": {
+                        "line": 321,
+                        "column": 39
+                      },
+                      "end": {
+                        "line": 340,
+                        "column": 0
+                      }
+                    },
+                    "value": {
+                      "raw": "\n  query ListApps(\n    $filter: ModelAppFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listApps(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        groupId\n        subscription\n        pack\n        custom\n        headerColor\n        iconeUrl\n        font\n      }\n      nextToken\n    }\n  }\n",
+                      "cooked": "\n  query ListApps(\n    $filter: ModelAppFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listApps(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        groupId\n        subscription\n        pack\n        custom\n        headerColor\n        iconeUrl\n        font\n      }\n      nextToken\n    }\n  }\n"
+                    },
+                    "tail": true,
+                    "leadingComments": null
+                  }
+                ],
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": " GraphQL ",
+                    "start": 5690,
+                    "end": 5703,
+                    "loc": {
+                      "start": {
+                        "line": 321,
+                        "column": 24
+                      },
+                      "end": {
+                        "line": 321,
+                        "column": 37
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      }
+    ],
+    "directives": []
+  },
+  "comments": [
+    {
+      "type": "CommentBlock",
+      "value": " eslint-disable ",
+      "start": 0,
+      "end": 20,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " this is an auto generated file. This will be overwritten",
+      "start": 21,
+      "end": 80,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 59
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 105,
+      "end": 118,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 23
+        },
+        "end": {
+          "line": 4,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 418,
+      "end": 431,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 25
+        },
+        "end": {
+          "line": 23,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 912,
+      "end": 925,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 24
+        },
+        "end": {
+          "line": 49,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 1300,
+      "end": 1313,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 26
+        },
+        "end": {
+          "line": 72,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 1876,
+      "end": 1889,
+      "loc": {
+        "start": {
+          "line": 102,
+          "column": 23
+        },
+        "end": {
+          "line": 102,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 2403,
+      "end": 2416,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 25
+        },
+        "end": {
+          "line": 135,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 3140,
+      "end": 3153,
+      "loc": {
+        "start": {
+          "line": 175,
+          "column": 25
+        },
+        "end": {
+          "line": 175,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 4118,
+      "end": 4131,
+      "loc": {
+        "start": {
+          "line": 233,
+          "column": 27
+        },
+        "end": {
+          "line": 233,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5034,
+      "end": 5047,
+      "loc": {
+        "start": {
+          "line": 283,
+          "column": 24
+        },
+        "end": {
+          "line": 283,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5181,
+      "end": 5194,
+      "loc": {
+        "start": {
+          "line": 292,
+          "column": 26
+        },
+        "end": {
+          "line": 292,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5487,
+      "end": 5500,
+      "loc": {
+        "start": {
+          "line": 308,
+          "column": 22
+        },
+        "end": {
+          "line": 308,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5690,
+      "end": 5703,
+      "loc": {
+        "start": {
+          "line": 321,
+          "column": 24
+        },
+        "end": {
+          "line": 321,
+          "column": 37
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": "CommentBlock",
+      "value": " eslint-disable ",
+      "start": 0,
+      "end": 20,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " this is an auto generated file. This will be overwritten",
+      "start": 21,
+      "end": 80,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 59
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 82,
+      "end": 88,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 89,
+      "end": 94,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 7
+        },
+        "end": {
+          "line": 4,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "getUser",
+      "start": 95,
+      "end": 102,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 13
+        },
+        "end": {
+          "line": 4,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 103,
+      "end": 104,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 21
+        },
+        "end": {
+          "line": 4,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 105,
+      "end": 118,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 23
+        },
+        "end": {
+          "line": 4,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 119,
+      "end": 120,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 37
+        },
+        "end": {
+          "line": 4,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query GetUser($id: ID!) {\n    getUser(id: $id) {\n      id\n      firstname\n      lastname\n      email\n      password\n      picture\n      notification\n      role\n      rootFolder\n      group\n      limitedStorage\n      storageSpaceUsed\n      totalStorageSpace\n    }\n  }\n",
+      "start": 120,
+      "end": 390,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 38
+        },
+        "end": {
+          "line": 22,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 390,
+      "end": 391,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 0
+        },
+        "end": {
+          "line": 22,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 391,
+      "end": 392,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 1
+        },
+        "end": {
+          "line": 22,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 393,
+      "end": 399,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "line": 23,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 400,
+      "end": 405,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 7
+        },
+        "end": {
+          "line": 23,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "listUsers",
+      "start": 406,
+      "end": 415,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 13
+        },
+        "end": {
+          "line": 23,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 416,
+      "end": 417,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 23
+        },
+        "end": {
+          "line": 23,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 418,
+      "end": 431,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 25
+        },
+        "end": {
+          "line": 23,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 432,
+      "end": 433,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 39
+        },
+        "end": {
+          "line": 23,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query ListUsers(\n    $filter: ModelUserFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n      nextToken\n    }\n  }\n",
+      "start": 433,
+      "end": 885,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 40
+        },
+        "end": {
+          "line": 48,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 885,
+      "end": 886,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 0
+        },
+        "end": {
+          "line": 48,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 886,
+      "end": 887,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 1
+        },
+        "end": {
+          "line": 48,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 888,
+      "end": 894,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 0
+        },
+        "end": {
+          "line": 49,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 895,
+      "end": 900,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 7
+        },
+        "end": {
+          "line": 49,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "getGroup",
+      "start": 901,
+      "end": 909,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 13
+        },
+        "end": {
+          "line": 49,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 910,
+      "end": 911,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 22
+        },
+        "end": {
+          "line": 49,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 912,
+      "end": 925,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 24
+        },
+        "end": {
+          "line": 49,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 926,
+      "end": 927,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 38
+        },
+        "end": {
+          "line": 49,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query GetGroup($id: ID!) {\n    getGroup(id: $id) {\n      id\n      name\n      userGroup {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n    }\n  }\n",
+      "start": 927,
+      "end": 1271,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 39
+        },
+        "end": {
+          "line": 71,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 1271,
+      "end": 1272,
+      "loc": {
+        "start": {
+          "line": 71,
+          "column": 0
+        },
+        "end": {
+          "line": 71,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1272,
+      "end": 1273,
+      "loc": {
+        "start": {
+          "line": 71,
+          "column": 1
+        },
+        "end": {
+          "line": 71,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 1274,
+      "end": 1280,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 0
+        },
+        "end": {
+          "line": 72,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 1281,
+      "end": 1286,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 7
+        },
+        "end": {
+          "line": 72,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "listGroups",
+      "start": 1287,
+      "end": 1297,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 13
+        },
+        "end": {
+          "line": 72,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 1298,
+      "end": 1299,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 24
+        },
+        "end": {
+          "line": 72,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 1300,
+      "end": 1313,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 26
+        },
+        "end": {
+          "line": 72,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 1314,
+      "end": 1315,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 40
+        },
+        "end": {
+          "line": 72,
+          "column": 41
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query ListGroups(\n    $filter: ModelGroupFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        name\n        userGroup {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n      }\n      nextToken\n    }\n  }\n",
+      "start": 1315,
+      "end": 1850,
+      "loc": {
+        "start": {
+          "line": 72,
+          "column": 41
+        },
+        "end": {
+          "line": 101,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 1850,
+      "end": 1851,
+      "loc": {
+        "start": {
+          "line": 101,
+          "column": 0
+        },
+        "end": {
+          "line": 101,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1851,
+      "end": 1852,
+      "loc": {
+        "start": {
+          "line": 101,
+          "column": 1
+        },
+        "end": {
+          "line": 101,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 1853,
+      "end": 1859,
+      "loc": {
+        "start": {
+          "line": 102,
+          "column": 0
+        },
+        "end": {
+          "line": 102,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 1860,
+      "end": 1865,
+      "loc": {
+        "start": {
+          "line": 102,
+          "column": 7
+        },
+        "end": {
+          "line": 102,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "getFile",
+      "start": 1866,
+      "end": 1873,
+      "loc": {
+        "start": {
+          "line": 102,
+          "column": 13
+        },
+        "end": {
+          "line": 102,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 1874,
+      "end": 1875,
+      "loc": {
+        "start": {
+          "line": 102,
+          "column": 21
+        },
+        "end": {
+          "line": 102,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 1876,
+      "end": 1889,
+      "loc": {
+        "start": {
+          "line": 102,
+          "column": 23
+        },
+        "end": {
+          "line": 102,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 1890,
+      "end": 1891,
+      "loc": {
+        "start": {
+          "line": 102,
+          "column": 37
+        },
+        "end": {
+          "line": 102,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query GetFile($id: ID!) {\n    getFile(id: $id) {\n      id\n      createdAt\n      updatedAt\n      name\n      content\n      owner\n      sharedList {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n      isProtected\n      password\n      parent\n      size\n      mimeType\n      type\n    }\n  }\n",
+      "start": 1891,
+      "end": 2375,
+      "loc": {
+        "start": {
+          "line": 102,
+          "column": 38
+        },
+        "end": {
+          "line": 134,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 2375,
+      "end": 2376,
+      "loc": {
+        "start": {
+          "line": 134,
+          "column": 0
+        },
+        "end": {
+          "line": 134,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 2376,
+      "end": 2377,
+      "loc": {
+        "start": {
+          "line": 134,
+          "column": 1
+        },
+        "end": {
+          "line": 134,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 2378,
+      "end": 2384,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 0
+        },
+        "end": {
+          "line": 135,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 2385,
+      "end": 2390,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 7
+        },
+        "end": {
+          "line": 135,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "listFiles",
+      "start": 2391,
+      "end": 2400,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 13
+        },
+        "end": {
+          "line": 135,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 2401,
+      "end": 2402,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 23
+        },
+        "end": {
+          "line": 135,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 2403,
+      "end": 2416,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 25
+        },
+        "end": {
+          "line": 135,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 2417,
+      "end": 2418,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 39
+        },
+        "end": {
+          "line": 135,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query ListFiles(\n    $filter: ModelFileFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listFiles(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        createdAt\n        updatedAt\n        name\n        content\n        owner\n        sharedList {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n        isProtected\n        password\n        parent\n        size\n        mimeType\n        type\n      }\n      nextToken\n    }\n  }\n",
+      "start": 2418,
+      "end": 3112,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 40
+        },
+        "end": {
+          "line": 174,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 3112,
+      "end": 3113,
+      "loc": {
+        "start": {
+          "line": 174,
+          "column": 0
+        },
+        "end": {
+          "line": 174,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3113,
+      "end": 3114,
+      "loc": {
+        "start": {
+          "line": 174,
+          "column": 1
+        },
+        "end": {
+          "line": 174,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 3115,
+      "end": 3121,
+      "loc": {
+        "start": {
+          "line": 175,
+          "column": 0
+        },
+        "end": {
+          "line": 175,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 3122,
+      "end": 3127,
+      "loc": {
+        "start": {
+          "line": 175,
+          "column": 7
+        },
+        "end": {
+          "line": 175,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "getFolder",
+      "start": 3128,
+      "end": 3137,
+      "loc": {
+        "start": {
+          "line": 175,
+          "column": 13
+        },
+        "end": {
+          "line": 175,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 3138,
+      "end": 3139,
+      "loc": {
+        "start": {
+          "line": 175,
+          "column": 23
+        },
+        "end": {
+          "line": 175,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 3140,
+      "end": 3153,
+      "loc": {
+        "start": {
+          "line": 175,
+          "column": 25
+        },
+        "end": {
+          "line": 175,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 3154,
+      "end": 3155,
+      "loc": {
+        "start": {
+          "line": 175,
+          "column": 39
+        },
+        "end": {
+          "line": 175,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query GetFolder($id: ID!) {\n    getFolder(id: $id) {\n      id\n      createdAt\n      updatedAt\n      name\n      owner\n      sharedList {\n        id\n        firstname\n        lastname\n        email\n        password\n        picture\n        notification\n        role\n        rootFolder\n        group\n        limitedStorage\n        storageSpaceUsed\n        totalStorageSpace\n      }\n      password\n      parent\n      nbFiles\n      content {\n        id\n        createdAt\n        updatedAt\n        name\n        content\n        owner\n        sharedList {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n        isProtected\n        password\n        parent\n        size\n        mimeType\n        type\n      }\n    }\n  }\n",
+      "start": 3155,
+      "end": 4088,
+      "loc": {
+        "start": {
+          "line": 175,
+          "column": 40
+        },
+        "end": {
+          "line": 232,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 4088,
+      "end": 4089,
+      "loc": {
+        "start": {
+          "line": 232,
+          "column": 0
+        },
+        "end": {
+          "line": 232,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4089,
+      "end": 4090,
+      "loc": {
+        "start": {
+          "line": 232,
+          "column": 1
+        },
+        "end": {
+          "line": 232,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 4091,
+      "end": 4097,
+      "loc": {
+        "start": {
+          "line": 233,
+          "column": 0
+        },
+        "end": {
+          "line": 233,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 4098,
+      "end": 4103,
+      "loc": {
+        "start": {
+          "line": 233,
+          "column": 7
+        },
+        "end": {
+          "line": 233,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "listFolders",
+      "start": 4104,
+      "end": 4115,
+      "loc": {
+        "start": {
+          "line": 233,
+          "column": 13
+        },
+        "end": {
+          "line": 233,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 4116,
+      "end": 4117,
+      "loc": {
+        "start": {
+          "line": 233,
+          "column": 25
+        },
+        "end": {
+          "line": 233,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 4118,
+      "end": 4131,
+      "loc": {
+        "start": {
+          "line": 233,
+          "column": 27
+        },
+        "end": {
+          "line": 233,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 4132,
+      "end": 4133,
+      "loc": {
+        "start": {
+          "line": 233,
+          "column": 41
+        },
+        "end": {
+          "line": 233,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query ListFolders(\n    $filter: ModelFolderFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listFolders(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        id\n        createdAt\n        updatedAt\n        name\n        owner\n        sharedList {\n          id\n          firstname\n          lastname\n          email\n          password\n          picture\n          notification\n          role\n          rootFolder\n          group\n          limitedStorage\n          storageSpaceUsed\n          totalStorageSpace\n        }\n        password\n        parent\n        nbFiles\n        content {\n          id\n          createdAt\n          updatedAt\n          name\n          content\n          owner\n          isProtected\n          password\n          parent\n          size\n          mimeType\n          type\n        }\n      }\n      nextToken\n    }\n  }\n",
+      "start": 4133,
+      "end": 5007,
+      "loc": {
+        "start": {
+          "line": 233,
+          "column": 42
+        },
+        "end": {
+          "line": 282,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5007,
+      "end": 5008,
+      "loc": {
+        "start": {
+          "line": 282,
+          "column": 0
+        },
+        "end": {
+          "line": 282,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5008,
+      "end": 5009,
+      "loc": {
+        "start": {
+          "line": 282,
+          "column": 1
+        },
+        "end": {
+          "line": 282,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 5010,
+      "end": 5016,
+      "loc": {
+        "start": {
+          "line": 283,
+          "column": 0
+        },
+        "end": {
+          "line": 283,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 5017,
+      "end": 5022,
+      "loc": {
+        "start": {
+          "line": 283,
+          "column": 7
+        },
+        "end": {
+          "line": 283,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "getRight",
+      "start": 5023,
+      "end": 5031,
+      "loc": {
+        "start": {
+          "line": 283,
+          "column": 13
+        },
+        "end": {
+          "line": 283,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 5032,
+      "end": 5033,
+      "loc": {
+        "start": {
+          "line": 283,
+          "column": 22
+        },
+        "end": {
+          "line": 283,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5034,
+      "end": 5047,
+      "loc": {
+        "start": {
+          "line": 283,
+          "column": 24
+        },
+        "end": {
+          "line": 283,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5048,
+      "end": 5049,
+      "loc": {
+        "start": {
+          "line": 283,
+          "column": 38
+        },
+        "end": {
+          "line": 283,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query GetRight($id: ID!) {\n    getRight(id: $id) {\n      read\n      edit\n      documentId\n    }\n  }\n",
+      "start": 5049,
+      "end": 5152,
+      "loc": {
+        "start": {
+          "line": 283,
+          "column": 39
+        },
+        "end": {
+          "line": 291,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5152,
+      "end": 5153,
+      "loc": {
+        "start": {
+          "line": 291,
+          "column": 0
+        },
+        "end": {
+          "line": 291,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5153,
+      "end": 5154,
+      "loc": {
+        "start": {
+          "line": 291,
+          "column": 1
+        },
+        "end": {
+          "line": 291,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 5155,
+      "end": 5161,
+      "loc": {
+        "start": {
+          "line": 292,
+          "column": 0
+        },
+        "end": {
+          "line": 292,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 5162,
+      "end": 5167,
+      "loc": {
+        "start": {
+          "line": 292,
+          "column": 7
+        },
+        "end": {
+          "line": 292,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "listRights",
+      "start": 5168,
+      "end": 5178,
+      "loc": {
+        "start": {
+          "line": 292,
+          "column": 13
+        },
+        "end": {
+          "line": 292,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 5179,
+      "end": 5180,
+      "loc": {
+        "start": {
+          "line": 292,
+          "column": 24
+        },
+        "end": {
+          "line": 292,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5181,
+      "end": 5194,
+      "loc": {
+        "start": {
+          "line": 292,
+          "column": 26
+        },
+        "end": {
+          "line": 292,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5195,
+      "end": 5196,
+      "loc": {
+        "start": {
+          "line": 292,
+          "column": 40
+        },
+        "end": {
+          "line": 292,
+          "column": 41
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query ListRights(\n    $filter: ModelRightFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listRights(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        read\n        edit\n        documentId\n      }\n      nextToken\n    }\n  }\n",
+      "start": 5196,
+      "end": 5462,
+      "loc": {
+        "start": {
+          "line": 292,
+          "column": 41
+        },
+        "end": {
+          "line": 307,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5462,
+      "end": 5463,
+      "loc": {
+        "start": {
+          "line": 307,
+          "column": 0
+        },
+        "end": {
+          "line": 307,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5463,
+      "end": 5464,
+      "loc": {
+        "start": {
+          "line": 307,
+          "column": 1
+        },
+        "end": {
+          "line": 307,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 5465,
+      "end": 5471,
+      "loc": {
+        "start": {
+          "line": 308,
+          "column": 0
+        },
+        "end": {
+          "line": 308,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 5472,
+      "end": 5477,
+      "loc": {
+        "start": {
+          "line": 308,
+          "column": 7
+        },
+        "end": {
+          "line": 308,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "getApp",
+      "start": 5478,
+      "end": 5484,
+      "loc": {
+        "start": {
+          "line": 308,
+          "column": 13
+        },
+        "end": {
+          "line": 308,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 5485,
+      "end": 5486,
+      "loc": {
+        "start": {
+          "line": 308,
+          "column": 20
+        },
+        "end": {
+          "line": 308,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5487,
+      "end": 5500,
+      "loc": {
+        "start": {
+          "line": 308,
+          "column": 22
+        },
+        "end": {
+          "line": 308,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5501,
+      "end": 5502,
+      "loc": {
+        "start": {
+          "line": 308,
+          "column": 36
+        },
+        "end": {
+          "line": 308,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query GetApp($id: ID!) {\n    getApp(id: $id) {\n      groupId\n      subscription\n      pack\n      custom\n      headerColor\n      iconeUrl\n      font\n    }\n  }\n",
+      "start": 5502,
+      "end": 5663,
+      "loc": {
+        "start": {
+          "line": 308,
+          "column": 37
+        },
+        "end": {
+          "line": 320,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5663,
+      "end": 5664,
+      "loc": {
+        "start": {
+          "line": 320,
+          "column": 0
+        },
+        "end": {
+          "line": 320,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5664,
+      "end": 5665,
+      "loc": {
+        "start": {
+          "line": 320,
+          "column": 1
+        },
+        "end": {
+          "line": 320,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 5666,
+      "end": 5672,
+      "loc": {
+        "start": {
+          "line": 321,
+          "column": 0
+        },
+        "end": {
+          "line": 321,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "const",
+        "keyword": "const",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "const",
+      "start": 5673,
+      "end": 5678,
+      "loc": {
+        "start": {
+          "line": 321,
+          "column": 7
+        },
+        "end": {
+          "line": 321,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "listApps",
+      "start": 5679,
+      "end": 5687,
+      "loc": {
+        "start": {
+          "line": 321,
+          "column": 13
+        },
+        "end": {
+          "line": 321,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 5688,
+      "end": 5689,
+      "loc": {
+        "start": {
+          "line": 321,
+          "column": 22
+        },
+        "end": {
+          "line": 321,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " GraphQL ",
+      "start": 5690,
+      "end": 5703,
+      "loc": {
+        "start": {
+          "line": 321,
+          "column": 24
+        },
+        "end": {
+          "line": 321,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5704,
+      "end": 5705,
+      "loc": {
+        "start": {
+          "line": 321,
+          "column": 38
+        },
+        "end": {
+          "line": 321,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "template",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "\n  query ListApps(\n    $filter: ModelAppFilterInput\n    $limit: Int\n    $nextToken: String\n  ) {\n    listApps(filter: $filter, limit: $limit, nextToken: $nextToken) {\n      items {\n        groupId\n        subscription\n        pack\n        custom\n        headerColor\n        iconeUrl\n        font\n      }\n      nextToken\n    }\n  }\n",
+      "start": 5705,
+      "end": 6035,
+      "loc": {
+        "start": {
+          "line": 321,
+          "column": 39
+        },
+        "end": {
+          "line": 340,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "`",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 6035,
+      "end": 6036,
+      "loc": {
+        "start": {
+          "line": 340,
+          "column": 0
+        },
+        "end": {
+          "line": 340,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 6036,
+      "end": 6037,
+      "loc": {
+        "start": {
+          "line": 340,
+          "column": 1
+        },
+        "end": {
+          "line": 340,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 6038,
+      "end": 6038,
+      "loc": {
+        "start": {
+          "line": 341,
+          "column": 0
+        },
+        "end": {
+          "line": 341,
+          "column": 0
+        }
+      }
+    }
+  ]
+}

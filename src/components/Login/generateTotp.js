@@ -6,9 +6,17 @@ import i18n from '@i18n/i18n';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import showToast from '@utils/showToast';
 
+/**
+ * The GenerateTotp component
+ * @param {object} user - The user object
+ * @param {function} setHasAuthApp - Set the state hasAuthApp to true
+ */
 const GenerateTotp = ({ user, setHasAuthApp }) => {
   const [copiedText, setCopiedText] = useState('');
 
+  /**
+   * Copy the code for the authentication app to the clipboard
+   */
   const copyToClipboard = () => {
     Clipboard.setString(copiedText);
     showToast(i18n.t('totp.copied'), true);
@@ -21,6 +29,10 @@ const GenerateTotp = ({ user, setHasAuthApp }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /**
+   * Render GenerateTotp component
+   * @returns {React.Component} - GenerateTotp component
+   */
   return (
     <View style={styles.container}>
       <Text style={styles.titleCode}>{i18n.t('totp.titleGenerate')}</Text>
@@ -49,6 +61,9 @@ const GenerateTotp = ({ user, setHasAuthApp }) => {
   );
 };
 
+/**
+ * Styles of GenerateTotp component
+ */
 const styles = StyleSheet.create({
   container: { flexDirection: 'column' },
   codeContainer: {
