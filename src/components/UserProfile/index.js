@@ -25,12 +25,19 @@ import {
 } from '@store/modules/user/actions';
 import showToast from '@utils/showToast';
 
+/**
+ * Connect to the store and extract data
+ */
 const mapStateToProps = createSelector(getUser, user => {
   return {
     user
   };
 });
 
+/**
+ * The UserProfile component
+ * @param {object} user - The user object
+ */
 const UserProfile = ({ user }) => {
   useFonts({
     // eslint-disable-next-line global-require
@@ -98,6 +105,10 @@ const UserProfile = ({ user }) => {
     await Linking.openURL('mailto:ownspaceco@gmail.com');
   };
 
+  /**
+   * Render the UserProfile component
+   * @returns {React.Component} - UserProfile component
+   */
   return (
     <View style={styles.container}>
       <Header goTo={() => Actions.home()} />
@@ -230,6 +241,9 @@ const UserProfile = ({ user }) => {
   );
 };
 
+/**
+ * Styles of the UserProfile component
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

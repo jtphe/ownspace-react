@@ -23,6 +23,9 @@ import showToast from '@utils/showToast';
 import { useDispatch } from 'react-redux';
 import { resetAllStore } from '@store/modules/app/actions';
 
+/**
+ * The Login component
+ */
 const Login = () => {
   useFonts({
     // eslint-disable-next-line global-require
@@ -74,6 +77,10 @@ const Login = () => {
     await Linking.openURL('mailto:ownspaceco@gmail.com');
   };
 
+  /**
+   * Render the Login component
+   * @returns {React.Component} - Login component
+   */
   return (
     <ImageBackground
       source={require('@images/background_authentication.png')}
@@ -141,6 +148,9 @@ const Login = () => {
   );
 };
 
+/**
+ * Styles of Login component
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

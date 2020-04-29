@@ -1,9 +1,15 @@
 import React from 'react';
 import { Image } from 'react-native';
 
+/**
+ * The Avatar component
+ * @param {string} image - URL or URI of the image
+ * @param {number} size - The avatar's size
+ * @param {number} borderRadius - The avatar's border radius
+ */
 const Avatar = ({ image, size, borderRadius }) => {
   /**
-   * Get the style
+   * Get the avatar style
    */
   const _typeStyle = () => {
     return {
@@ -15,6 +21,10 @@ const Avatar = ({ image, size, borderRadius }) => {
     };
   };
 
+  /**
+   * Render the Avatar component
+   * @returns {React.Component} - The Avatar component
+   */
   return (
     <Image
       source={{

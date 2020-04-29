@@ -4,6 +4,13 @@ import Icon from 'react-native-vector-icons/Feather';
 import DotIcon from 'react-native-vector-icons/Entypo';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+/**
+ * The IconMenu component
+ * @param {string} name - The icon name
+ * @param {number} size - The icon size
+ * @param {boolean} selected - If the icon is selected or not
+ * @param {function} setSelected - Set the icon to selected
+ */
 const IconMenu = ({ name, size, selected, setSelected }) => {
   /**
    * Get the color of the icon
@@ -27,6 +34,10 @@ const IconMenu = ({ name, size, selected, setSelected }) => {
     }
   };
 
+  /**
+   * Render the IconMenu component
+   * @returns {React.Component} - IconMenu component
+   */
   return (
     <View style={[styles.containerIcon, getStyle()]}>
       <TouchableOpacity onPress={() => setSelected(name)}>
@@ -39,6 +50,9 @@ const IconMenu = ({ name, size, selected, setSelected }) => {
   );
 };
 
+/**
+ * Styles of IconMenu component
+ */
 const styles = StyleSheet.create({
   containerIcon: { flexDirection: 'column', alignItems: 'center' },
   icon: {

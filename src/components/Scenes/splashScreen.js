@@ -11,36 +11,64 @@ import { createSelector } from 'reselect';
 import { getToken } from '@store/modules/user/selectors';
 import * as Font from 'expo-font';
 
+/**
+ * Connect to the store and extract data
+ */
 const mapStateToProps = createSelector(getToken, token => {
   return {
     isLoggedIn: token !== null
   };
 });
 
+/**
+ * Require the client font
+ */
 const clientFont = {
   // eslint-disable-next-line global-require
   DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
 };
 
+/**
+ * Require OwnSpace font
+ */
 const helveticaFont = {
   // eslint-disable-next-line global-require
   HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
 };
 
+/**
+ * The SplashScreen class
+ */
 class SplashScreen extends React.Component {
+  /**
+   * SplashScreen constructor
+   * @param {props} props - SplashScreen props
+   */
   constructor(props) {
     super(props);
+
+    /**
+     * logoAnime: The logo image animation |
+     * logoText: The logo text animation
+     * @type {{logoAnime: Animated, logoText: Animated}}
+     */
     this.state = {
       logoAnime: new Animated.Value(0),
       logoText: new Animated.Value(0)
     };
   }
 
+  /**
+   * Load client and OwnSpace fonts when componentWillMount
+   */
   UNSAFE_componentWillMount() {
     this.loadClientFont();
     this.loadOwnSpaceFont();
   }
 
+  /**
+   * Make animations when componentDidMount
+   */
   componentDidMount() {
     const { logoAnime, logoText } = this.state;
     const { isLoggedIn } = this.props;
@@ -62,14 +90,24 @@ class SplashScreen extends React.Component {
     });
   }
 
+  /**
+   * Load client's font
+   */
   loadClientFont = async () => {
     await Font.loadAsync(clientFont);
   };
 
+  /**
+   * Load Ownspace's font
+   */
   loadOwnSpaceFont = async () => {
     await Font.loadAsync(helveticaFont);
   };
 
+  /**
+   * Render the SplashScreen class
+   * @returns {React.Component} - SplashScreen class
+   */
   render() {
     const { logoAnime, logoText } = this.state;
 
@@ -104,6 +142,10 @@ class SplashScreen extends React.Component {
     );
   }
 }
+
+/**
+ * Styles of the SplashScreen class
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

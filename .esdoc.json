@@ -1,0 +1,11 @@
+{
+  "source": "./src",
+  "destination": "./docs",
+  "excludes": ["node_modules", ".expo-shared", ".expo", "doc", "graphql", "i18n", "images", "web-build", "store"],
+  "plugins": [
+    {"name": "esdoc-standard-plugin"}, 
+    {"name": "esdoc-react-plugin"},
+    {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
+    {"name": "esdoc-jsx-plugin"}
+  ]
+}

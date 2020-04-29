@@ -1,0 +1,338 @@
+[
+  {
+    "name": "Home",
+    "filePath": "src/components/Home/index.js",
+    "lines": [
+      {
+        "lineNumber": 9,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 10,
+        "line": " * The Home component"
+      },
+      {
+        "lineNumber": 11,
+        "line": " * @param {object} loggedUser - The user logged object"
+      },
+      {
+        "lineNumber": 12,
+        "line": " * @param {boolean} isLoggedIn - If the user is log in or not"
+      },
+      {
+        "lineNumber": 13,
+        "line": " */"
+      },
+      {
+        "lineNumber": 14,
+        "line": "const Home = ({ loggedUser, isLoggedIn }) => {"
+      }
+    ],
+    "codeParams": [
+      "*"
+    ],
+    "docParams": [
+      "loggedUser",
+      "isLoggedIn"
+    ]
+  },
+  {
+    "name": "GenerateTotp",
+    "filePath": "src/components/Login/generateTotp.js",
+    "lines": [
+      {
+        "lineNumber": 8,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 9,
+        "line": " * The GenerateTotp component"
+      },
+      {
+        "lineNumber": 10,
+        "line": " * @param {object} user - The user object"
+      },
+      {
+        "lineNumber": 11,
+        "line": " * @param {function} setHasAuthApp - Set the state hasAuthApp to true"
+      },
+      {
+        "lineNumber": 12,
+        "line": " */"
+      },
+      {
+        "lineNumber": 13,
+        "line": "const GenerateTotp = ({ user, setHasAuthApp }) => {"
+      }
+    ],
+    "codeParams": [
+      "*"
+    ],
+    "docParams": [
+      "user",
+      "setHasAuthApp"
+    ]
+  },
+  {
+    "name": "RenewPwdScreen",
+    "filePath": "src/components/Login/secondAuthScreen.js",
+    "lines": [
+      {
+        "lineNumber": 18,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 19,
+        "line": " * The RenewPwdScreen component"
+      },
+      {
+        "lineNumber": 20,
+        "line": " * @param {string} pwd - The default password"
+      },
+      {
+        "lineNumber": 21,
+        "line": " * @param {function} setNewPasswordRequired - Set the new password"
+      },
+      {
+        "lineNumber": 22,
+        "line": " * @param {function} confirmNewPwd - Confirm the new password"
+      },
+      {
+        "lineNumber": 23,
+        "line": " */"
+      },
+      {
+        "lineNumber": 24,
+        "line": "const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {"
+      }
+    ],
+    "codeParams": [
+      "*"
+    ],
+    "docParams": [
+      "pwd",
+      "setNewPasswordRequired",
+      "confirmNewPwd"
+    ]
+  },
+  {
+    "name": "TotpAuthScreen",
+    "filePath": "src/components/Login/totpAuthScreen.js",
+    "lines": [
+      {
+        "lineNumber": 7,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 8,
+        "line": " * The TotpAuthScreen component"
+      },
+      {
+        "lineNumber": 9,
+        "line": " * @param {function} setToken - Set the token"
+      },
+      {
+        "lineNumber": 10,
+        "line": " * @param {function} verifyTotpToken - Verify the totp token"
+      },
+      {
+        "lineNumber": 11,
+        "line": " */"
+      },
+      {
+        "lineNumber": 12,
+        "line": "const TotpAuthScreen = ({ setToken, verifyTotpToken }) => {"
+      }
+    ],
+    "codeParams": [
+      "*"
+    ],
+    "docParams": [
+      "setToken",
+      "verifyTotpToken"
+    ]
+  },
+  {
+    "name": "IconMenu",
+    "filePath": "src/components/Menu/IconMenu.js",
+    "lines": [
+      {
+        "lineNumber": 6,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 7,
+        "line": " * The IconMenu component"
+      },
+      {
+        "lineNumber": 8,
+        "line": " * @param {string} name - The icon name"
+      },
+      {
+        "lineNumber": 9,
+        "line": " * @param {number} size - The icon size"
+      },
+      {
+        "lineNumber": 10,
+        "line": " * @param {boolean} selected - If the icon is selected or not"
+      },
+      {
+        "lineNumber": 11,
+        "line": " * @param {function} setSelected - Set the icon to selected"
+      },
+      {
+        "lineNumber": 12,
+        "line": " */"
+      },
+      {
+        "lineNumber": 13,
+        "line": "const IconMenu = ({ name, size, selected, setSelected }) => {"
+      }
+    ],
+    "codeParams": [
+      "*"
+    ],
+    "docParams": [
+      "name",
+      "size",
+      "selected",
+      "setSelected"
+    ]
+  },
+  {
+    "name": "Avatar",
+    "filePath": "src/shared/Avatar/index.js",
+    "lines": [
+      {
+        "lineNumber": 3,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 4,
+        "line": " * The Avatar component"
+      },
+      {
+        "lineNumber": 5,
+        "line": " * @param {string} image - URL or URI of the image"
+      },
+      {
+        "lineNumber": 6,
+        "line": " * @param {number} size - The avatar's size"
+      },
+      {
+        "lineNumber": 7,
+        "line": " * @param {number} borderRadius - The avatar's border radius"
+      },
+      {
+        "lineNumber": 8,
+        "line": " */"
+      },
+      {
+        "lineNumber": 9,
+        "line": "const Avatar = ({ image, size, borderRadius }) => {"
+      }
+    ],
+    "codeParams": [
+      "*"
+    ],
+    "docParams": [
+      "image",
+      "size",
+      "borderRadius"
+    ]
+  },
+  {
+    "name": "TextClient",
+    "filePath": "src/shared/ClientText/index.js",
+    "lines": [
+      {
+        "lineNumber": 4,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 5,
+        "line": " * The custom TextClient component"
+      },
+      {
+        "lineNumber": 6,
+        "line": " * @param {object} style - Style of the Text component"
+      },
+      {
+        "lineNumber": 7,
+        "line": " * @param {string} ellipsizeMode - Defines how text will be truncated"
+      },
+      {
+        "lineNumber": 8,
+        "line": " * @param {boolean} selectable - Lets the user select text, to use the native copy and paste functionality"
+      },
+      {
+        "lineNumber": 9,
+        "line": " * @param {string} children - The string of the Text component"
+      },
+      {
+        "lineNumber": 10,
+        "line": " */"
+      },
+      {
+        "lineNumber": 11,
+        "line": "const TextClient = props => {"
+      }
+    ],
+    "codeParams": [
+      "props"
+    ],
+    "docParams": [
+      "style",
+      "ellipsizeMode",
+      "selectable",
+      "children"
+    ]
+  },
+  {
+    "name": "TextHelvetica",
+    "filePath": "src/shared/Text/index.js",
+    "lines": [
+      {
+        "lineNumber": 5,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 6,
+        "line": " * The custom OwnSpace's Text component"
+      },
+      {
+        "lineNumber": 7,
+        "line": " * @param {object} style - Style of the Text component"
+      },
+      {
+        "lineNumber": 8,
+        "line": " * @param {string} ellipsizeMode - Defines how text will be truncated"
+      },
+      {
+        "lineNumber": 9,
+        "line": " * @param {boolean} selectable - Lets the user select text, to use the native copy and paste functionality"
+      },
+      {
+        "lineNumber": 10,
+        "line": " * @param {string} children - The string of the Text component"
+      },
+      {
+        "lineNumber": 11,
+        "line": " */"
+      },
+      {
+        "lineNumber": 12,
+        "line": "const TextHelvetica = props => {"
+      }
+    ],
+    "codeParams": [
+      "props"
+    ],
+    "docParams": [
+      "style",
+      "ellipsizeMode",
+      "selectable",
+      "children"
+    ]
+  }
+]

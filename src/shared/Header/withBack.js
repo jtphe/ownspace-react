@@ -4,9 +4,16 @@ import { View, Image, StyleSheet } from 'react-native';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Actions } from 'react-native-router-flux';
 
+/**
+ * The Header component with a back button
+ * @param {function} goTo - Where to go when click on the back button
+ */
 const WithBack = ({ goTo }) => {
+  /**
+   * Render the WithBack component
+   * @returns {React.Component} - WithBack component
+   */
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.backContainer} onPress={goTo}>
@@ -23,6 +30,9 @@ const WithBack = ({ goTo }) => {
   );
 };
 
+/**
+ * Styles of WithBack component
+ */
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',

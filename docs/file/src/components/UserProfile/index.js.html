@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/components/UserProfile/index.js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#api">api</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-api">api</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components-home">components/Home</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Home">Home</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MenuPlus">MenuPlus</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components-login">components/Login</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-GenerateTotp">GenerateTotp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Login">Login</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-SecondAuthScreen">SecondAuthScreen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TotpAuthScreen">TotpAuthScreen</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#components-menu">components/Menu</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-IconMenu">IconMenu</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-NavMenu">NavMenu</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#constants">constants</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RECURRING_ROLE">RECURRING_ROLE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ROLE_ONE">ROLE_ONE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ROLE_THREE">ROLE_THREE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ROLE_TWO">ROLE_TWO</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#router">router</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AppRouter">AppRouter</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#shared-avatar">shared/Avatar</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Avatar">Avatar</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#shared-clienttext">shared/ClientText</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TextClient">TextClient</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#shared-custombutton">shared/CustomButton</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-CustomButton">CustomButton</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#shared-header">shared/Header</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Header">Header</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-WithBack">WithBack</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#shared-logo">shared/Logo</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-Logo">Logo</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#shared-progressbar">shared/ProgressBar</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/shared/ProgressBar/index.js~Animations.html">Animations</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#shared-text">shared/Text</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-TextHelvetica">TextHelvetica</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-showToast">showToast</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mimeType">mimeType</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/components/UserProfile/index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, { useState } from &apos;react&apos;;
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  ScrollView,
+  Alert,
+  Linking
+} from &apos;react-native&apos;;
+import Header from &apos;@shared/Header/withBack&apos;;
+import Text from &apos;@shared/ClientText&apos;;
+import i18n from &apos;@i18n/i18n&apos;;
+import { Actions } from &apos;react-native-router-flux&apos;;
+import { TouchableOpacity } from &apos;react-native-gesture-handler&apos;;
+import Avatar from &apos;@shared/Avatar&apos;;
+import { connect, useDispatch } from &apos;react-redux&apos;;
+import { createSelector } from &apos;reselect&apos;;
+import { getUser } from &apos;@store/modules/user/selectors&apos;;
+import { useFonts } from &apos;@use-expo/font&apos;;
+import { Button } from &apos;react-native-paper&apos;;
+import {
+  updateUserNames,
+  updateUserPassword,
+  signOut
+} from &apos;@store/modules/user/actions&apos;;
+import showToast from &apos;@utils/showToast&apos;;
+
+/**
+ * Connect to the store and extract data
+ */
+const mapStateToProps = createSelector(getUser, user =&gt; {
+  return {
+    user
+  };
+});
+
+/**
+ * The UserProfile component
+ * @param {object} user - The user object
+ */
+const UserProfile = ({ user }) =&gt; {
+  useFonts({
+    // eslint-disable-next-line global-require
+    DejaVuSans: require(&apos;../../../assets/fonts/DejaVuSans.ttf&apos;)
+  });
+  const [firstname, setFirstname] = useState(user.firstname);
+  const [lastname, setLastname] = useState(user.lastname);
+  const [oldPassword, setOldPassword] = useState(&apos;&apos;);
+  const [newPassword, setNewPassword] = useState(&apos;&apos;);
+  const dispatch = useDispatch();
+
+  /**
+   * Update the user firstname and lastname
+   */
+  const _updateUserProfile = () =&gt; {
+    if (user.firstname !== &apos;&apos; || user.lastname !== &apos;&apos;) {
+      if (firstname !== user.firstname || lastname !== user.lastname) {
+        const payload = {
+          id: user.id,
+          firstname,
+          lastname
+        };
+        dispatch(updateUserNames(payload));
+      } else {
+        showToast(i18n.t(&apos;userProfile.nothingToUdpate&apos;), true);
+      }
+    }
+
+    if (oldPassword !== &apos;&apos; &amp;&amp; newPassword !== &apos;&apos;) {
+      const payload = {
+        id: user.id,
+        oldPassword,
+        newPassword
+      };
+      dispatch(updateUserPassword(payload));
+      setNewPassword(&apos;&apos;);
+      setOldPassword(&apos;&apos;);
+    }
+  };
+
+  /**
+   * Sign out of the application
+   */
+  const _signOut = () =&gt; {
+    Alert.alert(
+      i18n.t(&apos;userProfile.signOut&apos;),
+      i18n.t(&apos;userProfile.confirmSignOut&apos;),
+      [
+        {
+          text: i18n.t(&apos;userProfile.cancel&apos;),
+          style: &apos;cancel&apos;
+        },
+        {
+          text: i18n.t(&apos;userProfile.signOut&apos;),
+          onPress: () =&gt; dispatch(signOut())
+        }
+      ]
+    );
+  };
+
+  /**
+   * Open the user mail app
+   */
+  const _sendEmail = async () =&gt; {
+    await Linking.openURL(&apos;mailto:ownspaceco@gmail.com&apos;);
+  };
+
+  /**
+   * Render the UserProfile component
+   * @returns {React.Component} - UserProfile component
+   */
+  return (
+    &lt;View style={styles.container}&gt;
+      &lt;Header goTo={() =&gt; Actions.home()} /&gt;
+      &lt;View style={styles.header}&gt;
+        &lt;TouchableOpacity style={styles.avatarContainer}&gt;
+          &lt;Avatar
+            style={styles.avatarPicture}
+            image={user.picture}
+            size={100}
+            borderRadius={50}
+          /&gt;
+        &lt;/TouchableOpacity&gt;
+        {user.firstname !== null &amp;&amp; user.lastname !== null ? (
+          &lt;Text style={styles.profileName}&gt;
+            {`${user.firstname} ${user.lastname}`}
+          &lt;/Text&gt;
+        ) : (
+          &lt;Text style={styles.profileName}&gt;{user.email}&lt;/Text&gt;
+        )}
+      &lt;/View&gt;
+      &lt;View style={styles.containerInfos}&gt;
+        &lt;ScrollView&gt;
+          &lt;Text style={styles.titleInput}&gt;
+            {i18n.t(&apos;userProfile.lastname&apos;)}
+          &lt;/Text&gt;
+          &lt;TextInput
+            style={styles.input}
+            placeholder={i18n.t(&apos;userProfile.lastnamePlaceholder&apos;)}
+            placeholderTextColor=&quot;grey&quot;
+            textContentType=&quot;name&quot;
+            selectionColor=&quot;grey&quot;
+            autoCapitalize=&quot;none&quot;
+            onChangeText={txt =&gt; {
+              setLastname(txt);
+            }}
+            value={lastname}
+            returnKeyType=&quot;next&quot;
+          /&gt;
+          &lt;Text style={styles.titleInput}&gt;
+            {i18n.t(&apos;userProfile.firstname&apos;)}
+          &lt;/Text&gt;
+          &lt;TextInput
+            style={styles.input}
+            placeholder={i18n.t(&apos;userProfile.firstnamePlaceholder&apos;)}
+            placeholderTextColor=&quot;grey&quot;
+            selectionColor=&quot;grey&quot;
+            textContentType=&quot;name&quot;
+            onChangeText={txt =&gt; {
+              setFirstname(txt);
+            }}
+            value={firstname}
+            autoCapitalize=&quot;none&quot;
+            returnKeyType=&quot;next&quot;
+          /&gt;
+          &lt;Text style={styles.titleInput}&gt;{i18n.t(&apos;userProfile.email&apos;)}&lt;/Text&gt;
+          &lt;TextInput
+            style={styles.input}
+            placeholderTextColor=&quot;grey&quot;
+            textContentType=&quot;emailAddress&quot;
+            autoCapitalize=&quot;none&quot;
+            value={user.email}
+            editable={false}
+            returnKeyType=&quot;next&quot;
+          /&gt;
+          &lt;Text style={styles.titleInput}&gt;
+            {i18n.t(&apos;userProfile.oldPassword&apos;)}
+          &lt;/Text&gt;
+          &lt;TextInput
+            style={styles.input}
+            placeholder=&quot;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&quot;
+            placeholderTextColor=&quot;grey&quot;
+            selectionColor=&quot;grey&quot;
+            textContentType=&quot;password&quot;
+            secureTextEntry={true}
+            onChangeText={txt =&gt; {
+              setOldPassword(txt);
+            }}
+            autoCapitalize=&quot;none&quot;
+            value={oldPassword}
+            returnKeyType=&quot;next&quot;
+          /&gt;
+          &lt;Text style={styles.titleInput}&gt;
+            {i18n.t(&apos;userProfile.newPassword&apos;)}
+          &lt;/Text&gt;
+          &lt;TextInput
+            style={styles.input}
+            placeholder=&quot;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&quot;
+            placeholderTextColor=&quot;grey&quot;
+            selectionColor=&quot;grey&quot;
+            textContentType=&quot;password&quot;
+            secureTextEntry={true}
+            onChangeText={txt =&gt; {
+              setNewPassword(txt);
+            }}
+            autoCapitalize=&quot;none&quot;
+            value={newPassword}
+            returnKeyType=&quot;next&quot;
+          /&gt;
+          &lt;View style={styles.btnContainer}&gt;
+            &lt;Button
+              mode=&quot;contained&quot;
+              uppercase={false}
+              labelStyle={styles.btnText}
+              contentStyle={styles.btnDimension}
+              style={styles.btnLogOut}
+              onPress={() =&gt; _signOut()}
+            &gt;
+              {i18n.t(&apos;userProfile.signOut&apos;)}
+            &lt;/Button&gt;
+            &lt;Button
+              mode=&quot;contained&quot;
+              uppercase={false}
+              labelStyle={styles.btnText}
+              contentStyle={styles.btnDimension}
+              style={styles.btnEdit}
+              onPress={() =&gt; _updateUserProfile()}
+            &gt;
+              {i18n.t(&apos;userProfile.edit&apos;)}
+            &lt;/Button&gt;
+          &lt;/View&gt;
+          &lt;TouchableOpacity
+            style={styles.helpContainer}
+            onPress={() =&gt; _sendEmail()}
+          &gt;
+            &lt;Text style={styles.helpText}&gt;{i18n.t(&apos;userProfile.help&apos;)}&lt;/Text&gt;
+          &lt;/TouchableOpacity&gt;
+        &lt;/ScrollView&gt;
+      &lt;/View&gt;
+    &lt;/View&gt;
+  );
+};
+
+/**
+ * Styles of the UserProfile component
+ */
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: &apos;column&apos;,
+    backgroundColor: &apos;white&apos;
+  },
+  header: {
+    flexDirection: &apos;column&apos;,
+    alignItems: &apos;center&apos;,
+    paddingTop: 24,
+    paddingBottom: 24
+  },
+  avatarPicture: {
+    backgroundColor: &apos;#FF6161&apos;
+  },
+  avatarContainer: { marginBottom: 20 },
+  profileName: {
+    fontSize: 20,
+    fontWeight: &apos;500&apos;,
+    color: &apos;#003466&apos;,
+    marginBottom: 20
+  },
+  titleInput: { fontSize: 17, fontWeight: &apos;bold&apos;, marginBottom: 4 },
+  input: {
+    fontFamily: &apos;DejaVuSans&apos;,
+    backgroundColor: &apos;#DBDBDB&apos;,
+    borderRadius: 6,
+    padding: 15,
+    marginBottom: 20
+  },
+  containerInfos: {
+    flex: 1,
+    flexDirection: &apos;column&apos;,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderColor: &apos;#003466&apos;,
+    paddingHorizontal: 45,
+    paddingVertical: 20
+  },
+  btnDimension: {
+    height: 45,
+    width: 130
+  },
+  btnText: {
+    fontSize: 13,
+    fontWeight: &apos;bold&apos;,
+    fontFamily: &apos;DejaVuSans&apos;,
+    color: &apos;#fff&apos;
+  },
+  btnLogOut: {
+    backgroundColor: &apos;#E30043&apos;,
+    color: &apos;#42688B&apos;
+  },
+  btnEdit: {
+    backgroundColor: &apos;#003466&apos;,
+    borderColor: &apos;black&apos;
+  },
+  btnContainer: {
+    flexDirection: &apos;row&apos;,
+    paddingTop: 20,
+    paddingBottom: 20,
+    marginBottom: 10,
+    justifyContent: &apos;space-between&apos;
+  },
+  helpContainer: {
+    flexDirection: &apos;row&apos;,
+    justifyContent: &apos;center&apos;
+  },
+  helpText: {
+    fontSize: 18,
+    color: &apos;#003466&apos;,
+    fontWeight: &apos;bold&apos;,
+    textDecorationLine: &apos;underline&apos;
+  }
+});
+export default connect(mapStateToProps)(UserProfile);
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

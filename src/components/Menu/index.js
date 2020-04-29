@@ -3,6 +3,10 @@ import { View, StyleSheet } from 'react-native';
 import IconMenu from './IconMenu';
 import { Actions } from 'react-native-router-flux';
 
+/**
+ * The NavMenu component
+ * @param {function} openPlusMenu - Open the plus menu
+ */
 const NavMenu = ({ openPlusMenu }) => {
   const [home, setHome] = useState(true);
   const [options, setOptions] = useState(false);
@@ -41,6 +45,10 @@ const NavMenu = ({ openPlusMenu }) => {
     }
   };
 
+  /**
+   * Render the NavMenu component
+   * @returns {React.Component} - NavMenu component
+   */
   return (
     <View style={styles.menuContainer}>
       <IconMenu
@@ -65,6 +73,9 @@ const NavMenu = ({ openPlusMenu }) => {
   );
 };
 
+/**
+ * Styles of NavMenu component
+ */
 const styles = StyleSheet.create({
   menuContainer: {
     zIndex: 100,

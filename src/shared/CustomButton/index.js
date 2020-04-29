@@ -5,11 +5,20 @@ import { Actions } from 'react-native-router-flux';
 import i18n from '@i18n/i18n';
 import { useFonts } from '@use-expo/font';
 
+/**
+ * The CustomButton component
+ * @param {function} confirmFunction - Confirm the function passed to the confirm button
+ */
 const CustomButton = ({ confirmFunction }) => {
   useFonts({
     // eslint-disable-next-line global-require
     DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
   });
+
+  /**
+   * Render the CustomButton component
+   * @returns {React.Component} - CustomButton component
+   */
   return (
     <View style={styles.btnContainer}>
       <Button
@@ -36,6 +45,9 @@ const CustomButton = ({ confirmFunction }) => {
   );
 };
 
+/**
+ * Styles of CustomButton component
+ */
 const styles = StyleSheet.create({
   btnContainer: {
     flexDirection: 'row',
