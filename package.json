@@ -16,7 +16,7 @@
     "@react-navigation/native": "^5.1.7",
     "@use-expo/font": "^2.0.0",
     "aws-amplify": "^2.2.6",
-    "aws-amplify-react-native": "^3.2.2",
+    "aws-amplify-react-native": "^4.1.1",
     "esdoc": "^1.1.0",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-jsx-plugin": "^1.0.0",
