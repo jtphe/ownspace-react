@@ -1,11 +1,9 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "web": "expo start --web"
   },
   "dependencies": {
     "@aws-amplify/api": "^2.1.6",
@@ -15,7 +13,8 @@
     "@react-native-community/netinfo": "^5.6.2",
     "@react-navigation/native": "^5.1.7",
     "@use-expo/font": "^2.0.0",
-    "aws-amplify": "^2.2.6",
+    "amazon-cognito-identity-js": "^4.2.3",
+    "aws-amplify": "^2.3.0",
     "aws-amplify-react-native": "^4.1.1",
     "esdoc": "^1.1.0",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
@@ -27,9 +26,9 @@
     "i18n-js": "^3.5.1",
     "immutability-helper": "^3.0.2",
     "qrcode.react": "^1.0.0",
-    "react": "~16.13.1",
+    "react": "~16.9.0",
     "react-dom": "~16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native": "~0.61.4",
     "react-native-gesture-handler": "~1.6.1",
     "react-native-iphone-x-helper": "^1.2.1",
     "react-native-paper": "^3.8.0",
@@ -38,7 +37,9 @@
     "react-native-root-toast": "^3.2.0",
     "react-native-router-flux": "^4.2.0",
     "react-native-screens": "2.0.0-alpha.12",
+    "react-native-unimodules": "~0.7.0",
     "react-native-vector-icons": "^6.6.0",
+    "react-native-web": "~0.11.7",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
@@ -48,6 +49,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
+    "babel-jest": "~24.9.0",
+    "jest": "~24.9.0",
+    "metro-react-native-babel-preset": "~0.56.0",
+    "react-test-renderer": "~16.9.0",
     "babel-preset-expo": "~8.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
