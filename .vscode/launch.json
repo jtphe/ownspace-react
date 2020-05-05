@@ -13,7 +13,7 @@
             "sourceMaps": true
         },
         {
-            "name": "Debug iOS",
+            "name": "Debug iPhone 11 Pro",
             "cwd": "${workspaceFolder}",
             "type": "reactnative",
             "request": "launch",
@@ -22,11 +22,13 @@
             "target": "iPhone 11 Pro"
         },
         {
-            "name": "Attach to packager",
+            "name": "Debug iPhone 8",
             "cwd": "${workspaceFolder}",
             "type": "reactnative",
-            "request": "attach",
-            "sourceMaps": true
+            "request": "launch",
+            "platform": "ios",
+            "sourceMaps": true,
+            "target": "iPhone 8"
         }
     ]
 }
