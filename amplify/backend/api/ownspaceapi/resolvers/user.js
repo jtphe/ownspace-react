@@ -3,12 +3,14 @@ import { API, graphqlOperation, Auth } from 'aws-amplify';
 import awsconfig from '../../../../../aws-exports';
 import i18n from '@i18n/i18n';
 import showToast from '../../../../../src/utils/showToast';
+import * as PasswordManager from '../../../../../src/utils/passwordManager';
 
 API.configure(awsconfig);
 
 const user = {
   Mutation: {
     createUser: async ({ id, email, password, role }) => {
+      const cryptedPassword = await PasswordManager.hashPassword(password);
       const query = `mutation createUser($id: ID! $email: String! $password: String! $role: String!) {
             createUser(input:{
                   id:$id
@@ -32,7 +34,7 @@ const user = {
                 }
               }`;
       const res = await API.graphql(
-        graphqlOperation(query, { id, email, password, role })
+        graphqlOperation(query, { id, email, password: cryptedPassword, role })
       );
       return res.data.createUser;
     },
@@ -60,6 +62,7 @@ const user = {
       return res.data.updateUser;
     },
     updateUserPwdDB: async ({ id, password }) => {
+      const cryptedPassword = await PasswordManager.hashPassword(password);
       const query = `mutation updateUser($id: ID! $password: String!) {
         updateUser(input:{
               id:$id
@@ -68,7 +71,9 @@ const user = {
                 id
             }
           }`;
-      const res = await API.graphql(graphqlOperation(query, { id, password }));
+      const res = await API.graphql(
+        graphqlOperation(query, { id, password: cryptedPassword })
+      );
       return res.data.updateUser;
     }
   },
@@ -100,7 +105,10 @@ const user = {
         }
       }`;
       const res = await API.graphql(graphqlOperation(query, { id }));
-      if (res.data.getUser.password === oldPassword) {
+      const decryptedPassword = await PasswordManager.decryptPassword(
+        res.data.getUser.password
+      );
+      if (decryptedPassword === oldPassword) {
         Auth.currentAuthenticatedUser()
           .then(usr => {
             return Auth.changePassword(usr, oldPassword, newPassword);
@@ -112,7 +120,7 @@ const user = {
           })
           .catch(err => console.log(err));
       } else {
-        showToast(i18n.t('userProfile.wrongOldPassword'), true);
+        showToast(i18n.t('userProfile.error4'), true);
       }
 
       return res.data.getUser;

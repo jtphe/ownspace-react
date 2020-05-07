@@ -5,25 +5,22 @@ import {
   TextInput,
   ScrollView,
   Alert,
-  Linking
+  Linking,
+  TouchableOpacity
 } from 'react-native';
 import Header from '@shared/Header/withBack';
 import Text from '@shared/ClientText';
 import i18n from '@i18n/i18n';
 import { Actions } from 'react-native-router-flux';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import Avatar from '@shared/Avatar';
 import { connect, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 import { getUser } from '@store/modules/user/selectors';
 import { useFonts } from '@use-expo/font';
 import { Button } from 'react-native-paper';
-import {
-  updateUserNames,
-  updateUserPassword,
-  signOut
-} from '@store/modules/user/actions';
+import { updateUserNames, signOut } from '@store/modules/user/actions';
 import showToast from '@utils/showToast';
+import Icon from 'react-native-vector-icons/Feather';
 
 /**
  * Connect to the store and extract data
@@ -45,8 +42,6 @@ const UserProfile = ({ user }) => {
   });
   const [firstname, setFirstname] = useState(user.firstname);
   const [lastname, setLastname] = useState(user.lastname);
-  const [oldPassword, setOldPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
   const dispatch = useDispatch();
 
   /**
@@ -64,17 +59,6 @@ const UserProfile = ({ user }) => {
       } else {
         showToast(i18n.t('userProfile.nothingToUdpate'), true);
       }
-    }
-
-    if (oldPassword !== '' && newPassword !== '') {
-      const payload = {
-        id: user.id,
-        oldPassword,
-        newPassword
-      };
-      dispatch(updateUserPassword(payload));
-      setNewPassword('');
-      setOldPassword('');
     }
   };
 
@@ -121,16 +105,24 @@ const UserProfile = ({ user }) => {
             borderRadius={50}
           />
         </TouchableOpacity>
-        {user.firstname !== null && user.lastname !== null ? (
-          <Text style={styles.profileName}>
-            {`${user.firstname} ${user.lastname}`}
+        <View>
+          {user.firstname !== null && user.lastname !== null ? (
+            <Text style={styles.profileName}>
+              {`${user.firstname} ${user.lastname}`}
+            </Text>
+          ) : (
+            <Text style={styles.profileName}>{user.email}</Text>
+          )}
+          <Text style={styles.profileRole}>
+            {i18n.t(`userProfile.${user.role}`).toUpperCase()}
           </Text>
-        ) : (
-          <Text style={styles.profileName}>{user.email}</Text>
-        )}
+        </View>
       </View>
       <View style={styles.containerInfos}>
         <ScrollView>
+          <Text style={styles.titleSection}>
+            {i18n.t('userProfile.personalInfos')}
+          </Text>
           <Text style={styles.titleInput}>
             {i18n.t('userProfile.lastname')}
           </Text>
@@ -173,40 +165,19 @@ const UserProfile = ({ user }) => {
             editable={false}
             returnKeyType="next"
           />
-          <Text style={styles.titleInput}>
-            {i18n.t('userProfile.oldPassword')}
+          <View style={styles.separator} />
+          <Text style={styles.titleSection}>
+            {i18n.t('userProfile.securityPrivacy')}
           </Text>
-          <TextInput
-            style={styles.input}
-            placeholder="••••••••••••"
-            placeholderTextColor="grey"
-            selectionColor="grey"
-            textContentType="password"
-            secureTextEntry={true}
-            onChangeText={txt => {
-              setOldPassword(txt);
-            }}
-            autoCapitalize="none"
-            value={oldPassword}
-            returnKeyType="next"
-          />
-          <Text style={styles.titleInput}>
-            {i18n.t('userProfile.newPassword')}
-          </Text>
-          <TextInput
-            style={styles.input}
-            placeholder="••••••••••••"
-            placeholderTextColor="grey"
-            selectionColor="grey"
-            textContentType="password"
-            secureTextEntry={true}
-            onChangeText={txt => {
-              setNewPassword(txt);
-            }}
-            autoCapitalize="none"
-            value={newPassword}
-            returnKeyType="next"
-          />
+          <TouchableOpacity
+            style={styles.settingOption}
+            onPress={() => Actions.passwordModal({ user })}
+          >
+            <Icon name="lock" size={18} />
+            <Text style={styles.textSetting}>
+              {i18n.t('userProfile.updatePassword')}
+            </Text>
+          </TouchableOpacity>
           <View style={styles.btnContainer}>
             <Button
               mode="contained"
@@ -261,18 +232,30 @@ const styles = StyleSheet.create({
   },
   avatarContainer: { marginBottom: 20 },
   profileName: {
-    fontSize: 20,
-    fontWeight: '500',
+    fontSize: 18,
     color: '#003466',
+    marginBottom: 8
+  },
+  profileRole: {
+    fontSize: 16,
+    color: 'black',
+    alignSelf: 'center',
+    fontWeight: 'bold',
     marginBottom: 20
   },
-  titleInput: { fontSize: 17, fontWeight: 'bold', marginBottom: 4 },
+  titleInput: { fontSize: 14, fontWeight: '800', marginBottom: 4 },
   input: {
     fontFamily: 'DejaVuSans',
     backgroundColor: '#DBDBDB',
+    fontSize: 12,
     borderRadius: 6,
-    padding: 15,
-    marginBottom: 20
+    paddingVertical: 15,
+    paddingLeft: 8,
+    marginBottom: 20,
+    shadowColor: 'rgba(0,0,0,.04)',
+    shadowOffset: { width: 5, height: 20 },
+    shadowOpacity: 0.8,
+    shadowRadius: 10
   },
   containerInfos: {
     flex: 1,
@@ -306,8 +289,8 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     flexDirection: 'row',
-    paddingTop: 20,
-    paddingBottom: 20,
+    marginTop: 30,
+    paddingVertical: 10,
     marginBottom: 10,
     justifyContent: 'space-between'
   },
@@ -320,6 +303,16 @@ const styles = StyleSheet.create({
     color: '#003466',
     fontWeight: 'bold',
     textDecorationLine: 'underline'
-  }
+  },
+  titleSection: { fontSize: 16, fontWeight: 'bold', marginBottom: 20 },
+  separator: {
+    borderBottomWidth: 3,
+    borderRadius: 8,
+    borderColor: '#003466',
+    marginBottom: 20
+  },
+  settingOption: { flexDirection: 'row' },
+  textSetting: { marginLeft: 10, alignSelf: 'center' }
 });
+
 export default connect(mapStateToProps)(UserProfile);

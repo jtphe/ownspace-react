@@ -5,7 +5,8 @@ import SecondAuthScreen from '@components/Login/secondAuthScreen';
 import Home from '@components/Home';
 import CreateFile from '@components/Home/createFile';
 import SplashScreen from '@components/Scenes/splashScreen';
-import UserProfile from '@components/UserProfile';
+import UserProfile from '@components/UserProfile/index';
+import PasswordModal from '@components/UserProfile/passwordModal';
 
 /**
  * AppRouter defines all the routes of OwnSpace app
@@ -55,6 +56,13 @@ const AppRouter = () => {
           type={ActionConst.PUSH}
           component={UserProfile}
           title="UserProfile"
+          hideNavBar
+        />
+        <Scene
+          key="passwordModal"
+          type={ActionConst.PUSH}
+          component={PasswordModal}
+          title="PasswordModal"
           hideNavBar
         />
       </Scene>

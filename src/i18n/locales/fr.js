@@ -64,10 +64,21 @@ export default {
     profileUpdated: 'Profil mis à jour !',
     oldPassword: 'Ancien mot de passe',
     newPassword: 'Nouveau mot de passe',
-    wrongOldPassword: 'Ancien mot de passe incorrect',
-    oldNotEmpty: "L'ancien mot de passe ne peut être vide",
-    newNotEmpty: 'Le nouveau mot de passe ne peut être vide',
-    confirmSignOut: 'Confirmer la déconnexion',
-    cancel: 'Annuler'
+    confirmNewPassword: 'Confirmer le nouveau mot de passe',
+    error1: 'Les champs de textes ne peuvent être vide',
+    error2: 'Les nouveaux mots de passe ne correspondent pas',
+    error3: 'Le nouveau mot de passe doit contenir au moins 8 caractères',
+    error4: 'Les nouveaux mots de passe ne correspondent pas',
+    confirmSignOut: 'Êtes-vous sûr de vouloir vous déconnecter ?',
+    cancel: 'Annuler',
+    student: 'Étudiant',
+    teacher: 'Professeur',
+    admin: 'Administrateur',
+    personalInfos: 'Informations personnelles',
+    securityPrivacy: 'Sécurité et confidentialité',
+    updatePassword: 'Mettre à jour le mot de passe',
+    passwordInfo:
+      'Veuillez choisir un mot de passe robuste (au moins 8 caractères, majuscules, minuscules et caractères spéciaux).',
+    update: 'Mettre à jour'
   }
 };

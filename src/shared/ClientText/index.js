@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { useFonts } from '@use-expo/font';
@@ -11,18 +12,34 @@ import { useFonts } from '@use-expo/font';
  */
 const TextClient = props => {
   useFonts({
-    // eslint-disable-next-line global-require
-    DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
+    DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf'),
+    DejaVuSansBold: require('../../../assets/fonts/DejaVuSans-Bold.ttf')
   });
+
   const { style, ellipsizeMode, selectable, children } = props;
 
+  if (style.fontWeight === 'bold') {
+    /**
+     * Render the TextClient component
+     * @returns {React.Component} - TextClient component
+     */
+    return (
+      <Text
+        style={[style, styles.fontBold]}
+        ellipsizeMode={ellipsizeMode}
+        selectable={selectable}
+      >
+        {children}
+      </Text>
+    );
+  }
   /**
    * Render the TextClient component
    * @returns {React.Component} - TextClient component
    */
   return (
     <Text
-      style={[style, styles.fontStyle]}
+      style={[style, styles.fontNormal]}
       ellipsizeMode={ellipsizeMode}
       selectable={selectable}
     >
@@ -35,7 +52,12 @@ const TextClient = props => {
  * Styles of TextClient component
  */
 const styles = StyleSheet.create({
-  fontStyle: { fontFamily: 'DejaVuSans' }
+  fontNormal: {
+    fontFamily: 'DejaVuSans'
+  },
+  fontBold: {
+    fontFamily: 'DejaVuSansBold'
+  }
 });
 
 export default TextClient;
