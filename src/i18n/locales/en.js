@@ -64,10 +64,21 @@ export default {
     profileUpdated: 'Profile updated !',
     oldPassword: 'Old password',
     newPassword: 'New password',
-    wrongOldPassword: 'Old password incorrect',
-    oldNotEmpty: 'The old password cannot be empty',
-    newNotEmpty: 'The new password cannot be empty',
+    confirmNewPassword: 'Confirm the new password',
+    error1: 'Fields cannot be empty',
+    error2: 'Passwords do not match',
+    error3: 'New password requires at least 8 characters',
+    error4: 'Old password incorrect',
     confirmSignOut: 'Confirm the sign out',
-    cancel: 'Cancel'
+    cancel: 'Cancel',
+    student: 'Student',
+    teacher: 'Teacher',
+    admin: 'Administrator',
+    personalInfos: 'Personal information',
+    securityPrivacy: 'Security and privacy',
+    updatePassword: 'Update password',
+    passwordInfo:
+      'Please choose a strong password (at least 8 characters, upper case, lower case and special characters).',
+    update: 'Update'
   }
 };

@@ -52,9 +52,10 @@ function* updateUserNames({ payload }) {
 
 function* updateUserPassword({ payload }) {
   try {
-    const password = yield call(api.changeUserPassword, payload);
-    if (password) {
+    const res = yield call(api.changeUserPassword, payload);
+    if (res.password) {
       yield call(api.updateUserPwdDB, payload);
+      Actions.pop();
     }
   } catch (e) {
     console.log('Error while updating user password =>', e);
