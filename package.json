@@ -28,7 +28,7 @@
     "immutability-helper": "^3.0.2",
     "js-base64": "^2.5.2",
     "react": "~16.9.0",
-    "react-dom": "~16.9.0",
+    "react-dom": "~16.13.0",
     "react-native": "~0.61.4",
     "react-native-gesture-handler": "~1.6.1",
     "react-native-iphone-x-helper": "^1.2.1",
