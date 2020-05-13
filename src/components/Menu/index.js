@@ -16,7 +16,7 @@ const NavMenu = ({ openPlusMenu }) => {
    * Set the right icon to selected
    * @param {String} name - Icon name
    */
-  const setSelected = name => {
+  const _setSelected = name => {
     switch (name) {
       case 'home':
         setHome(true);
@@ -55,19 +55,19 @@ const NavMenu = ({ openPlusMenu }) => {
         name="home"
         size={30}
         selected={home}
-        setSelected={name => setSelected(name)}
+        setSelected={name => _setSelected(name)}
       />
       <IconMenu
         name="plus-circle"
         size={30}
         selected={options}
-        setSelected={name => setSelected(name)}
+        setSelected={name => _setSelected(name)}
       />
       <IconMenu
         name="user"
         size={30}
         selected={userProfile}
-        setSelected={name => setSelected(name)}
+        setSelected={name => _setSelected(name)}
       />
     </View>
   );
@@ -90,7 +90,11 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    shadowColor: 'rgba(0,0,0,0.4)',
+    shadowOffset: { width: 3, height: 20 },
+    shadowOpacity: 0.8,
+    shadowRadius: 10
   }
 });
 

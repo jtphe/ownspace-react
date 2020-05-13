@@ -18,7 +18,7 @@ const TextClient = props => {
 
   const { style, ellipsizeMode, selectable, children } = props;
 
-  if (style.fontWeight === 'bold') {
+  if (style && style.fontWeight === 'bold') {
     /**
      * Render the TextClient component
      * @returns {React.Component} - TextClient component
@@ -33,6 +33,7 @@ const TextClient = props => {
       </Text>
     );
   }
+
   /**
    * Render the TextClient component
    * @returns {React.Component} - TextClient component

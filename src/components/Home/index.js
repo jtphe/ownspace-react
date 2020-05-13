@@ -6,6 +6,7 @@ import MenuPlus from './menuPlus';
 import { useDispatch } from 'react-redux';
 import { loadUser } from '@store/modules/user/actions';
 import { Auth } from 'aws-amplify';
+import HomeList from '@components/Document/index';
 
 /**
  * The Home component
@@ -17,13 +18,14 @@ const Home = ({ loggedUser, isLoggedIn }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // If the user just created his account
     if (!isLoggedIn) {
       initLoad();
     } else {
       loadCurrentAuthenticatedUser();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  });
+  }, []);
 
   /**
    * Load the user to the user store if the user is not already logged in
@@ -81,6 +83,7 @@ const Home = ({ loggedUser, isLoggedIn }) => {
     <View style={styles.container}>
       <Header />
       <View style={styles.test}>
+        <HomeList />
         <NavMenu openPlusMenu={() => openPlusMenu()} />
       </View>
       <MenuPlus setRefPlus={setRefPlus} />

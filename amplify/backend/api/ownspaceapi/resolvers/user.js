@@ -26,7 +26,6 @@ const user = {
                     picture,
                     notification,
                     role,
-                    rootFolder,
                     group,
                     limitedStorage,
                     storageSpaceUsed,
@@ -88,7 +87,6 @@ const user = {
           picture
           notification
           role
-          rootFolder
           group
           limitedStorage
           storageSpaceUsed

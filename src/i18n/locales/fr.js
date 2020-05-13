@@ -33,19 +33,22 @@ export default {
     importFile: 'Importer un fichier',
     createFile: 'Créer un fichier texte',
     createFolder: 'Créer un dossier',
-    takePicture: 'Prendre une photo'
+    takePicture: 'Prendre une photo',
+    imageGallery: 'Galerie photos'
   },
   createFile: {
     placeholderName: 'Nom du fichier',
     placeholderContent: 'Tapez votre texte ici...',
     tooShort:
       'Le nom du fichier et son contenu doivent contenir au moins 6 caractères',
-    noEmpty: 'Les champs de texte ne peuvent pas être vide'
+    noEmpty: 'Les champs de texte ne peuvent pas être vide',
+    titleTooLong: 'Le nom du fichier doit être inférieur ou égal à caractères'
   },
   button: {
     validate: 'Valider',
     cancel: 'Annuler',
-    next: 'Suivant'
+    next: 'Suivant',
+    create: 'Créer'
   },
   progressBar: {
     createFile: 'Création du fichier'
@@ -80,5 +83,36 @@ export default {
     passwordInfo:
       'Veuillez choisir un mot de passe robuste (au moins 8 caractères, majuscules, minuscules et caractères spéciaux).',
     update: 'Mettre à jour'
+  },
+  document: {
+    home: 'Accueil',
+    loading: 'Chargement',
+    nbFile: {
+      one: ' {{count}} fichier',
+      other: ' {{count}} fichiers',
+      zero: ''
+    },
+    nbFolder: {
+      one: '{{count}} dossier',
+      other: '{{count}} dossiers',
+      zero: ''
+    },
+    noDocument: 'Pas de document',
+    createFolderTitle: 'Créer un dossier',
+    createFolderPlaceholder: 'Entrer un nom de dossier',
+    share: 'Partager',
+    protect: 'Protéger avec un mot de passe',
+    renameFolder: 'Renommer le dossier',
+    renameFile: 'Renommer le fichier',
+    deleteFolder: 'Supprimer le dossier',
+    deleteFile: 'Supprimer le fichier',
+    imported: 'Fichier importé !',
+    notSupported: "Impossible d'ajouter le fichier. Format non supporté",
+    cannotOpen: "Impossible d'ouvrir le fichier",
+    downloadSpecificApp:
+      "Téléchargez une application capable d'ouvrir ce type de fichier"
+  },
+  picture: {
+    imported: 'Image importée !'
   }
 };

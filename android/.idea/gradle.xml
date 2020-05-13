@@ -28,10 +28,15 @@
             <option value="$PROJECT_DIR$/../node_modules/expo-permissions/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-sqlite/android" />
             <option value="$PROJECT_DIR$/../node_modules/expo-web-browser/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-document-picker/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-file-viewer/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-image-crop-picker/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-reanimated/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-screens/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-svg/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android" />
+            <option value="$PROJECT_DIR$/../node_modules/rn-fetch-blob/android" />
             <option value="$PROJECT_DIR$/../node_modules/unimodules-barcode-scanner-interface/android" />
             <option value="$PROJECT_DIR$/../node_modules/unimodules-camera-interface/android" />
             <option value="$PROJECT_DIR$/../node_modules/unimodules-constants-interface/android" />
