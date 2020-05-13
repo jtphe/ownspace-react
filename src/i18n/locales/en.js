@@ -33,19 +33,22 @@ export default {
     importFile: 'Import a file',
     createFile: 'Create a text file',
     createFolder: 'Create a folder',
-    takePicture: 'Take a picture'
+    takePicture: 'Take a picture',
+    imageGallery: 'Photo gallery'
   },
   createFile: {
     placeholderName: 'File name',
     placeholderContent: 'Type your text here...',
     tooShort:
       'The file name and its contents must contain at least 6 characters',
-    noEmpty: 'Fields cannot be empty'
+    noEmpty: 'Fields cannot be empty',
+    titleTooLong: 'The file name must be less than or equal to 20 characters'
   },
   button: {
     validate: 'Validate',
     cancel: 'Cancel',
-    next: 'Next'
+    next: 'Next',
+    create: 'Create'
   },
   progressBar: {
     createFile: 'Creating the file'
@@ -80,5 +83,36 @@ export default {
     passwordInfo:
       'Please choose a strong password (at least 8 characters, upper case, lower case and special characters).',
     update: 'Update'
+  },
+  document: {
+    home: 'Home',
+    loading: 'Loading',
+    nbFile: {
+      one: ' {{count}} file',
+      other: ' {{count}} files',
+      zero: ''
+    },
+    nbFolder: {
+      one: '{{count}} folder',
+      other: '{{count}} folders',
+      zero: ''
+    },
+    noDocument: 'No document',
+    createFolderTitle: 'Create a folder',
+    createFolderPlaceholder: 'Enter a folder name',
+    share: 'Share',
+    protect: 'Protect with a password',
+    renameFolder: 'Rename the folder',
+    renameFile: 'Rename the file',
+    deleteFolder: 'Delete the folder',
+    deleteFile: 'Delete the file',
+    imported: 'File imported !',
+    notSupported: 'Cannot import the file. Format not supported',
+    cannotOpen: 'Cannot open file',
+    downloadSpecificApp:
+      'Please download an application that can open this type of file'
+  },
+  picture: {
+    imported: 'Image imported'
   }
 };

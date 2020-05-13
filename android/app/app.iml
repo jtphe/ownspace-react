@@ -186,9 +186,14 @@
     <orderEntry type="module" module-name="android-react-native-community_masked-view" />
     <orderEntry type="module" module-name="android-react-native-community_netinfo" />
     <orderEntry type="module" module-name="android-amazon-cognito-identity-js" />
+    <orderEntry type="module" module-name="react-native-document-picker" />
+    <orderEntry type="module" module-name="react-native-file-viewer" />
     <orderEntry type="module" module-name="android-react-native-gesture-handler" />
+    <orderEntry type="module" module-name="android-react-native-image-crop-picker" />
     <orderEntry type="module" module-name="android-react-native-reanimated" />
     <orderEntry type="module" module-name="android-react-native-screens" />
+    <orderEntry type="module" module-name="react-native-svg" />
     <orderEntry type="module" module-name="android-react-native-vector-icons" />
+    <orderEntry type="module" module-name="rn-fetch-blob" />
   </component>
 </module>

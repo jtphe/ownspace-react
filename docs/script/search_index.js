@@ -1,11 +1,5 @@
 window.esdocSearchIndex = [
   [
-    "./src/shared/progressbar/index.js~animations",
-    "class/src/shared/ProgressBar/index.js~Animations.html",
-    "<span>Animations</span> <span class=\"search-result-import-path\">./src/shared/ProgressBar/index.js</span>",
-    "class"
-  ],
-  [
     "./src/router/index.js~approuter",
     "function/index.html#static-function-AppRouter",
     "<span>AppRouter</span> <span class=\"search-result-import-path\">./src/router/index.js</span>",
@@ -18,9 +12,27 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "./src/components/document/backfolder.js~backfolder",
+    "function/index.html#static-function-BackFolder",
+    "<span>BackFolder</span> <span class=\"search-result-import-path\">./src/components/Document/backFolder.js</span>",
+    "function"
+  ],
+  [
+    "./src/components/home/createfile.js~createfile",
+    "function/index.html#static-function-CreateFile",
+    "<span>CreateFile</span> <span class=\"search-result-import-path\">./src/components/Home/createFile.js</span>",
+    "function"
+  ],
+  [
     "./src/shared/custombutton/index.js~custombutton",
     "function/index.html#static-function-CustomButton",
     "<span>CustomButton</span> <span class=\"search-result-import-path\">./src/shared/CustomButton/index.js</span>",
+    "function"
+  ],
+  [
+    "./src/components/document/folder.js~folder",
+    "function/index.html#static-function-Folder",
+    "<span>Folder</span> <span class=\"search-result-import-path\">./src/components/Document/folder.js</span>",
     "function"
   ],
   [
@@ -60,15 +72,21 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "./src/components/home/menuplus.js~menuplus",
-    "function/index.html#static-function-MenuPlus",
-    "<span>MenuPlus</span> <span class=\"search-result-import-path\">./src/components/Home/menuPlus.js</span>",
-    "function"
-  ],
-  [
     "./src/components/menu/index.js~navmenu",
     "function/index.html#static-function-NavMenu",
     "<span>NavMenu</span> <span class=\"search-result-import-path\">./src/components/Menu/index.js</span>",
+    "function"
+  ],
+  [
+    "./src/shared/dialog/index.js~ownspacedialog",
+    "function/index.html#static-function-OwnSpaceDialog",
+    "<span>OwnSpaceDialog</span> <span class=\"search-result-import-path\">./src/shared/Dialog/index.js</span>",
+    "function"
+  ],
+  [
+    "./src/components/userprofile/passwordmodal.js~passwordmodal",
+    "function/index.html#static-function-PasswordModal",
+    "<span>PasswordModal</span> <span class=\"search-result-import-path\">./src/components/UserProfile/passwordModal.js</span>",
     "function"
   ],
   [
@@ -120,6 +138,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "./src/components/document/uploaddocument.js~uploaddocument",
+    "function/index.html#static-function-UploadDocument",
+    "<span>UploadDocument</span> <span class=\"search-result-import-path\">./src/components/Document/uploadDocument.js</span>",
+    "function"
+  ],
+  [
     "./src/shared/header/withback.js~withback",
     "function/index.html#static-function-WithBack",
     "<span>WithBack</span> <span class=\"search-result-import-path\">./src/shared/Header/withBack.js</span>",
@@ -132,10 +156,40 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "./src/utils/mimetype.js~mimetype",
-    "variable/index.html#static-variable-mimeType",
-    "<span>mimeType</span> <span class=\"search-result-import-path\">./src/utils/mimetype.js</span>",
-    "variable"
+    "./src/utils/passwordmanager.js~decryptpassword",
+    "function/index.html#static-function-decryptPassword",
+    "<span>decryptPassword</span> <span class=\"search-result-import-path\">./src/utils/passwordManager.js</span>",
+    "function"
+  ],
+  [
+    "./src/utils/formatdate.js~formatdate",
+    "function/index.html#static-function-formatDate",
+    "<span>formatDate</span> <span class=\"search-result-import-path\">./src/utils/formatDate.js</span>",
+    "function"
+  ],
+  [
+    "./src/utils/passwordmanager.js~hashpassword",
+    "function/index.html#static-function-hashPassword",
+    "<span>hashPassword</span> <span class=\"search-result-import-path\">./src/utils/passwordManager.js</span>",
+    "function"
+  ],
+  [
+    "./src/utils/filesizeconverter.js~octettomoconverter",
+    "function/index.html#static-function-octetToMoConverter",
+    "<span>octetToMoConverter</span> <span class=\"search-result-import-path\">./src/utils/fileSizeConverter.js</span>",
+    "function"
+  ],
+  [
+    "./src/utils/filemanager.js~openfile",
+    "function/index.html#static-function-openFile",
+    "<span>openFile</span> <span class=\"search-result-import-path\">./src/utils/fileManager.js</span>",
+    "function"
+  ],
+  [
+    "./src/utils/filemanager.js~requestandroidwriteexternalstorage",
+    "function/index.html#static-function-requestAndroidWriteExternalStorage",
+    "<span>requestAndroidWriteExternalStorage</span> <span class=\"search-result-import-path\">./src/utils/fileManager.js</span>",
+    "function"
   ],
   [
     "./src/utils/showtoast.js~showtoast",
@@ -432,6 +486,36 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/components/document/backfolder.js",
+    "file/src/components/Document/backFolder.js.html",
+    "src/components/Document/backFolder.js",
+    "file"
+  ],
+  [
+    "src/components/document/file.js",
+    "file/src/components/Document/file.js.html",
+    "src/components/Document/file.js",
+    "file"
+  ],
+  [
+    "src/components/document/folder.js",
+    "file/src/components/Document/folder.js.html",
+    "src/components/Document/folder.js",
+    "file"
+  ],
+  [
+    "src/components/document/index.js",
+    "file/src/components/Document/index.js.html",
+    "src/components/Document/index.js",
+    "file"
+  ],
+  [
+    "src/components/document/uploaddocument.js",
+    "file/src/components/Document/uploadDocument.js.html",
+    "src/components/Document/uploadDocument.js",
+    "file"
+  ],
+  [
     "src/components/home/createfile.js",
     "file/src/components/Home/createFile.js.html",
     "src/components/Home/createFile.js",
@@ -498,6 +582,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/components/userprofile/passwordmodal.js",
+    "file/src/components/UserProfile/passwordModal.js.html",
+    "src/components/UserProfile/passwordModal.js",
+    "file"
+  ],
+  [
     "src/constants/index.js",
     "file/src/constants/index.js.html",
     "src/constants/index.js",
@@ -528,6 +618,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/shared/dialog/index.js",
+    "file/src/shared/Dialog/index.js.html",
+    "src/shared/Dialog/index.js",
+    "file"
+  ],
+  [
     "src/shared/header/index.js",
     "file/src/shared/Header/index.js.html",
     "src/shared/Header/index.js",
@@ -546,45 +642,33 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/shared/progressbar/index.js",
-    "file/src/shared/ProgressBar/index.js.html",
-    "src/shared/ProgressBar/index.js",
-    "file"
-  ],
-  [
-    "src/shared/progressbar/index.js~animations#componentdidmount",
-    "class/src/shared/ProgressBar/index.js~Animations.html#instance-method-componentDidMount",
-    "src/shared/ProgressBar/index.js~Animations#componentDidMount",
-    "method"
-  ],
-  [
-    "src/shared/progressbar/index.js~animations#constructor",
-    "class/src/shared/ProgressBar/index.js~Animations.html#instance-constructor-constructor",
-    "src/shared/ProgressBar/index.js~Animations#constructor",
-    "method"
-  ],
-  [
-    "src/shared/progressbar/index.js~animations#render",
-    "class/src/shared/ProgressBar/index.js~Animations.html#instance-method-render",
-    "src/shared/ProgressBar/index.js~Animations#render",
-    "method"
-  ],
-  [
-    "src/shared/progressbar/index.js~animations#state",
-    "class/src/shared/ProgressBar/index.js~Animations.html#instance-member-state",
-    "src/shared/ProgressBar/index.js~Animations#state",
-    "member"
-  ],
-  [
     "src/shared/text/index.js",
     "file/src/shared/Text/index.js.html",
     "src/shared/Text/index.js",
     "file"
   ],
   [
-    "src/utils/mimetype.js",
-    "file/src/utils/mimetype.js.html",
-    "src/utils/mimetype.js",
+    "src/utils/filemanager.js",
+    "file/src/utils/fileManager.js.html",
+    "src/utils/fileManager.js",
+    "file"
+  ],
+  [
+    "src/utils/filesizeconverter.js",
+    "file/src/utils/fileSizeConverter.js.html",
+    "src/utils/fileSizeConverter.js",
+    "file"
+  ],
+  [
+    "src/utils/formatdate.js",
+    "file/src/utils/formatDate.js.html",
+    "src/utils/formatDate.js",
+    "file"
+  ],
+  [
+    "src/utils/passwordmanager.js",
+    "file/src/utils/passwordManager.js.html",
+    "src/utils/passwordManager.js",
     "file"
   ],
   [

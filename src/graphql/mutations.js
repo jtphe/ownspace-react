@@ -15,7 +15,6 @@ export const createUser = /* GraphQL */ `
       picture
       notification
       role
-      rootFolder
       group
       limitedStorage
       storageSpaceUsed
@@ -37,7 +36,6 @@ export const updateUser = /* GraphQL */ `
       picture
       notification
       role
-      rootFolder
       group
       limitedStorage
       storageSpaceUsed
@@ -59,7 +57,6 @@ export const deleteUser = /* GraphQL */ `
       picture
       notification
       role
-      rootFolder
       group
       limitedStorage
       storageSpaceUsed
@@ -84,7 +81,6 @@ export const createGroup = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
@@ -110,7 +106,6 @@ export const updateGroup = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
@@ -136,7 +131,6 @@ export const deleteGroup = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
@@ -166,7 +160,6 @@ export const createFile = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
@@ -202,7 +195,6 @@ export const updateFile = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
@@ -238,7 +230,6 @@ export const deleteFile = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
@@ -273,44 +264,15 @@ export const createFolder = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
       nbFiles
-      content {
-        id
-        createdAt
-        updatedAt
-        name
-        content
-        owner
-        sharedList {
-          id
-          firstname
-          lastname
-          email
-          password
-          picture
-          notification
-          role
-          rootFolder
-          group
-          limitedStorage
-          storageSpaceUsed
-          totalStorageSpace
-        }
-        isProtected
-        password
-        parent
-        size
-        mimeType
-        type
-      }
     }
   }
 `;
@@ -334,44 +296,15 @@ export const updateFolder = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
       nbFiles
-      content {
-        id
-        createdAt
-        updatedAt
-        name
-        content
-        owner
-        sharedList {
-          id
-          firstname
-          lastname
-          email
-          password
-          picture
-          notification
-          role
-          rootFolder
-          group
-          limitedStorage
-          storageSpaceUsed
-          totalStorageSpace
-        }
-        isProtected
-        password
-        parent
-        size
-        mimeType
-        type
-      }
     }
   }
 `;
@@ -395,44 +328,15 @@ export const deleteFolder = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
       nbFiles
-      content {
-        id
-        createdAt
-        updatedAt
-        name
-        content
-        owner
-        sharedList {
-          id
-          firstname
-          lastname
-          email
-          password
-          picture
-          notification
-          role
-          rootFolder
-          group
-          limitedStorage
-          storageSpaceUsed
-          totalStorageSpace
-        }
-        isProtected
-        password
-        parent
-        size
-        mimeType
-        type
-      }
     }
   }
 `;

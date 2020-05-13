@@ -12,7 +12,6 @@ export const getUser = /* GraphQL */ `
       picture
       notification
       role
-      rootFolder
       group
       limitedStorage
       storageSpaceUsed
@@ -36,7 +35,6 @@ export const listUsers = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
@@ -60,7 +58,6 @@ export const getGroup = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
@@ -88,7 +85,6 @@ export const listGroups = /* GraphQL */ `
           picture
           notification
           role
-          rootFolder
           group
           limitedStorage
           storageSpaceUsed
@@ -117,7 +113,6 @@ export const getFile = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
@@ -155,7 +150,6 @@ export const listFiles = /* GraphQL */ `
           picture
           notification
           role
-          rootFolder
           group
           limitedStorage
           storageSpaceUsed
@@ -189,44 +183,15 @@ export const getFolder = /* GraphQL */ `
         picture
         notification
         role
-        rootFolder
         group
         limitedStorage
         storageSpaceUsed
         totalStorageSpace
       }
+      isProtected
       password
       parent
       nbFiles
-      content {
-        id
-        createdAt
-        updatedAt
-        name
-        content
-        owner
-        sharedList {
-          id
-          firstname
-          lastname
-          email
-          password
-          picture
-          notification
-          role
-          rootFolder
-          group
-          limitedStorage
-          storageSpaceUsed
-          totalStorageSpace
-        }
-        isProtected
-        password
-        parent
-        size
-        mimeType
-        type
-      }
     }
   }
 `;
@@ -252,29 +217,15 @@ export const listFolders = /* GraphQL */ `
           picture
           notification
           role
-          rootFolder
           group
           limitedStorage
           storageSpaceUsed
           totalStorageSpace
         }
+        isProtected
         password
         parent
         nbFiles
-        content {
-          id
-          createdAt
-          updatedAt
-          name
-          content
-          owner
-          isProtected
-          password
-          parent
-          size
-          mimeType
-          type
-        }
       }
       nextToken
     }

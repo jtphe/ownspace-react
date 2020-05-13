@@ -14,10 +14,25 @@ import {
   M_SIGN_OUT
 } from './actions';
 import showToast from '@utils/showToast';
+import { Storage } from 'aws-amplify';
+import { U_LOAD_FOLDERS, U_LOAD_FILES } from '@store/modules/document/actions';
 
 function* createUser({ payload }) {
   try {
     const user = yield call(api.createUser, payload);
+    // Add file to S3
+    Storage.put('Home/', '', {
+      level: 'private',
+      contentType: 'sprite-brut',
+      progressCallback(progress) {
+        console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
+      }
+    })
+      .then(result => {
+        console.log(result); // {key: "test.txt"}
+        Actions.pop();
+      })
+      .catch(err => console.log(err));
     yield put({ type: M_CREATE_USER, user });
     const isLoggedIn = true;
     Actions.home({ isLoggedIn });
@@ -31,6 +46,8 @@ function* loadUser({ payload }) {
     const user = yield call(api.loadUser, payload);
     const { token } = payload;
     yield put({ type: M_LOAD_USER, user, token });
+    yield put({ type: U_LOAD_FOLDERS });
+    yield put({ type: U_LOAD_FILES });
   } catch (e) {
     console.log('Error while loading user =>', e);
   }

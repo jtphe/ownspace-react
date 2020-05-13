@@ -4,19 +4,10 @@ import Text from '@shared/ClientText';
 import Header from '@shared/Header/index';
 import CustomButton from '@shared/CustomButton';
 import { createFile } from '@store/modules/document/actions';
-import { useDispatch, connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import i18n from '@i18n/i18n';
 import { useFonts } from '@use-expo/font';
 import showToast from '@utils/showToast';
-
-/**
- * Connect to the store and extract data
- */
-const mapStateToProps = state => {
-  return {
-    isUploading: state.document.upload.isUploading
-  };
-};
 
 /**
  * The CreateFile component
@@ -35,12 +26,18 @@ const CreateFile = () => {
    */
   const createTxtFile = () => {
     if (title.trim().length > 0 && text.trim().length > 0) {
-      if (title.trim().length > 6 && text.trim().length > 6) {
+      if (
+        title.trim().length > 6 &&
+        text.trim().length > 6 &&
+        title.trim().length <= 20
+      ) {
         const payload = {
           name: `${title.trim()}.txt`,
           content: text
         };
         dispatch(createFile(payload));
+      } else if (title.trim().length >= 20) {
+        showToast(i18n.t('createFile.titleTooLong'), true);
       } else {
         showToast(i18n.t('createFile.tooShort'), true);
       }
@@ -121,4 +118,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps)(CreateFile);
+export default CreateFile;
