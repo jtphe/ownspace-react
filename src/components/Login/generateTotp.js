@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Clipboard } from 'react-native';
+import { StyleSheet, View, Clipboard } from 'react-native';
+import Text from '@shared/Text';
 import { Button } from 'react-native-paper';
 import { Auth } from 'aws-amplify';
 import i18n from '@i18n/i18n';
@@ -48,7 +49,7 @@ const GenerateTotp = ({ user, setHasAuthApp }) => {
         <Button
           mode="contained"
           uppercase={false}
-          labelStyle={styles.btnColor}
+          labelStyle={styles.btnText}
           style={styles.btnNext}
           onPress={() => {
             setHasAuthApp(true);
@@ -77,7 +78,8 @@ const styles = StyleSheet.create({
   code: { fontSize: 17, color: 'white' },
   titleCode: {
     fontSize: 17,
-    color: 'white'
+    color: 'white',
+    opacity: 0.8
   },
   helper: {
     marginTop: 10,
@@ -92,11 +94,9 @@ const styles = StyleSheet.create({
     padding: 6,
     paddingLeft: 6,
     paddingRight: 6,
-    marginTop: 30,
-    fontSize: 17,
-    fontWeight: 'bold'
+    marginTop: 30
   },
-  btncolor: { color: '#fff' }
+  btnText: { color: '#fff', fontFamily: 'HelveticaNeueBold' }
 });
 
 export default GenerateTotp;

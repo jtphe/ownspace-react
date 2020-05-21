@@ -26,8 +26,7 @@ const mapStateToProps = createSelector(getToken, token => {
 const clientFont = {
   // eslint-disable-next-line global-require
   DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf'),
-  DejaVuSansBold: require('../../../assets/fonts/DejaVuSans-Bold.ttf'),
-  DejaVuSansExtraLight: require('../../../assets/fonts/DejaVuSans-ExtraLight.ttf')
+  DejaVuSansBold: require('../../../assets/fonts/DejaVuSans-Bold.ttf')
 };
 
 /**
@@ -36,8 +35,7 @@ const clientFont = {
 const helveticaFont = {
   // eslint-disable-next-line global-require
   HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf'),
-  HelveticaNeueBold: require('../../../assets/fonts/HelveticaNeue-Bold.ttf'),
-  HelveticaNeueLight: require('../../../assets/fonts/HelveticaNeue-Light.ttf')
+  HelveticaNeueBold: require('../../../assets/fonts/HelveticaNeue-Bold.ttf')
 };
 
 /**
@@ -58,7 +56,9 @@ class SplashScreen extends React.Component {
      */
     this.state = {
       logoAnime: new Animated.Value(0),
-      logoText: new Animated.Value(0)
+      logoText: new Animated.Value(0),
+      clientFontLoaded: false,
+      ownspaceFontLoaded: false
     };
   }
 
@@ -99,6 +99,9 @@ class SplashScreen extends React.Component {
    */
   loadClientFont = async () => {
     await Font.loadAsync(clientFont);
+    this.setState({
+      ownspaceFontLoaded: true
+    });
   };
 
   /**
@@ -106,6 +109,9 @@ class SplashScreen extends React.Component {
    */
   loadOwnSpaceFont = async () => {
     await Font.loadAsync(helveticaFont);
+    this.setState({
+      clientFontLoaded: true
+    });
   };
 
   /**
@@ -113,7 +119,12 @@ class SplashScreen extends React.Component {
    * @returns {React.Component} - SplashScreen class
    */
   render() {
-    const { logoAnime, logoText } = this.state;
+    const {
+      logoAnime,
+      logoText,
+      ownspaceFontLoaded,
+      clientFontLoaded
+    } = this.state;
 
     return (
       <ImageBackground
@@ -134,14 +145,18 @@ class SplashScreen extends React.Component {
         >
           <Image source={Logo} style={styles.logo} />
         </Animated.View>
-        <Animated.View style={[{ opacity: logoText }, styles.containerSlogan]}>
-          <Text style={styles.sloganPartOne}>
-            {i18n.t('splashScreen.sloganPartOne')}
-          </Text>
-          <Text style={styles.sloganPartTwo}>
-            {i18n.t('splashScreen.sloganPartTwo')}
-          </Text>
-        </Animated.View>
+        {ownspaceFontLoaded && clientFontLoaded ? (
+          <Animated.View
+            style={[{ opacity: logoText }, styles.containerSlogan]}
+          >
+            <Text style={styles.sloganPartOne}>
+              {i18n.t('splashScreen.sloganPartOne')}
+            </Text>
+            <Text style={styles.sloganPartTwo}>
+              {i18n.t('splashScreen.sloganPartTwo')}
+            </Text>
+          </Animated.View>
+        ) : null}
       </ImageBackground>
     );
   }
@@ -161,7 +176,11 @@ const styles = StyleSheet.create({
     marginBottom: 24
   },
   sloganPartOne: { color: 'white', fontSize: 34, paddingTop: 2 },
-  sloganPartTwo: { fontWeight: 'bold', color: 'white', fontSize: 36 },
+  sloganPartTwo: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 36
+  },
   logo: { width: 250, height: 250 },
   containerLogo: {
     justifyContent: 'flex-start',

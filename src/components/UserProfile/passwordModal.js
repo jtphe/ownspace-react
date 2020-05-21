@@ -5,7 +5,6 @@ import Text from '@shared/ClientText';
 import i18n from '@i18n/i18n';
 import { Actions } from 'react-native-router-flux';
 import { useDispatch } from 'react-redux';
-import { useFonts } from '@use-expo/font';
 import { Button } from 'react-native-paper';
 import { updateUserPassword } from '@store/modules/user/actions';
 import showToast from '@utils/showToast';
@@ -15,10 +14,6 @@ import showToast from '@utils/showToast';
  * @param {object} user - The user object
  */
 const PasswordModal = ({ user }) => {
-  useFonts({
-    // eslint-disable-next-line global-require
-    DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
-  });
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -148,6 +143,7 @@ const PasswordModal = ({ user }) => {
 const styles = StyleSheet.create({
   input: {
     fontFamily: 'DejaVuSans',
+    color: 'grey',
     backgroundColor: '#DBDBDB',
     borderRadius: 6,
     padding: 15,
@@ -182,8 +178,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 13,
-    fontWeight: 'bold',
-    fontFamily: 'DejaVuSans',
+    fontFamily: 'DejaVuSansBold',
     color: '#fff'
   },
   btnCancel: {

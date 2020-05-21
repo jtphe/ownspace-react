@@ -3,7 +3,6 @@ import { Button } from 'react-native-paper';
 import { StyleSheet, View, TextInput } from 'react-native';
 import Text from '@shared/Text';
 import i18n from '@i18n/i18n';
-import { useFonts } from '@use-expo/font';
 
 /**
  * The TotpAuthScreen component
@@ -11,11 +10,6 @@ import { useFonts } from '@use-expo/font';
  * @param {function} verifyTotpToken - Verify the totp token
  */
 const TotpAuthScreen = ({ setToken, verifyTotpToken }) => {
-  useFonts({
-    // eslint-disable-next-line global-require
-    HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
-  });
-
   /**
    * Render the TotpAuthScreen component
    * @returns {React.Component} - TotpAuthScreen component
@@ -26,6 +20,7 @@ const TotpAuthScreen = ({ setToken, verifyTotpToken }) => {
       <TextInput
         style={styles.input}
         placeholder={i18n.t('totp.placeholder')}
+        placeholderTextColor="grey"
         textContentType="password"
         autoCapitalize="none"
         secureTextEntry={true}
@@ -76,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold'
   },
-  btnText: { fontFamily: 'HelveticaNeue', color: '#fff' }
+  btnText: { fontFamily: 'HelveticaNeueBold', color: '#fff' }
 });
 
 export default TotpAuthScreen;
