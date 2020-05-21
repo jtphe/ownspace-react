@@ -36,7 +36,8 @@ const document = {
                     firstname,
                     lastname,
                     email,
-                    picture,
+                    pictureName,
+                    pictureUrl,
                     role,
                     group
                   },
@@ -81,7 +82,8 @@ const document = {
             firstname,
             lastname,
             email,
-            picture,
+            pictureName,
+            pictureUrl,
             role,
             group
           },
@@ -127,7 +129,8 @@ const document = {
             firstname,
             lastname,
             email,
-            picture,
+            pictureName,
+            pictureUrl,
             role,
             group
           },
@@ -175,7 +178,8 @@ const document = {
             firstname,
             lastname,
             email,
-            picture,
+            pictureName,
+            pictureUrl,
             role,
             group
           },
@@ -215,7 +219,8 @@ const document = {
             firstname,
             lastname,
             email,
-            picture,
+            pictureName,
+            pictureUrl,
             role,
             group
           }

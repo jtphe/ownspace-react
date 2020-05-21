@@ -6,7 +6,8 @@ import {
   ScrollView,
   Alert,
   Linking,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 import Header from '@shared/Header/withBack';
 import Text from '@shared/ClientText';
@@ -15,27 +16,37 @@ import { Actions } from 'react-native-router-flux';
 import Avatar from '@shared/Avatar';
 import { connect, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
-import { getUser } from '@store/modules/user/selectors';
+import { getUser, getPictureIsUploading } from '@store/modules/user/selectors';
 import { useFonts } from '@use-expo/font';
 import { Button } from 'react-native-paper';
-import { updateUserNames, signOut } from '@store/modules/user/actions';
+import {
+  updateUserNames,
+  signOut,
+  updateUserPicture
+} from '@store/modules/user/actions';
 import showToast from '@utils/showToast';
 import Icon from 'react-native-vector-icons/Feather';
+import ImagePicker from 'react-native-image-crop-picker';
+import octetToMoConverter from '@utils/fileSizeConverter';
 
 /**
  * Connect to the store and extract data
  */
-const mapStateToProps = createSelector(getUser, user => {
-  return {
-    user
-  };
-});
+const mapStateToProps = createSelector(
+  [getUser, getPictureIsUploading],
+  (user, pictureIsUploading) => {
+    return {
+      user,
+      pictureIsUploading
+    };
+  }
+);
 
 /**
  * The UserProfile component
  * @param {object} user - The user object
  */
-const UserProfile = ({ user }) => {
+const UserProfile = ({ user, pictureIsUploading }) => {
   useFonts({
     // eslint-disable-next-line global-require
     DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
@@ -89,6 +100,36 @@ const UserProfile = ({ user }) => {
     await Linking.openURL('mailto:ownspaceco@gmail.com');
   };
 
+  const _updatePicture = () => {
+    setTimeout(() => {
+      ImagePicker.openPicker({
+        multiple: false,
+        cropping: true,
+        cropperCircleOverlay: true,
+        includeBase64: true
+      }).then(image => {
+        _onSelectedPicture(image);
+      });
+    }, 500);
+  };
+
+  /**
+   * Handle the image received and add to DB and S3
+   * @param {objet} image - The image selected
+   */
+  const _onSelectedPicture = async image => {
+    const payload = {
+      name:
+        Platform.OS === 'ios'
+          ? image.filename
+          : `${Date.now()}.${image.path.split('.').pop()}`,
+      type: image.mime,
+      size: parseFloat(octetToMoConverter(image.size)),
+      absolutePath: image.path
+    };
+    dispatch(updateUserPicture(payload));
+  };
+
   /**
    * Render the UserProfile component
    * @returns {React.Component} - UserProfile component
@@ -97,13 +138,25 @@ const UserProfile = ({ user }) => {
     <View style={styles.container}>
       <Header goTo={() => Actions.home()} />
       <View style={styles.header}>
-        <TouchableOpacity style={styles.avatarContainer}>
-          <Avatar
-            style={styles.avatarPicture}
-            image={user.picture}
-            size={100}
-            borderRadius={50}
-          />
+        <TouchableOpacity
+          style={styles.avatarContainer}
+          onPress={() => _updatePicture()}
+        >
+          {pictureIsUploading ? (
+            <Button
+              color="#003466"
+              labelStyle={styles.loadingText}
+              uppercase={false}
+              loading={true}
+            />
+          ) : (
+            <Avatar
+              style={styles.avatarPicture}
+              image={user.pictureUrl}
+              size={100}
+              borderRadius={50}
+            />
+          )}
         </TouchableOpacity>
         <View>
           {user.firstname !== null && user.lastname !== null ? (
@@ -230,7 +283,9 @@ const styles = StyleSheet.create({
   avatarPicture: {
     backgroundColor: '#FF6161'
   },
-  avatarContainer: { marginBottom: 20 },
+  avatarContainer: {
+    marginBottom: 20
+  },
   profileName: {
     fontSize: 18,
     color: '#003466',
@@ -312,7 +367,12 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   settingOption: { flexDirection: 'row' },
-  textSetting: { marginLeft: 10, alignSelf: 'center' }
+  textSetting: { marginLeft: 10, alignSelf: 'center' },
+  loadingText: {
+    color: '#003466',
+    marginLeft: 6,
+    fontSize: 22
+  }
 });
 
 export default connect(mapStateToProps)(UserProfile);

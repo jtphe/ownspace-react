@@ -22,8 +22,8 @@ const user = {
                     firstname,
                     lastname,
                     email,
-                    password,
-                    picture,
+                    pictureName,
+                    pictureUrl,
                     notification,
                     role,
                     group,
@@ -74,6 +74,23 @@ const user = {
         graphqlOperation(query, { id, password: cryptedPassword })
       );
       return res.data.updateUser;
+    },
+    updateUserPicture: async ({ id, pictureUrl, pictureName }) => {
+      const query = `mutation updateUser($id: ID! $pictureUrl: String! $pictureName: String!){
+        updateUser(input:{
+          id:$id
+          pictureUrl:$pictureUrl
+          pictureName:$pictureName
+        }){
+          id,
+          pictureUrl,
+          pictureName
+        }
+      }`;
+      const res = await API.graphql(
+        graphqlOperation(query, { id, pictureUrl, pictureName })
+      );
+      return res.data.updateUser;
     }
   },
   Query: {
@@ -84,7 +101,8 @@ const user = {
           firstname
           lastname
           email
-          picture
+          pictureName
+          pictureUrl
           notification
           role
           group

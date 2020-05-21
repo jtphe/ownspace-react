@@ -90,8 +90,8 @@
     <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: androidx.collection:collection:1.1.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-common:2.2.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.arch.core:core-common:2.1.0@jar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-common:2.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation:1.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.infer.annotation:infer-annotation:0.11.2@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.2@jar" level="project" />
@@ -99,15 +99,15 @@
     <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp-urlconnection:3.12.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp:3.12.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.15.0@jar" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.bumptech.glide:disklrucache:4.9.0@jar" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.bumptech.glide:annotations:4.9.0@jar" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.41@jar" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.3.41@jar" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.3.41@jar" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50@jar" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.3.50@jar" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.3.50@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.device.yearclass:yearclass:2.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: commons-codec:commons-codec:1.10@jar" level="project" />
     <orderEntry type="library" name="Gradle: commons-io:commons-io:1.4@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.bumptech.glide:disklrucache:4.9.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.bumptech.glide:annotations:4.9.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.react:react-native:0.61.5@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.appcompat:appcompat:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.browser:browser:1.0.0@aar" level="project" />
@@ -118,7 +118,7 @@
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement:16.0.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.legacy:legacy-support-v4:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.bumptech.glide:glide:4.9.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.fragment:fragment:1.1.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.fragment:fragment:1.2.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.appcompat:appcompat-resources:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.legacy:legacy-support-core-ui:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.drawerlayout:drawerlayout:1.0.0@aar" level="project" />
@@ -126,10 +126,10 @@
     <orderEntry type="library" name="Gradle: androidx.legacy:legacy-support-core-utils:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.viewpager:viewpager:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.loader:loader:1.0.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.activity:activity:1.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.activity:activity:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.vectordrawable:vectordrawable-animated:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.vectordrawable:vectordrawable:1.1.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.coordinatorlayout:coordinatorlayout:1.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.coordinatorlayout:coordinatorlayout:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.slidingpanelayout:slidingpanelayout:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.customview:customview:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.swiperefreshlayout:swiperefreshlayout:1.0.0@aar" level="project" />
@@ -139,15 +139,16 @@
     <orderEntry type="library" name="Gradle: androidx.versionedparcelable:versionedparcelable:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.bumptech.glide:gifdecoder:4.9.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.interpolator:interpolator:1.0.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-viewmodel:2.1.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-viewmodel:2.2.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.documentfile:documentfile:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.print:print:1.0.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-runtime:2.1.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.savedstate:savedstate:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata:2.0.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: androidx.arch.core:core-runtime:2.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata-core:2.2.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-runtime:2.2.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.savedstate:savedstate:1.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.arch.core:core-runtime:2.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:fresco:2.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:fbcore:2.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:drawee:2.0.0@aar" level="project" />
@@ -159,39 +160,41 @@
     <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-okhttp3:2.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: io.nlopez.smartlocation:library:3.2.11@aar" level="project" />
     <orderEntry type="library" name="Gradle: org.webkit:android-jsc:r245459@aar" level="project" />
-    <orderEntry type="module" module-name="android-expo-permissions" />
-    <orderEntry type="module" module-name="android-expo-constants" />
-    <orderEntry type="module" module-name="android-unimodules-image-loader-interface" />
+    <orderEntry type="module" module-name="expo-permissions-android-expo-permissions" />
+    <orderEntry type="module" module-name="expo-constants-android-expo-constants" />
+    <orderEntry type="module" module-name="unimodules-image-loader-interface-android-unimodules-image-loader-interface" />
     <orderEntry type="module" module-name="android-expo-web-browser" />
-    <orderEntry type="module" module-name="android-expo-file-system" />
+    <orderEntry type="module" module-name="expo-file-system-android-expo-file-system" />
     <orderEntry type="module" module-name="android-expo-location" />
-    <orderEntry type="module" module-name="android-unimodules-react-native-adapter" />
+    <orderEntry type="module" module-name="expo-image-loader" />
     <orderEntry type="module" module-name="android-expo-error-recovery" />
-    <orderEntry type="module" module-name="android-unimodules-permissions-interface" />
-    <orderEntry type="module" module-name="android-unimodules-core" />
+    <orderEntry type="module" module-name="unimodules-permissions-interface-android-unimodules-permissions-interface" />
+    <orderEntry type="module" module-name="core-android-unimodules-core" />
+    <orderEntry type="module" module-name="react-native-adapter-android-unimodules-react-native-adapter" />
     <orderEntry type="module" module-name="android-expo-app-loader-provider" />
     <orderEntry type="module" module-name="android-expo-font" />
     <orderEntry type="module" module-name="android-expo-keep-awake" />
     <orderEntry type="module" module-name="android-expo-linear-gradient" />
     <orderEntry type="module" module-name="android-expo-localization" />
     <orderEntry type="module" module-name="android-expo-sqlite" />
-    <orderEntry type="module" module-name="android-unimodules-barcode-scanner-interface" />
-    <orderEntry type="module" module-name="android-unimodules-camera-interface" />
-    <orderEntry type="module" module-name="android-unimodules-constants-interface" />
-    <orderEntry type="module" module-name="android-unimodules-face-detector-interface" />
-    <orderEntry type="module" module-name="android-unimodules-file-system-interface" />
-    <orderEntry type="module" module-name="android-unimodules-font-interface" />
-    <orderEntry type="module" module-name="android-unimodules-sensors-interface" />
-    <orderEntry type="module" module-name="android-unimodules-task-manager-interface" />
+    <orderEntry type="module" module-name="unimodules-barcode-scanner-interface-android-unimodules-barcode-scanner-interface" />
+    <orderEntry type="module" module-name="unimodules-camera-interface-android-unimodules-camera-interface" />
+    <orderEntry type="module" module-name="unimodules-constants-interface-android-unimodules-constants-interface" />
+    <orderEntry type="module" module-name="unimodules-face-detector-interface-android-unimodules-face-detector-interface" />
+    <orderEntry type="module" module-name="unimodules-file-system-interface-android-unimodules-file-system-interface" />
+    <orderEntry type="module" module-name="unimodules-font-interface-android-unimodules-font-interface" />
+    <orderEntry type="module" module-name="unimodules-sensors-interface-android-unimodules-sensors-interface" />
+    <orderEntry type="module" module-name="unimodules-task-manager-interface-android-unimodules-task-manager-interface" />
+    <orderEntry type="module" module-name="unimodules-app-loader" />
     <orderEntry type="module" module-name="android-react-native-community_masked-view" />
-    <orderEntry type="module" module-name="android-react-native-community_netinfo" />
-    <orderEntry type="module" module-name="android-amazon-cognito-identity-js" />
+    <orderEntry type="module" module-name="netinfo-android-react-native-community_netinfo" />
+    <orderEntry type="module" module-name="amazon-cognito-identity-js-android-amazon-cognito-identity-js" />
     <orderEntry type="module" module-name="react-native-document-picker" />
     <orderEntry type="module" module-name="react-native-file-viewer" />
     <orderEntry type="module" module-name="android-react-native-gesture-handler" />
     <orderEntry type="module" module-name="android-react-native-image-crop-picker" />
     <orderEntry type="module" module-name="android-react-native-reanimated" />
-    <orderEntry type="module" module-name="android-react-native-screens" />
+    <orderEntry type="module" module-name="react-native-screens-android-react-native-screens" />
     <orderEntry type="module" module-name="react-native-svg" />
     <orderEntry type="module" module-name="android-react-native-vector-icons" />
     <orderEntry type="module" module-name="rn-fetch-blob" />

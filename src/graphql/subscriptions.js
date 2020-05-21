@@ -9,7 +9,8 @@ export const onCreateUser = /* GraphQL */ `
       lastname
       email
       password
-      picture
+      pictureName
+      pictureUrl
       notification
       role
       group
@@ -27,7 +28,8 @@ export const onUpdateUser = /* GraphQL */ `
       lastname
       email
       password
-      picture
+      pictureName
+      pictureUrl
       notification
       role
       group
@@ -45,7 +47,8 @@ export const onDeleteUser = /* GraphQL */ `
       lastname
       email
       password
-      picture
+      pictureName
+      pictureUrl
       notification
       role
       group
@@ -66,7 +69,8 @@ export const onCreateGroup = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -88,7 +92,8 @@ export const onUpdateGroup = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -110,7 +115,8 @@ export const onDeleteGroup = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -136,7 +142,8 @@ export const onCreateFile = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -168,7 +175,8 @@ export const onUpdateFile = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -200,7 +208,8 @@ export const onDeleteFile = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -231,7 +240,8 @@ export const onCreateFolder = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -260,7 +270,8 @@ export const onUpdateFolder = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -289,7 +300,8 @@ export const onDeleteFolder = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -310,6 +322,7 @@ export const onCreateRight = /* GraphQL */ `
       read
       edit
       documentId
+      user
     }
   }
 `;
@@ -319,6 +332,7 @@ export const onUpdateRight = /* GraphQL */ `
       read
       edit
       documentId
+      user
     }
   }
 `;
@@ -328,6 +342,7 @@ export const onDeleteRight = /* GraphQL */ `
       read
       edit
       documentId
+      user
     }
   }
 `;
