@@ -28,7 +28,6 @@ import { resetAllStore } from '@store/modules/app/actions';
  */
 const Login = () => {
   useFonts({
-    // eslint-disable-next-line global-require
     HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
   });
   const [email, setEmail] = useState('');

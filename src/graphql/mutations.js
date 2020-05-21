@@ -1,4 +1,3 @@
-/* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
 export const createUser = /* GraphQL */ `
@@ -12,7 +11,8 @@ export const createUser = /* GraphQL */ `
       lastname
       email
       password
-      picture
+      pictureName
+      pictureUrl
       notification
       role
       group
@@ -33,7 +33,8 @@ export const updateUser = /* GraphQL */ `
       lastname
       email
       password
-      picture
+      pictureName
+      pictureUrl
       notification
       role
       group
@@ -54,7 +55,8 @@ export const deleteUser = /* GraphQL */ `
       lastname
       email
       password
-      picture
+      pictureName
+      pictureUrl
       notification
       role
       group
@@ -78,7 +80,8 @@ export const createGroup = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -103,7 +106,8 @@ export const updateGroup = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -128,7 +132,8 @@ export const deleteGroup = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -157,7 +162,8 @@ export const createFile = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -192,7 +198,8 @@ export const updateFile = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -227,7 +234,8 @@ export const deleteFile = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -261,7 +269,8 @@ export const createFolder = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -293,7 +302,8 @@ export const updateFolder = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -325,7 +335,8 @@ export const deleteFolder = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -349,6 +360,7 @@ export const createRight = /* GraphQL */ `
       read
       edit
       documentId
+      user
     }
   }
 `;
@@ -361,6 +373,7 @@ export const updateRight = /* GraphQL */ `
       read
       edit
       documentId
+      user
     }
   }
 `;
@@ -373,6 +386,7 @@ export const deleteRight = /* GraphQL */ `
       read
       edit
       documentId
+      user
     }
   }
 `;

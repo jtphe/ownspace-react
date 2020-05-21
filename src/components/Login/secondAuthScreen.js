@@ -115,6 +115,7 @@ const SecondAuthScreen = ({ user }) => {
   const verifyTotpToken = async () => {
     try {
       if (user.challengeName === 'SOFTWARE_TOKEN_MFA') {
+        dispatch({ type: 'M_SET_APP_LOADING', loading: true });
         const loggedUser = await Auth.confirmSignIn(
           user,
           token,

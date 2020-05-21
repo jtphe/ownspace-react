@@ -4,7 +4,8 @@ type User @model {
   lastname: String
   email: String!
   password: String!
-  picture: String
+  pictureName: String
+  pictureUrl: String
   notification: Boolean
   role: String!
   group: ID
@@ -49,9 +50,10 @@ type Folder @model {
 }
 
 type Right @model {
-  read: Boolean
-  edit: Boolean
-  documentId: ID
+  read: Boolean!
+  edit: Boolean!
+  documentId: ID!
+  user: ID!
 }
 
 type App @model {

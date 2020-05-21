@@ -40,15 +40,14 @@ function* createFile({ payload }) {
     const currentPathId = yield select(getCurrentPathId);
     const currentPathString = yield select(getCurrentPathString);
     const dateNow = +moment();
+
     payload.owner = user.id;
     payload.parent = currentPathId;
     payload.createdAt = dateNow;
     payload.updatedAt = dateNow;
+
     // Add file to DynamoDB
     const file = yield call(api.createFileTxt, payload);
-
-    console.log('currentPathId', currentPathId);
-    console.log('currentPathString', currentPathString);
 
     if (currentPathString !== 'Home/') {
       // Add file to S3
@@ -99,10 +98,6 @@ function* createFolder({ payload }) {
 
     // Add folder to DynamoDB
     const folder = yield call(api.createFolder, payload);
-    console.log('folder', folder);
-
-    console.log('currentPathId', currentPathId);
-    console.log('currentPathString', currentPathString);
 
     if (currentPathString !== 'Home/') {
       // Add file to S3

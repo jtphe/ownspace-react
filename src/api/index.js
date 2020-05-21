@@ -168,7 +168,7 @@ const api = {
   },
 
   /**
-   * Change the user password in cognito
+   * Change the user password in Cognito
    * @param {object} payload - Id, old password and new password of the user
    */
   changeUserPassword(payload) {
@@ -179,6 +179,82 @@ const api = {
         newPassword: payload.newPassword
       })
     );
+  },
+  /**
+   * Update the user picture
+   * @param {object} payload - User picture
+   */
+  async updateUserPicture(payload) {
+    try {
+      const response = await fetch(payload.absolutePath);
+      const blob = await response.blob();
+
+      return Promise.resolve(
+        Storage.put(payload.name, blob, {
+          level: 'private',
+          contentType: payload.type,
+          progressCallback(progress) {
+            if (progress.loaded === progress.total) {
+              return 200;
+            }
+          }
+        })
+      );
+    } catch (err) {
+      console.log('Error while updating user picture api  =>', err);
+    }
+  },
+  /**
+   * Get the user picture url
+   * @param {object}  payload - Picture name
+   */
+  async getPictureUrl(payload) {
+    try {
+      return Promise.resolve(
+        Storage.get(payload, {
+          expires: 604800,
+          level: 'private'
+        })
+          .then(result => {
+            return result;
+          })
+          .catch(err => console.log(err))
+      );
+    } catch (err) {
+      console.log('Error while getting picture url api =>', err);
+    }
+  },
+  /**
+   * Update the user picture in DynamoDB
+   * @param {object} payload - User id, picture url and name
+   */
+  updateUserPictureDB(payload) {
+    return Promise.resolve(
+      user.Mutation.updateUserPicture({
+        id: payload.owner,
+        pictureUrl: payload.url,
+        pictureName: payload.name
+      })
+    );
+  },
+  /**
+   * Remove the previous picture before adding a new one
+   * @param {object} payload - Picture name
+   */
+  async removeOldPicture(payload) {
+    try {
+      return Promise.resolve(
+        Storage.remove(payload, {
+          level: 'private'
+        })
+          .then(result => {
+            return result;
+          })
+          .catch(err => console.log(err))
+      );
+    } catch (err) {
+      console.log('Error while removing picture api =>', err);
+    }
   },
   /**
    * Sign out the user from the application

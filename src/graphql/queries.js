@@ -9,7 +9,8 @@ export const getUser = /* GraphQL */ `
       lastname
       email
       password
-      picture
+      pictureName
+      pictureUrl
       notification
       role
       group
@@ -32,7 +33,8 @@ export const listUsers = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -55,7 +57,8 @@ export const getGroup = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -82,7 +85,8 @@ export const listGroups = /* GraphQL */ `
           lastname
           email
           password
-          picture
+          pictureName
+          pictureUrl
           notification
           role
           group
@@ -110,7 +114,8 @@ export const getFile = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -147,7 +152,8 @@ export const listFiles = /* GraphQL */ `
           lastname
           email
           password
-          picture
+          pictureName
+          pictureUrl
           notification
           role
           group
@@ -180,7 +186,8 @@ export const getFolder = /* GraphQL */ `
         lastname
         email
         password
-        picture
+        pictureName
+        pictureUrl
         notification
         role
         group
@@ -214,7 +221,8 @@ export const listFolders = /* GraphQL */ `
           lastname
           email
           password
-          picture
+          pictureName
+          pictureUrl
           notification
           role
           group
@@ -237,6 +245,7 @@ export const getRight = /* GraphQL */ `
       read
       edit
       documentId
+      user
     }
   }
 `;
@@ -251,6 +260,7 @@ export const listRights = /* GraphQL */ `
         read
         edit
         documentId
+        user
       }
       nextToken
     }

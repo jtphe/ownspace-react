@@ -3,12 +3,15 @@ import {
   M_CREATE_USER,
   M_LOAD_USER,
   M_UPDATE_USER_NAMES,
-  M_SIGN_OUT
+  M_SIGN_OUT,
+  M_PICTURE_IS_UPLOADING,
+  M_UPDATE_USER_PICTURE
 } from './actions';
 
 const initialState = {
   user: null,
-  token: null
+  token: null,
+  pictureIsUploading: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -43,6 +46,26 @@ export default function reducer(state = initialState, action) {
       return update(state, {
         token: {
           $set: action.token
+        }
+      });
+    case M_PICTURE_IS_UPLOADING:
+      return update(state, {
+        pictureIsUploading: {
+          $set: action.isUploading
+        }
+      });
+    case M_UPDATE_USER_PICTURE:
+      return update(state, {
+        user: {
+          pictureName: {
+            $set: action.name
+          },
+          pictureUrl: {
+            $set: action.url
+          }
+        },
+        pictureIsUploading: {
+          $set: false
         }
       });
     case 'M_RESET_USER_STORE':

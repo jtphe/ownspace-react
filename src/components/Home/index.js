@@ -3,17 +3,27 @@ import { StyleSheet, View } from 'react-native';
 import Header from '@shared/Header/index';
 import NavMenu from '@components/Menu';
 import MenuPlus from './menuPlus';
-import { useDispatch } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import { loadUser } from '@store/modules/user/actions';
 import { Auth } from 'aws-amplify';
 import HomeList from '@components/Document/index';
+import { getIsLoading } from '@store/modules/app/selectors';
+import { createSelector } from 'reselect';
+import { Button } from 'react-native-paper';
+import i18n from '@i18n/i18n';
+
+const mapStateToProps = createSelector(getIsLoading, isLoading => {
+  return {
+    isLoading
+  };
+});
 
 /**
  * The Home component
  * @param {object} loggedUser - The user logged object
  * @param {boolean} isLoggedIn - If the user is log in or not
  */
-const Home = ({ loggedUser, isLoggedIn }) => {
+const Home = ({ loggedUser, isLoggedIn, isLoading }) => {
   const [menuPlus, setMenuPlus] = useState('');
   const dispatch = useDispatch();
 
@@ -80,13 +90,28 @@ const Home = ({ loggedUser, isLoggedIn }) => {
    * @returns {React.Component} - Home component
    */
   return (
-    <View style={styles.container}>
+    <View style={styles.globalContainer}>
       <Header />
-      <View style={styles.test}>
-        <HomeList />
-        <NavMenu openPlusMenu={() => openPlusMenu()} />
-      </View>
-      <MenuPlus setRefPlus={setRefPlus} />
+      {!isLoading ? (
+        <View style={styles.container}>
+          <View style={styles.homeContainer}>
+            <HomeList />
+            <NavMenu openPlusMenu={() => openPlusMenu()} />
+          </View>
+          <MenuPlus setRefPlus={setRefPlus} />
+        </View>
+      ) : (
+        <View style={styles.containerLoading}>
+          <Button
+            color="#003466"
+            labelStyle={styles.loadingText}
+            uppercase={false}
+            loading={true}
+          >
+            {i18n.t('document.loading')}
+          </Button>
+        </View>
+      )}
     </View>
   );
 };
@@ -95,10 +120,13 @@ const Home = ({ loggedUser, isLoggedIn }) => {
  * Styles of Home component
  */
 const styles = StyleSheet.create({
-  container: {
+  globalContainer: {
     flex: 1,
     flexDirection: 'column',
     backgroundColor: 'white'
+  },
+  container: {
+    flex: 1
   },
   input: {
     height: 50,
@@ -108,7 +136,16 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     marginBottom: 20
   },
-  test: { flex: 1 }
+  homeContainer: { flex: 1 },
+  containerLoading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center'
+  },
+  loadingText: {
+    color: '#003466',
+    fontSize: 22
+  }
 });
 
-export default Home;
+export default connect(mapStateToProps)(Home);
