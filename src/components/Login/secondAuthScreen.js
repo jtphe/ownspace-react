@@ -10,7 +10,6 @@ import { ifIphoneX } from 'react-native-iphone-x-helper';
 import { Actions } from 'react-native-router-flux';
 import TotpAuthScreen from './totpAuthScreen';
 import i18n from '@i18n/i18n';
-import { useFonts } from '@use-expo/font';
 import { useDispatch } from 'react-redux';
 import { createUser } from '@store/modules/user/actions';
 import { ROLE_ONE, ROLE_TWO, RECURRING_ROLE } from '@constants';
@@ -23,11 +22,6 @@ import showToast from '@utils/showToast';
  * @param {function} confirmNewPwd - Confirm the new password
  */
 const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
-  useFonts({
-    // eslint-disable-next-line global-require
-    HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
-  });
-
   /**
    * Render RenewPwdScreen component
    * @returns {React.Component} - RenewPwdScreen component
@@ -38,6 +32,7 @@ const RenewPwdScreen = ({ pwd, setNewPasswordRequired, confirmNewPwd }) => {
       <TextInput
         style={styles.input}
         placeholder={i18n.t('newPassword.placeholder')}
+        placeholderTextColor="grey"
         textContentType="password"
         autoCapitalize="none"
         secureTextEntry={true}
@@ -261,7 +256,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
-  btnText: { color: 'white', fontFamily: 'HelveticaNeue' }
+  btnText: { color: 'white', fontFamily: 'HelveticaNeueBold' }
 });
 
 export default SecondAuthScreen;

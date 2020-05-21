@@ -6,17 +6,12 @@ import CustomButton from '@shared/CustomButton';
 import { createFile } from '@store/modules/document/actions';
 import { useDispatch } from 'react-redux';
 import i18n from '@i18n/i18n';
-import { useFonts } from '@use-expo/font';
 import showToast from '@utils/showToast';
 
 /**
  * The CreateFile component
  */
 const CreateFile = () => {
-  useFonts({
-    // eslint-disable-next-line global-require
-    DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
-  });
   const [text, setText] = useState('');
   const [title, setTitle] = useState('');
   const dispatch = useDispatch();

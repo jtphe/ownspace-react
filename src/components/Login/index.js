@@ -18,7 +18,6 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import i18n from '@i18n/i18n';
 import Text from '@shared/Text';
-import { useFonts } from '@use-expo/font';
 import showToast from '@utils/showToast';
 import { useDispatch } from 'react-redux';
 import { resetAllStore } from '@store/modules/app/actions';
@@ -27,9 +26,6 @@ import { resetAllStore } from '@store/modules/app/actions';
  * The Login component
  */
 const Login = () => {
-  useFonts({
-    HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf')
-  });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -94,6 +90,7 @@ const Login = () => {
           <TextInput
             style={styles.input}
             placeholder={i18n.t('loginPage.email')}
+            placeholderTextColor="grey"
             textContentType="emailAddress"
             keyboardType="email-address"
             onChangeText={txt => {
@@ -112,6 +109,7 @@ const Login = () => {
             }}
             style={styles.input}
             placeholder={i18n.t('loginPage.password')}
+            placeholderTextColor="grey"
             textContentType="password"
             autoCapitalize="none"
             secureTextEntry={true}
@@ -190,7 +188,6 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     paddingLeft: 15,
-    fontFamily: 'HelveticaNeue',
     borderColor: 'transparent',
     backgroundColor: '#F7D8D3',
     color: 'grey',
@@ -214,11 +211,10 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   btnHelp: {
-    fontWeight: '500',
     color: 'white'
   },
   logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
-  btnText: { fontFamily: 'HelveticaNeue', color: '#fff' }
+  btnText: { fontFamily: 'HelveticaNeueBold', color: '#fff' }
 });
 
 export default Login;

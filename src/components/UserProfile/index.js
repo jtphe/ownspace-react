@@ -17,7 +17,6 @@ import Avatar from '@shared/Avatar';
 import { connect, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 import { getUser, getPictureIsUploading } from '@store/modules/user/selectors';
-import { useFonts } from '@use-expo/font';
 import { Button } from 'react-native-paper';
 import {
   updateUserNames,
@@ -47,10 +46,6 @@ const mapStateToProps = createSelector(
  * @param {object} user - The user object
  */
 const UserProfile = ({ user, pictureIsUploading }) => {
-  useFonts({
-    // eslint-disable-next-line global-require
-    DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf')
-  });
   const [firstname, setFirstname] = useState(user.firstname);
   const [lastname, setLastname] = useState(user.lastname);
   const dispatch = useDispatch();
@@ -302,15 +297,12 @@ const styles = StyleSheet.create({
   input: {
     fontFamily: 'DejaVuSans',
     backgroundColor: '#DBDBDB',
+    color: 'grey',
     fontSize: 12,
     borderRadius: 6,
     paddingVertical: 15,
     paddingLeft: 8,
-    marginBottom: 20,
-    shadowColor: 'rgba(0,0,0,.04)',
-    shadowOffset: { width: 5, height: 20 },
-    shadowOpacity: 0.8,
-    shadowRadius: 10
+    marginBottom: 20
   },
   containerInfos: {
     flex: 1,
