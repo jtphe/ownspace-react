@@ -21,9 +21,9 @@ const TotpAuthScreen = ({ setToken, verifyTotpToken }) => {
         style={styles.input}
         placeholder={i18n.t('totp.placeholder')}
         placeholderTextColor="grey"
-        textContentType="password"
+        textContentType="number"
+        keyboardType="number-pad"
         autoCapitalize="none"
-        secureTextEntry={true}
         onChangeText={txt => {
           setToken(txt);
         }}
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
     opacity: 0.7
   },
   input: {
-    fontFamily: 'HelveticaNeue',
     height: 50,
     paddingLeft: 15,
     borderColor: 'transparent',
