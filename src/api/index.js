@@ -46,7 +46,7 @@ const api = {
     return Promise.resolve(
       document.Query.getAllFolders({
         parent: payload.pathId,
-        user: payload.owner
+        user: payload.userId
       })
     );
   },
@@ -98,15 +98,17 @@ const api = {
   async addSelectedFileToS3(payload) {
     try {
       const response = await fetch(payload.absolutePath);
+
       const blob = await response.blob();
 
       return Promise.resolve(
         Storage.put(payload.path, blob, {
           level: 'private',
-          contentType: payload.type,
+          contentType: payload.type ? payload.type : 'application/octet-stream',
           progressCallback(progress) {
             if (progress.loaded === progress.total) {
-              return 200;
+              console.log('response =>', response.status);
+              return response.status;
             }
           }
         })
@@ -114,6 +116,93 @@ const api = {
     } catch (err) {
       console.log(err);
     }
+  },
+  async deleteFileFromS3(payload) {
+    try {
+      Storage.remove(payload.path, { level: 'private' })
+        .then(result => {
+          console.log('result', result);
+          return result;
+        })
+        .catch(err => console.log(err));
+    } catch (e) {
+      console.log('Error while removing previous file S3 api =>', e);
+    }
+  },
+  renameFileDB(payload) {
+    return Promise.resolve(
+      document.Mutation.renameFile({
+        id: payload.id,
+        name: payload.name,
+        updatedAt: payload.updatedAt
+      })
+    );
+  },
+  deleteFileFromDB(payload) {
+    return Promise.resolve(
+      document.Mutation.deleteFile({
+        id: payload.id
+      })
+    );
+  },
+  updateFolderNbFiles(payload) {
+    return Promise.resolve(
+      document.Mutation.updateFolderNbFiles({
+        id: payload.id,
+        nbFiles: payload.nbFiles + 1,
+        updatedAt: payload.updatedAt
+      })
+    );
+  },
+  addPasswordFolder(payload) {
+    return Promise.resolve(
+      document.Mutation.updatePasswordFolder({
+        id: payload.id,
+        password: payload.password,
+        updatedAt: payload.updatedAt
+      })
+    );
+  },
+  checkFolderPassword(payload) {
+    return Promise.resolve(
+      document.Query.checkFolderPassword({
+        id: payload.folder.id,
+        password: payload.password
+      })
+    );
+  },
+  removeFolderPassword(payload) {
+    return Promise.resolve(
+      document.Mutation.removePasswordFolder({
+        id: payload.id,
+        updatedAt: payload.updatedAt
+      })
+    );
+  },
+  addPasswordFile(payload) {
+    return Promise.resolve(
+      document.Mutation.updatePasswordFile({
+        id: payload.id,
+        password: payload.password,
+        updatedAt: payload.updatedAt
+      })
+    );
+  },
+  checkFilePassword(payload) {
+    return Promise.resolve(
+      document.Query.checkFilePassword({
+        id: payload.file.id,
+        password: payload.password
+      })
+    );
+  },
+  removePasswordFile(payload) {
+    return Promise.resolve(
+      document.Mutation.removePasswordFile({
+        id: payload.id,
+        updatedAt: payload.updatedAt
+      })
+    );
   },
   // USER
   /**

@@ -19,6 +19,22 @@ export const M_SET_UPLOADING_FILE = 'M_SET_UPLOADING_FILE';
 export const M_REMOVE_UPLOADING_FILE = 'M_REMOVE_UPLOADING_FILE';
 export const U_ADD_DOCUMENT = 'U_ADD_DOCUMENT';
 export const M_ADD_DOCUMENT = 'M_ADD_DOCUMENT';
+export const U_RENAME_DOCUMENT = 'U_RENAME_DOCUMENT';
+export const M_RENAME_DOCUMENT = 'M_RENAME_DOCUMENT';
+export const U_DELETE_DOCUMENT = 'U_DELETE_DOCUMENT';
+export const M_DELETE_DOCUMENT = 'M_DELETE_DOCUMENT';
+export const U_ADD_PASSWORD_FOLDER = 'U_ADD_PASSWORD_FOLDER';
+export const M_ADD_PASSWORD_FOLDER = 'M_ADD_PASSWORD_FOLDER';
+export const U_CHECK_FOLDER_PASSWORD = 'U_CHECK_FOLDER_PASSWORD';
+export const U_REMOVE_PASSWORD_FOLDER = 'U_REMOVE_PASSWORD_FOLDER';
+export const M_REMOVE_PASSWORD_FOLDER = 'M_REMOVE_PASSWORD_FOLDER';
+export const U_ADD_PASSWORD_FILE = 'U_ADD_PASSWORD_FILE';
+export const M_ADD_PASSWORD_FILE = 'M_ADD_PASSWORD_FILE';
+export const U_CHECK_FILE_PASSWORD = 'U_CHECK_FILE_PASSWORD';
+export const U_REMOVE_PASSWORD_FILE = 'U_REMOVE_PASSWORD_FILE';
+export const M_REMOVE_PASSWORD_FILE = 'M_REMOVE_PASSWORD_FILE';
+export const U_CHECK_FILE_PASSWORD_BEFORE_DELETE =
+  'U_CHECK_FILE_PASSWORD_BEFORE_DELETE';
 
 export const createFile = payload => ({
   type: U_CREATE_FILE,
@@ -57,5 +73,50 @@ export const addSelectedPicture = payload => ({
 
 export const addDocument = payload => ({
   type: U_ADD_DOCUMENT,
+  payload
+});
+
+export const renameDocument = payload => ({
+  type: U_RENAME_DOCUMENT,
+  payload
+});
+
+export const deleteDocument = payload => ({
+  type: U_DELETE_DOCUMENT,
+  payload
+});
+
+export const addPasswordFolder = payload => ({
+  type: U_ADD_PASSWORD_FOLDER,
+  payload
+});
+
+export const checkFolderPassword = payload => ({
+  type: U_CHECK_FOLDER_PASSWORD,
+  payload
+});
+
+export const removePasswordFolder = payload => ({
+  type: U_REMOVE_PASSWORD_FOLDER,
+  payload
+});
+
+export const addPasswordFile = payload => ({
+  type: U_ADD_PASSWORD_FILE,
+  payload
+});
+
+export const checkFilePassword = payload => ({
+  type: U_CHECK_FILE_PASSWORD,
+  payload
+});
+
+export const removePasswordFile = payload => ({
+  type: U_REMOVE_PASSWORD_FILE,
+  payload
+});
+
+export const checkFilePasswordBeforeDelete = payload => ({
+  type: U_CHECK_FILE_PASSWORD_BEFORE_DELETE,
   payload
 });

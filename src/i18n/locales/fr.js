@@ -42,13 +42,18 @@ export default {
     tooShort:
       'Le nom du fichier et son contenu doivent contenir au moins 6 caractères',
     noEmpty: 'Les champs de texte ne peuvent pas être vide',
-    titleTooLong: 'Le nom du fichier doit être inférieur ou égal à caractères'
+    titleTooLong:
+      'Le nom du fichier doit être inférieur ou égal à 40 caractères'
   },
   button: {
     validate: 'Valider',
     cancel: 'Annuler',
     next: 'Suivant',
-    create: 'Créer'
+    create: 'Créer',
+    rename: 'Renommer',
+    delete: 'Supprimer',
+    add: 'Ajouter',
+    remove: 'Retirer'
   },
   progressBar: {
     createFile: 'Création du fichier'
@@ -85,7 +90,7 @@ export default {
     update: 'Mettre à jour'
   },
   document: {
-    home: 'Accueil',
+    home: 'Home',
     loading: 'Chargement',
     nbFile: {
       one: ' {{count}} fichier',
@@ -100,8 +105,11 @@ export default {
     noDocument: 'Pas de document',
     createFolderTitle: 'Créer un dossier',
     createFolderPlaceholder: 'Entrer un nom de dossier',
+    renameFileTitle: 'Renommer le fichier',
+    renameFilePlaceholder: 'Entrer un nom de fichier',
     share: 'Partager',
     protect: 'Protéger avec un mot de passe',
+    unprotect: 'Retirer le mot de passe',
     renameFolder: 'Renommer le dossier',
     renameFile: 'Renommer le fichier',
     deleteFolder: 'Supprimer le dossier',
@@ -110,9 +118,34 @@ export default {
     notSupported: "Impossible d'ajouter le fichier. Format non supporté",
     cannotOpen: "Impossible d'ouvrir le fichier",
     downloadSpecificApp:
-      "Téléchargez une application capable d'ouvrir ce type de fichier"
+      "Téléchargez une application capable d'ouvrir ce type de fichier",
+    tooShort: 'Le nom du fichier doit contenir au moins 2 caractères',
+    confirmDeleteFile: 'Êtes-vous sûr de vouloir supprimer %{file} ?',
+    confirmDeleteFolder:
+      'Êtes-vous sûr de vouloir supprimer le dossier %{folder} et tout son contenu ?',
+    addFolderPassword: 'Ajouter un mot de passe au dossier',
+    renewFolderPassword: 'Ajouter un nouveau mot de passe au dossier',
+    addFilePassword: 'Ajouter un mot de passe au fichier',
+    renewFilePassword: 'Ajouter un nouveau mot de passe au fichier',
+    passwordPlaceholder: 'Entrer un mot de passe...',
+    enterFolderPassword: 'Entrer le mot de passe du dossier',
+    enterFilePassword: 'Entrer le mot de passe du fichier',
+    removePassword: 'Retirer le mot de passe du dossier %{folder}',
+    confirmRemovePassword:
+      'Êtes-vous sûr de vouloir retirer le mot de passe du dossier %{folder} ?',
+    removeFilePassword: 'Retirer le mot de passe du fichier %{file}',
+    confirmRemoveFilePassword:
+      'Êtes-vous sûr de vouloir retirer le mot de passe du fichier %{file} ?'
   },
   picture: {
     imported: 'Image importée !'
+  },
+  folder: {
+    error1: 'Mot de passe incorrect',
+    passwordAdded: 'Mot de passe ajouté !',
+    passwordRemoved: 'Mot de passe supprimé !'
+  },
+  file: {
+    deleted: 'Fichier supprimé !'
   }
 };

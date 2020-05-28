@@ -11,7 +11,13 @@ import {
   M_ADD_SELECTED_PICTURE,
   M_SET_UPLOADING_FILE,
   M_REMOVE_UPLOADING_FILE,
-  M_ADD_DOCUMENT
+  M_ADD_DOCUMENT,
+  M_RENAME_DOCUMENT,
+  M_DELETE_DOCUMENT,
+  M_ADD_PASSWORD_FOLDER,
+  M_REMOVE_PASSWORD_FOLDER,
+  M_ADD_PASSWORD_FILE,
+  M_REMOVE_PASSWORD_FILE
 } from './actions';
 
 const initialState = {
@@ -133,6 +139,146 @@ export default function reducer(state = initialState, action) {
           $push: [action.document]
         }
       });
+    case M_RENAME_DOCUMENT: {
+      let index;
+      for (let i = 0; i < state.files.length; i++) {
+        const element = state.files[i];
+        if (element.id === action.id) {
+          index = i;
+          break;
+        }
+      }
+      return update(state, {
+        files: {
+          [index]: {
+            name: {
+              $set: action.name
+            },
+            updatedAt: {
+              $set: action.updatedAt
+            }
+          }
+        }
+      });
+    }
+    case M_DELETE_DOCUMENT: {
+      let index;
+      if (action.documentType === 'file') {
+        for (let i = 0; i < state.files.length; i++) {
+          const element = state.files[i];
+          if (element.id === action.id) {
+            index = i;
+            break;
+          }
+        }
+        return update(state, {
+          files: {
+            $splice: [[index, 1]]
+          }
+        });
+      } else {
+        for (let i = 0; i < state.folders.length; i++) {
+          const element = state.folders[i];
+          if (element.id === action.id) {
+            index = i;
+            break;
+          }
+        }
+        return update(state, {
+          folders: {
+            $splice: [[index, 1]]
+          }
+        });
+      }
+    }
+    case M_ADD_PASSWORD_FOLDER: {
+      let index;
+      for (let i = 0; i < state.folders.length; i++) {
+        const element = state.folders[i];
+        if (element.id === action.id) {
+          index = i;
+          break;
+        }
+      }
+      return update(state, {
+        folders: {
+          [index]: {
+            isProtected: {
+              $set: action.isProtected
+            },
+            updatedAt: {
+              $set: action.updatedAt
+            }
+          }
+        }
+      });
+    }
+    case M_REMOVE_PASSWORD_FOLDER: {
+      let index;
+      for (let i = 0; i < state.folders.length; i++) {
+        const element = state.folders[i];
+        if (element.id === action.id) {
+          index = i;
+          break;
+        }
+      }
+      return update(state, {
+        folders: {
+          [index]: {
+            isProtected: {
+              $set: action.isProtected
+            },
+            updatedAt: {
+              $set: action.updatedAt
+            }
+          }
+        }
+      });
+    }
+    case M_ADD_PASSWORD_FILE: {
+      let index;
+      for (let i = 0; i < state.files.length; i++) {
+        const element = state.files[i];
+        if (element.id === action.id) {
+          index = i;
+          break;
+        }
+      }
+      return update(state, {
+        files: {
+          [index]: {
+            isProtected: {
+              $set: action.isProtected
+            },
+            updatedAt: {
+              $set: action.updatedAt
+            }
+          }
+        }
+      });
+    }
+    case M_REMOVE_PASSWORD_FILE: {
+      let index;
+      for (let i = 0; i < state.files.length; i++) {
+        const element = state.files[i];
+        if (element.id === action.id) {
+          index = i;
+          break;
+        }
+      }
+      return update(state, {
+        files: {
+          [index]: {
+            isProtected: {
+              $set: action.isProtected
+            },
+            updatedAt: {
+              $set: action.updatedAt
+            }
+          }
+        }
+      });
+    }
     default:
       return state;
   }

@@ -1,5 +1,8 @@
 import { API, graphqlOperation } from 'aws-amplify';
 import awsconfig from '../../../../../aws-exports';
+import * as PasswordManager from '../../../../../src/utils/passwordManager';
+import i18n from '@i18n/i18n';
+import showToast from '../../../../../src/utils/showToast';
 
 API.configure(awsconfig);
 
@@ -154,6 +157,120 @@ const document = {
         })
       );
       return res.data.createFile;
+    },
+    renameFile: async ({ id, name, updatedAt }) => {
+      const query = `mutation updateFile($id: ID! $name: String! $updatedAt: String!) {
+        updateFile(input:{
+        id:$id,
+        name:$name,
+        updatedAt:$updatedAt
+      }){
+        id,
+        name,
+        updatedAt
+      }}`;
+      const res = await API.graphql(
+        graphqlOperation(query, { id, name, updatedAt })
+      );
+      return res.data.updateFile;
+    },
+    deleteFile: async ({ id }) => {
+      const query = `mutation deleteFile($id: ID!){
+        deleteFile(input:{
+          id:$id
+        }){
+          id
+        }
+      }`;
+      const res = await API.graphql(graphqlOperation(query, { id }));
+      return res.data.deleteFile;
+    },
+    updateFolderNbFiles: async ({ id, nbFiles, updatedAt }) => {
+      const query = `mutation updateFolder($id: ID!, $nbFiles: Int! $updatedAt: String!){
+        updateFolder(input:{
+          id:$id,
+          nbFiles:$nbFiles
+          updatedAt:$updatedAt
+        }){
+          id,
+          nbFiles,
+          updatedAt
+        }
+      }`;
+      const res = await API.graphql(
+        graphqlOperation(query, { id, nbFiles, updatedAt })
+      );
+      return res.data.updateFolder;
+    },
+    updatePasswordFolder: async ({ id, password, updatedAt }) => {
+      const cryptedPassword = await PasswordManager.hashPassword(password);
+      const query = `mutation updateFolder($id: ID! $password: String! $updatedAt: String!) {
+        updateFolder(input:{
+              id:$id
+              password:$password
+              updatedAt:$updatedAt
+              isProtected: true
+            }){
+                id,
+                isProtected,
+                updatedAt
+            }
+          }`;
+      const res = await API.graphql(
+        graphqlOperation(query, { id, password: cryptedPassword, updatedAt })
+      );
+      return res.data.updateFolder;
+    },
+    removePasswordFolder: async ({ id, updatedAt }) => {
+      const query = `mutation updateFolder($id: ID! $updatedAt: String!) {
+        updateFolder(input:{
+              id:$id
+              password: null
+              updatedAt:$updatedAt
+              isProtected: false
+            }){
+                id,
+                isProtected,
+                updatedAt
+            }
+          }`;
+      const res = await API.graphql(graphqlOperation(query, { id, updatedAt }));
+      return res.data.updateFolder;
+    },
+    updatePasswordFile: async ({ id, password, updatedAt }) => {
+      const cryptedPassword = await PasswordManager.hashPassword(password);
+      const query = `mutation updateFile($id: ID! $password: String! $updatedAt: String!) {
+        updateFile(input:{
+              id:$id
+              password:$password
+              updatedAt:$updatedAt
+              isProtected: true
+            }){
+                id,
+                isProtected,
+                updatedAt
+            }
+          }`;
+      const res = await API.graphql(
+        graphqlOperation(query, { id, password: cryptedPassword, updatedAt })
+      );
+      return res.data.updateFile;
+    },
+    removePasswordFile: async ({ id, updatedAt }) => {
+      const query = `mutation updateFile($id: ID! $updatedAt: String!) {
+        updateFile(input:{
+              id:$id
+              password: null
+              updatedAt:$updatedAt
+              isProtected: false
+            }){
+                id,
+                isProtected,
+                updatedAt
+            }
+          }`;
+      const res = await API.graphql(graphqlOperation(query, { id, updatedAt }));
+      return res.data.updateFile;
     }
   },
   Query: {
@@ -184,7 +301,6 @@ const document = {
             group
           },
           isProtected,
-          password,
           parent,
           nbFiles
          }
@@ -229,6 +345,40 @@ const document = {
       }`;
       const res = await API.graphql(graphqlOperation(query, { parent, user }));
       return res.data.listFiles;
+    },
+    checkFolderPassword: async ({ id, password }) => {
+      const query = `query getFolderPassword($id: ID!){
+        getFolder(id:$id){
+          password
+        }
+      }`;
+      const res = await API.graphql(graphqlOperation(query, { id }));
+      const decryptedPassword = await PasswordManager.decryptPassword(
+        res.data.getFolder.password
+      );
+
+      if (decryptedPassword === password) {
+        return 200;
+      } else {
+        showToast(i18n.t('folder.error1'), true);
+      }
+    },
+    checkFilePassword: async ({ id, password }) => {
+      const query = `query getFilePassword($id: ID!){
+        getFile(id:$id){
+          password
+        }
+      }`;
+      const res = await API.graphql(graphqlOperation(query, { id }));
+      const decryptedPassword = await PasswordManager.decryptPassword(
+        res.data.getFile.password
+      );
+
+      if (decryptedPassword === password) {
+        return 200;
+      } else {
+        showToast(i18n.t('folder.error1'), true);
+      }
     }
   }
 };

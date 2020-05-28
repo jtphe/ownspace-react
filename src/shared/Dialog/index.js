@@ -13,7 +13,9 @@ import PropTypes from 'prop-types';
  * @param {string} dialogPlaceholder - Text for the dialog placeholder
  * @param {string} name - Name
  * @param {function} setName - Set the name
- * @param {function} create - Start the function associated to the create button
+ * @param {boolean} security - SecurityEntry or not
+ * @param {function} valid - Start the function associated to the valid button
+ * @param {string} btnValidName - Name that button valid will have
  */
 const OwnSpaceDialog = ({
   visible,
@@ -22,7 +24,9 @@ const OwnSpaceDialog = ({
   dialogPlaceholder,
   name,
   setName,
-  create
+  security,
+  valid,
+  btnValidName
 }) => {
   /**
    * Render the OwnSpaceDialog component
@@ -37,6 +41,7 @@ const OwnSpaceDialog = ({
         <Dialog.Content>
           <TextInput
             autoCapitalize="none"
+            secureTextEntry={security}
             placeholderTextColor="rgba(0, 0, 0, 0.5)"
             onChangeText={value => {
               setName(value);
@@ -62,9 +67,9 @@ const OwnSpaceDialog = ({
             uppercase={false}
             color="#003466"
             labelStyle={styles.btnText}
-            onPress={create}
+            onPress={valid}
           >
-            {i18n.t('button.create')}
+            {i18n.t(`button.${btnValidName}`)}
           </Button>
         </Dialog.Actions>
       </Dialog>
@@ -102,7 +107,8 @@ OwnSpaceDialog.propTypes = {
   visible: PropTypes.bool.isRequired,
   hide: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,
-  create: PropTypes.func.isRequired
+  valid: PropTypes.func.isRequired,
+  btnValidName: PropTypes.string.isRequired
 };
 
 export default OwnSpaceDialog;
