@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   },
   inputFileName: {
     fontFamily: 'DejaVuSans',
+    color: 'grey',
     backgroundColor: '#DBDBDB',
     borderRadius: 6,
     padding: 15,
