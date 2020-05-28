@@ -15,8 +15,10 @@ import {
   getLoadingState,
   getPath,
   getDocuments,
-  getUploadingFile
+  getUploadingFile,
+  getCurrentPathString
 } from '@store/modules/document/selectors';
+import { getUser } from '@store/modules/user/selectors';
 
 /**
  * Connect to the store and extract data
@@ -28,16 +30,32 @@ const mapStateToProps = createSelector(
     getLoadingState,
     getPath,
     getDocuments,
-    getUploadingFile
+    getUploadingFile,
+    getCurrentPathString,
+
+    getUser
   ],
-  (nbFiles, nbFolders, loadingState, path, documents, uploadingFile) => {
+  (
+    nbFiles,
+    nbFolders,
+    loadingState,
+    path,
+    documents,
+    uploadingFile,
+    currentPathString,
+
+    user
+  ) => {
     return {
       nbFiles,
       nbFolders,
       loadingState,
       path,
       documents,
-      uploadingFile
+      uploadingFile,
+      currentPathString,
+
+      user
     };
   }
 );
@@ -50,6 +68,8 @@ const mapStateToProps = createSelector(
  * @param {number} nbFolders - The number of folder
  * @param {object} documents - The document list to display
  * @param {object} uploadingFile - The uploading file
+ * @param {string} currentPathString - The current path
+ * @param {object} user - The user
  */
 const HomeList = ({
   loadingState,
@@ -57,7 +77,9 @@ const HomeList = ({
   nbFiles,
   nbFolders,
   documents,
-  uploadingFile
+  uploadingFile,
+  currentPathString,
+  user
 }) => {
   const dispatch = useDispatch();
 
@@ -106,6 +128,8 @@ const HomeList = ({
             nbFiles={nbFiles}
             nbFolders={nbFolders}
             uploadingFile={uploadingFile}
+            currentPathString={currentPathString}
+            user={user}
           />
         </View>
       ) : (

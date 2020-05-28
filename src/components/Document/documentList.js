@@ -13,13 +13,17 @@ import i18n from '@i18n/i18n';
  * @param {number} nbFiles - The number of file
  * @param {number} nbFolders - The number of folder
  * @param {object} uploadingFile - The uploading file
+ * @param {string} currentPathString - The current path
+ * @param {object} user - The user
  */
 const DocumentList = ({
   document,
   path,
   nbFiles,
   nbFolders,
-  uploadingFile
+  uploadingFile,
+  currentPathString,
+  user
 }) => {
   /**
    * Render the DocumentList component
@@ -36,9 +40,13 @@ const DocumentList = ({
               keyExtractor={item => item.id}
               renderItem={({ item }) =>
                 item.nbFiles >= 0 ? (
-                  <Folder folder={item} path={path} />
+                  <Folder folder={item} path={path} user={user} />
                 ) : (
-                  <File file={item} />
+                  <File
+                    file={item}
+                    currentPathString={currentPathString}
+                    user={user}
+                  />
                 )
               }
             />

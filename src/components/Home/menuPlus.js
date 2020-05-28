@@ -261,10 +261,12 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
         visible={visible}
         hide={_hideCreateFolderModal}
         name={name}
+        security={false}
         dialogTitle={i18n.t('document.createFolderTitle')}
         dialogPlaceholder={i18n.t('document.createFolderPlaceholder')}
         setName={newName => setName(newName)}
-        create={_createFolder}
+        valid={_createFolder}
+        btnValidName="create"
       />
     </View>
   );

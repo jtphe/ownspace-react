@@ -42,13 +42,17 @@ export default {
     tooShort:
       'The file name and its contents must contain at least 6 characters',
     noEmpty: 'Fields cannot be empty',
-    titleTooLong: 'The file name must be less than or equal to 20 characters'
+    titleTooLong: 'The file name must be less than or equal to 40 characters'
   },
   button: {
     validate: 'Validate',
     cancel: 'Cancel',
     next: 'Next',
-    create: 'Create'
+    create: 'Create',
+    rename: 'Rename',
+    delete: 'Delete',
+    add: 'Add',
+    remove: 'Remove'
   },
   progressBar: {
     createFile: 'Creating the file'
@@ -100,8 +104,11 @@ export default {
     noDocument: 'No document',
     createFolderTitle: 'Create a folder',
     createFolderPlaceholder: 'Enter a folder name',
+    renameFileTitle: 'Rename the file',
+    renameFilePlaceholder: 'Enter a file name',
     share: 'Share',
     protect: 'Protect with a password',
+    unprotect: 'Remove the password',
     renameFolder: 'Rename the folder',
     renameFile: 'Rename the file',
     deleteFolder: 'Delete the folder',
@@ -110,9 +117,35 @@ export default {
     notSupported: 'Cannot import the file. Format not supported',
     cannotOpen: 'Cannot open file',
     downloadSpecificApp:
-      'Please download an application that can open this type of file'
+      'Please download an application that can open this type of file',
+    tooShort: 'The file name must contain at least 2 characters',
+    confirmDeleteFile: 'Are you sur you want to delete %{file} ?',
+    confirmDeleteFolder:
+      'Are you sure you want to delete the folder %{folder} and all its content ?',
+    addFolderPassword: 'Add a password to the folder',
+    renewFolderPassword: 'Add a new password to the folder',
+    addFilePassword: 'Add a password to the file',
+    renewFilePassword: 'Add a new password to the file',
+    passwordPlaceholder: 'Enter a password...',
+    newPasswordPlaceholder: 'Enter a new password...',
+    enterFolderPassword: 'Enter the folder password',
+    enterFilePassword: 'Enter the file password',
+    removePassword: 'Remove the password from the %{folder} folder',
+    confirmRemovePassword:
+      'Are you sure you want to remove the password from the %{folder} folder ?',
+    removeFilePassword: 'Remove the password from the %{file} file',
+    confirmRemoveFilePassword:
+      'Are you sure you want to remove the password of the %{file} file ?'
   },
   picture: {
     imported: 'Image imported'
+  },
+  folder: {
+    error1: 'Password incorrect',
+    passwordAdded: 'Password successfully added !',
+    passwordRemoved: 'Password successfully removed !'
+  },
+  file: {
+    deleted: 'File successfully deleted !'
   }
 };

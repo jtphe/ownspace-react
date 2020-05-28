@@ -24,14 +24,14 @@ const CreateFile = () => {
       if (
         title.trim().length > 6 &&
         text.trim().length > 6 &&
-        title.trim().length <= 20
+        title.trim().length <= 40
       ) {
         const payload = {
           name: `${title.trim()}.txt`,
           content: text
         };
         dispatch(createFile(payload));
-      } else if (title.trim().length >= 20) {
+      } else if (title.trim().length >= 40) {
         showToast(i18n.t('createFile.titleTooLong'), true);
       } else {
         showToast(i18n.t('createFile.tooShort'), true);
