@@ -19,6 +19,7 @@ import {
   getCurrentPathString
 } from '@store/modules/document/selectors';
 import { getUser } from '@store/modules/user/selectors';
+import { CLIENT_COLOR_PRIMARY } from '@constants';
 
 /**
  * Connect to the store and extract data
@@ -87,7 +88,7 @@ const HomeList = ({
     return (
       <View style={styles.containerLoading}>
         <Button
-          color="#003466"
+          color={CLIENT_COLOR_PRIMARY}
           labelStyle={styles.loadingText}
           uppercase={false}
           loading={true}
@@ -142,7 +143,12 @@ const HomeList = ({
             name={path[path.length - 2] ? path[path.length - 2].name : ''}
           />
           <View style={styles.containerNoDoc}>
-            <Icon size={70} color="#003466" name="folder" style={styles.icon} />
+            <Icon
+              size={70}
+              color={CLIENT_COLOR_PRIMARY}
+              name="folder"
+              style={styles.icon}
+            />
             <Text style={styles.noDoc}>{i18n.t('document.noDocument')}</Text>
           </View>
         </View>
@@ -164,7 +170,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   loadingText: {
-    color: '#003466',
+    color: CLIENT_COLOR_PRIMARY,
     fontSize: 22
   },
   containerNoDoc: {

@@ -11,6 +11,7 @@ import { getIsLoading } from '@store/modules/app/selectors';
 import { createSelector } from 'reselect';
 import { Button } from 'react-native-paper';
 import i18n from '@i18n/i18n';
+import { CLIENT_COLOR_PRIMARY, OWNSPACE_LIGHT_GRAY } from '@constants';
 
 const mapStateToProps = createSelector(getIsLoading, isLoading => {
   return {
@@ -103,7 +104,7 @@ const Home = ({ loggedUser, isLoggedIn, isLoading }) => {
       ) : (
         <View style={styles.containerLoading}>
           <Button
-            color="#003466"
+            color={CLIENT_COLOR_PRIMARY}
             labelStyle={styles.loadingText}
             uppercase={false}
             loading={true}
@@ -128,14 +129,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  input: {
-    height: 50,
-    borderColor: 'black',
-    color: 'grey',
-    borderWidth: 1,
-    borderRadius: 6,
-    marginBottom: 20
-  },
   homeContainer: { flex: 1 },
   containerLoading: {
     flex: 1,
@@ -143,7 +136,7 @@ const styles = StyleSheet.create({
     alignContent: 'center'
   },
   loadingText: {
-    color: '#003466',
+    color: CLIENT_COLOR_PRIMARY,
     fontSize: 22
   }
 });

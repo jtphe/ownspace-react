@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from 'react-native';
+import { CLIENT_COLOR_PRIMARY } from '@constants';
 
 /**
  * The Avatar component
@@ -16,7 +17,7 @@ const Avatar = ({ image, size, borderRadius }) => {
       width: size,
       height: size,
       borderRadius,
-      borderColor: '#003466',
+      borderColor: CLIENT_COLOR_PRIMARY,
       borderWidth: 1
     };
   };

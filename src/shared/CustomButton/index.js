@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Actions } from 'react-native-router-flux';
 import i18n from '@i18n/i18n';
+import { CLIENT_COLOR_PRIMARY } from '@constants';
 
 /**
  * The CustomButton component
@@ -54,13 +55,13 @@ const styles = StyleSheet.create({
   btnCancel: {
     justifyContent: 'center',
     backgroundColor: 'white',
-    borderColor: '#003466',
+    borderColor: CLIENT_COLOR_PRIMARY,
     borderWidth: 1,
     color: '#42688B'
   },
   btnConfirm: {
     justifyContent: 'center',
-    backgroundColor: '#003466',
+    backgroundColor: CLIENT_COLOR_PRIMARY,
     borderColor: 'black'
   },
   btnDimension: {

@@ -39,6 +39,11 @@ import {
 } from '@store/modules/document/actions';
 import OwnSpaceDialog from '@shared/Dialog';
 import showToast from '@utils/showToast';
+import {
+  CLIENT_COLOR_PRIMARY,
+  OWNSPACE_GRAY,
+  OWNSPACE_LIGHT_GRAY
+} from '@constants';
 
 /**
  *  A hash map containing commonly used files
@@ -352,7 +357,11 @@ const File = ({ file, currentPathString, user }) => {
       <View style={styles.rowFile}>
         <TouchableOpacity onPress={() => _openFile({ fileName: file.name })}>
           <View style={styles.containerFile}>
-            <FileIcon size={36} color="#003466" name={_setIcon(file.type)} />
+            <FileIcon
+              size={36}
+              color={CLIENT_COLOR_PRIMARY}
+              name={_setIcon(file.type)}
+            />
             <View style={styles.fileItem}>
               <Text
                 style={styles.fileName}
@@ -370,7 +379,7 @@ const File = ({ file, currentPathString, user }) => {
                 size={22}
                 width={2}
                 fill={progress}
-                tintColor="#003466"
+                tintColor={CLIENT_COLOR_PRIMARY}
                 backgroundColor="white"
               />
             </View>
@@ -382,7 +391,7 @@ const File = ({ file, currentPathString, user }) => {
               <IconOptions
                 name="dots-three-horizontal"
                 size={20}
-                color="#858585"
+                color={OWNSPACE_GRAY}
               />
             </MenuTrigger>
             <MenuOptions
@@ -413,7 +422,11 @@ const File = ({ file, currentPathString, user }) => {
                   onSelect={() => console.log('file', file)}
                 >
                   <View style={styles.options}>
-                    <Icon name="user-plus" size={25} color="#003466" />
+                    <Icon
+                      name="user-plus"
+                      size={25}
+                      color={CLIENT_COLOR_PRIMARY}
+                    />
                     <Text style={styles.textMenuOptions}>
                       {i18n.t('document.share')}
                     </Text>
@@ -428,7 +441,11 @@ const File = ({ file, currentPathString, user }) => {
                     onSelect={() => _showPasswordModal()}
                   >
                     <View style={styles.options}>
-                      <Icon name="lock" size={25} color="#003466" />
+                      <Icon
+                        name="lock"
+                        size={25}
+                        color={CLIENT_COLOR_PRIMARY}
+                      />
                       <Text style={styles.textMenuOptions}>
                         {i18n.t('document.protect')}
                       </Text>
@@ -444,7 +461,11 @@ const File = ({ file, currentPathString, user }) => {
                     onSelect={() => _removePasswordFile()}
                   >
                     <View style={styles.options}>
-                      <Icon name="unlock" size={25} color="#003466" />
+                      <Icon
+                        name="unlock"
+                        size={25}
+                        color={CLIENT_COLOR_PRIMARY}
+                      />
                       <Text style={styles.textMenuOptions}>
                         {i18n.t('document.unprotect')}
                       </Text>
@@ -460,7 +481,11 @@ const File = ({ file, currentPathString, user }) => {
                     onSelect={() => _showRenameFileModal()}
                   >
                     <View style={styles.options}>
-                      <Icon name="edit" size={25} color="#003466" />
+                      <Icon
+                        name="edit"
+                        size={25}
+                        color={CLIENT_COLOR_PRIMARY}
+                      />
                       <Text style={styles.textMenuOptions}>
                         {i18n.t('document.renameFile')}
                       </Text>
@@ -476,7 +501,11 @@ const File = ({ file, currentPathString, user }) => {
                     onSelect={() => _showAlertDeleteFile()}
                   >
                     <View style={styles.options}>
-                      <Icon name="trash" size={25} color="#003466" />
+                      <Icon
+                        name="trash"
+                        size={25}
+                        color={CLIENT_COLOR_PRIMARY}
+                      />
                       <Text style={styles.textMenuOptions}>
                         {i18n.t('document.deleteFile')}
                       </Text>
@@ -561,7 +590,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginLeft: 75,
-    borderBottomColor: '#A2A8AE',
+    borderBottomColor: OWNSPACE_LIGHT_GRAY,
     borderBottomWidth: 0.4,
     marginBottom: 12
   },
@@ -596,7 +625,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 15,
     borderBottomWidth: 0.3,
-    borderColor: '#ccc',
+    borderColor: OWNSPACE_LIGHT_GRAY,
     paddingBottom: 15
   },
   menuOptionsLast: {

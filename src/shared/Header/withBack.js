@@ -4,6 +4,7 @@ import { View, Image, StyleSheet } from 'react-native';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { CLIENT_COLOR_PRIMARY } from '@constants';
 
 /**
  * The Header component with a back button
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#003466',
+    backgroundColor: CLIENT_COLOR_PRIMARY,
     paddingBottom: 30,
     ...ifIphoneX(
       {

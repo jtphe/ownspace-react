@@ -2,6 +2,7 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
+import { CLIENT_COLOR_PRIMARY } from '@constants';
 
 /**
  * The Header component
@@ -27,7 +28,7 @@ const Header = () => {
  */
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#003466',
+    backgroundColor: CLIENT_COLOR_PRIMARY,
     paddingBottom: 30,
     ...ifIphoneX(
       {

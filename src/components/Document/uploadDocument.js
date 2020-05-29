@@ -7,6 +7,7 @@ import 'moment/locale/fr';
 import { Button } from 'react-native-paper';
 import i18n from '@i18n/i18n';
 import PropTypes from 'prop-types';
+import { CLIENT_COLOR_PRIMARY, OWNSPACE_LIGHT_GRAY } from '@constants';
 
 /**
  * Configure the locale for moment according to the language
@@ -36,7 +37,7 @@ const UploadDocument = ({ content, document }) => {
     <View>
       <View style={styles.box}>
         <Button
-          color="#003466"
+          color={CLIENT_COLOR_PRIMARY}
           style={styles.loading}
           uppercase={false}
           loading={true}
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginLeft: 75,
-    borderBottomColor: '#A2A8AE',
+    borderBottomColor: OWNSPACE_LIGHT_GRAY,
     borderBottomWidth: 0.4,
     marginBottom: 12
   },

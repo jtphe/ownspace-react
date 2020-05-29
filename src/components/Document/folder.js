@@ -25,6 +25,11 @@ import {
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import OwnSpaceDialog from '@shared/Dialog';
 import showToast from '@utils/showToast';
+import {
+  CLIENT_COLOR_PRIMARY,
+  OWNSPACE_GRAY,
+  OWNSPACE_LIGHT_GRAY
+} from '@constants/';
 
 /**
  * Animation that makes slide in the menu from the bottom of the screen.
@@ -186,7 +191,7 @@ const Folder = ({ folder, user }) => {
       <View style={styles.rowFolder}>
         <TouchableOpacity onPress={() => _openFolder()}>
           <View style={styles.folderContainer}>
-            <FolderIcon size={36} color="#003466" name="folder" />
+            <FolderIcon size={36} color={CLIENT_COLOR_PRIMARY} name="folder" />
             <View style={styles.folderItem}>
               <Text
                 style={styles.folderName}
@@ -205,7 +210,7 @@ const Folder = ({ folder, user }) => {
               <IconOptions
                 name="dots-three-horizontal"
                 size={20}
-                color="#858585"
+                color={OWNSPACE_GRAY}
               />
             </MenuTrigger>
             <MenuOptions
@@ -236,7 +241,11 @@ const Folder = ({ folder, user }) => {
                   onSelect={() => console.log('folder', folder)}
                 >
                   <View style={styles.options}>
-                    <Icon name="user-plus" size={25} color="#003466" />
+                    <Icon
+                      name="user-plus"
+                      size={25}
+                      color={CLIENT_COLOR_PRIMARY}
+                    />
                     <Text style={styles.textMenuOptions}>
                       {i18n.t('document.share')}
                     </Text>
@@ -253,7 +262,11 @@ const Folder = ({ folder, user }) => {
                     onSelect={() => _showPasswordModal()}
                   >
                     <View style={styles.options}>
-                      <Icon name="lock" size={25} color="#003466" />
+                      <Icon
+                        name="lock"
+                        size={25}
+                        color={CLIENT_COLOR_PRIMARY}
+                      />
                       <Text style={styles.textMenuOptions}>
                         {i18n.t('document.protect')}
                       </Text>
@@ -269,7 +282,11 @@ const Folder = ({ folder, user }) => {
                     onSelect={() => _removePasswordFolder()}
                   >
                     <View style={styles.options}>
-                      <Icon name="unlock" size={25} color="#003466" />
+                      <Icon
+                        name="unlock"
+                        size={25}
+                        color={CLIENT_COLOR_PRIMARY}
+                      />
                       <Text style={styles.textMenuOptions}>
                         {i18n.t('document.unprotect')}
                       </Text>
@@ -284,7 +301,7 @@ const Folder = ({ folder, user }) => {
                   onSelect={() => console.log('folder', folder)}
                 >
                   <View style={styles.options}>
-                    <Icon name="edit" size={25} color="#003466" />
+                    <Icon name="edit" size={25} color={CLIENT_COLOR_PRIMARY} />
                     <Text style={styles.textMenuOptions}>
                       {i18n.t('document.renameFolder')}
                     </Text>
@@ -298,7 +315,7 @@ const Folder = ({ folder, user }) => {
                   onSelect={() => _showAlertDeleteFolder()}
                 >
                   <View style={styles.options}>
-                    <Icon name="trash" size={25} color="#003466" />
+                    <Icon name="trash" size={25} color={CLIENT_COLOR_PRIMARY} />
                     <Text style={styles.textMenuOptions}>
                       {i18n.t('document.deleteFolder')}
                     </Text>
@@ -365,7 +382,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginLeft: 75,
-    borderBottomColor: '#A2A8AE',
+    borderBottomColor: OWNSPACE_LIGHT_GRAY,
     borderBottomWidth: 0.3,
     marginBottom: 12
   },
@@ -390,7 +407,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 15,
     borderBottomWidth: 0.3,
-    borderColor: '#ccc',
+    borderColor: OWNSPACE_LIGHT_GRAY,
     paddingBottom: 15
   },
   menuOptionsLast: {

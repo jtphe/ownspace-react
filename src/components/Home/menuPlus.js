@@ -26,6 +26,7 @@ import octetToMoConverter from '@utils/fileSizeConverter';
 import { createSelector } from 'reselect';
 import { getCurrentPathString } from '@store/modules/document/selectors';
 import DocumentPicker from 'react-native-document-picker';
+import { CLIENT_COLOR_PRIMARY, OWNSPACE_LIGHT_GRAY } from '@constants';
 
 /**
  * Animation that makes slide in the menu from the bottom of the screen.
@@ -193,7 +194,7 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
             onSelect={() => _openDocumentPicker()}
           >
             <View style={styles.options}>
-              <Icon name="import" size={25} color="#003466" />
+              <Icon name="import" size={25} color={CLIENT_COLOR_PRIMARY} />
               <Text style={styles.textMenuOptions}>
                 {i18n.t('menuPlus.importFile')}
               </Text>
@@ -207,7 +208,11 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
             onSelect={() => Actions.createFile()}
           >
             <View style={styles.options}>
-              <IconFeather name="file-plus" size={25} color="#003466" />
+              <IconFeather
+                name="file-plus"
+                size={25}
+                color={CLIENT_COLOR_PRIMARY}
+              />
               <Text style={styles.textMenuOptions}>
                 {i18n.t('menuPlus.createFile')}
               </Text>
@@ -221,7 +226,11 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
             onSelect={() => _showCreateFolderModal()}
           >
             <View style={styles.options}>
-              <IconFeather name="folder-plus" size={25} color="#003466" />
+              <IconFeather
+                name="folder-plus"
+                size={25}
+                color={CLIENT_COLOR_PRIMARY}
+              />
               <Text style={styles.textMenuOptions}>
                 {i18n.t('menuPlus.createFolder')}
               </Text>
@@ -235,7 +244,11 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
             onSelect={() => _openPhotoGallery()}
           >
             <View style={styles.options}>
-              <IconFeather name="image" size={25} color="#003466" />
+              <IconFeather
+                name="image"
+                size={25}
+                color={CLIENT_COLOR_PRIMARY}
+              />
               <Text style={styles.textMenuOptions}>
                 {i18n.t('menuPlus.imageGallery')}
               </Text>
@@ -249,7 +262,11 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
             onSelect={() => _openCamera()}
           >
             <View style={styles.options}>
-              <IconFeather name="camera" size={25} color="#003466" />
+              <IconFeather
+                name="camera"
+                size={25}
+                color={CLIENT_COLOR_PRIMARY}
+              />
               <Text style={styles.textMenuOptions}>
                 {i18n.t('menuPlus.takePicture')}
               </Text>
@@ -282,8 +299,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginLeft: 15,
-    borderBottomWidth: 0.3,
-    borderColor: '#ccc',
+    borderBottomWidth: 0.2,
+    borderColor: OWNSPACE_LIGHT_GRAY,
     paddingBottom: 15
   },
   menuOptionsLast: {

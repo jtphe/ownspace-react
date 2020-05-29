@@ -4,6 +4,7 @@ import Text from '@shared/ClientText';
 import { Portal, Dialog, Button } from 'react-native-paper';
 import i18n from '@i18n/i18n';
 import PropTypes from 'prop-types';
+import { CLIENT_COLOR_PRIMARY, OWNSPACE_LIGHT_GRAY } from '@constants';
 
 /**
  * The OwnSpaceDialog component
@@ -54,7 +55,7 @@ const OwnSpaceDialog = ({
         <Dialog.Actions style={styles.btnRow}>
           <Button
             mode="outlined"
-            color="#003466"
+            color={CLIENT_COLOR_PRIMARY}
             uppercase={false}
             style={styles.btnStyle}
             labelStyle={styles.btnText}
@@ -65,7 +66,7 @@ const OwnSpaceDialog = ({
           <Button
             mode="contained"
             uppercase={false}
-            color="#003466"
+            color={CLIENT_COLOR_PRIMARY}
             labelStyle={styles.btnText}
             onPress={valid}
           >
@@ -88,13 +89,13 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: OWNSPACE_LIGHT_GRAY,
     color: '#555',
     fontSize: 16,
     height: 44
   },
   btnText: { fontSize: 16, fontFamily: 'DejaVuSans' },
-  btnStyle: { borderColor: '#003466' },
+  btnStyle: { borderColor: CLIENT_COLOR_PRIMARY },
   btnRow: {
     justifyContent: 'space-between',
     marginHorizontal: 16,
