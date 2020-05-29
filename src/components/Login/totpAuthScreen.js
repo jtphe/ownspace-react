@@ -3,6 +3,7 @@ import { Button } from 'react-native-paper';
 import { StyleSheet, View, TextInput } from 'react-native';
 import Text from '@shared/Text';
 import i18n from '@i18n/i18n';
+import { OWNSPACE_BLUE, OWNSPACE_PINK_INPUT, OWNSPACE_GRAY } from '@constants';
 
 /**
  * The TotpAuthScreen component
@@ -21,7 +22,6 @@ const TotpAuthScreen = ({ setToken, verifyTotpToken }) => {
         style={styles.input}
         placeholder={i18n.t('totp.placeholder')}
         placeholderTextColor="grey"
-        textContentType="number"
         keyboardType="number-pad"
         autoCapitalize="none"
         onChangeText={txt => {
@@ -57,15 +57,15 @@ const styles = StyleSheet.create({
     height: 50,
     paddingLeft: 15,
     borderColor: 'transparent',
-    backgroundColor: '#F7D8D3',
-    color: 'grey',
+    backgroundColor: OWNSPACE_PINK_INPUT,
+    color: OWNSPACE_GRAY,
     opacity: 0.7,
     borderWidth: 1,
     borderRadius: 6,
     marginBottom: 25
   },
   btnSignIn: {
-    backgroundColor: '#4788D3',
+    backgroundColor: OWNSPACE_BLUE,
     padding: 6,
     fontSize: 17,
     fontWeight: 'bold'

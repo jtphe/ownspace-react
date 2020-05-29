@@ -2,6 +2,7 @@ import React from 'react';
 import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import Text from '@shared/ClientText';
 import Icon from 'react-native-vector-icons/Feather';
+import { CLIENT_COLOR_PRIMARY, OWNSPACE_GRAY } from '@constants';
 
 /**
  * The BackFolder component
@@ -18,7 +19,7 @@ const BackFolder = ({ backAction, visible, name }) => {
     return (
       <TouchableWithoutFeedback onPress={() => backAction()}>
         <View style={styles.backContainer}>
-          <Icon size={18} color="#003466" name="arrow-left" />
+          <Icon size={18} color={CLIENT_COLOR_PRIMARY} name="arrow-left" />
           <View style={styles.backTitle}>
             <Text style={styles.backText}>{name}</Text>
           </View>
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   },
   backText: {
     fontWeight: '900',
-    color: '#555459',
+    color: OWNSPACE_GRAY,
     fontSize: 16
   }
 });

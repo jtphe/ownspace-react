@@ -27,6 +27,7 @@ import showToast from '@utils/showToast';
 import Icon from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-crop-picker';
 import octetToMoConverter from '@utils/fileSizeConverter';
+import { CLIENT_COLOR_PRIMARY, CLIENT_COLOR_SECONDARY } from '@constants';
 
 /**
  * Connect to the store and extract data
@@ -139,7 +140,7 @@ const UserProfile = ({ user, pictureIsUploading }) => {
         >
           {pictureIsUploading ? (
             <Button
-              color="#003466"
+              color={CLIENT_COLOR_PRIMARY}
               labelStyle={styles.loadingText}
               uppercase={false}
               loading={true}
@@ -283,7 +284,7 @@ const styles = StyleSheet.create({
   },
   profileName: {
     fontSize: 18,
-    color: '#003466',
+    color: CLIENT_COLOR_PRIMARY,
     marginBottom: 8
   },
   profileRole: {
@@ -312,7 +313,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 2,
     borderLeftWidth: 2,
     borderRightWidth: 2,
-    borderColor: '#003466',
+    borderColor: CLIENT_COLOR_PRIMARY,
     paddingHorizontal: 45,
     paddingVertical: 20
   },
@@ -323,16 +324,14 @@ const styles = StyleSheet.create({
   btnText: {
     fontSize: 13,
     fontWeight: 'bold',
-    fontFamily: 'DejaVuSans',
+    fontFamily: 'DejaVuSansBold',
     color: '#fff'
   },
   btnLogOut: {
-    backgroundColor: '#E30043',
-    color: '#42688B'
+    backgroundColor: CLIENT_COLOR_SECONDARY
   },
   btnEdit: {
-    backgroundColor: '#003466',
-    borderColor: 'black'
+    backgroundColor: CLIENT_COLOR_PRIMARY
   },
   btnContainer: {
     flexDirection: 'row',
@@ -347,7 +346,7 @@ const styles = StyleSheet.create({
   },
   helpText: {
     fontSize: 18,
-    color: '#003466',
+    color: CLIENT_COLOR_PRIMARY,
     fontWeight: 'bold',
     textDecorationLine: 'underline'
   },
@@ -355,13 +354,13 @@ const styles = StyleSheet.create({
   separator: {
     borderBottomWidth: 3,
     borderRadius: 8,
-    borderColor: '#003466',
+    borderColor: CLIENT_COLOR_PRIMARY,
     marginBottom: 20
   },
   settingOption: { flexDirection: 'row' },
   textSetting: { marginLeft: 10, alignSelf: 'center' },
   loadingText: {
-    color: '#003466',
+    color: CLIENT_COLOR_PRIMARY,
     marginLeft: 6,
     fontSize: 22
   }

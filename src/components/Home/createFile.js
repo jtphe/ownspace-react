@@ -7,6 +7,7 @@ import { createFile } from '@store/modules/document/actions';
 import { useDispatch } from 'react-redux';
 import i18n from '@i18n/i18n';
 import showToast from '@utils/showToast';
+import { OWNSPACE_LIGHT_GRAY } from '@constants';
 
 /**
  * The CreateFile component
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
   inputFileName: {
     fontFamily: 'DejaVuSans',
     color: 'grey',
-    backgroundColor: '#DBDBDB',
+    backgroundColor: OWNSPACE_LIGHT_GRAY,
     borderRadius: 6,
     padding: 15,
     marginBottom: 25
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
     fontFamily: 'DejaVuSans',
     flex: 1,
     height: 50,
-    borderColor: '#DBDBDB',
+    borderColor: OWNSPACE_LIGHT_GRAY,
     color: 'black',
     borderWidth: 1,
     borderRadius: 6,

@@ -6,6 +6,7 @@ import { Auth } from 'aws-amplify';
 import i18n from '@i18n/i18n';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import showToast from '@utils/showToast';
+import { OWNSPACE_BLUE, OWNSPACE_PINK_INPUT } from '@constants';
 
 /**
  * The GenerateTotp component
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     borderColor: 'transparent',
-    backgroundColor: '#F7D8D3'
+    backgroundColor: OWNSPACE_PINK_INPUT
   },
   code: { fontSize: 17, color: 'white' },
   titleCode: {
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     opacity: 0.5
   },
   btnNext: {
-    backgroundColor: '#4788D3',
+    backgroundColor: OWNSPACE_BLUE,
     padding: 6,
     paddingLeft: 6,
     paddingRight: 6,

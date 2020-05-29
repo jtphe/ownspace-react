@@ -12,7 +12,15 @@ import TotpAuthScreen from './totpAuthScreen';
 import i18n from '@i18n/i18n';
 import { useDispatch } from 'react-redux';
 import { createUser } from '@store/modules/user/actions';
-import { ROLE_ONE, ROLE_TWO, RECURRING_ROLE } from '@constants';
+import {
+  ROLE_ONE,
+  ROLE_TWO,
+  RECURRING_ROLE,
+  OWNSPACE_PINK_INPUT,
+  OWNSPACE_BLUE,
+  OWNSPACE_GRAY
+} from '@constants';
+
 import showToast from '@utils/showToast';
 
 /**
@@ -236,8 +244,8 @@ const styles = StyleSheet.create({
     height: 50,
     paddingLeft: 15,
     borderColor: 'transparent',
-    backgroundColor: '#F7D8D3',
-    color: 'grey',
+    backgroundColor: OWNSPACE_PINK_INPUT,
+    color: OWNSPACE_GRAY,
     opacity: 0.7,
     borderWidth: 1,
     borderRadius: 6,
@@ -250,7 +258,7 @@ const styles = StyleSheet.create({
     opacity: 0.7
   },
   btnSignIn: {
-    backgroundColor: '#4788D3',
+    backgroundColor: OWNSPACE_BLUE,
     padding: 6,
     fontSize: 17,
     fontWeight: 'bold'

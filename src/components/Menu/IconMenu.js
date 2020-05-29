@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import DotIcon from 'react-native-vector-icons/Entypo';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { CLIENT_COLOR_SECONDARY } from '@constants';
 
 /**
  * The IconMenu component
@@ -17,7 +18,7 @@ const IconMenu = ({ name, size, selected, setSelected }) => {
    */
   const getColor = () => {
     if (selected) {
-      return '#E30043';
+      return CLIENT_COLOR_SECONDARY;
     } else {
       return 'white';
     }
@@ -44,7 +45,7 @@ const IconMenu = ({ name, size, selected, setSelected }) => {
         <Icon style={styles.icon} name={name} size={size} color={getColor()} />
       </TouchableOpacity>
       {selected ? (
-        <DotIcon name="dot-single" size={20} color="#E30043" />
+        <DotIcon name="dot-single" size={20} color={CLIENT_COLOR_SECONDARY} />
       ) : null}
     </View>
   );

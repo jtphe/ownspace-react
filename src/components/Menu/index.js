@@ -4,6 +4,7 @@ import IconMenu from './IconMenu';
 import { Actions } from 'react-native-router-flux';
 import { useDispatch } from 'react-redux';
 import { loadFolders, loadFiles } from '@store/modules/document/actions';
+import { CLIENT_COLOR_PRIMARY } from '@constants';
 
 /**
  * The NavMenu component
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 40,
     alignSelf: 'center',
-    backgroundColor: '#003466',
+    backgroundColor: CLIENT_COLOR_PRIMARY,
     paddingLeft: 5,
     paddingRight: 5,
     marginLeft: 10,

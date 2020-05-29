@@ -21,6 +21,7 @@ import Text from '@shared/Text';
 import showToast from '@utils/showToast';
 import { useDispatch } from 'react-redux';
 import { resetAllStore } from '@store/modules/app/actions';
+import { OWNSPACE_PINK_INPUT, OWNSPACE_BLUE } from '@constants';
 
 /**
  * The Login component
@@ -155,11 +156,6 @@ const styles = StyleSheet.create({
     paddingLeft: 50,
     paddingRight: 50
   },
-  headerContainer: {
-    backgroundColor: 'blue',
-    paddingTop: 120,
-    paddingBottom: 50
-  },
   header: {
     ...ifIphoneX(
       {
@@ -189,7 +185,7 @@ const styles = StyleSheet.create({
     height: 50,
     paddingLeft: 15,
     borderColor: 'transparent',
-    backgroundColor: '#F7D8D3',
+    backgroundColor: OWNSPACE_PINK_INPUT,
     color: 'grey',
     opacity: 0.7,
     borderWidth: 1,
@@ -198,7 +194,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: { flexDirection: 'row' },
   btnSignIn: {
-    backgroundColor: '#4788D3',
+    backgroundColor: OWNSPACE_BLUE,
     padding: 6,
     paddingLeft: 6,
     paddingRight: 6,
