@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold'
   },
-  btnText: { fontFamily: 'HelveticaNeueBold', color: '#fff' }
+  btnText: { color: '#fff' }
 });
 
 export default TotpAuthScreen;

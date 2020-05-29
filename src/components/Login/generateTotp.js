@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     paddingRight: 6,
     marginTop: 30
   },
-  btnText: { color: '#fff', fontFamily: 'HelveticaNeueBold' }
+  btnText: { color: '#fff' }
 });
 
 export default GenerateTotp;
