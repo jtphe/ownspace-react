@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import IconMenu from './IconMenu';
 import { Actions } from 'react-native-router-flux';
+import { useDispatch } from 'react-redux';
+import { loadFolders, loadFiles } from '@store/modules/document/actions';
 
 /**
  * The NavMenu component
@@ -11,6 +13,7 @@ const NavMenu = ({ openPlusMenu }) => {
   const [home, setHome] = useState(true);
   const [options, setOptions] = useState(false);
   const [userProfile, setUserProfile] = useState(false);
+  const dispatch = useDispatch();
 
   /**
    * Set the right icon to selected
@@ -22,6 +25,7 @@ const NavMenu = ({ openPlusMenu }) => {
         setHome(true);
         setOptions(false);
         setUserProfile(false);
+        _openHome();
         break;
       case 'plus-circle':
         setHome(false);
@@ -43,6 +47,14 @@ const NavMenu = ({ openPlusMenu }) => {
         setOptions(false);
         setUserProfile(false);
     }
+  };
+
+  /**
+   * Go back to home folder
+   */
+  const _openHome = () => {
+    dispatch(loadFolders());
+    dispatch(loadFiles());
   };
 
   /**

@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
-  btnText: { fontFamily: 'HelveticaNeueBold', color: '#fff' }
+  btnText: { color: '#fff' }
 });
 
 export default Login;
