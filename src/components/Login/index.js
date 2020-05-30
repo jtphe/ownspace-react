@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   View,
   TextInput,
-  Linking,
   Keyboard,
   ImageBackground
 } from 'react-native';
@@ -22,6 +21,7 @@ import showToast from '@utils/showToast';
 import { useDispatch } from 'react-redux';
 import { resetAllStore } from '@store/modules/app/actions';
 import { OWNSPACE_PINK_INPUT, OWNSPACE_BLUE } from '@constants';
+import ForgottenPasswordModal from './forgottenPasswordModal';
 
 /**
  * The Login component
@@ -29,6 +29,7 @@ import { OWNSPACE_PINK_INPUT, OWNSPACE_BLUE } from '@constants';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [forgottenPassword, setForgottenPassword] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const Login = () => {
   /**
    * Sign in to the app
    */
-  const signIn = async () => {
+  const _signIn = async () => {
     if (_validateEmail() && password.trim().length >= 8) {
       await Auth.signIn({
         username: email,
@@ -67,10 +68,24 @@ const Login = () => {
   };
 
   /**
-   * Open the user mail app
+   * Send password instructions for the forgotten password
    */
-  const sendEmail = async () => {
-    await Linking.openURL('mailto:ownspaceco@gmail.com');
+  const _sendPasswordInstructions = async () => {
+    if (email.length > 0) {
+      if (_validateEmail()) {
+        Auth.forgotPassword(email)
+          .then(data => {
+            console.log('data', data);
+            showToast(i18n.t('loginPage.passwordInstructions'), true);
+            setForgottenPassword(true);
+          })
+          .catch(err => console.log(err));
+      } else {
+        showToast(i18n.t('loginPage.invalidEmail'), true);
+      }
+    } else {
+      showToast(i18n.t('loginPage.needEmail'), true);
+    }
   };
 
   /**
@@ -86,59 +101,71 @@ const Login = () => {
         <Text style={styles.companyName}>{i18n.t('loginPage.ownspace')}</Text>
         <Text style={styles.welcomeTitle}>{i18n.t('loginPage.welcome')}</Text>
       </View>
-      <View style={styles.textInputContainer}>
-        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-          <TextInput
-            style={styles.input}
-            placeholder={i18n.t('loginPage.email')}
-            placeholderTextColor="grey"
-            textContentType="emailAddress"
-            keyboardType="email-address"
-            onChangeText={txt => {
-              setEmail(txt);
-            }}
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => {
-              passwordTextInput.focus();
-            }}
-            blurOnSubmit={false}
-          />
-          <TextInput
-            ref={input => {
-              passwordTextInput = input;
-            }}
-            style={styles.input}
-            placeholder={i18n.t('loginPage.password')}
-            placeholderTextColor="grey"
-            textContentType="password"
-            autoCapitalize="none"
-            secureTextEntry={true}
-            onChangeText={txt => {
-              setPassword(txt);
-            }}
-          />
-        </TouchableWithoutFeedback>
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          mode="contained"
-          uppercase={false}
-          labelStyle={styles.btnText}
-          style={styles.btnSignIn}
-          onPress={() => {
-            signIn();
-          }}
-        >
-          {i18n.t('loginPage.login')}
-        </Button>
-        <TouchableOpacity
-          style={styles.containerHelp}
-          onPress={() => sendEmail()}
-        >
-          <Text style={styles.btnHelp}>{i18n.t('loginPage.needHelp')}</Text>
-        </TouchableOpacity>
-      </View>
+      {!forgottenPassword ? (
+        <View>
+          <View style={styles.textInputContainer}>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+              <TextInput
+                style={styles.input}
+                placeholder={i18n.t('loginPage.email')}
+                placeholderTextColor="grey"
+                textContentType="emailAddress"
+                keyboardType="email-address"
+                onChangeText={txt => {
+                  setEmail(txt);
+                }}
+                autoCapitalize="none"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  passwordTextInput.focus();
+                }}
+                blurOnSubmit={false}
+              />
+              <TextInput
+                ref={input => {
+                  passwordTextInput = input;
+                }}
+                style={styles.input}
+                placeholder={i18n.t('loginPage.password')}
+                placeholderTextColor="grey"
+                textContentType="password"
+                autoCapitalize="none"
+                secureTextEntry={true}
+                onChangeText={txt => {
+                  setPassword(txt);
+                }}
+              />
+            </TouchableWithoutFeedback>
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button
+              mode="contained"
+              uppercase={false}
+              labelStyle={styles.btnText}
+              style={styles.btnSignIn}
+              onPress={() => {
+                _signIn();
+              }}
+            >
+              {i18n.t('loginPage.login')}
+            </Button>
+            <TouchableOpacity
+              style={styles.containerHelp}
+              onPress={() => _sendPasswordInstructions()}
+            >
+              <Text style={styles.btnForgottenPwd}>
+                {i18n.t('loginPage.forgottenPassword')}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      ) : (
+        <ForgottenPasswordModal
+          setForgottenPassword={value => setForgottenPassword(value)}
+          username={email}
+          setEmail={value => setEmail(value)}
+        />
+      )}
       <View style={styles.logo}>
         <Logo />
       </View>
@@ -195,9 +222,7 @@ const styles = StyleSheet.create({
   buttonContainer: { flexDirection: 'row' },
   btnSignIn: {
     backgroundColor: OWNSPACE_BLUE,
-    padding: 6,
-    paddingLeft: 6,
-    paddingRight: 6,
+    padding: 4,
     fontSize: 17,
     fontWeight: 'bold'
   },
@@ -206,8 +231,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  btnHelp: {
-    color: 'white'
+  btnForgottenPwd: {
+    color: 'white',
+    textDecorationLine: 'underline'
   },
   logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
   btnText: { color: '#fff' }

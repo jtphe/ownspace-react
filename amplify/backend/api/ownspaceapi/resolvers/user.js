@@ -60,18 +60,19 @@ const user = {
       );
       return res.data.updateUser;
     },
-    updateUserPwdDB: async ({ id, password }) => {
+    updateUserPwdDB: async ({ id, password, updatedAt }) => {
       const cryptedPassword = await PasswordManager.hashPassword(password);
-      const query = `mutation updateUser($id: ID! $password: String!) {
+      const query = `mutation updateUser($id: ID! $password: String! $updatedAt: String!) {
         updateUser(input:{
               id:$id
               password:$password
+              updatedAt:$updatedAt
             }){
                 id
             }
           }`;
       const res = await API.graphql(
-        graphqlOperation(query, { id, password: cryptedPassword })
+        graphqlOperation(query, { id, password: cryptedPassword, updatedAt })
       );
       return res.data.updateUser;
     },
@@ -140,6 +141,20 @@ const user = {
       }
 
       return res.data.getUser;
+    },
+    getUserWithEmail: async ({ email }) => {
+      const query = `query getUserWithEmail($email: String!){
+        listUsers (filter: {
+          email: {
+            contains:$email
+          }}), {
+            items {
+              id
+            }
+          }
+        }`;
+      const res = await API.graphql(graphqlOperation(query, { email }));
+      return res.data.listUsers;
     }
   }
 };

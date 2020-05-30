@@ -5,6 +5,8 @@ export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
+      createdAt
+      updatedAt
       firstname
       lastname
       email
@@ -29,6 +31,8 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -53,6 +57,8 @@ export const getGroup = /* GraphQL */ `
       name
       userGroup {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -81,6 +87,8 @@ export const listGroups = /* GraphQL */ `
         name
         userGroup {
           id
+          createdAt
+          updatedAt
           firstname
           lastname
           email
@@ -110,6 +118,8 @@ export const getFile = /* GraphQL */ `
       owner
       sharedList {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -148,6 +158,8 @@ export const listFiles = /* GraphQL */ `
         owner
         sharedList {
           id
+          createdAt
+          updatedAt
           firstname
           lastname
           email
@@ -182,6 +194,8 @@ export const getFolder = /* GraphQL */ `
       owner
       sharedList {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -217,6 +231,8 @@ export const listFolders = /* GraphQL */ `
         owner
         sharedList {
           id
+          createdAt
+          updatedAt
           firstname
           lastname
           email

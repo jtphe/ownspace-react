@@ -1,5 +1,7 @@
 type User @model {
   id: ID!
+  createdAt: String
+  updatedAt: String
   firstname: String
   lastname: String
   email: String!

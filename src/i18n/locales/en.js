@@ -8,11 +8,21 @@ export default {
     ownspace: 'OwnSpace',
     email: 'E-mail',
     password: 'Password',
+    newPassword: 'New password',
     login: 'Log In',
-    needHelp: 'Need help ?',
+    forgottenPassword: 'Forgotten password',
+    passwordInstructions:
+      'An email with instructions for changing your password has been sent to you',
+    titleForgottenPwd:
+      'Enter the verification code that has been sent to you and your new password',
+    placeholderCode: 'Verification code',
+    needEmail: 'You must enter the email of the forgotten password',
     almostDone: "We're almost there !",
     wrongPassword: 'Wrong password',
-    invalidPasswordEmail: 'Invalid email or incorrect password'
+    invalidPasswordEmail: 'Invalid email or incorrect password',
+    invalidEmail: 'Invalid email',
+    passwordUpdated: 'Password updated !',
+    wrongVerificationCode: 'Wrong verification code'
   },
   totp: {
     titleGenerate: 'Enter this code in your authentication application',
