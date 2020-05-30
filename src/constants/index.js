@@ -34,6 +34,6 @@ export const OWNSPACE_PINK_INPUT = '#F7D8D3';
 
 export const OWNSPACE_BLUE = '#4788D3';
 
-export const OWNSPACE_GRAY = '#858585';
+export const OWNSPACE_GRAY = '#A3A5A9';
 
 export const OWNSPACE_LIGHT_GRAY = '#ccc';

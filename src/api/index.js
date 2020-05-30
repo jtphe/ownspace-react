@@ -117,11 +117,15 @@ const api = {
       console.log(err);
     }
   },
+  /**
+   * Delete the file from S3
+   * @param {object} payload - The file path
+   */
   async deleteFileFromS3(payload) {
     try {
       Storage.remove(payload.path, { level: 'private' })
         .then(result => {
-          console.log('result', result);
+          console.log('File deleted =>', result);
           return result;
         })
         .catch(err => console.log(err));
@@ -129,6 +133,10 @@ const api = {
       console.log('Error while removing previous file S3 api =>', e);
     }
   },
+  /**
+   * Rename the file in DynamoDB
+   * @param {object} payload - The file object
+   */
   renameFileDB(payload) {
     return Promise.resolve(
       document.Mutation.renameFile({
@@ -138,6 +146,10 @@ const api = {
       })
     );
   },
+  /**
+   * Delete the file from DynamoDB
+   * @param {object} payload - The file id
+   */
   deleteFileFromDB(payload) {
     return Promise.resolve(
       document.Mutation.deleteFile({
@@ -145,6 +157,10 @@ const api = {
       })
     );
   },
+  /**
+   * Update the number of document in a folder
+   * @param {object} payload - The folder object
+   */
   updateFolderNbFiles(payload) {
     return Promise.resolve(
       document.Mutation.updateFolderNbFiles({
@@ -154,6 +170,10 @@ const api = {
       })
     );
   },
+  /**
+   * Add a password to the folder
+   * @param {object} payload - The folder object
+   */
   addPasswordFolder(payload) {
     return Promise.resolve(
       document.Mutation.updatePasswordFolder({
@@ -163,6 +183,10 @@ const api = {
       })
     );
   },
+  /**
+   * Check if the password to open the folder is good
+   * @param {object} payload - The folder object
+   */
   checkFolderPassword(payload) {
     return Promise.resolve(
       document.Query.checkFolderPassword({
@@ -171,6 +195,10 @@ const api = {
       })
     );
   },
+  /**
+   * Remove the password from the folder
+   * @param {object} payload - The folder object
+   */
   removeFolderPassword(payload) {
     return Promise.resolve(
       document.Mutation.removePasswordFolder({
@@ -179,6 +207,10 @@ const api = {
       })
     );
   },
+  /**
+   * Add a password to the file
+   * @param {object} payload - The file object
+   */
   addPasswordFile(payload) {
     return Promise.resolve(
       document.Mutation.updatePasswordFile({
@@ -188,6 +220,10 @@ const api = {
       })
     );
   },
+  /**
+   * Check if the password to open the file is good
+   * @param {object} payload - The file object
+   */
   checkFilePassword(payload) {
     return Promise.resolve(
       document.Query.checkFilePassword({
@@ -196,6 +232,10 @@ const api = {
       })
     );
   },
+  /**
+   * Remove the password from the file
+   * @param {object} payload - The file object
+   */
   removePasswordFile(payload) {
     return Promise.resolve(
       document.Mutation.removePasswordFile({
@@ -251,7 +291,8 @@ const api = {
     return Promise.resolve(
       user.Mutation.updateUserPwdDB({
         id: payload.id,
-        password: payload.newPassword
+        password: payload.newPassword,
+        updatedAt: payload.updatedAt
       })
     );
   },
@@ -344,6 +385,17 @@ const api = {
     } catch (err) {
       console.log('Error while removing picture api =>', err);
     }
+  },
+  /**
+   * Get the user object for an email
+   * @param {object} payload - The user email
+   */
+  getUserWithEmail(payload) {
+    return Promise.resolve(
+      user.Query.getUserWithEmail({
+        email: payload.email
+      })
+    );
   },
   /**
    * Sign out the user from the application

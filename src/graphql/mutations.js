@@ -8,6 +8,8 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       id
+      createdAt
+      updatedAt
       firstname
       lastname
       email
@@ -30,6 +32,8 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       id
+      createdAt
+      updatedAt
       firstname
       lastname
       email
@@ -52,6 +56,8 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       id
+      createdAt
+      updatedAt
       firstname
       lastname
       email
@@ -77,6 +83,8 @@ export const createGroup = /* GraphQL */ `
       name
       userGroup {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -103,6 +111,8 @@ export const updateGroup = /* GraphQL */ `
       name
       userGroup {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -129,6 +139,8 @@ export const deleteGroup = /* GraphQL */ `
       name
       userGroup {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -159,6 +171,8 @@ export const createFile = /* GraphQL */ `
       owner
       sharedList {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -195,6 +209,8 @@ export const updateFile = /* GraphQL */ `
       owner
       sharedList {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -231,6 +247,8 @@ export const deleteFile = /* GraphQL */ `
       owner
       sharedList {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -266,6 +284,8 @@ export const createFolder = /* GraphQL */ `
       owner
       sharedList {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -299,6 +319,8 @@ export const updateFolder = /* GraphQL */ `
       owner
       sharedList {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email
@@ -332,6 +354,8 @@ export const deleteFolder = /* GraphQL */ `
       owner
       sharedList {
         id
+        createdAt
+        updatedAt
         firstname
         lastname
         email

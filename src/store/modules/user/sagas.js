@@ -15,13 +15,16 @@ import {
   M_SIGN_OUT,
   U_UPDATE_USER_PICTURE,
   M_UPDATE_USER_PICTURE,
-  M_PICTURE_IS_UPLOADING
+  M_PICTURE_IS_UPLOADING,
+  U_UPDATE_USER_FORGOTTEN_PASSWORD
 } from './actions';
 import showToast from '@utils/showToast';
 import { Storage } from 'aws-amplify';
 import { U_LOAD_FOLDERS, U_LOAD_FILES } from '@store/modules/document/actions';
 import { getUser, getPictureName } from '@store/modules/user/selectors';
 import moment from 'moment';
+
+const dateNow = +moment();
 
 function* createUser({ payload }) {
   try {
@@ -84,6 +87,7 @@ function* updateUserPassword({ payload }) {
   try {
     const res = yield call(api.changeUserPassword, payload);
     if (res.password) {
+      payload.updatedAt = dateNow;
       yield call(api.updateUserPwdDB, payload);
       Actions.pop();
     }
@@ -110,7 +114,6 @@ function* updateUserPicture({ payload }) {
     if (pictureName !== null) {
       yield call(api.removeOldPicture, pictureName);
     }
-    const dateNow = +moment();
 
     payload.owner = user.id;
     payload.createdAt = dateNow;
@@ -129,6 +132,19 @@ function* updateUserPicture({ payload }) {
   }
 }
 
+function* updateUserForgottenPassword({ payload }) {
+  try {
+    const res = yield call(api.getUserWithEmail, payload);
+    payload.updatedAt = dateNow;
+    if (res) {
+      payload.id = res.items[0].id;
+      yield call(api.updateUserPwdDB, payload);
+    }
+  } catch (e) {
+    console.log('Error while updating user password =>', e);
+  }
+}
+
 export default function* watchUser() {
   yield takeLatest(U_CREATE_USER, createUser);
   yield takeLatest(U_LOAD_USER, loadUser);
@@ -136,4 +152,8 @@ export default function* watchUser() {
   yield takeLatest(U_UPDATE_USER_PASSWORD, updateUserPassword);
   yield takeLatest(U_SIGN_OUT, signOut);
   yield takeLatest(U_UPDATE_USER_PICTURE, updateUserPicture);
+  yield takeLatest(
+    U_UPDATE_USER_FORGOTTEN_PASSWORD,
+    updateUserForgottenPassword
+  );
 }

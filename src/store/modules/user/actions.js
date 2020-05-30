@@ -10,6 +10,8 @@ export const M_SIGN_OUT = 'M_SIGN_OUT';
 export const U_UPDATE_USER_PICTURE = 'U_UPDATE_USER_PICTURE';
 export const M_UPDATE_USER_PICTURE = 'M_UPDATE_USER_PICTURE';
 export const M_PICTURE_IS_UPLOADING = 'M_PICTURE_IS_UPLOADING';
+export const U_UPDATE_USER_FORGOTTEN_PASSWORD =
+  'U_UPDATE_USER_FORGOTTEN_PASSWORD';
 
 export const createUser = payload => ({
   type: U_CREATE_USER,
@@ -37,5 +39,10 @@ export const signOut = () => ({
 
 export const updateUserPicture = payload => ({
   type: U_UPDATE_USER_PICTURE,
+  payload
+});
+
+export const updateUserForgottenPassword = payload => ({
+  type: U_UPDATE_USER_FORGOTTEN_PASSWORD,
   payload
 });
