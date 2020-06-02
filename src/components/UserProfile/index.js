@@ -211,6 +211,9 @@ const UserProfile = ({ user, pictureIsUploading }) => {
             placeholderTextColor="grey"
             textContentType="emailAddress"
             autoCapitalize="none"
+            onTouchStart={() =>
+              showToast(i18n.t('userProfile.cantEdit'), false)
+            }
             value={user.email}
             editable={false}
             returnKeyType="next"

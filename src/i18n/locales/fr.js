@@ -97,7 +97,8 @@ export default {
     updatePassword: 'Mettre à jour le mot de passe',
     passwordInfo:
       'Veuillez choisir un mot de passe robuste (au moins 8 caractères, majuscules, minuscules et caractères spéciaux).',
-    update: 'Mettre à jour'
+    update: 'Mettre à jour',
+    cantEdit: "Vous ne pouvez pas modifier l'e-mail de l'utilisateur"
   },
   document: {
     home: 'Home',

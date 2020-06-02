@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { Button } from 'react-native-paper';
 import { updateUserPassword } from '@store/modules/user/actions';
 import showToast from '@utils/showToast';
-import { CLIENT_COLOR_PRIMARY, CLIENT_COLOR_SECONDARY } from '@constants';
+import { CLIENT_COLOR_PRIMARY, OWNSPACE_GRAY } from '@constants';
 
 /**
  * The PasswordModal component
@@ -115,7 +115,7 @@ const PasswordModal = ({ user }) => {
           <Button
             mode="contained"
             uppercase={false}
-            labelStyle={styles.btnText}
+            labelStyle={[styles.btnText, styles.btnTextCancel]}
             contentStyle={styles.btnDimension}
             style={styles.btnCancel}
             onPress={() => Actions.pop()}
@@ -182,8 +182,14 @@ const styles = StyleSheet.create({
     fontFamily: 'DejaVuSansBold',
     color: '#fff'
   },
+  btnTextCancel: {
+    color: CLIENT_COLOR_PRIMARY
+  },
   btnCancel: {
-    backgroundColor: CLIENT_COLOR_SECONDARY
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderColor: CLIENT_COLOR_PRIMARY,
+    borderWidth: 1
   },
   btnUpdate: {
     backgroundColor: CLIENT_COLOR_PRIMARY
