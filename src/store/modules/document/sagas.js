@@ -277,12 +277,14 @@ function* addDocument({ payload }) {
     yield call(api.addSelectedFileToS3, payload);
 
     const document = yield call(api.addSelectedFile, payload);
-    const folderPayload = {
-      id: payload.parent,
-      nbFiles,
-      updatedAt: payload.updatedAt
-    };
-    yield call(api.updateFolderNbFiles, folderPayload);
+    if (payload.parent !== -1) {
+      const folderPayload = {
+        id: payload.parent,
+        nbFiles,
+        updatedAt: payload.updatedAt
+      };
+      yield call(api.updateFolderNbFiles, folderPayload);
+    }
 
     yield put({ type: M_REMOVE_UPLOADING_FILE });
     yield put({ type: M_ADD_DOCUMENT, document });

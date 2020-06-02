@@ -28,6 +28,8 @@ const dateNow = +moment();
 
 function* createUser({ payload }) {
   try {
+    payload.createdAt = dateNow;
+    payload.updatedAt = dateNow;
     const user = yield call(api.createUser, payload);
     // Add file to S3
     Storage.put('Home/', '', {
