@@ -35,7 +35,7 @@
     "react-native-gesture-handler": "~1.6.1",
     "react-native-image-crop-picker": "^0.31.1",
     "react-native-iphone-x-helper": "^1.2.1",
-    "react-native-paper": "^3.8.0",
+    "react-native-paper": "^3.10.1",
     "react-native-popup-menu": "^0.15.7",
     "react-native-reanimated": "~1.9.0",
     "react-native-root-toast": "^3.2.1",
