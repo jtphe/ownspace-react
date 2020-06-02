@@ -255,7 +255,9 @@ const api = {
         id: payload.id,
         email: payload.email,
         password: payload.password,
-        role: payload.role
+        role: payload.role,
+        createdAt: payload.createdAt,
+        updatedAt: payload.updatedAt
       })
     );
   },

@@ -9,14 +9,16 @@ API.configure(awsconfig);
 
 const user = {
   Mutation: {
-    createUser: async ({ id, email, password, role }) => {
+    createUser: async ({ id, email, password, role, createdAt, updatedAt }) => {
       const cryptedPassword = await PasswordManager.hashPassword(password);
-      const query = `mutation createUser($id: ID! $email: String! $password: String! $role: String!) {
+      const query = `mutation createUser($id: ID! $email: String! $password: String! $role: String! $createdAt: String! $updatedAt: String!) {
             createUser(input:{
                   id:$id
                   email:$email
                   password:$password
                   role:$role
+                  createdAt:$createdAt
+                  updatedAt:$updatedAt
                 }){
                     id,
                     firstname,
@@ -33,7 +35,14 @@ const user = {
                 }
               }`;
       const res = await API.graphql(
-        graphqlOperation(query, { id, email, password: cryptedPassword, role })
+        graphqlOperation(query, {
+          id,
+          email,
+          password: cryptedPassword,
+          role,
+          createdAt,
+          updatedAt
+        })
       );
       return res.data.createUser;
     },
