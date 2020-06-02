@@ -96,7 +96,8 @@ export default {
     updatePassword: 'Update password',
     passwordInfo:
       'Please choose a strong password (at least 8 characters, upper case, lower case and special characters).',
-    update: 'Update'
+    update: 'Update',
+    cantEdit: "You cannot edit user's email"
   },
   document: {
     home: 'Home',
