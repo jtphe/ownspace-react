@@ -28,7 +28,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-crop-picker';
 import octetToMoConverter from '@utils/fileSizeConverter';
 import { CLIENT_COLOR_PRIMARY, CLIENT_COLOR_SECONDARY } from '@constants';
-import { Auth } from 'aws-amplify';
 
 /**
  * Connect to the store and extract data
@@ -158,7 +157,7 @@ const UserProfile = ({ user, pictureIsUploading }) => {
         <View>
           {user.firstname !== null && user.lastname !== null ? (
             <Text style={styles.profileName}>
-              {`${user.firstname} ${user.lastname}`}
+              {`${user.lastname} ${user.firstname}`}
             </Text>
           ) : (
             <Text style={styles.profileName}>{user.email}</Text>

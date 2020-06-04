@@ -101,7 +101,6 @@ function* updateUserPassword({ payload }) {
 function* signOut() {
   try {
     yield call(api.signOutUser);
-    yield put({ type: M_SIGN_OUT, token: null });
     Actions.login();
   } catch (e) {
     console.log('Error while signout =>', e);
