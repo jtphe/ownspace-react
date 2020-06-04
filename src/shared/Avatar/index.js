@@ -30,9 +30,7 @@ const Avatar = ({ image, size, borderRadius }) => {
     <Image
       source={{
         uri:
-          image === null
-            ? 'https://jtphe.ddns.net/ownspace/medias/avatar.png'
-            : image
+          image === null ? 'http://eliseretouches.com/media/avatar.png' : image
       }}
       style={[_typeStyle()]}
     />
