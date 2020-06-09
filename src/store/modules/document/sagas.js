@@ -77,12 +77,15 @@ function* createFile({ payload }) {
     // Add file to DynamoDB
     const file = yield call(api.createFileTxt, payload);
 
-    const folderPayload = {
-      id: payload.parent,
-      nbFiles,
-      updatedAt: payload.updatedAt
-    };
-    yield call(api.updateFolderNbFiles, folderPayload);
+    // Update the number of files in the folder
+    if (currentPathId !== -1) {
+      const folderPayload = {
+        id: payload.parent,
+        nbFiles,
+        updatedAt: payload.updatedAt
+      };
+      yield call(api.updateFolderNbFiles, folderPayload);
+    }
 
     if (currentPathString !== 'Home/') {
       // Add file to S3
@@ -246,12 +249,15 @@ function* addSelectedPicture({ payload }) {
     yield put({ type: M_SET_UPLOADING_FILE, payload });
     yield call(api.addSelectedFileToS3, payload);
 
-    const folderPayload = {
-      id: payload.parent,
-      nbFiles,
-      updatedAt: payload.updatedAt
-    };
-    yield call(api.updateFolderNbFiles, folderPayload);
+    // Update the number of files in the folder
+    if (currentPathId !== -1) {
+      const folderPayload = {
+        id: payload.parent,
+        nbFiles,
+        updatedAt: payload.updatedAt
+      };
+      yield call(api.updateFolderNbFiles, folderPayload);
+    }
 
     const image = yield call(api.addSelectedFile, payload);
     yield put({ type: M_REMOVE_UPLOADING_FILE });
@@ -277,7 +283,8 @@ function* addDocument({ payload }) {
     yield call(api.addSelectedFileToS3, payload);
 
     const document = yield call(api.addSelectedFile, payload);
-    if (payload.parent !== -1) {
+    // Update the number of files in the folder
+    if (currentPathId !== -1) {
       const folderPayload = {
         id: payload.parent,
         nbFiles,
