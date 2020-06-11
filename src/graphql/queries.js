@@ -55,7 +55,7 @@ export const getGroup = /* GraphQL */ `
     getGroup(id: $id) {
       id
       name
-      userGroup {
+      usersGroup {
         id
         createdAt
         updatedAt
@@ -85,7 +85,7 @@ export const listGroups = /* GraphQL */ `
       items {
         id
         name
-        userGroup {
+        usersGroup {
           id
           createdAt
           updatedAt

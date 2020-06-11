@@ -20,7 +20,7 @@ const CreateFile = () => {
   /**
    * Creates a file in a txt format
    */
-  const createTxtFile = () => {
+  const _createTxtFile = () => {
     if (title.trim().length > 0 && text.trim().length > 0) {
       if (
         title.trim().length > 6 &&
@@ -74,7 +74,7 @@ const CreateFile = () => {
           }}
         />
       </View>
-      <CustomButton confirmFunction={() => createTxtFile()} />
+      <CustomButton confirmFunction={() => _createTxtFile()} />
     </View>
   );
 };

@@ -158,5 +158,9 @@ export default {
   },
   file: {
     deleted: 'File successfully deleted !'
+  },
+  shareModal: {
+    shareTitle: 'Share : %{document}',
+    placeholder: 'Enter a user name...'
   }
 };

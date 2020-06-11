@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { Button } from 'react-native-paper';
 import { updateUserPassword } from '@store/modules/user/actions';
 import showToast from '@utils/showToast';
-import { CLIENT_COLOR_PRIMARY, OWNSPACE_GRAY } from '@constants';
+import { CLIENT_COLOR_PRIMARY } from '@constants';
 
 /**
  * The PasswordModal component

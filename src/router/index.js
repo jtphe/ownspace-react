@@ -7,6 +7,7 @@ import CreateFile from '@components/Home/createFile';
 import SplashScreen from '@components/Scenes/splashScreen';
 import UserProfile from '@components/UserProfile/index';
 import PasswordModal from '@components/UserProfile/passwordModal';
+import ShareModal from '@components/Document/shareModal';
 
 /**
  * AppRouter defines all the routes of OwnSpace app
@@ -63,6 +64,13 @@ const AppRouter = () => {
           type={ActionConst.PUSH}
           component={PasswordModal}
           title="PasswordModal"
+          hideNavBar
+        />
+        <Scene
+          key="shareModal"
+          type={ActionConst.PUSH}
+          component={ShareModal}
+          title="ShareModal"
           hideNavBar
         />
       </Scene>

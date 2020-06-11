@@ -44,6 +44,7 @@ import {
   OWNSPACE_GRAY,
   OWNSPACE_LIGHT_GRAY
 } from '@constants';
+import { Actions } from 'react-native-router-flux';
 
 /**
  *  A hash map containing commonly used files
@@ -61,7 +62,7 @@ const { SlideInMenu } = renderers;
  * @param {string} currentPathString - The current path
  * @param {object} user - The user
  */
-const File = ({ file, currentPathString, user }) => {
+const File = ({ file, currentPathString, user, groupUsers }) => {
   const [progress, setProgress] = useState(0);
   const dispatch = useDispatch();
   const [isDownloading, setIsDownloading] = useState(false);
@@ -419,7 +420,9 @@ const File = ({ file, currentPathString, user }) => {
                     optionWrapper: styles.menuOptions
                   }}
                   value={1}
-                  onSelect={() => console.log('file', file)}
+                  onSelect={() =>
+                    Actions.shareModal({ document: file, users: groupUsers })
+                  }
                 >
                   <View style={styles.options}>
                     <Icon

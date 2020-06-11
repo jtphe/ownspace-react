@@ -12,7 +12,6 @@ import {
   M_UPDATE_USER_NAMES,
   U_UPDATE_USER_PASSWORD,
   U_SIGN_OUT,
-  M_SIGN_OUT,
   U_UPDATE_USER_PICTURE,
   M_UPDATE_USER_PICTURE,
   M_PICTURE_IS_UPLOADING,
@@ -55,6 +54,10 @@ function* createUser({ payload }) {
 function* loadUser({ payload }) {
   try {
     const user = yield call(api.loadUser, payload);
+    let users;
+    if (user) {
+      users = yield call(api.loadGroupUsers, user);
+    }
     let pictureUrl = null;
     // Check if the user already had a picture, if true load the picture
     if (user.pictureUrl !== null) {
@@ -65,6 +68,7 @@ function* loadUser({ payload }) {
     yield put({ type: M_LOAD_USER, user, token });
     yield put({ type: U_LOAD_FOLDERS });
     yield put({ type: U_LOAD_FILES });
+    yield put({ type: 'M_SET_GROUP_USERS', users: users.items });
     yield put({ type: 'M_SET_APP_LOADING', loading: false });
   } catch (e) {
     console.log('Error while loading user =>', e);

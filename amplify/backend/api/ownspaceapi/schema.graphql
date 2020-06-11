@@ -19,7 +19,7 @@ type User @model {
 type Group @model {
   id: ID!
   name: String
-  userGroup: [User]
+  usersGroup: [User]
 }
 
 type File @model {

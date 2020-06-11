@@ -16,7 +16,8 @@ import {
   getPath,
   getDocuments,
   getUploadingFile,
-  getCurrentPathString
+  getCurrentPathString,
+  getGroupUsers
 } from '@store/modules/document/selectors';
 import { getUser } from '@store/modules/user/selectors';
 import { CLIENT_COLOR_PRIMARY } from '@constants';
@@ -33,7 +34,7 @@ const mapStateToProps = createSelector(
     getDocuments,
     getUploadingFile,
     getCurrentPathString,
-
+    getGroupUsers,
     getUser
   ],
   (
@@ -44,7 +45,7 @@ const mapStateToProps = createSelector(
     documents,
     uploadingFile,
     currentPathString,
-
+    groupUsers,
     user
   ) => {
     return {
@@ -55,7 +56,7 @@ const mapStateToProps = createSelector(
       documents,
       uploadingFile,
       currentPathString,
-
+      groupUsers,
       user
     };
   }
@@ -70,6 +71,7 @@ const mapStateToProps = createSelector(
  * @param {object} documents - The document list to display
  * @param {object} uploadingFile - The uploading file
  * @param {string} currentPathString - The current path
+ * @param {object} groupUsers - The group's users
  * @param {object} user - The user
  */
 const HomeList = ({
@@ -80,6 +82,7 @@ const HomeList = ({
   documents,
   uploadingFile,
   currentPathString,
+  groupUsers,
   user
 }) => {
   const dispatch = useDispatch();
@@ -131,6 +134,7 @@ const HomeList = ({
             uploadingFile={uploadingFile}
             currentPathString={currentPathString}
             user={user}
+            groupUsers={groupUsers}
           />
         </View>
       ) : (

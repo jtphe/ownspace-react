@@ -15,6 +15,7 @@ import i18n from '@i18n/i18n';
  * @param {object} uploadingFile - The uploading file
  * @param {string} currentPathString - The current path
  * @param {object} user - The user
+ * @param {object} groupUsers - The group's users
  */
 const DocumentList = ({
   document,
@@ -23,7 +24,8 @@ const DocumentList = ({
   nbFolders,
   uploadingFile,
   currentPathString,
-  user
+  user,
+  groupUsers
 }) => {
   /**
    * Render the DocumentList component
@@ -46,6 +48,7 @@ const DocumentList = ({
                     file={item}
                     currentPathString={currentPathString}
                     user={user}
+                    groupUsers={groupUsers}
                   />
                 )
               }

@@ -69,7 +69,7 @@ export const onCreateGroup = /* GraphQL */ `
     onCreateGroup {
       id
       name
-      userGroup {
+      usersGroup {
         id
         createdAt
         updatedAt
@@ -94,7 +94,7 @@ export const onUpdateGroup = /* GraphQL */ `
     onUpdateGroup {
       id
       name
-      userGroup {
+      usersGroup {
         id
         createdAt
         updatedAt
@@ -119,7 +119,7 @@ export const onDeleteGroup = /* GraphQL */ `
     onDeleteGroup {
       id
       name
-      userGroup {
+      usersGroup {
         id
         createdAt
         updatedAt

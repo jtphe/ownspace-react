@@ -29,7 +29,8 @@ const initialState = {
   loadingState: {
     folders: true,
     files: true
-  }
+  },
+  users: []
 };
 
 export default function reducer(state = initialState, action) {
@@ -276,6 +277,13 @@ export default function reducer(state = initialState, action) {
               $set: action.updatedAt
             }
           }
+        }
+      });
+    }
+    case 'M_SET_GROUP_USERS': {
+      return update(state, {
+        users: {
+          $set: action.users
         }
       });
     }

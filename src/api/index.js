@@ -1,5 +1,6 @@
 import document from '@backend/api/ownspaceapi/resolvers/document';
 import user from '@backend/api/ownspaceapi/resolvers/user';
+import group from '@backend/api/ownspaceapi/resolvers/group';
 import { Auth, Storage } from 'aws-amplify';
 
 /**
@@ -408,9 +409,20 @@ const api = {
     } catch (error) {
       console.log('error signing out: ', error);
     }
-  }
+  },
 
   // GROUP
+  /**
+   * Get the user
+   * @param {object} payload - Id of the user
+   */
+  loadGroupUsers(payload) {
+    return Promise.resolve(
+      group.Query.getGroupUsers({
+        id: payload.group
+      })
+    );
+  }
   // RIGHTS
 };
 

@@ -1405,7 +1405,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "userGroup",
+          "name" : "usersGroup",
           "description" : null,
           "args" : [ ],
           "type" : {
