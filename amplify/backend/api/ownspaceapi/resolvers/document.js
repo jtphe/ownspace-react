@@ -34,16 +34,6 @@ const document = {
                   name,
                   content,
                   owner,
-                  sharedList {
-                    id,
-                    firstname,
-                    lastname,
-                    email,
-                    pictureName,
-                    pictureUrl,
-                    role,
-                    group
-                  },
                   isProtected,
                   password,
                   parent,
@@ -80,16 +70,6 @@ const document = {
           updatedAt,
           name,
           owner,
-          sharedList {
-            id,
-            firstname,
-            lastname,
-            email,
-            pictureName,
-            pictureUrl,
-            role,
-            group
-          },
           isProtected,
           password,
           parent,
@@ -127,16 +107,6 @@ const document = {
           updatedAt,
           name,
           owner,
-          sharedList {
-            id,
-            firstname,
-            lastname,
-            email,
-            pictureName,
-            pictureUrl,
-            role,
-            group
-          },
           isProtected,
           password,
           parent,
@@ -290,16 +260,6 @@ const document = {
           updatedAt,
           name,
           owner,
-          sharedList {
-            id,
-            firstname,
-            lastname,
-            email,
-            pictureName,
-            pictureUrl,
-            role,
-            group
-          },
           isProtected,
           parent,
           nbFiles
@@ -308,6 +268,22 @@ const document = {
       }`;
       const res = await API.graphql(graphqlOperation(query, { user, parent }));
       return res.data.listFolders;
+    },
+    getFolder: async ({ id }) => {
+      const query = `query getFolder($id: ID!){
+        getFolder(id:$id){
+          id,
+          createdAt,
+          updatedAt,
+          name,
+          owner,
+          isProtected,
+          parent,
+          nbFiles
+        }
+      }`;
+      const res = await API.graphql(graphqlOperation(query, { id }));
+      return res.data.getFolder;
     },
     getAllFiles: async ({ parent, user }) => {
       const query = `query getAllFiles($parent: ID!, $user: ID!){
@@ -329,22 +305,48 @@ const document = {
           owner,
           parent,
           isProtected,
-          size,
-          sharedList {
-            id,
-            firstname,
-            lastname,
-            email,
-            pictureName,
-            pictureUrl,
-            role,
-            group
-          }
+          size
          }
         }
       }`;
       const res = await API.graphql(graphqlOperation(query, { parent, user }));
       return res.data.listFiles;
+    },
+    getFilesId: async ({ parent, user }) => {
+      const query = `query getFilesId($parent: ID!, $user: ID!){
+        listFiles(filter: {
+          owner: {
+            contains:$user
+          },
+          parent:{
+            contains:$parent
+          }
+        }, limit: 100){
+         items {
+          id
+         }
+        }
+      }`;
+      const res = await API.graphql(graphqlOperation(query, { parent, user }));
+      return res.data.listFiles;
+    },
+    getFile: async ({ id }) => {
+      const query = `query getFile($id: ID!){
+        getFile(id:$id){
+          id,
+          createdAt,
+          updatedAt,
+          type,
+          mimeType,
+          name,
+          owner,
+          parent,
+          isProtected,
+          size
+        }
+      }`;
+      const res = await API.graphql(graphqlOperation(query, { id }));
+      return res.data.getFile;
     },
     checkFolderPassword: async ({ id, password }) => {
       const query = `query getFolderPassword($id: ID!){

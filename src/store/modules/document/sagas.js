@@ -38,7 +38,11 @@ import {
   U_CHECK_FILE_PASSWORD,
   U_REMOVE_PASSWORD_FILE,
   M_REMOVE_PASSWORD_FILE,
-  U_CHECK_FILE_PASSWORD_BEFORE_DELETE
+  U_CHECK_FILE_PASSWORD_BEFORE_DELETE,
+  U_ADD_USERS_TO_DOCUMENT,
+  M_ADD_USERS_TO_DOCUMENT,
+  U_REMOVE_USERS_FROM_DOCUMENT,
+  M_REMOVE_USERS_FROM_DOCUMENT
 } from './actions';
 import { getUser } from '@store/modules/user/selectors';
 import {
@@ -90,7 +94,7 @@ function* createFile({ payload }) {
     if (currentPathString !== 'Home/') {
       // Add file to S3
       Storage.put(currentPathString + file.name, file.content, {
-        level: 'private',
+        level: 'protected',
         contentType: 'sprite-brut',
         progressCallback(progress) {
           console.log('progress', progress);
@@ -98,14 +102,14 @@ function* createFile({ payload }) {
         }
       })
         .then(result => {
-          console.log(result); // {key: "test.txt"}
+          console.log(result);
           Actions.pop();
         })
         .catch(err => console.log(err));
     } else {
       // Add file to S3
       Storage.put(`Home/${file.name}`, file.content, {
-        level: 'private',
+        level: 'protected',
         contentType: 'sprite-brut',
         progressCallback(progress) {
           console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
@@ -117,6 +121,7 @@ function* createFile({ payload }) {
         })
         .catch(err => console.log(err));
     }
+    file.sharedUsers = [];
     yield put({ type: M_CREATE_FILE, file });
   } catch (e) {
     console.log('Error while creating file txt =>', e);
@@ -140,7 +145,7 @@ function* createFolder({ payload }) {
     if (currentPathString !== 'Home/') {
       // Add file to S3
       Storage.put(`${currentPathString + folder.name}/`, '', {
-        level: 'private',
+        level: 'protected',
         contentType: 'sprite-brut',
         progressCallback(progress) {
           console.log('progress', progress);
@@ -155,7 +160,7 @@ function* createFolder({ payload }) {
     } else {
       // Add file to S3
       Storage.put(`Home/${folder.name}/`, '', {
-        level: 'private',
+        level: 'protected',
         contentType: 'sprite-brut',
         progressCallback(progress) {
           console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
@@ -167,6 +172,7 @@ function* createFolder({ payload }) {
         })
         .catch(err => console.log(err));
     }
+    folder.sharedUsers = [];
     yield put({ type: M_CREATE_FOLDER, folder });
   } catch (e) {
     console.log('Error while creating a folder => ', e);
@@ -176,6 +182,7 @@ function* createFolder({ payload }) {
 function* loadFolders({ folder }) {
   try {
     yield put({ type: M_SET_FOLDERS_STATE_LOADING });
+
     const user = yield select(getUser);
     const path = folder
       ? [{ name: folder.name, id: folder.id }]
@@ -184,8 +191,40 @@ function* loadFolders({ folder }) {
       pathId: path[0].id,
       userId: user.id
     };
+
     const result = yield call(api.loadFolders, payload);
+
+    // TODO: Load the user shared folders
+    // const sharedFolders = yield call(api.loadSharedFolders, payload);
+
+    // if (sharedFolders.items.length > 0) {
+    //   for (let i = 0; i < sharedFolders.items.length; i++) {
+    //     const element = sharedFolders.items[i];
+    //     const folderGet = yield call(api.getFolder, { id: element.id });
+    //     const rightPayload = {
+    //       user: user.id,
+    //       document: folderGet.id
+    //     };
+    //     const rights = yield call(api.getUserRightsOnDocument, rightPayload);
+    //     folder.read = rights.items[0].read;
+    //     folder.edit = rights.items[0].edit;
+    //     folder.shared = true;
+    //     result.items.push(folder);
+    //   }
+    // }
+
     if (result.items) {
+      const finalFoldersList = [];
+      for (let i = 0; i < result.items.length; i++) {
+        const element = result.items[i];
+        const payloadFolder = {
+          id: element.id
+        };
+        // Get the shared users of the file
+        const sharedUsers = yield call(api.loadSharedUser, payloadFolder);
+        element.sharedUsers = sharedUsers.items;
+        finalFoldersList.push(element);
+      }
       yield put({
         type: M_SET_FOLDERS,
         folders: result.items
@@ -200,6 +239,7 @@ function* loadFolders({ folder }) {
 function* loadFiles({ folder }) {
   try {
     yield put({ type: M_SET_FILES_STATE_LOADING });
+
     const user = yield select(getUser);
     const path = folder ? [{ name: folder.name, id: folder.id }] : [{ id: -1 }];
     const payload = {
@@ -207,8 +247,41 @@ function* loadFiles({ folder }) {
       userId: user.id
     };
     const result = yield call(api.loadFiles, payload);
+    const sharedFiles = yield call(api.loadSharedFiles, payload);
+    // If the user have shared files, get the user's rights on them
+    if (sharedFiles.items.length > 0) {
+      for (let i = 0; i < sharedFiles.items.length; i++) {
+        const element = sharedFiles.items[i];
+        const file = yield call(api.getFile, { id: element.document });
+        const rightPayload = {
+          user: user.id,
+          document: file.id
+        };
+        const rights = yield call(api.getUserRightsOnDocument, rightPayload);
+        file.read = rights.items[0].read;
+        file.edit = rights.items[0].edit;
+        file.shared = true;
+
+        // Only display the shared files on the home
+        if (file.parent === path[0].id.toString()) {
+          result.items.push(file);
+        }
+      }
+    }
+
     if (result.items) {
-      yield put({ type: M_SET_FILES, files: result.items });
+      const finalFilesList = [];
+      for (let i = 0; i < result.items.length; i++) {
+        const element = result.items[i];
+        const payloadFile = {
+          id: element.id
+        };
+        // Get the shared users of the file
+        const sharedUsers = yield call(api.loadSharedUser, payloadFile);
+        element.sharedUsers = sharedUsers.items;
+        finalFilesList.push(element);
+      }
+      yield put({ type: M_SET_FILES, files: finalFilesList });
     }
   } catch (e) {
     console.log('Error while loading files =>', e);
@@ -217,7 +290,16 @@ function* loadFiles({ folder }) {
 
 function* downloadFile({ payload }) {
   try {
-    const data = yield call(api.downloadFile, payload);
+    let data;
+    if (payload.shared) {
+      const res = yield call(api.getIdentityId, payload);
+      if (res) {
+        payload.identityId = res.identityId;
+        data = yield call(api.downloadFile, payload);
+      }
+    } else {
+      data = yield call(api.downloadFile, payload);
+    }
     if (data) {
       return payload.resolve(data);
     }
@@ -260,6 +342,7 @@ function* addSelectedPicture({ payload }) {
     }
 
     const image = yield call(api.addSelectedFile, payload);
+    image.sharedUsers = [];
     yield put({ type: M_REMOVE_UPLOADING_FILE });
     yield put({ type: M_ADD_SELECTED_PICTURE, image });
     showToast(i18n.t('picture.imported', true));
@@ -292,7 +375,7 @@ function* addDocument({ payload }) {
       };
       yield call(api.updateFolderNbFiles, folderPayload);
     }
-
+    document.sharedUsers = [];
     yield put({ type: M_REMOVE_UPLOADING_FILE });
     yield put({ type: M_ADD_DOCUMENT, document });
     showToast(i18n.t('document.imported', true));
@@ -484,10 +567,19 @@ function* checkFilePassword({ payload }) {
   try {
     const res = yield call(api.checkFilePassword, payload);
     if (res === 200) {
+      let data;
       const currentPathString = yield select(getCurrentPathString);
       const path = currentPathString + payload.file.name;
       payload.path = path;
-      const data = yield call(api.downloadFile, payload);
+      if (payload.shared) {
+        const resId = yield call(api.getIdentityId, payload);
+        if (resId) {
+          payload.identityId = resId.identityId;
+          data = yield call(api.downloadFile, payload);
+        }
+      } else {
+        data = yield call(api.downloadFile, payload);
+      }
       const SavePath = Platform.OS === 'ios' ? dirs.CacheDir : dirs.DownloadDir;
 
       if (Platform.OS === 'android') {
@@ -545,6 +637,88 @@ function* checkFilePasswordBeforeDelete({ payload }) {
   }
 }
 
+function* addUsersToDocument({ payload }) {
+  try {
+    const user = yield select(getUser);
+    const usersAdded = [];
+    for (let i = 0; i < payload.list.length; i++) {
+      const element = payload.list[i];
+      if (element.id === payload.document.owner) {
+        showToast(i18n.t('shareModal.cantAddOwner'), false);
+      } else if (element.id !== user.id) {
+        console.log('element', element);
+        const finalPayload = {
+          type: payload.type,
+          document: payload.document.id,
+          read: element.right === 'Read' || element.right === 'Lecture',
+          edit: element.right === 'Edit' || element.right === 'Édition',
+          user: element.id,
+          firstname: element.firstname === null ? '' : element.firstname,
+          lastname: element.lastname === null ? '' : element.lastname,
+          email: element.email,
+          createdAt: dateNow,
+          updatedAt: dateNow
+        };
+        yield call(api.addUsersToDocument, finalPayload);
+        if (payload.type === 'folder') {
+          const path = payload.document
+            ? [{ name: payload.document.name, id: payload.document.id }]
+            : [{ id: -1 }];
+          const { owner } = payload.document;
+          payload.pathId = path;
+          payload.userId = owner;
+          const folderFiles = yield call(api.getFilesId, payload);
+          console.log('folderFiles', folderFiles);
+        }
+        usersAdded.push(finalPayload);
+        yield put({
+          type: M_ADD_USERS_TO_DOCUMENT,
+          document: payload.document.id,
+          user: finalPayload
+        });
+      } else {
+        showToast(i18n.t('shareModal.cantAddOneSelf'), false);
+      }
+    }
+    if (usersAdded.length > 0) {
+      Actions.refresh({ usersAdded });
+    }
+  } catch (e) {
+    console.log('Error while adding users to document =>', e);
+  }
+}
+
+function* removeUserFromDocument({ payload }) {
+  try {
+    let indexToRemove;
+    const res = yield call(api.getRight, payload);
+    if (res.items) {
+      payload.rightId = res.items[0].id;
+      const deleted = yield call(api.removeUserFromDocument, payload);
+      if (deleted.id) {
+        yield put({
+          type: M_REMOVE_USERS_FROM_DOCUMENT,
+          user: payload.user,
+          id: payload.document
+        });
+
+        for (let i = 0; i < payload.guests.length; i++) {
+          const element = payload.guests[i];
+          if (element.user === payload.user) {
+            indexToRemove = i;
+            break;
+          }
+        }
+        const guestsTmp = [...payload.guests];
+        guestsTmp.splice(indexToRemove, 1);
+        Actions.refresh({ userRemove: guestsTmp });
+      }
+    }
+  } catch (e) {
+    console.log('Error while removing user from document =>', e);
+  }
+}
+
 export default function* watchDocument() {
   yield takeLatest(U_CREATE_FILE, createFile);
   yield takeLatest(U_LOAD_FOLDERS, loadFolders);
@@ -566,4 +740,6 @@ export default function* watchDocument() {
     U_CHECK_FILE_PASSWORD_BEFORE_DELETE,
     checkFilePasswordBeforeDelete
   );
+  yield takeLatest(U_ADD_USERS_TO_DOCUMENT, addUsersToDocument);
+  yield takeLatest(U_REMOVE_USERS_FROM_DOCUMENT, removeUserFromDocument);
 }

@@ -29,7 +29,8 @@ import {
   CLIENT_COLOR_PRIMARY,
   OWNSPACE_GRAY,
   OWNSPACE_LIGHT_GRAY
-} from '@constants/';
+} from '@constants';
+import { Actions } from 'react-native-router-flux';
 
 /**
  * Animation that makes slide in the menu from the bottom of the screen.
@@ -41,13 +42,13 @@ const { SlideInMenu } = renderers;
  * @param {object} folder - The folder
  * @param {object} user - The user
  */
-const Folder = ({ folder, user }) => {
+const Folder = ({ folder, user, groupUsers }) => {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordCheckVisible, setPasswordCheckVisible] = useState(false);
   const isOwner = folder.owner === user.id;
-  const { isProtected } = folder;
+  const { isProtected, edit, shared, owner } = folder;
 
   /**
    * Open the folder
@@ -238,7 +239,14 @@ const Folder = ({ folder, user }) => {
                     optionWrapper: styles.menuOptions
                   }}
                   value={1}
-                  onSelect={() => console.log('folder', folder)}
+                  onSelect={() =>
+                    Actions.shareModal({
+                      document: folder,
+                      users: groupUsers,
+                      documentType: 'folder',
+                      isOwner
+                    })
+                  }
                 >
                   <View style={styles.options}>
                     <Icon
@@ -251,7 +259,7 @@ const Folder = ({ folder, user }) => {
                     </Text>
                   </View>
                 </MenuOption>
-                {isOwner ? (
+                {isOwner || edit ? (
                   <MenuOption
                     customStyles={{
                       optionWrapper: isProtected
@@ -273,7 +281,7 @@ const Folder = ({ folder, user }) => {
                     </View>
                   </MenuOption>
                 ) : null}
-                {isProtected ? (
+                {isProtected && (isOwner || edit) ? (
                   <MenuOption
                     customStyles={{
                       optionWrapper: styles.menuOptionsLast

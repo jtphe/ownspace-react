@@ -22,7 +22,9 @@ const CustomButton = ({ confirmFunction }) => {
         labelStyle={styles.cancelText}
         contentStyle={styles.btnDimension}
         style={styles.btnCancel}
-        onPress={() => Actions.pop()}
+        onPress={() => {
+          Actions.pop();
+        }}
       >
         {i18n.t('button.cancel')}
       </Button>
@@ -45,6 +47,7 @@ const CustomButton = ({ confirmFunction }) => {
  */
 const styles = StyleSheet.create({
   btnContainer: {
+    zIndex: -1,
     flexDirection: 'row',
     padding: 35,
     paddingTop: 20,

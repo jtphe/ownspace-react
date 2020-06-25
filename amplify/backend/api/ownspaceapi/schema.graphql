@@ -1,5 +1,6 @@
 type User @model {
   id: ID!
+  identityId: String!
   createdAt: String
   updatedAt: String
   firstname: String
@@ -19,7 +20,6 @@ type User @model {
 type Group @model {
   id: ID!
   name: String
-  userGroup: [User]
 }
 
 type File @model {
@@ -29,7 +29,6 @@ type File @model {
   name: String!
   content: String
   owner: ID!
-  sharedList: [User]
   isProtected: Boolean
   password: String
   parent: ID!
@@ -44,7 +43,6 @@ type Folder @model {
   updatedAt: String
   name: String
   owner: ID!
-  sharedList: [User]
   isProtected: Boolean
   password: String
   parent: ID!
@@ -52,10 +50,17 @@ type Folder @model {
 }
 
 type Right @model {
+  id: ID!
+  createdAt: String
+  updatedAt: String
   read: Boolean!
   edit: Boolean!
-  documentId: ID!
+  document: ID!
   user: ID!
+  firstname: String
+  lastname: String
+  email: String
+  type: String!
 }
 
 type App @model {

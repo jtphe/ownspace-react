@@ -8,6 +8,7 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       id
+      identityId
       createdAt
       updatedAt
       firstname
@@ -32,6 +33,7 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       id
+      identityId
       createdAt
       updatedAt
       firstname
@@ -56,6 +58,7 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       id
+      identityId
       createdAt
       updatedAt
       firstname
@@ -81,23 +84,6 @@ export const createGroup = /* GraphQL */ `
     createGroup(input: $input, condition: $condition) {
       id
       name
-      userGroup {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
     }
   }
 `;
@@ -109,23 +95,6 @@ export const updateGroup = /* GraphQL */ `
     updateGroup(input: $input, condition: $condition) {
       id
       name
-      userGroup {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
     }
   }
 `;
@@ -137,23 +106,6 @@ export const deleteGroup = /* GraphQL */ `
     deleteGroup(input: $input, condition: $condition) {
       id
       name
-      userGroup {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
     }
   }
 `;
@@ -169,23 +121,6 @@ export const createFile = /* GraphQL */ `
       name
       content
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -207,23 +142,6 @@ export const updateFile = /* GraphQL */ `
       name
       content
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -245,23 +163,6 @@ export const deleteFile = /* GraphQL */ `
       name
       content
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -282,23 +183,6 @@ export const createFolder = /* GraphQL */ `
       updatedAt
       name
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -317,23 +201,6 @@ export const updateFolder = /* GraphQL */ `
       updatedAt
       name
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -352,23 +219,6 @@ export const deleteFolder = /* GraphQL */ `
       updatedAt
       name
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -382,10 +232,17 @@ export const createRight = /* GraphQL */ `
     $condition: ModelRightConditionInput
   ) {
     createRight(input: $input, condition: $condition) {
+      id
+      createdAt
+      updatedAt
       read
       edit
-      documentId
+      document
       user
+      firstname
+      lastname
+      email
+      type
     }
   }
 `;
@@ -395,10 +252,17 @@ export const updateRight = /* GraphQL */ `
     $condition: ModelRightConditionInput
   ) {
     updateRight(input: $input, condition: $condition) {
+      id
+      createdAt
+      updatedAt
       read
       edit
-      documentId
+      document
       user
+      firstname
+      lastname
+      email
+      type
     }
   }
 `;
@@ -408,10 +272,17 @@ export const deleteRight = /* GraphQL */ `
     $condition: ModelRightConditionInput
   ) {
     deleteRight(input: $input, condition: $condition) {
+      id
+      createdAt
+      updatedAt
       read
       edit
-      documentId
+      document
       user
+      firstname
+      lastname
+      email
+      type
     }
   }
 `;

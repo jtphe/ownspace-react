@@ -35,6 +35,10 @@ export const U_REMOVE_PASSWORD_FILE = 'U_REMOVE_PASSWORD_FILE';
 export const M_REMOVE_PASSWORD_FILE = 'M_REMOVE_PASSWORD_FILE';
 export const U_CHECK_FILE_PASSWORD_BEFORE_DELETE =
   'U_CHECK_FILE_PASSWORD_BEFORE_DELETE';
+export const U_ADD_USERS_TO_DOCUMENT = 'U_ADD_USERS_TO_DOCUMENT';
+export const M_ADD_USERS_TO_DOCUMENT = 'M_ADD_USERS_TO_DOCUMENT';
+export const U_REMOVE_USERS_FROM_DOCUMENT = 'U_REMOVE_USERS_FROM_DOCUMENT';
+export const M_REMOVE_USERS_FROM_DOCUMENT = 'M_REMOVE_USERS_FROM_DOCUMENT';
 
 export const createFile = payload => ({
   type: U_CREATE_FILE,
@@ -118,5 +122,15 @@ export const removePasswordFile = payload => ({
 
 export const checkFilePasswordBeforeDelete = payload => ({
   type: U_CHECK_FILE_PASSWORD_BEFORE_DELETE,
+  payload
+});
+
+export const addUsersToDocument = payload => ({
+  type: U_ADD_USERS_TO_DOCUMENT,
+  payload
+});
+
+export const removeUserFromDocument = payload => ({
+  type: U_REMOVE_USERS_FROM_DOCUMENT,
   payload
 });

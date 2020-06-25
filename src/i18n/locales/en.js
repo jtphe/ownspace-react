@@ -158,5 +158,27 @@ export default {
   },
   file: {
     deleted: 'File successfully deleted !'
+  },
+  shareModal: {
+    share: 'Share',
+    placeholder: 'Enter a user name...',
+    userNotExist: "The user you searched doesn't exist",
+    invitationTitle: {
+      one: 'Invitation ({{count}})',
+      other: 'Invitations ({{count}})',
+      zero: ''
+    },
+    noUsersShared:
+      'To share your document with users, enter their name in the search field above',
+    read: 'Read',
+    edit: 'Edit',
+    titleGuest: {
+      one: 'Shared user ({{count}})',
+      other: 'Shared users ({{count}})',
+      zero: ''
+    },
+    cantAddOneSelf: 'The document is already shared with you',
+    noUserToShare: 'No users to share',
+    cantAddOwner: 'You can not add the owner'
   }
 };

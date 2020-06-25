@@ -22,6 +22,7 @@ import { useDispatch } from 'react-redux';
 import { resetAllStore } from '@store/modules/app/actions';
 import { OWNSPACE_PINK_INPUT, OWNSPACE_BLUE } from '@constants';
 import ForgottenPasswordModal from './forgottenPasswordModal';
+import _validateEmail from '@utils/validateEmail';
 
 /**
  * The Login component
@@ -38,18 +39,10 @@ const Login = () => {
   }, []);
 
   /**
-   * Check if the email is valid or not
-   */
-  const _validateEmail = () => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  /**
    * Sign in to the app
    */
   const _signIn = async () => {
-    if (_validateEmail() && password.trim().length >= 8) {
+    if (_validateEmail(email) && password.trim().length >= 8) {
       await Auth.signIn({
         username: email,
         password
@@ -72,7 +65,7 @@ const Login = () => {
    */
   const _sendPasswordInstructions = async () => {
     if (email.length > 0) {
-      if (_validateEmail()) {
+      if (_validateEmail(email)) {
         Auth.forgotPassword(email)
           .then(data => {
             console.log('data', data);

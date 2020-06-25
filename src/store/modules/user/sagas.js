@@ -12,7 +12,6 @@ import {
   M_UPDATE_USER_NAMES,
   U_UPDATE_USER_PASSWORD,
   U_SIGN_OUT,
-  M_SIGN_OUT,
   U_UPDATE_USER_PICTURE,
   M_UPDATE_USER_PICTURE,
   M_PICTURE_IS_UPLOADING,
@@ -23,6 +22,7 @@ import { Storage } from 'aws-amplify';
 import { U_LOAD_FOLDERS, U_LOAD_FILES } from '@store/modules/document/actions';
 import { getUser, getPictureName } from '@store/modules/user/selectors';
 import moment from 'moment';
+import { GROUP_ID } from '@constants/index';
 
 const dateNow = +moment();
 
@@ -30,10 +30,12 @@ function* createUser({ payload }) {
   try {
     payload.createdAt = dateNow;
     payload.updatedAt = dateNow;
+    payload.group = GROUP_ID;
+
     const user = yield call(api.createUser, payload);
     // Add file to S3
     Storage.put('Home/', '', {
-      level: 'private',
+      level: 'protected',
       contentType: 'sprite-brut',
       progressCallback(progress) {
         console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
@@ -45,8 +47,7 @@ function* createUser({ payload }) {
       })
       .catch(err => console.log(err));
     yield put({ type: M_CREATE_USER, user });
-    const isLoggedIn = true;
-    Actions.home({ isLoggedIn });
+    Actions.home({ userJustCreated: true });
   } catch (e) {
     console.log('Error while creating user =>', e);
   }
@@ -55,6 +56,10 @@ function* createUser({ payload }) {
 function* loadUser({ payload }) {
   try {
     const user = yield call(api.loadUser, payload);
+    let users;
+    if (user) {
+      users = yield call(api.loadGroupUsers, user);
+    }
     let pictureUrl = null;
     // Check if the user already had a picture, if true load the picture
     if (user.pictureUrl !== null) {
@@ -65,7 +70,8 @@ function* loadUser({ payload }) {
     yield put({ type: M_LOAD_USER, user, token });
     yield put({ type: U_LOAD_FOLDERS });
     yield put({ type: U_LOAD_FILES });
-    yield put({ type: 'M_SET_APP_LOADING', loading: false });
+    yield put({ type: 'M_SET_GROUP_USERS', users: users.items });
+    Actions.home();
   } catch (e) {
     console.log('Error while loading user =>', e);
   }
@@ -76,6 +82,12 @@ function* updateUserNames({ payload }) {
     const user = yield call(api.updateUserNames, payload);
     yield put({
       type: M_UPDATE_USER_NAMES,
+      firstname: user.firstname,
+      lastname: user.lastname
+    });
+    yield put({
+      type: 'M_UPDATE_USER_NAMES_IN_USERS_LIST',
+      id: user.id,
       firstname: user.firstname,
       lastname: user.lastname
     });

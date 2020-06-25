@@ -3,59 +3,34 @@ import { StyleSheet, View } from 'react-native';
 import Header from '@shared/Header/index';
 import NavMenu from '@components/Menu';
 import MenuPlus from './menuPlus';
-import { useDispatch, connect } from 'react-redux';
-import { loadUser } from '@store/modules/user/actions';
-import { Auth } from 'aws-amplify';
 import HomeList from '@components/Document/index';
-import { getIsLoading } from '@store/modules/app/selectors';
-import { createSelector } from 'reselect';
-import { Button } from 'react-native-paper';
-import i18n from '@i18n/i18n';
-import { CLIENT_COLOR_PRIMARY, OWNSPACE_LIGHT_GRAY } from '@constants';
-
-const mapStateToProps = createSelector(getIsLoading, isLoading => {
-  return {
-    isLoading
-  };
-});
+import { Auth } from 'aws-amplify';
+import { useDispatch } from 'react-redux';
+import { loadUser } from '@store/modules/user/actions';
 
 /**
  * The Home component
  * @param {object} loggedUser - The user logged object
  * @param {boolean} isLoggedIn - If the user is log in or not
  */
-const Home = ({ loggedUser, isLoggedIn, isLoading }) => {
+const Home = ({ userJustCreated }) => {
   const [menuPlus, setMenuPlus] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // If the user just created his account
-    if (!isLoggedIn) {
-      initLoad();
-    } else {
-      loadCurrentAuthenticatedUser();
+    if (userJustCreated === true) {
+      _loadCurrentAuthenticatedUser();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  /**
-   * Load the user to the user store if the user is not already logged in
-   */
-  const initLoad = () => {
-    const payload = {
-      userId: loggedUser.username,
-      token: loggedUser.signInUserSession.idToken.jwtToken
-    };
-    dispatch(loadUser(payload));
-  };
+  }, [_loadCurrentAuthenticatedUser, userJustCreated]);
 
   /**
    * Load the current user that is authenticated
    */
-  const loadCurrentAuthenticatedUser = async () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const _loadCurrentAuthenticatedUser = async () => {
     const user = await Auth.currentAuthenticatedUser();
     if (user) {
-      loadConnectedUser(user);
+      _loadConnectedUser(user);
     }
   };
 
@@ -63,7 +38,7 @@ const Home = ({ loggedUser, isLoggedIn, isLoading }) => {
    * Load the connected user
    * @param {object} user - The user object
    */
-  const loadConnectedUser = user => {
+  const _loadConnectedUser = user => {
     const payload = {
       userId: user.attributes.sub,
       token: user.signInUserSession.idToken.jwtToken
@@ -93,26 +68,13 @@ const Home = ({ loggedUser, isLoggedIn, isLoading }) => {
   return (
     <View style={styles.globalContainer}>
       <Header />
-      {!isLoading ? (
-        <View style={styles.container}>
-          <View style={styles.homeContainer}>
-            <HomeList />
-            <NavMenu openPlusMenu={() => openPlusMenu()} />
-          </View>
-          <MenuPlus setRefPlus={setRefPlus} />
+      <View style={styles.container}>
+        <View style={styles.homeContainer}>
+          <HomeList />
+          <NavMenu openPlusMenu={() => openPlusMenu()} />
         </View>
-      ) : (
-        <View style={styles.containerLoading}>
-          <Button
-            color={CLIENT_COLOR_PRIMARY}
-            labelStyle={styles.loadingText}
-            uppercase={false}
-            loading={true}
-          >
-            {i18n.t('document.loading')}
-          </Button>
-        </View>
-      )}
+        <MenuPlus setRefPlus={setRefPlus} />
+      </View>
     </View>
   );
 };
@@ -129,16 +91,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  homeContainer: { flex: 1 },
-  containerLoading: {
-    flex: 1,
-    justifyContent: 'center',
-    alignContent: 'center'
-  },
-  loadingText: {
-    color: CLIENT_COLOR_PRIMARY,
-    fontSize: 22
-  }
+  homeContainer: { flex: 1 }
 });
 
-export default connect(mapStateToProps)(Home);
+export default Home;
