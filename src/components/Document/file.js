@@ -42,7 +42,8 @@ import showToast from '@utils/showToast';
 import {
   CLIENT_COLOR_PRIMARY,
   OWNSPACE_GRAY,
-  OWNSPACE_LIGHT_GRAY
+  OWNSPACE_LIGHT_GRAY,
+  CLIENT_COLOR_SECONDARY
 } from '@constants';
 import { Actions } from 'react-native-router-flux';
 
@@ -76,7 +77,7 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
     setPasswordBeforeDeleteVisible
   ] = useState(false);
   const isOwner = file.owner === user.id;
-  const { isProtected } = file;
+  const { isProtected, edit, shared, owner } = file;
   /**
    * Open the document
    */
@@ -87,11 +88,22 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
       if (!isDownloading) {
         setIsDownloading(true);
         return new Promise((resolve, reject) => {
-          const payload = {
-            path: currentPathString + fileName,
-            resolve,
-            reject
-          };
+          let payload;
+          if (shared) {
+            payload = {
+              owner,
+              shared,
+              path: currentPathString + fileName,
+              resolve,
+              reject
+            };
+          } else {
+            payload = {
+              path: currentPathString + fileName,
+              resolve,
+              reject
+            };
+          }
           dispatch(downloadFile(payload));
         })
           .then(async value => {
@@ -282,7 +294,9 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
     if (password.length > 0) {
       const payload = {
         password,
-        file
+        file,
+        shared,
+        owner: file.owner
       };
       dispatch(checkFilePassword(payload));
       _hidePasswordCheckModal();
@@ -364,13 +378,18 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
               name={_setIcon(file.type)}
             />
             <View style={styles.fileItem}>
-              <Text
-                style={styles.fileName}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-              >
-                {file.name}
-              </Text>
+              <View style={styles.fileRow}>
+                <Text
+                  style={styles.fileName}
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                >
+                  {file.name}
+                </Text>
+                {shared ? (
+                  <Icon name="users" size={14} color={CLIENT_COLOR_SECONDARY} />
+                ) : null}
+              </View>
               <View style={styles.detailsContainer}>
                 <Text style={styles.fileDate}>{formatDate(file)}</Text>
               </View>
@@ -421,7 +440,12 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
                   }}
                   value={1}
                   onSelect={() =>
-                    Actions.shareModal({ document: file, users: groupUsers })
+                    Actions.shareModal({
+                      document: file,
+                      users: groupUsers,
+                      documentType: 'file',
+                      isOwner
+                    })
                   }
                 >
                   <View style={styles.options}>
@@ -435,7 +459,7 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
                     </Text>
                   </View>
                 </MenuOption>
-                {isOwner ? (
+                {isOwner || edit ? (
                   <MenuOption
                     customStyles={{
                       optionWrapper: styles.menuOptions
@@ -455,7 +479,7 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
                     </View>
                   </MenuOption>
                 ) : null}
-                {isProtected && isOwner ? (
+                {isProtected && (isOwner || edit) ? (
                   <MenuOption
                     customStyles={{
                       optionWrapper: styles.menuOptions
@@ -610,6 +634,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     width: 240
   },
+  fileRow: { flexDirection: 'row' },
   fileName: {
     flexWrap: 'wrap',
     paddingHorizontal: 12

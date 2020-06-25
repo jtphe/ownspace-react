@@ -160,7 +160,25 @@ export default {
     deleted: 'Fichier supprimé !'
   },
   shareModal: {
-    shareTitle: 'Partager : %{document}',
-    placeholder: "Entrez un nom d'utilisateur"
+    share: 'Partager',
+    placeholder: "Entrez un nom d'utilisateur",
+    userNotExist: "L'utilisateur que vous cherchez n'existe pas",
+    invitationTitle: {
+      one: 'Invitation ({{count}})',
+      other: 'Invitations ({{count}})',
+      zero: ''
+    },
+    noUsersShared:
+      'Pour partager votre document à des utilisateurs, entrez leur nom dans le champs de recherche ci-dessus',
+    read: 'Lecture',
+    edit: 'Édition',
+    titleGuest: {
+      one: 'Utilisateur partagé ({{count}})',
+      other: 'Utilisateurs partagés ({{count}})',
+      zero: ''
+    },
+    cantAddOneSelf: 'Le document vous est déjà partagé',
+    noUserToShare: 'Aucun utilisateur à partager',
+    cantAddOwner: 'Vous ne pouvez pas ajouter le propriétaire'
   }
 };

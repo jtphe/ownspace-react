@@ -1,8 +1,16 @@
 import React from 'react';
 import Autocomplete from 'react-native-autocomplete-input';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Keyboard } from 'react-native';
 import i18n from '@i18n/i18n';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
+/**
+ * The autoCompleteAndroid component
+ * @param {Object[]} users - The users of the group
+ * @param {string} query - The query typed by the user
+ * @param {function} setQuery - The function that set the query typed by the user
+ * @param {function} comp - Compare the query typed by the user with the first user in the list
+ */
 const autoCompleteAndroid = ({
   users,
   query,
@@ -14,7 +22,13 @@ const autoCompleteAndroid = ({
     <View style={styles.autocompleteContainer}>
       <Autocomplete
         data={
-          users.length === 1 && comp(query, users[0].firstName) ? [] : users
+          users.length === 1 &&
+          comp(
+            query,
+            users[0].firstname !== null ? users[0].firstname : users[0].email
+          )
+            ? []
+            : users
         }
         defaultValue={query}
         style={styles.inputInvitations}
@@ -25,7 +39,12 @@ const autoCompleteAndroid = ({
         onSubmitEditing={guest => addGuestsList(guest.nativeEvent.text)}
         onChangeText={text => setQuery(text)}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => addGuestsList(item)}>
+          <TouchableOpacity
+            onPress={() => {
+              addGuestsList(item);
+              Keyboard.dismiss();
+            }}
+          >
             {item.firstname !== null && item.lastname !== null ? (
               <Text style={styles.userItem}>
                 {`${item.firstname} ${item.lastname}`}
@@ -40,16 +59,21 @@ const autoCompleteAndroid = ({
   );
 };
 
+/**
+ * Styles of autoCompleteAndroid component
+ */
 const styles = StyleSheet.create({
   autocompleteContainer: {
     left: 0,
-    right: 0,
-    bottom: 0
+    position: 'absolute',
+    top: 0,
+    zIndex: 100
   },
   inputInvitations: {
     color: '#555',
     fontSize: 16,
     height: 45,
+    width: 230,
     marginLeft: 10
   },
   autocompleteInputContainer: {
@@ -58,9 +82,10 @@ const styles = StyleSheet.create({
     borderColor: '#ccc'
   },
   listContainerStyle: {
-    width: '105%',
+    width: '108%',
     marginBottom: 20,
-    marginLeft: -10
+    marginLeft: -10,
+    zIndex: 100
   },
   userItem: {
     color: '#555',

@@ -8,14 +8,14 @@ import i18n from '@i18n/i18n';
 
 /**
  * The DocumentList component
- * @param {object} document - The document list to display
+ * @param {Object[]} document - The document's list to display
  * @param {string} path - The current path
  * @param {number} nbFiles - The number of file
  * @param {number} nbFolders - The number of folder
- * @param {object} uploadingFile - The uploading file
+ * @param {Object} uploadingFile - The uploading file
  * @param {string} currentPathString - The current path
- * @param {object} user - The user
- * @param {object} groupUsers - The group's users
+ * @param {Object} user - The user
+ * @param {Object[]} groupUsers - The group's users
  */
 const DocumentList = ({
   document,
@@ -42,7 +42,12 @@ const DocumentList = ({
               keyExtractor={item => item.id}
               renderItem={({ item }) =>
                 item.nbFiles >= 0 ? (
-                  <Folder folder={item} path={path} user={user} />
+                  <Folder
+                    folder={item}
+                    path={path}
+                    user={user}
+                    groupUsers={groupUsers}
+                  />
                 ) : (
                   <File
                     file={item}

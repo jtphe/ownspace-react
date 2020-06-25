@@ -64,15 +64,15 @@ const mapStateToProps = createSelector(
 
 /**
  * The HomeList component
- * @param {object} loadingState - The loading state
+ * @param {Object} loadingState - The loading state
  * @param {string} path - The current path
  * @param {number} nbFiles - The number of file
  * @param {number} nbFolders - The number of folder
- * @param {object} documents - The document list to display
- * @param {object} uploadingFile - The uploading file
- * @param {string} currentPathString - The current path
- * @param {object} groupUsers - The group's users
- * @param {object} user - The user
+ * @param {Object[]} documents - The document's list to display
+ * @param {Object} uploadingFile - The uploading file
+ * @param {string} currentPathString - The current path string
+ * @param {Object[]} groupUsers - The group's users
+ * @param {Object} user - The user
  */
 const HomeList = ({
   loadingState,

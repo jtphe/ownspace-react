@@ -5,6 +5,7 @@ export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser {
     onCreateUser {
       id
+      identityId
       createdAt
       updatedAt
       firstname
@@ -26,6 +27,7 @@ export const onUpdateUser = /* GraphQL */ `
   subscription OnUpdateUser {
     onUpdateUser {
       id
+      identityId
       createdAt
       updatedAt
       firstname
@@ -47,6 +49,7 @@ export const onDeleteUser = /* GraphQL */ `
   subscription OnDeleteUser {
     onDeleteUser {
       id
+      identityId
       createdAt
       updatedAt
       firstname
@@ -69,23 +72,6 @@ export const onCreateGroup = /* GraphQL */ `
     onCreateGroup {
       id
       name
-      usersGroup {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
     }
   }
 `;
@@ -94,23 +80,6 @@ export const onUpdateGroup = /* GraphQL */ `
     onUpdateGroup {
       id
       name
-      usersGroup {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
     }
   }
 `;
@@ -119,23 +88,6 @@ export const onDeleteGroup = /* GraphQL */ `
     onDeleteGroup {
       id
       name
-      usersGroup {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
     }
   }
 `;
@@ -148,23 +100,6 @@ export const onCreateFile = /* GraphQL */ `
       name
       content
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -183,23 +118,6 @@ export const onUpdateFile = /* GraphQL */ `
       name
       content
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -218,23 +136,6 @@ export const onDeleteFile = /* GraphQL */ `
       name
       content
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -252,23 +153,6 @@ export const onCreateFolder = /* GraphQL */ `
       updatedAt
       name
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -284,23 +168,6 @@ export const onUpdateFolder = /* GraphQL */ `
       updatedAt
       name
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -316,23 +183,6 @@ export const onDeleteFolder = /* GraphQL */ `
       updatedAt
       name
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -343,30 +193,51 @@ export const onDeleteFolder = /* GraphQL */ `
 export const onCreateRight = /* GraphQL */ `
   subscription OnCreateRight {
     onCreateRight {
+      id
+      createdAt
+      updatedAt
       read
       edit
-      documentId
+      document
       user
+      firstname
+      lastname
+      email
+      type
     }
   }
 `;
 export const onUpdateRight = /* GraphQL */ `
   subscription OnUpdateRight {
     onUpdateRight {
+      id
+      createdAt
+      updatedAt
       read
       edit
-      documentId
+      document
       user
+      firstname
+      lastname
+      email
+      type
     }
   }
 `;
 export const onDeleteRight = /* GraphQL */ `
   subscription OnDeleteRight {
     onDeleteRight {
+      id
+      createdAt
+      updatedAt
       read
       edit
-      documentId
+      document
       user
+      firstname
+      lastname
+      email
+      type
     }
   }
 `;

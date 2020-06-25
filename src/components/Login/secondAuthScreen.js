@@ -11,7 +11,8 @@ import { Actions } from 'react-native-router-flux';
 import TotpAuthScreen from './totpAuthScreen';
 import i18n from '@i18n/i18n';
 import { useDispatch } from 'react-redux';
-import { createUser } from '@store/modules/user/actions';
+import { createUser, loadUser } from '@store/modules/user/actions';
+
 import {
   ROLE_ONE,
   ROLE_TWO,
@@ -96,6 +97,7 @@ const SecondAuthScreen = ({ user }) => {
    */
   const createUserObject = async () => {
     await Auth.currentUserInfo().then(userInfo => {
+      console.log('userInfo', userInfo);
       let role = '';
       if (userInfo.attributes.email.substr(0, 6) === RECURRING_ROLE) {
         role = ROLE_ONE;
@@ -104,6 +106,7 @@ const SecondAuthScreen = ({ user }) => {
       }
       const payload = {
         id: userInfo.attributes.sub,
+        identityId: userInfo.id,
         email: userInfo.attributes.email,
         password: newPassword !== '' ? newPassword : 'password',
         role
@@ -118,14 +121,19 @@ const SecondAuthScreen = ({ user }) => {
   const verifyTotpToken = async () => {
     try {
       if (user.challengeName === 'SOFTWARE_TOKEN_MFA') {
-        dispatch({ type: 'M_SET_APP_LOADING', loading: true });
         const loggedUser = await Auth.confirmSignIn(
           user,
           token,
           'SOFTWARE_TOKEN_MFA'
         );
-        const isLoggedIn = true;
-        Actions.home({ loggedUser, isLoggedIn });
+
+        if (loggedUser) {
+          const payload = {
+            userId: loggedUser.signInUserSession.accessToken.payload.sub,
+            token: loggedUser.signInUserSession.idToken.jwtToken
+          };
+          dispatch(loadUser(payload));
+        }
       } else {
         try {
           await Auth.verifyTotpToken(user, token).then(() => {

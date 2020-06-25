@@ -6,6 +6,7 @@ function* resetAllStore() {
   try {
     yield put({ type: 'M_RESET_USER_STORE' });
     yield put({ type: 'M_RESET_DOCUMENT_STORE' });
+    yield put({ type: 'M_RESET_APP_STORE' });
   } catch (e) {
     console.log('Error while reseting all store =>', e);
   }

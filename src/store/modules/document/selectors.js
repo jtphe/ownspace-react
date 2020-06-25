@@ -10,6 +10,7 @@ export const getFolders = state => state.document.folders;
 export const getFiles = state => state.document.files;
 export const getUploadingFile = state => state.document.uploadingFile;
 export const getGroupUsers = state => state.document.users;
+export const getSharedUsers = state => state.document.sharedUsers;
 
 export const getCurrentPathString = state => {
   let path = '';

@@ -90,7 +90,7 @@ class SplashScreen extends React.Component {
         duration: 2000
       })
     ]).start(() => {
-      isLoggedIn ? Actions.home({ isLoggedIn }) : Actions.login();
+      isLoggedIn ? Actions.home() : Actions.login();
     });
   }
 

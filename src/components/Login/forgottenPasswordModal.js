@@ -134,8 +134,8 @@ const styles = StyleSheet.create({
   },
   btnCancel: {
     backgroundColor: 'transparent',
-    borderWidth: 1,
-    borderColor: OWNSPACE_GRAY,
+    borderWidth: 0.2,
+    borderRadius: 6,
     paddingVertical: 2,
     paddingHorizontal: 4
   },

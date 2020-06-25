@@ -5,6 +5,7 @@ export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
+      identityId
       createdAt
       updatedAt
       firstname
@@ -31,6 +32,7 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        identityId
         createdAt
         updatedAt
         firstname
@@ -55,23 +57,6 @@ export const getGroup = /* GraphQL */ `
     getGroup(id: $id) {
       id
       name
-      usersGroup {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
     }
   }
 `;
@@ -85,23 +70,6 @@ export const listGroups = /* GraphQL */ `
       items {
         id
         name
-        usersGroup {
-          id
-          createdAt
-          updatedAt
-          firstname
-          lastname
-          email
-          password
-          pictureName
-          pictureUrl
-          notification
-          role
-          group
-          limitedStorage
-          storageSpaceUsed
-          totalStorageSpace
-        }
       }
       nextToken
     }
@@ -116,23 +84,6 @@ export const getFile = /* GraphQL */ `
       name
       content
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -156,23 +107,6 @@ export const listFiles = /* GraphQL */ `
         name
         content
         owner
-        sharedList {
-          id
-          createdAt
-          updatedAt
-          firstname
-          lastname
-          email
-          password
-          pictureName
-          pictureUrl
-          notification
-          role
-          group
-          limitedStorage
-          storageSpaceUsed
-          totalStorageSpace
-        }
         isProtected
         password
         parent
@@ -192,23 +126,6 @@ export const getFolder = /* GraphQL */ `
       updatedAt
       name
       owner
-      sharedList {
-        id
-        createdAt
-        updatedAt
-        firstname
-        lastname
-        email
-        password
-        pictureName
-        pictureUrl
-        notification
-        role
-        group
-        limitedStorage
-        storageSpaceUsed
-        totalStorageSpace
-      }
       isProtected
       password
       parent
@@ -229,23 +146,6 @@ export const listFolders = /* GraphQL */ `
         updatedAt
         name
         owner
-        sharedList {
-          id
-          createdAt
-          updatedAt
-          firstname
-          lastname
-          email
-          password
-          pictureName
-          pictureUrl
-          notification
-          role
-          group
-          limitedStorage
-          storageSpaceUsed
-          totalStorageSpace
-        }
         isProtected
         password
         parent
@@ -258,10 +158,17 @@ export const listFolders = /* GraphQL */ `
 export const getRight = /* GraphQL */ `
   query GetRight($id: ID!) {
     getRight(id: $id) {
+      id
+      createdAt
+      updatedAt
       read
       edit
-      documentId
+      document
       user
+      firstname
+      lastname
+      email
+      type
     }
   }
 `;
@@ -273,10 +180,17 @@ export const listRights = /* GraphQL */ `
   ) {
     listRights(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        id
+        createdAt
+        updatedAt
         read
         edit
-        documentId
+        document
         user
+        firstname
+        lastname
+        email
+        type
       }
       nextToken
     }

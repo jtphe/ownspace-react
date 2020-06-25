@@ -20,6 +20,11 @@ export const ROLE_THREE = 'admin';
  */
 export const RECURRING_ROLE = 'dsmc19';
 
+/**
+ * Group ID
+ */
+export const GROUP_ID = 'ec8ef3ae-e7a3-4647-9153-c6d1eb9f85a4';
+
 // Client colors
 
 export const CLIENT_COLOR_PRIMARY = '#003466';

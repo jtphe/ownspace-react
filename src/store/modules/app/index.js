@@ -1,19 +1,12 @@
-import update from 'immutability-helper';
-
 const initialState = {
   appName: 'ownspace-mobile',
-  connectionState: 'connected',
-  isLoading: false
+  connectionState: 'connected'
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'M_SET_APP_LOADING':
-      return update(state, {
-        isLoading: {
-          $set: action.loading
-        }
-      });
+    case 'M_RESET_APP_STORE':
+      return initialState;
     default:
       return state;
   }

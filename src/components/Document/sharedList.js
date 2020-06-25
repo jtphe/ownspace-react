@@ -1,61 +1,111 @@
 import React from 'react';
-import { Text, View, StyleSheet, FlatList } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity
+} from 'react-native';
 import i18n from '@i18n/i18n';
-import Avatar from '@shared/Avatar';
+import Icon from 'react-native-vector-icons/Feather';
+import { CLIENT_COLOR_PRIMARY, CLIENT_COLOR_SECONDARY } from '@constants';
+import { useDispatch } from 'react-redux';
+import { removeUserFromDocument } from '@store/modules/document/actions';
 
-const ItemGuest = ({ item }) => {
-  const { user } = item;
+/**
+ * The ItemGuest component
+ * @param {Object} item - The guest item
+ * @param {number} document - Id of the document
+ * @param {boolean} isOwner - If the current user is the owner of the document
+ */
+const ItemGuest = ({ item, document, isOwner, guests }) => {
+  const dispatch = useDispatch();
 
+  /**
+   * Remove the user from the document
+   */
+  const _removeUserFromDocument = () => {
+    const payload = {
+      user: item.user,
+      document,
+      guests
+    };
+
+    dispatch(removeUserFromDocument(payload));
+  };
+
+  /**
+   * Render the ItemGuest component
+   * @returns {React.Component} - ItemGuest component
+   */
   return (
     <View style={styles.contentContainer}>
-      {user ? (
+      {item.firstname && item.lastname ? (
         <View style={styles.memberItem}>
-          <Avatar
-            style={styles.avatarPicture}
-            image={user.pictureUrl}
-            size={100}
-            borderRadius={50}
-          />
           <Text style={styles.memberName}>
-            {`${user.firstName} ${user.lastName}`}
+            {`${item.firstname} ${item.lastname}`}
           </Text>
         </View>
       ) : (
         <Text style={styles.memberNameEmail}>{item.email}</Text>
       )}
+      {isOwner ? (
+        <TouchableOpacity
+          style={styles.icon}
+          onPress={() => _removeUserFromDocument()}
+        >
+          <Icon size={18} color={CLIENT_COLOR_SECONDARY} name="x" />
+        </TouchableOpacity>
+      ) : null}
     </View>
   );
 };
 
-const SharedList = ({ guests }) => {
+/**
+ * The SharedList component
+ * @param {Object[]} guests - The guests list
+ * @param {Object} document - The object document
+ * @param {boolean} isOwner - If the current user is the owner of the document
+ */
+const SharedList = ({ guests, document, isOwner }) => {
   if (guests === null || guests.length === 0) {
     return null;
   }
+
+  /**
+   * Render the SharedList component
+   * @returns {React.Component} - SharedList component
+   */
   return (
-    <View>
-      {guests.length > 1 ? (
-        <Text style={styles.titleInvites}>
-          {`${i18n.t('addEvent.titleInvitesPlu')} (${guests.length})`}
-        </Text>
-      ) : (
-        <Text style={styles.titleInvites}>
-          {`${i18n.t('addEvent.titleInvitesSing')} (${guests.length})`}
-        </Text>
-      )}
+    <View style={styles.container}>
+      {guests.length >= 1 ? (
+        <View style={styles.sharedUsersTitleView}>
+          <Icon size={20} color={CLIENT_COLOR_PRIMARY} name="users" />
+          <Text style={styles.titleInvites}>
+            {i18n.t('shareModal.titleGuest', { count: guests.length })}
+          </Text>
+        </View>
+      ) : null}
       <FlatList
         style={styles.guestsList}
         data={guests}
-        keyExtractor={guest => guest.id.toString()}
-        renderItem={({ item }) => <ItemGuest item={item} />}
+        keyExtractor={guest => guest.user.toString()}
+        renderItem={({ item }) => (
+          <ItemGuest
+            item={item}
+            document={document}
+            isOwner={isOwner}
+            guests={guests}
+          />
+        )}
       />
     </View>
   );
 };
 
-SharedList.defaultProps = {
-  guests: []
-};
-
+/**
+ * Styles of SharedList and ItemGuest components
+ */
 const styles = StyleSheet.create({
   guestsList: {
     marginBottom: 20
@@ -70,7 +120,9 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20
   },
-
+  icon: {
+    paddingTop: 10
+  },
   memberItem: {
     flex: 1,
     flexDirection: 'row',
@@ -86,25 +138,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 2
   },
-  avatarImage: {
-    width: 25,
-    height: 25,
-    borderRadius: 12,
-    marginRight: 10,
-    marginTop: 5
-  },
-  userRow: {
-    flexDirection: 'row'
+  sharedUsersTitleView: {
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   titleInvites: {
-    fontWeight: '500',
-    marginLeft: 18,
-    marginTop: 20,
-    fontSize: 14
+    marginVertical: 10,
+    paddingLeft: 10,
+    fontSize: 16,
+    fontWeight: 'bold'
   },
-  avatarPicture: {
-    backgroundColor: '#FF6161'
-  }
+  container: { height: 200 }
 });
 
 export default SharedList;

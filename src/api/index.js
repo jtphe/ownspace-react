@@ -1,16 +1,17 @@
 import document from '@backend/api/ownspaceapi/resolvers/document';
 import user from '@backend/api/ownspaceapi/resolvers/user';
 import group from '@backend/api/ownspaceapi/resolvers/group';
+import right from '@backend/api/ownspaceapi/resolvers/right';
 import { Auth, Storage } from 'aws-amplify';
 
 /**
  * Api object that return all the promises
  */
 const api = {
-  // DOCUMENT
+  // DOCUMENT API
   /**
    * Create a file in txt format
-   * @param {object} payload - File payload
+   * @param {Object} payload - File payload
    */
   createFileTxt(payload) {
     return Promise.resolve(
@@ -26,7 +27,7 @@ const api = {
   },
   /**
    * Create a folder
-   * @param {object} payload - Folder payload
+   * @param {Object} payload - Folder payload
    */
   createFolder(payload) {
     return Promise.resolve(
@@ -41,7 +42,7 @@ const api = {
   },
   /**
    * Load the folders
-   * @param {object} payload - Folder parent of folders to load and the current user
+   * @param {Object} payload - Folder parent of folders to load and the current user
    */
   loadFolders(payload) {
     return Promise.resolve(
@@ -52,8 +53,19 @@ const api = {
     );
   },
   /**
+   * Get the folder object
+   * @param {Object} id - The id
+   */
+  getFolder(id) {
+    return Promise.resolve(
+      document.Query.getFolder({
+        id
+      })
+    );
+  },
+  /**
    * Load the files
-   * @param {object} payload - Folder parent of files to load and the current user
+   * @param {Object} payload - Folder parent of files to load and the current user
    */
   loadFiles(payload) {
     return Promise.resolve(
@@ -64,16 +76,52 @@ const api = {
     );
   },
   /**
+   * Get the file object
+   * @param {Object} payload - Id of the file
+   */
+  getFile(payload) {
+    return Promise.resolve(
+      document.Query.getFile({
+        id: payload.id
+      })
+    );
+  },
+  /**
+   * Get the files's id
+   * @param {Object} payload - The path parent of the files and the userq
+   */
+  getFilesId(payload) {
+    return Promise.resolve(
+      document.Query.getFilesId({
+        parent: payload.pathId,
+        user: payload.userId
+      })
+    );
+  },
+  /**
    * Download the file selected
    * @param {object} payload - Path of the file to download
    */
   async downloadFile(payload) {
-    const res = await Storage.get(payload.path, { level: 'private' })
-      .then(result => {
-        return result;
+    if (payload.shared) {
+      const res = await Storage.get(payload.path, {
+        level: 'protected',
+        identityId: payload.identityId
       })
-      .catch(err => console.log(err));
-    return res;
+        .then(result => {
+          console.log('result', result);
+          return result;
+        })
+        .catch(err => console.log(err));
+      return res;
+    } else {
+      const res = await Storage.get(payload.path, { level: 'protected' })
+        .then(result => {
+          return result;
+        })
+        .catch(err => console.log(err));
+      return res;
+    }
   },
   /**
    * Add selected file to DB
@@ -104,7 +152,7 @@ const api = {
 
       return Promise.resolve(
         Storage.put(payload.path, blob, {
-          level: 'private',
+          level: 'protected',
           contentType: payload.type ? payload.type : 'application/octet-stream',
           progressCallback(progress) {
             if (progress.loaded === progress.total) {
@@ -124,7 +172,7 @@ const api = {
    */
   async deleteFileFromS3(payload) {
     try {
-      Storage.remove(payload.path, { level: 'private' })
+      Storage.remove(payload.path, { level: 'protected' })
         .then(result => {
           console.log('File deleted =>', result);
           return result;
@@ -245,7 +293,8 @@ const api = {
       })
     );
   },
-  // USER
+
+  // USER API
   /**
    * Create the user object when the user log for the first time
    * @param {object} payload - Id, email, password and role of the user
@@ -254,9 +303,11 @@ const api = {
     return Promise.resolve(
       user.Mutation.createUser({
         id: payload.id,
+        identityId: payload.identityId,
         email: payload.email,
         password: payload.password,
         role: payload.role,
+        group: payload.group,
         createdAt: payload.createdAt,
         updatedAt: payload.updatedAt
       })
@@ -324,7 +375,7 @@ const api = {
 
       return Promise.resolve(
         Storage.put(payload.name, blob, {
-          level: 'private',
+          level: 'protected',
           contentType: payload.type,
           progressCallback(progress) {
             if (progress.loaded === progress.total) {
@@ -346,7 +397,7 @@ const api = {
       return Promise.resolve(
         Storage.get(payload, {
           expires: 604800,
-          level: 'private'
+          level: 'protected'
         })
           .then(result => {
             return result;
@@ -378,7 +429,7 @@ const api = {
     try {
       return Promise.resolve(
         Storage.remove(payload, {
-          level: 'private'
+          level: 'protected'
         })
           .then(result => {
             return result;
@@ -410,8 +461,19 @@ const api = {
       console.log('error signing out: ', error);
     }
   },
+  /**
+   * Get the identity id of the user
+   * @param {object} payload - The id of the document's owner
+   */
+  getIdentityId(payload) {
+    return Promise.resolve(
+      user.Query.getIdentityId({
+        id: payload.owner
+      })
+    );
+  },
 
-  // GROUP
+  // GROUP API
   /**
    * Get the user
    * @param {object} payload - Id of the user
@@ -422,8 +484,114 @@ const api = {
         id: payload.group
       })
     );
+  },
+
+  // RIGHTS API
+  /**
+   * Get the user's rights on a document
+   * @param {object} payload - The user and document ID
+   */
+  getUserRightsOnDocument(payload) {
+    return Promise.resolve(
+      right.Query.getUserRightsOnDocument({
+        user: payload.user,
+        document: payload.document
+      })
+    );
+  },
+  /**
+   * Load the shared folders
+   * @param {object} payload - The user id
+   */
+  loadSharedFolders(payload) {
+    return Promise.resolve(
+      right.Query.getSharedFolders({
+        user: payload.userId
+      })
+    );
+  },
+  /**
+   * Load the shared files
+   * @param {object} payload - The user id
+   */
+  loadSharedFiles(payload) {
+    return Promise.resolve(
+      right.Query.getSharedFiles({
+        user: payload.userId
+      })
+    );
+  },
+  /**
+   * Share document to users
+   * @param {object} payload - All data on user, document and rights
+   */
+  addUsersToDocument(payload) {
+    if (payload.type === 'file') {
+      return Promise.resolve(
+        right.Mutation.addUserToFile({
+          document: payload.document,
+          read: payload.read,
+          edit: payload.edit,
+          user: payload.user,
+          firstname: payload.firstname,
+          lastname: payload.lastname,
+          email: payload.email,
+          type: payload.type,
+          createdAt: payload.createdAt,
+          updatedAt: payload.updatedAt
+        })
+      );
+    } else {
+      return Promise.resolve(
+        right.Mutation.addUsersToFolder({
+          document: payload.document,
+          read: payload.read,
+          edit: payload.edit,
+          user: payload.user,
+          firstname: payload.firstname,
+          lastname: payload.lastname,
+          email: payload.email,
+          type: payload.type,
+          createdAt: payload.createdAt,
+          updatedAt: payload.updatedAt
+        })
+      );
+    }
+  },
+  /**
+   * Loads the users with whom the document is shared
+   * @param {object} payload - The user id
+   */
+  loadSharedUser(payload) {
+    return Promise.resolve(
+      right.Query.loadSharedUser({
+        id: payload.id
+      })
+    );
+  },
+  /**
+   * Get the user's rights on a document
+   * @param {object} payload - The document and user ID
+   */
+  getRight(payload) {
+    return Promise.resolve(
+      right.Query.getRight({
+        document: payload.document,
+        user: payload.user
+      })
+    );
+  },
+  /**
+   * Remove a user from the document
+   * @param {Object} payload - The id of the Right associated to the user to remove from the document
+   */
+  removeUserFromDocument(payload) {
+    return Promise.resolve(
+      right.Mutation.deleteRight({
+        id: payload.rightId
+      })
+    );
   }
-  // RIGHTS
 };
 
 export default api;
