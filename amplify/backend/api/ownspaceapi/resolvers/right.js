@@ -194,7 +194,7 @@ const right = {
               user: {
                 contains:$user
               }
-            }){
+            }, limit: 100){
               items{
                 read,
                 edit
@@ -215,7 +215,7 @@ const right = {
           user: {
             contains:$user
           }
-        }){
+        }, limit: 100){
           items{
             id
           }
