@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<Image
+  resizeMode="contain"
+  source={1}
+  style={
+    Object {
+      "alignSelf": "center",
+      "height": 100,
+      "marginLeft": -10,
+      "resizeMode": "contain",
+      "width": 100,
+    }
+  }
+/>
+`;

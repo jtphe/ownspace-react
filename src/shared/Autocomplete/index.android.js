@@ -18,11 +18,17 @@ const autoCompleteAndroid = ({
   comp,
   addGuestsList
 }) => {
+  const usersLength = users.length;
+
+  /**
+   * Render the autoCompleteAndroid class component
+   * @returns {React.Component} - autoCompleteAndroid component
+   */
   return (
     <View style={styles.autocompleteContainer}>
       <Autocomplete
         data={
-          users.length === 1 &&
+          usersLength === 1 &&
           comp(
             query,
             users[0].firstname !== null ? users[0].firstname : users[0].email

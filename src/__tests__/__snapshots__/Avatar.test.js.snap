@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<Image
+  source={
+    Object {
+      "uri": undefined,
+    }
+  }
+  style={
+    Array [
+      Object {
+        "borderColor": "#003466",
+        "borderRadius": undefined,
+        "borderWidth": 1,
+        "height": undefined,
+        "width": undefined,
+      },
+    ]
+  }
+/>
+`;

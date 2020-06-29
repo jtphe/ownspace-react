@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#003466",
+      "paddingBottom": 30,
+      "paddingTop": 40,
+    }
+  }
+>
+  <Image
+    resizeMode="contain"
+    source={1}
+    style={
+      Object {
+        "alignSelf": "center",
+        "height": 50,
+        "marginLeft": -10,
+        "resizeMode": "contain",
+        "width": 50,
+      }
+    }
+  />
+</View>
+`;
