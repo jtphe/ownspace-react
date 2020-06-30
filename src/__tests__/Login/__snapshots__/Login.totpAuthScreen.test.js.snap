@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TotpAuthScreen component tests TotpAuthScreen snapshot 1`] = `
+<View>
+  <Text
+    ellipsizeMode="tail"
+    selectable={true}
+    style={
+      Array [
+        Object {
+          "color": "white",
+          "fontSize": 17,
+          "marginBottom": 20,
+          "opacity": 0.7,
+        },
+        Object {
+          "fontFamily": "HelveticaNeue",
+        },
+      ]
+    }
+  >
+    Enter the authentication code of the two-factor authentication application on your device
+  </Text>
+  <TextInput
+    allowFontScaling={true}
+    autoCapitalize="none"
+    keyboardType="number-pad"
+    onChangeText={[Function]}
+    placeholder="Authentication code"
+    placeholderTextColor="grey"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "backgroundColor": "#F7D8D3",
+        "borderColor": "transparent",
+        "borderRadius": 6,
+        "borderWidth": 1,
+        "color": "#A3A5A9",
+        "height": 50,
+        "marginBottom": 25,
+        "opacity": 0.7,
+        "paddingLeft": 15,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <View
+    style={
+      Object {
+        "backgroundColor": "#4788D3",
+        "borderColor": "transparent",
+        "borderRadius": 4,
+        "borderStyle": "solid",
+        "borderWidth": 0,
+        "elevation": 2,
+        "fontSize": 17,
+        "fontWeight": "bold",
+        "minWidth": 64,
+        "padding": 6,
+        "shadowColor": "#000000",
+        "shadowOffset": Object {
+          "height": 0.75,
+          "width": 0,
+        },
+        "shadowOpacity": 0.24,
+        "shadowRadius": 1.5,
+      }
+    }
+  >
+    <View
+      accessibilityRole="button"
+      accessibilityStates={Array []}
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "overflow": "hidden",
+          },
+          Object {
+            "borderRadius": 4,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#000000",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "textAlign": "left",
+              },
+              Array [
+                Object {
+                  "letterSpacing": 1,
+                  "marginHorizontal": 16,
+                  "marginVertical": 9,
+                  "textAlign": "center",
+                },
+                undefined,
+                false,
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "System",
+                  "fontWeight": "500",
+                },
+                Object {
+                  "fontFamily": "System",
+                  "fontWeight": "500",
+                },
+                Object {
+                  "color": "#fff",
+                },
+              ],
+            ]
+          }
+        >
+          Validate
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

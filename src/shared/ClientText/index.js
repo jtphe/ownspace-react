@@ -2,6 +2,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { useFonts } from '@use-expo/font';
+import { CLIENT_FONT, CLIENT_FONT_BOLD } from '@constants';
 
 /**
  * The custom TextClient component
@@ -10,13 +11,11 @@ import { useFonts } from '@use-expo/font';
  * @param {boolean} selectable - Lets the user select text, to use the native copy and paste functionality
  * @param {string} children - The string of the Text component
  */
-const TextClient = props => {
+const TextClient = ({ style, ellipsizeMode, selectable, children }) => {
   useFonts({
     DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf'),
     DejaVuSansBold: require('../../../assets/fonts/DejaVuSans-Bold.ttf')
   });
-
-  const { style, ellipsizeMode, selectable, children } = props;
 
   if (style && style.fontWeight === 'bold') {
     /**
@@ -54,11 +53,18 @@ const TextClient = props => {
  */
 const styles = StyleSheet.create({
   fontNormal: {
-    fontFamily: 'DejaVuSans'
+    fontFamily: CLIENT_FONT
   },
   fontBold: {
-    fontFamily: 'DejaVuSansBold'
+    fontFamily: CLIENT_FONT_BOLD
   }
 });
+
+TextClient.defaultProps = {
+  style: null,
+  ellipsizeMode: 'tail',
+  selectable: true,
+  children: null
+};
 
 export default TextClient;

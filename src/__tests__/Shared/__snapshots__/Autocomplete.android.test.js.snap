@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Autocomplete android tests Autocomplete snapshot 1`] = `
+<View
+  style={
+    Object {
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "zIndex": 100,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "zIndex": 1,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "#b9b9b9",
+            "borderRadius": 1,
+            "borderWidth": 1,
+          },
+          Object {
+            "borderColor": "#ccc",
+            "borderRadius": 4,
+            "borderWidth": 1,
+          },
+        ]
+      }
+    >
+      <TextInput
+        allowFontScaling={true}
+        data={Array []}
+        defaultValue=""
+        flatListProps={Object {}}
+        inputContainerStyle={
+          Object {
+            "borderColor": "#ccc",
+            "borderRadius": 4,
+            "borderWidth": 1,
+          }
+        }
+        keyboardShouldPersistTaps="always"
+        listContainerStyle={
+          Object {
+            "marginBottom": 20,
+            "marginLeft": -10,
+            "width": "108%",
+            "zIndex": 100,
+          }
+        }
+        onChangeText={[Function]}
+        onEndEditing={[Function]}
+        onStartShouldSetResponderCapture={[Function]}
+        onSubmitEditing={[Function]}
+        placeholder="Enter a user name..."
+        placeholderTextColor="rgba(0, 0, 0, 0.5)"
+        rejectResponderTermination={true}
+        renderItem={[Function]}
+        renderSeparator={null}
+        renderTextInput={[Function]}
+        style={
+          Object {
+            "color": "#555",
+            "fontSize": 16,
+            "height": 45,
+            "marginLeft": 10,
+            "width": 230,
+          }
+        }
+        underlineColorAndroid="transparent"
+      />
+    </View>
+    <View
+      onStartShouldSetResponderCapture={[Function]}
+      style={
+        Object {
+          "marginBottom": 20,
+          "marginLeft": -10,
+          "width": "108%",
+          "zIndex": 100,
+        }
+      }
+    />
+  </View>
+</View>
+`;

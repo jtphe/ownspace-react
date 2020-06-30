@@ -7,7 +7,6 @@ import Logo from '@shared/Logo/index';
 import GenerateTotp from '@components/Login/generateTotp';
 import { Auth } from 'aws-amplify';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
-import { Actions } from 'react-native-router-flux';
 import TotpAuthScreen from './totpAuthScreen';
 import i18n from '@i18n/i18n';
 import { useDispatch } from 'react-redux';

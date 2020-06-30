@@ -18,8 +18,6 @@ const autoCompleteAndroid = ({
   comp,
   addGuestsList
 }) => {
-  const usersLength = users.length;
-
   /**
    * Render the autoCompleteAndroid class component
    * @returns {React.Component} - autoCompleteAndroid component
@@ -28,7 +26,7 @@ const autoCompleteAndroid = ({
     <View style={styles.autocompleteContainer}>
       <Autocomplete
         data={
-          usersLength === 1 &&
+          users.length === 1 &&
           comp(
             query,
             users[0].firstname !== null ? users[0].firstname : users[0].email
@@ -101,5 +99,10 @@ const styles = StyleSheet.create({
     marginTop: 10
   }
 });
+
+autoCompleteAndroid.defaultProps = {
+  users: [],
+  query: ''
+};
 
 export default autoCompleteAndroid;

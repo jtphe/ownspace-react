@@ -10,7 +10,7 @@ import {
   Keyboard,
   ImageBackground
 } from 'react-native';
-import Logo from '../../shared/Logo/index';
+import Logo from '@shared/Logo/index';
 import { Auth } from 'aws-amplify';
 import { Actions } from 'react-native-router-flux';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';

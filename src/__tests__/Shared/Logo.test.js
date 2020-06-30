@@ -1,4 +1,5 @@
-import 'react-native';
+/* eslint-disable global-require */
+import { Image } from 'react-native';
 import React from 'react';
 import Logo from '@shared/Logo';
 import renderer from 'react-test-renderer';
@@ -13,13 +14,22 @@ describe('Logo tests', () => {
     wrapper = shallow(<Logo />);
   });
 
-  describe('Autocomplete snapshot', () => {
+  it('Logo snapshot', () => {
     const tree = renderer.create(<Logo />).toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-  it('renders correctly', () => {
-    renderer.create(<Logo />);
+  it('Logo header', () => {
+    const logo = wrapper.find(Image).get(0);
+    expect(logo.props.source).toEqual(
+      require('../../shared/Logo/images/os_logo.png')
+    );
+    expect(logo.props.style).toEqual({
+      alignSelf: 'center',
+      marginLeft: -10,
+      resizeMode: 'contain',
+      width: 100,
+      height: 100
+    });
   });
 });
 

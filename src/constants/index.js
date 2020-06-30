@@ -31,6 +31,12 @@ export const CLIENT_COLOR_PRIMARY = '#003466';
 
 export const CLIENT_COLOR_SECONDARY = '#E30043';
 
+// Client fonts
+
+export const CLIENT_FONT = 'DejaVuSans';
+
+export const CLIENT_FONT_BOLD = 'DejaVuSansBold';
+
 // OwnSpace colors
 
 export const OWNSPACE_PINK = '#F2BDB6';

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar component tests Avatar snapshot 1`] = `
+<Image
+  source={
+    Object {
+      "uri": "http://eliseretouches.com/media/avatar.png",
+    }
+  }
+  style={
+    Object {
+      "borderColor": "#003466",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "height": 100,
+      "width": 100,
+    }
+  }
+/>
+`;

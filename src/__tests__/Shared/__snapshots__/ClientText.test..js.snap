@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
+exports[`ClientText component tests ClientText snapshot 1`] = `
 <Text
+  ellipsizeMode="tail"
+  selectable={true}
   style={
     Array [
-      undefined,
+      null,
       Object {
         "fontFamily": "DejaVuSans",
       },
