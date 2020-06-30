@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
+exports[`Logo tests Logo snapshot 1`] = `
 <Image
   resizeMode="contain"
   source={1}

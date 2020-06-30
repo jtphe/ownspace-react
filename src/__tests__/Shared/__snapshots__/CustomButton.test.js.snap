@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
+exports[`CustomButton tests CustomButton snapshot 1`] = `
 <View
   style={
     Object {
@@ -15,6 +15,7 @@ exports[` 1`] = `
   }
 >
   <View
+    id="cancelBtn"
     style={
       Object {
         "backgroundColor": "white",
@@ -22,7 +23,7 @@ exports[` 1`] = `
         "borderRadius": 4,
         "borderStyle": "solid",
         "borderWidth": 1,
-        "color": "#42688B",
+        "color": "#003466",
         "elevation": 2,
         "justifyContent": "center",
         "minWidth": 64,
@@ -104,7 +105,7 @@ exports[` 1`] = `
                   "fontWeight": "500",
                 },
                 Object {
-                  "color": "#42688B",
+                  "color": "#003466",
                   "fontFamily": "DejaVuSans",
                 },
               ],

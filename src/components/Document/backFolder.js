@@ -49,4 +49,9 @@ const styles = StyleSheet.create({
   }
 });
 
+BackFolder.defaultProps = {
+  name: '',
+  visible: false
+};
+
 export default BackFolder;

@@ -5,6 +5,8 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import * as Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { Button } from 'react-native-paper';
+import { CLIENT_COLOR_PRIMARY } from '@constants';
 
 describe('CustomButton tests', () => {
   let wrapper;
@@ -13,13 +15,23 @@ describe('CustomButton tests', () => {
     wrapper = shallow(<CustomButton />);
   });
 
-  describe('Autocomplete snapshot', () => {
+  it('CustomButton snapshot', () => {
     const tree = renderer.create(<CustomButton />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders correctly', () => {
-    renderer.create(<CustomButton />);
+  it('Test buttons style', () => {
+    const cancelBtn = wrapper.find(Button).get(0);
+    const validateBtn = wrapper.find(Button).get(1);
+
+    expect(cancelBtn.props.labelStyle).toEqual({
+      fontFamily: 'DejaVuSans',
+      color: CLIENT_COLOR_PRIMARY
+    });
+    expect(validateBtn.props.labelStyle).toEqual({
+      fontFamily: 'DejaVuSans',
+      color: '#fff'
+    });
   });
 });
 

@@ -366,8 +366,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 13,
-    fontWeight: 'bold',
-    fontFamily: 'DejaVuSansBold',
+    fontFamily: 'DejaVuSans',
     color: '#fff'
   },
   btnLogOut: {

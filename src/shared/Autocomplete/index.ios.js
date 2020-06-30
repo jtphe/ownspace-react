@@ -12,8 +12,6 @@ import i18n from '@i18n/i18n';
  * @param {function} comp - Compare the query typed by the user with the first user in the list
  */
 const autoCompleteIos = ({ users, query, setQuery, comp, addGuestsList }) => {
-  const usersLength = users.length;
-
   /**
    * Render the autoCompleteIos class component
    * @returns {React.Component} - autoCompleteIos component
@@ -21,7 +19,7 @@ const autoCompleteIos = ({ users, query, setQuery, comp, addGuestsList }) => {
   return (
     <Autocomplete
       data={
-        usersLength === 1 &&
+        users.length === 1 &&
         comp(
           query,
           users[0].firstname !== null ? users[0].firstname : users[0].email
@@ -81,5 +79,10 @@ const styles = StyleSheet.create({
     marginTop: 10
   }
 });
+
+autoCompleteIos.defaultProps = {
+  users: [],
+  query: ''
+};
 
 export default autoCompleteIos;

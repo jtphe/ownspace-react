@@ -17,6 +17,7 @@ const CustomButton = ({ confirmFunction }) => {
   return (
     <View style={styles.btnContainer}>
       <Button
+        id="cancelBtn"
         mode="contained"
         uppercase={false}
         labelStyle={styles.cancelText}
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderColor: CLIENT_COLOR_PRIMARY,
     borderWidth: 1,
-    color: '#42688B'
+    color: CLIENT_COLOR_PRIMARY
   },
   btnConfirm: {
     justifyContent: 'center',
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     height: 45,
     width: 100
   },
-  cancelText: { fontFamily: 'DejaVuSans', color: '#42688B' },
+  cancelText: { fontFamily: 'DejaVuSans', color: CLIENT_COLOR_PRIMARY },
   confirmText: { fontFamily: 'DejaVuSans', color: '#fff' }
 });
 
