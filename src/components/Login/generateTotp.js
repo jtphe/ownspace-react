@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Clipboard } from 'react-native';
+import { StyleSheet, View, Clipboard, TouchableOpacity } from 'react-native';
 import Text from '@shared/Text';
 import { Button } from 'react-native-paper';
 import { Auth } from 'aws-amplify';
 import i18n from '@i18n/i18n';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import showToast from '@utils/showToast';
 import { OWNSPACE_BLUE, OWNSPACE_PINK_INPUT } from '@constants';
 

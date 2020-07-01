@@ -86,7 +86,7 @@ export default {
     error1: 'Les champs de textes ne peuvent être vide',
     error2: 'Les nouveaux mots de passe ne correspondent pas',
     error3: 'Le nouveau mot de passe doit contenir au moins 8 caractères',
-    error4: 'Les nouveaux mots de passe ne correspondent pas',
+    error4: "L'ancien mot de passe est incorrect",
     confirmSignOut: 'Êtes-vous sûr de vouloir vous déconnecter ?',
     cancel: 'Annuler',
     student: 'Étudiant',
