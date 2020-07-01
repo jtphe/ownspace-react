@@ -120,18 +120,21 @@ const SecondAuthScreen = ({ user }) => {
   const verifyTotpToken = async () => {
     try {
       if (user.challengeName === 'SOFTWARE_TOKEN_MFA') {
-        const loggedUser = await Auth.confirmSignIn(
-          user,
-          token,
-          'SOFTWARE_TOKEN_MFA'
-        );
-
-        if (loggedUser) {
-          const payload = {
-            userId: loggedUser.signInUserSession.accessToken.payload.sub,
-            token: loggedUser.signInUserSession.idToken.jwtToken
-          };
-          dispatch(loadUser(payload));
+        if (token.length > 0) {
+          const loggedUser = await Auth.confirmSignIn(
+            user,
+            token,
+            'SOFTWARE_TOKEN_MFA'
+          );
+          if (loggedUser) {
+            const payload = {
+              userId: loggedUser.signInUserSession.accessToken.payload.sub,
+              token: loggedUser.signInUserSession.idToken.jwtToken
+            };
+            dispatch(loadUser(payload));
+          }
+        } else {
+          showToast(i18n.t('totp.noEmpty'), true);
         }
       } else {
         try {
