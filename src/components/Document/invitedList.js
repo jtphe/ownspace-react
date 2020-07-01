@@ -117,4 +117,8 @@ const styles = StyleSheet.create({
   }
 });
 
+InvitedList.defaultProps = {
+  invited: []
+};
+
 export default InvitedList;
