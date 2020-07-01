@@ -96,4 +96,9 @@ UploadDocument.propsTypes = {
   document: PropTypes.object
 };
 
+UploadDocument.defaultProps = {
+  document: {},
+  content: ''
+};
+
 export default UploadDocument;

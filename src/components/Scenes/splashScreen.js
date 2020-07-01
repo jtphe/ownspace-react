@@ -24,7 +24,6 @@ const mapStateToProps = createSelector(getToken, token => {
  * Require the client font
  */
 const clientFont = {
-  // eslint-disable-next-line global-require
   DejaVuSans: require('../../../assets/fonts/DejaVuSans.ttf'),
   DejaVuSansBold: require('../../../assets/fonts/DejaVuSans-Bold.ttf')
 };
@@ -33,7 +32,6 @@ const clientFont = {
  * Require OwnSpace font
  */
 const helveticaFont = {
-  // eslint-disable-next-line global-require
   HelveticaNeue: require('../../../assets/fonts/HelveticaNeue.ttf'),
   HelveticaNeueBold: require('../../../assets/fonts/HelveticaNeue-Bold.ttf')
 };

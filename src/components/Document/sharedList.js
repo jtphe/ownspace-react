@@ -151,4 +151,8 @@ const styles = StyleSheet.create({
   container: { height: 200 }
 });
 
+SharedList.defaultProps = {
+  guests: []
+};
+
 export default SharedList;
