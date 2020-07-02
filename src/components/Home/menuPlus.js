@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, connect } from 'react-redux';
-import { StyleSheet, View, Platform } from 'react-native';
+import { StyleSheet, View, Platform, Linking, Alert } from 'react-native';
 import Text from '@shared/ClientText';
 import {
   Menu,
@@ -27,6 +27,7 @@ import { createSelector } from 'reselect';
 import { getCurrentPathString } from '@store/modules/document/selectors';
 import DocumentPicker from 'react-native-document-picker';
 import { CLIENT_COLOR_PRIMARY, OWNSPACE_LIGHT_GRAY } from '@constants';
+import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
 
 /**
  * Animation that makes slide in the menu from the bottom of the screen.
@@ -86,29 +87,77 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
    * Open the photo gallery
    */
   const _openPhotoGallery = () => {
-    setTimeout(() => {
-      ImagePicker.openPicker({
-        multiple: false,
-        cropping: true,
-        includeBase64: true
-      }).then(image => {
-        _onSelectedPicture(image);
-      });
-    }, 500);
+    check(PERMISSIONS.IOS.PHOTO_LIBRARY)
+      .then(res => {
+        switch (res) {
+          case RESULTS.BLOCKED:
+            Alert.alert(
+              i18n.t('filesMenu.photosPermissions'),
+              i18n.t('filesMenu.needPhotosPermissions'),
+              [
+                {
+                  text: i18n.t('button.cancel'),
+                  style: 'cancel'
+                },
+                {
+                  text: i18n.t('filesMenu.goToSettings'),
+                  onPress: () => Linking.openURL('app-settings:')
+                }
+              ]
+            );
+            break;
+          case RESULTS.GRANTED:
+            setTimeout(() => {
+              ImagePicker.openPicker({
+                multiple: false,
+                cropping: true,
+                includeBase64: true
+              }).then(image => {
+                _onSelectedPicture(image);
+              });
+            }, 500);
+            break;
+        }
+      })
+      .catch(error => console.log('Error =>', error));
   };
 
   /**
    * Open the phone camera
    */
   const _openCamera = () => {
-    ImagePicker.openCamera({
-      width: 300,
-      height: 400,
-      cropping: true,
-      useFrontCamera: true
-    }).then(image => {
-      _onSelectedPicture(image);
-    });
+    check(PERMISSIONS.IOS.CAMERA)
+      .then(res => {
+        switch (res) {
+          case RESULTS.BLOCKED:
+            Alert.alert(
+              i18n.t('filesMenu.photosPermissions'),
+              i18n.t('filesMenu.needPhotosPermissions'),
+              [
+                {
+                  text: i18n.t('button.cancel'),
+                  style: 'cancel'
+                },
+                {
+                  text: i18n.t('filesMenu.goToSettings'),
+                  onPress: () => Linking.openURL('app-settings:')
+                }
+              ]
+            );
+            break;
+          case RESULTS.DENIED:
+            ImagePicker.openCamera({
+              width: 300,
+              height: 400,
+              cropping: true,
+              useFrontCamera: true
+            }).then(image => {
+              _onSelectedPicture(image);
+            });
+            break;
+        }
+      })
+      .catch(error => console.log('Error =>', error));
   };
 
   /**

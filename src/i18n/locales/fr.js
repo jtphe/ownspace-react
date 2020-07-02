@@ -180,5 +180,11 @@ export default {
     cantAddOneSelf: 'Le document vous est déjà partagé',
     noUserToShare: 'Aucun utilisateur à partager',
     cantAddOwner: 'Vous ne pouvez pas ajouter le propriétaire'
+  },
+  filesMenu: {
+    photosPermissions: 'OwnSpace souhaite accéder à vos photos',
+    needPhotosPermissions:
+      "Veuillez modifier les permissions afin qu'OwnSpace puisse envoyer vos photos",
+    goToSettings: 'Modifier'
   }
 };

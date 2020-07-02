@@ -180,5 +180,11 @@ export default {
     cantAddOneSelf: 'The document is already shared with you',
     noUserToShare: 'No users to share',
     cantAddOwner: 'You can not add the owner'
+  },
+  filesMenu: {
+    photosPermissions: 'OwnSpace would like to access your photos',
+    needPhotosPermissions:
+      'Please change the permissions for OwnSpace to send your photos',
+    goToSettings: 'Change'
   }
 };
