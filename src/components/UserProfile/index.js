@@ -30,6 +30,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-crop-picker';
 import octetToMoConverter from '@utils/fileSizeConverter';
 import { CLIENT_COLOR_PRIMARY, CLIENT_COLOR_SECONDARY } from '@constants';
+import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
 import NetInfo from '@react-native-community/netinfo';
 
 /**
@@ -108,16 +109,39 @@ const UserProfile = ({ user, pictureIsUploading, isConnectedToInternet }) => {
   };
 
   const _updatePicture = () => {
-    setTimeout(() => {
-      ImagePicker.openPicker({
-        multiple: false,
-        cropping: true,
-        cropperCircleOverlay: true,
-        includeBase64: true
-      }).then(image => {
-        _onSelectedPicture(image);
-      });
-    }, 500);
+    check(PERMISSIONS.IOS.PHOTO_LIBRARY)
+      .then(res => {
+        switch (res) {
+          case RESULTS.BLOCKED:
+            Alert.alert(
+              i18n.t('filesMenu.photosPermissions'),
+              i18n.t('filesMenu.needPhotosPermissions'),
+              [
+                {
+                  text: i18n.t('button.cancel'),
+                  style: 'cancel'
+                },
+                {
+                  text: i18n.t('filesMenu.goToSettings'),
+                  onPress: () => Linking.openURL('app-settings:')
+                }
+              ]
+            );
+            break;
+          case RESULTS.GRANTED:
+            setTimeout(() => {
+              ImagePicker.openPicker({
+                multiple: false,
+                cropping: true,
+                includeBase64: true
+              }).then(image => {
+                _onSelectedPicture(image);
+              });
+            }, 500);
+            break;
+        }
+      })
+      .catch(error => console.log('Error =>', error));
   };
 
   /**
