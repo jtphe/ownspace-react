@@ -8,7 +8,8 @@ import {
   View,
   TextInput,
   Keyboard,
-  ImageBackground
+  ImageBackground,
+  SafeAreaView
 } from 'react-native';
 import Logo from '../../shared/Logo/index';
 import { Auth } from 'aws-amplify';
@@ -18,16 +19,29 @@ import { ifIphoneX } from 'react-native-iphone-x-helper';
 import i18n from '@i18n/i18n';
 import Text from '@shared/Text';
 import showToast from '@utils/showToast';
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { resetAllStore } from '@store/modules/app/actions';
 import { OWNSPACE_PINK_INPUT, OWNSPACE_BLUE } from '@constants';
 import ForgottenPasswordModal from './forgottenPasswordModal';
 import _validateEmail from '@utils/validateEmail';
+import NetInfo from '@react-native-community/netinfo';
+import { createSelector } from 'reselect';
+import { getIsInternetReachable } from '@store/modules/app/selectors';
+import { CLIENT_COLOR_SECONDARY } from '@constants/';
+
+const mapStateToProps = createSelector(
+  getIsInternetReachable,
+  isConnectedToInternet => {
+    return {
+      isConnectedToInternet
+    };
+  }
+);
 
 /**
  * The Login component
  */
-const Login = () => {
+const Login = ({ isConnectedToInternet }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [forgottenPassword, setForgottenPassword] = useState(false);
@@ -35,6 +49,9 @@ const Login = () => {
 
   useEffect(() => {
     dispatch(resetAllStore());
+    NetInfo.addEventListener(({ isInternetReachable }) => {
+      dispatch({ type: 'M_UPDATE_INTERNET_STATE', value: isInternetReachable });
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -86,83 +103,90 @@ const Login = () => {
    * @returns {React.Component} - Login component
    */
   return (
-    <ImageBackground
-      source={require('@images/background_authentication.png')}
-      style={styles.container}
-    >
-      <View style={styles.header}>
-        <Text style={styles.companyName}>{i18n.t('loginPage.ownspace')}</Text>
-        <Text style={styles.welcomeTitle}>{i18n.t('loginPage.welcome')}</Text>
-      </View>
-      {!forgottenPassword ? (
-        <View>
-          <View style={styles.textInputContainer}>
-            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-              <TextInput
-                style={styles.input}
-                placeholder={i18n.t('loginPage.email')}
-                placeholderTextColor="grey"
-                textContentType="emailAddress"
-                keyboardType="email-address"
-                onChangeText={txt => {
-                  setEmail(txt);
-                }}
-                autoCapitalize="none"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordTextInput.focus();
-                }}
-                blurOnSubmit={false}
-              />
-              <TextInput
-                ref={input => {
-                  passwordTextInput = input;
-                }}
-                style={styles.input}
-                placeholder={i18n.t('loginPage.password')}
-                placeholderTextColor="grey"
-                textContentType="password"
-                autoCapitalize="none"
-                secureTextEntry={true}
-                onChangeText={txt => {
-                  setPassword(txt);
-                }}
-              />
-            </TouchableWithoutFeedback>
-          </View>
-          <View style={styles.buttonContainer}>
-            <Button
-              mode="contained"
-              uppercase={false}
-              labelStyle={styles.btnText}
-              style={styles.btnSignIn}
-              onPress={() => {
-                _signIn();
-              }}
-            >
-              {i18n.t('loginPage.login')}
-            </Button>
-            <TouchableOpacity
-              style={styles.containerHelp}
-              onPress={() => _sendPasswordInstructions()}
-            >
-              <Text style={styles.btnForgottenPwd}>
-                {i18n.t('loginPage.forgottenPassword')}
-              </Text>
-            </TouchableOpacity>
-          </View>
+    <View style={styles.globalContainer}>
+      {!isConnectedToInternet ? (
+        <SafeAreaView style={styles.noInternetContainer}>
+          <Text style={styles.noInternetText}>{i18n.t('home.noInternet')}</Text>
+        </SafeAreaView>
+      ) : null}
+      <ImageBackground
+        source={require('@images/background_authentication.png')}
+        style={styles.container}
+      >
+        <View style={styles.header}>
+          <Text style={styles.companyName}>{i18n.t('loginPage.ownspace')}</Text>
+          <Text style={styles.welcomeTitle}>{i18n.t('loginPage.welcome')}</Text>
         </View>
-      ) : (
-        <ForgottenPasswordModal
-          setForgottenPassword={value => setForgottenPassword(value)}
-          username={email}
-          setEmail={value => setEmail(value)}
-        />
-      )}
-      <View style={styles.logo}>
-        <Logo />
-      </View>
-    </ImageBackground>
+        {!forgottenPassword ? (
+          <View>
+            <View style={styles.textInputContainer}>
+              <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+                <TextInput
+                  style={styles.input}
+                  placeholder={i18n.t('loginPage.email')}
+                  placeholderTextColor="grey"
+                  textContentType="emailAddress"
+                  keyboardType="email-address"
+                  onChangeText={txt => {
+                    setEmail(txt);
+                  }}
+                  autoCapitalize="none"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    passwordTextInput.focus();
+                  }}
+                  blurOnSubmit={false}
+                />
+                <TextInput
+                  ref={input => {
+                    passwordTextInput = input;
+                  }}
+                  style={styles.input}
+                  placeholder={i18n.t('loginPage.password')}
+                  placeholderTextColor="grey"
+                  textContentType="password"
+                  autoCapitalize="none"
+                  secureTextEntry={true}
+                  onChangeText={txt => {
+                    setPassword(txt);
+                  }}
+                />
+              </TouchableWithoutFeedback>
+            </View>
+            <View style={styles.buttonContainer}>
+              <Button
+                mode="contained"
+                uppercase={false}
+                labelStyle={styles.btnText}
+                style={styles.btnSignIn}
+                onPress={() => {
+                  _signIn();
+                }}
+              >
+                {i18n.t('loginPage.login')}
+              </Button>
+              <TouchableOpacity
+                style={styles.containerHelp}
+                onPress={() => _sendPasswordInstructions()}
+              >
+                <Text style={styles.btnForgottenPwd}>
+                  {i18n.t('loginPage.forgottenPassword')}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        ) : (
+          <ForgottenPasswordModal
+            setForgottenPassword={value => setForgottenPassword(value)}
+            username={email}
+            setEmail={value => setEmail(value)}
+          />
+        )}
+        <View style={styles.logo}>
+          <Logo />
+        </View>
+      </ImageBackground>
+    </View>
   );
 };
 
@@ -229,7 +253,18 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline'
   },
   logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
-  btnText: { color: '#fff' }
+  btnText: { color: '#fff' },
+  noInternetContainer: {
+    backgroundColor: CLIENT_COLOR_SECONDARY
+  },
+  noInternetText: {
+    color: 'white',
+    fontSize: Platform.OS === 'ios' ? 14 : 12,
+    padding: 10,
+    textAlign: 'center',
+    fontWeight: 'bold'
+  },
+  globalContainer: { flex: 1 }
 });
 
-export default Login;
+export default connect(mapStateToProps)(Login);

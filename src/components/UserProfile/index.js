@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -7,7 +7,8 @@ import {
   Alert,
   Linking,
   TouchableOpacity,
-  Platform
+  Platform,
+  SafeAreaView
 } from 'react-native';
 import Header from '@shared/Header/withBack';
 import Text from '@shared/ClientText';
@@ -17,6 +18,7 @@ import Avatar from '@shared/Avatar';
 import { connect, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 import { getUser, getPictureIsUploading } from '@store/modules/user/selectors';
+import { getIsInternetReachable } from '@store/modules/app/selectors';
 import { Button } from 'react-native-paper';
 import {
   updateUserNames,
@@ -28,16 +30,18 @@ import Icon from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-crop-picker';
 import octetToMoConverter from '@utils/fileSizeConverter';
 import { CLIENT_COLOR_PRIMARY, CLIENT_COLOR_SECONDARY } from '@constants';
+import NetInfo from '@react-native-community/netinfo';
 
 /**
  * Connect to the store and extract data
  */
 const mapStateToProps = createSelector(
-  [getUser, getPictureIsUploading],
-  (user, pictureIsUploading) => {
+  [getUser, getPictureIsUploading, getIsInternetReachable],
+  (user, pictureIsUploading, isConnectedToInternet) => {
     return {
       user,
-      pictureIsUploading
+      pictureIsUploading,
+      isConnectedToInternet
     };
   }
 );
@@ -46,10 +50,17 @@ const mapStateToProps = createSelector(
  * The UserProfile component
  * @param {object} user - The user object
  */
-const UserProfile = ({ user, pictureIsUploading }) => {
+const UserProfile = ({ user, pictureIsUploading, isConnectedToInternet }) => {
   const [firstname, setFirstname] = useState(user.firstname);
   const [lastname, setLastname] = useState(user.lastname);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    NetInfo.addEventListener(({ isInternetReachable }) => {
+      dispatch({ type: 'M_UPDATE_INTERNET_STATE', value: isInternetReachable });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /**
    * Update the user firstname and lastname
@@ -133,6 +144,11 @@ const UserProfile = ({ user, pictureIsUploading }) => {
   return (
     <View style={styles.container}>
       <Header goTo={() => Actions.home()} />
+      {!isConnectedToInternet ? (
+        <SafeAreaView style={styles.noInternetContainer}>
+          <Text style={styles.noInternetText}>{i18n.t('home.noInternet')}</Text>
+        </SafeAreaView>
+      ) : null}
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.avatarContainer}
@@ -366,6 +382,14 @@ const styles = StyleSheet.create({
     color: CLIENT_COLOR_PRIMARY,
     marginLeft: 6,
     fontSize: 22
+  },
+  noInternetContainer: { backgroundColor: CLIENT_COLOR_SECONDARY },
+  noInternetText: {
+    color: 'white',
+    fontSize: Platform.OS === 'ios' ? 14 : 12,
+    padding: 10,
+    textAlign: 'center',
+    fontWeight: 'bold'
   }
 });
 
