@@ -3,6 +3,9 @@ export default {
     sloganPartOne: 'A place of ',
     sloganPartTwo: 'security'
   },
+  home: {
+    noInternet: 'No internet connection'
+  },
   loginPage: {
     welcome: 'Welcome !',
     ownspace: 'OwnSpace',

@@ -1,19 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, SafeAreaView, View, Platform } from 'react-native';
+import Text from '@shared/ClientText';
 import Header from '@shared/Header/index';
 import NavMenu from '@components/Menu';
 import MenuPlus from './menuPlus';
 import HomeList from '@components/Document/index';
 import { Auth } from 'aws-amplify';
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { loadUser } from '@store/modules/user/actions';
+import NetInfo from '@react-native-community/netinfo';
+import { createSelector } from 'reselect';
+import { getIsInternetReachable } from '@store/modules/app/selectors';
+import i18n from '@i18n/i18n';
+import { CLIENT_COLOR_SECONDARY } from '@constants/';
+
+const mapStateToProps = createSelector(
+  getIsInternetReachable,
+  isConnectedToInternet => {
+    return {
+      isConnectedToInternet
+    };
+  }
+);
 
 /**
  * The Home component
  * @param {object} loggedUser - The user logged object
  * @param {boolean} isLoggedIn - If the user is log in or not
  */
-const Home = ({ userJustCreated }) => {
+const Home = ({ userJustCreated, isConnectedToInternet }) => {
   const [menuPlus, setMenuPlus] = useState('');
   const dispatch = useDispatch();
 
@@ -21,6 +36,11 @@ const Home = ({ userJustCreated }) => {
     if (userJustCreated === true) {
       _loadCurrentAuthenticatedUser();
     }
+    NetInfo.addEventListener(({ isInternetReachable }) => {
+      dispatch({ type: 'M_UPDATE_INTERNET_STATE', value: isInternetReachable });
+    });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [_loadCurrentAuthenticatedUser, userJustCreated]);
 
   /**
@@ -68,6 +88,11 @@ const Home = ({ userJustCreated }) => {
   return (
     <View style={styles.globalContainer}>
       <Header />
+      {!isConnectedToInternet ? (
+        <SafeAreaView style={styles.noInternetContainer}>
+          <Text style={styles.noInternetText}>{i18n.t('home.noInternet')}</Text>
+        </SafeAreaView>
+      ) : null}
       <View style={styles.container}>
         <View style={styles.homeContainer}>
           <HomeList />
@@ -91,7 +116,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  homeContainer: { flex: 1 }
+  homeContainer: { flex: 1 },
+  noInternetContainer: {
+    backgroundColor: CLIENT_COLOR_SECONDARY
+  },
+  noInternetText: {
+    color: 'white',
+    fontSize: Platform.OS === 'ios' ? 14 : 12,
+    padding: 10,
+    textAlign: 'center',
+    fontWeight: 'bold'
+  }
 });
 
-export default Home;
+export default connect(mapStateToProps)(Home);
