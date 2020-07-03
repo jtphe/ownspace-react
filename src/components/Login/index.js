@@ -89,7 +89,10 @@ const Login = ({ isConnectedToInternet }) => {
             showToast(i18n.t('loginPage.passwordInstructions'), true);
             setForgottenPassword(true);
           })
-          .catch(err => console.log(err));
+          .catch(err => {
+            showToast(i18n.t('loginPage.userNotFound'), true);
+            console.log('Error password forgotten =>', err);
+          });
       } else {
         showToast(i18n.t('loginPage.invalidEmail'), true);
       }
