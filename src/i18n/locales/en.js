@@ -25,7 +25,8 @@ export default {
     invalidPasswordEmail: 'Invalid email or incorrect password',
     invalidEmail: 'Invalid email',
     passwordUpdated: 'Password updated !',
-    wrongVerificationCode: 'Wrong verification code'
+    wrongVerificationCode: 'Wrong verification code',
+    userNotFound: 'User not found'
   },
   totp: {
     titleGenerate: 'Enter this code in your authentication application',
