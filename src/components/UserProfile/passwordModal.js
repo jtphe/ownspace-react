@@ -179,7 +179,6 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 13,
-    fontFamily: 'DejaVuSansBold',
     color: '#fff'
   },
   btnTextCancel: {

@@ -18,6 +18,10 @@ const autoCompleteAndroid = ({
   comp,
   addGuestsList
 }) => {
+  /**
+   * Render the autoCompleteAndroid class component
+   * @returns {React.Component} - autoCompleteAndroid component
+   */
   return (
     <View style={styles.autocompleteContainer}>
       <Autocomplete
@@ -95,5 +99,10 @@ const styles = StyleSheet.create({
     marginTop: 10
   }
 });
+
+autoCompleteAndroid.defaultProps = {
+  users: [],
+  query: ''
+};
 
 export default autoCompleteAndroid;

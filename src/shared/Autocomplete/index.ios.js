@@ -80,4 +80,9 @@ const styles = StyleSheet.create({
   }
 });
 
+autoCompleteIos.defaultProps = {
+  users: [],
+  query: ''
+};
+
 export default autoCompleteIos;

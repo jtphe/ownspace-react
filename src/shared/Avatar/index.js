@@ -32,9 +32,15 @@ const Avatar = ({ image, size, borderRadius }) => {
         uri:
           image === null ? 'http://eliseretouches.com/media/avatar.png' : image
       }}
-      style={[_typeStyle()]}
+      style={_typeStyle()}
     />
   );
+};
+
+Avatar.defaultProps = {
+  image: 'http://eliseretouches.com/media/avatar.png',
+  size: 100,
+  borderRadius: 50
 };
 
 export default Avatar;

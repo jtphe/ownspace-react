@@ -103,13 +103,14 @@ const styles = StyleSheet.create({
   }
 });
 
-OwnSpaceDialog.propTypes = {
-  name: PropTypes.string.isRequired,
-  visible: PropTypes.bool.isRequired,
-  hide: PropTypes.func.isRequired,
-  setName: PropTypes.func.isRequired,
-  valid: PropTypes.func.isRequired,
-  btnValidName: PropTypes.string.isRequired
+OwnSpaceDialog.defaultProps = {
+  visible: false,
+  hide: true,
+  dialogTitle: 'Dialog title',
+  dialogPlaceholder: 'Dialog placeholder',
+  name: '',
+  security: false,
+  btnValidName: 'Validate'
 };
 
 export default OwnSpaceDialog;
