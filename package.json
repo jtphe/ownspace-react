@@ -26,7 +26,7 @@
     "i18n-js": "^3.5.1",
     "immutability-helper": "^3.1.1",
     "js-base64": "^2.5.2",
-    "moment": "^2.25.3",
+    "moment": "^2.27.0",
     "react": "~16.9.0",
     "react-dom": "~16.13.0",
     "react-native": "~0.61.4",
@@ -57,7 +57,7 @@
     "rn-fetch-blob": "^0.12.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.6",
+    "@babel/core": "^7.10.4",
     "babel-preset-expo": "~8.2.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
@@ -66,7 +66,7 @@
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-node": "^4.0.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.3",
