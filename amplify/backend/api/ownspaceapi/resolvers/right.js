@@ -6,7 +6,6 @@ API.configure(awsconfig);
 const right = {
   Mutation: {
     addUserToFile: async ({
-      // eslint-disable-next-line no-shadow
       document,
       read,
       edit,
@@ -57,52 +56,51 @@ const right = {
       );
       return res.data.createRight;
     },
-    addUsersToFolder: async ({
-      // eslint-disable-next-line no-shadow
-      document,
-      read,
-      edit,
-      user,
-      firstname,
-      lastname,
-      email,
-      type,
-      createdAt,
-      updatedAt
-    }) => {
-      const query = `mutation addUsersToFolder($document: ID! $read: Boolean! $edit: Boolean! $user: ID! $firstname: String $lastname: String $email: String $type: String! $createdAt: String $updatedAt: String) {
-          createRight(input:{
-                document:$document
-                read:$read
-                edit:$edit
-                user:$user
-                firstname:$firstname
-                lastname:$lastname
-                email:$email
-                type:$type
-                createdAt:$createdAt
-                updatedAt:$updatedAt
-              }){
-                document,
-                user
-              }
-            }`;
-      const res = await API.graphql(
-        graphqlOperation(query, {
-          document,
-          read,
-          edit,
-          user,
-          firstname,
-          lastname,
-          email,
-          type,
-          createdAt,
-          updatedAt
-        })
-      );
-      return res.data.createRight;
-    },
+    // addUsersToFolder: async ({
+    //   document,
+    //   read,
+    //   edit,
+    //   user,
+    //   firstname,
+    //   lastname,
+    //   email,
+    //   type,
+    //   createdAt,
+    //   updatedAt
+    // }) => {
+    //   const query = `mutation addUsersToFolder($document: ID! $read: Boolean! $edit: Boolean! $user: ID! $firstname: String $lastname: String $email: String $type: String! $createdAt: String $updatedAt: String) {
+    //       createRight(input:{
+    //             document:$document
+    //             read:$read
+    //             edit:$edit
+    //             user:$user
+    //             firstname:$firstname
+    //             lastname:$lastname
+    //             email:$email
+    //             type:$type
+    //             createdAt:$createdAt
+    //             updatedAt:$updatedAt
+    //           }){
+    //             document,
+    //             user
+    //           }
+    //         }`;
+    //   const res = await API.graphql(
+    //     graphqlOperation(query, {
+    //       document,
+    //       read,
+    //       edit,
+    //       user,
+    //       firstname,
+    //       lastname,
+    //       email,
+    //       type,
+    //       createdAt,
+    //       updatedAt
+    //     })
+    //   );
+    //   return res.data.createRight;
+    // },
     deleteRight: async ({ id }) => {
       const query = `mutation removeUserFromDocument($id: ID!){
         deleteRight(input:{
