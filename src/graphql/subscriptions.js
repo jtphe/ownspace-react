@@ -204,6 +204,8 @@ export const onCreateRight = /* GraphQL */ `
       lastname
       email
       type
+      path
+      pictureName
     }
   }
 `;
@@ -221,6 +223,8 @@ export const onUpdateRight = /* GraphQL */ `
       lastname
       email
       type
+      path
+      pictureName
     }
   }
 `;
@@ -238,6 +242,8 @@ export const onDeleteRight = /* GraphQL */ `
       lastname
       email
       type
+      path
+      pictureName
     }
   }
 `;

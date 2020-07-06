@@ -78,6 +78,7 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
   ] = useState(false);
   const isOwner = file.owner === user.id;
   const { isProtected, edit, shared, owner } = file;
+
   /**
    * Open the document
    */
@@ -93,7 +94,7 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
             payload = {
               owner,
               shared,
-              path: currentPathString + fileName,
+              path: file.path,
               resolve,
               reject
             };
@@ -444,7 +445,11 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
                       document: file,
                       users: groupUsers,
                       documentType: 'file',
-                      isOwner
+                      isOwner,
+                      edit,
+                      path: file.shared
+                        ? file.path
+                        : currentPathString + file.name
                     })
                   }
                 >

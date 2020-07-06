@@ -61,6 +61,8 @@ type Right @model {
   lastname: String
   email: String
   type: String!
+  path: String!
+  pictureName: String
 }
 
 type App @model {

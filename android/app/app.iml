@@ -89,13 +89,13 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: com.facebook.infer.annotation:infer-annotation:0.11.2@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.2@jar" level="project" />
+    <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.collection:collection:1.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-common:2.2.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.arch.core:core-common:2.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation:1.1.0@jar" level="project" />
-    <orderEntry type="library" name="Gradle: com.facebook.infer.annotation:infer-annotation:0.11.2@jar" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.2@jar" level="project" />
-    <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp-urlconnection:3.12.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp:3.12.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.15.0@jar" level="project" />
@@ -160,43 +160,45 @@
     <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-okhttp3:2.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: io.nlopez.smartlocation:library:3.2.11@aar" level="project" />
     <orderEntry type="library" name="Gradle: org.webkit:android-jsc:r245459@aar" level="project" />
-    <orderEntry type="module" module-name="android-expo-permissions" />
-    <orderEntry type="module" module-name="android-expo-constants" />
-    <orderEntry type="module" module-name="android-unimodules-image-loader-interface" />
-    <orderEntry type="module" module-name="android-expo-web-browser" />
-    <orderEntry type="module" module-name="android-expo-file-system" />
-    <orderEntry type="module" module-name="android-expo-location" />
-    <orderEntry type="module" module-name="android-expo-image-loader" />
-    <orderEntry type="module" module-name="android-expo-error-recovery" />
-    <orderEntry type="module" module-name="android-unimodules-permissions-interface" />
-    <orderEntry type="module" module-name="android-unimodules-core" />
-    <orderEntry type="module" module-name="android-unimodules-react-native-adapter" />
-    <orderEntry type="module" module-name="android-expo-app-loader-provider" />
-    <orderEntry type="module" module-name="android-expo-font" />
-    <orderEntry type="module" module-name="android-expo-keep-awake" />
-    <orderEntry type="module" module-name="android-expo-linear-gradient" />
-    <orderEntry type="module" module-name="android-expo-localization" />
-    <orderEntry type="module" module-name="android-expo-sqlite" />
-    <orderEntry type="module" module-name="android-unimodules-barcode-scanner-interface" />
-    <orderEntry type="module" module-name="android-unimodules-camera-interface" />
-    <orderEntry type="module" module-name="android-unimodules-constants-interface" />
-    <orderEntry type="module" module-name="android-unimodules-face-detector-interface" />
-    <orderEntry type="module" module-name="android-unimodules-file-system-interface" />
-    <orderEntry type="module" module-name="android-unimodules-font-interface" />
-    <orderEntry type="module" module-name="android-unimodules-sensors-interface" />
-    <orderEntry type="module" module-name="android-unimodules-task-manager-interface" />
-    <orderEntry type="module" module-name="android-unimodules-app-loader" />
-    <orderEntry type="module" module-name="android-react-native-community_masked-view" />
-    <orderEntry type="module" module-name="android-react-native-community_netinfo" />
-    <orderEntry type="module" module-name="android-amazon-cognito-identity-js" />
-    <orderEntry type="module" module-name="android-react-native-document-picker" />
-    <orderEntry type="module" module-name="android-react-native-file-viewer" />
-    <orderEntry type="module" module-name="android-react-native-gesture-handler" />
-    <orderEntry type="module" module-name="android-react-native-image-crop-picker" />
-    <orderEntry type="module" module-name="android-react-native-reanimated" />
-    <orderEntry type="module" module-name="android-react-native-screens" />
+    <orderEntry type="module" module-name="expo-permissions-android-expo-permissions" />
+    <orderEntry type="module" module-name="expo-constants-android-expo-constants" />
+    <orderEntry type="module" module-name="unimodules-image-loader-interface-android-unimodules-image-loader-interface" />
+    <orderEntry type="module" module-name="expo-web-browser-android-expo-web-browser" />
+    <orderEntry type="module" module-name="expo-file-system-android-expo-file-system" />
+    <orderEntry type="module" module-name="expo-location-android-expo-location" />
+    <orderEntry type="module" module-name="expo-image-loader-android-expo-image-loader" />
+    <orderEntry type="module" module-name="expo-error-recovery-android-expo-error-recovery" />
+    <orderEntry type="module" module-name="unimodules-permissions-interface-android-unimodules-permissions-interface" />
+    <orderEntry type="module" module-name="@react-native-community_netinfo" />
+    <orderEntry type="module" module-name="core-android-unimodules-core" />
+    <orderEntry type="module" module-name="react-native-adapter-android-unimodules-react-native-adapter" />
+    <orderEntry type="module" module-name="expo-app-loader-provider-android-expo-app-loader-provider" />
+    <orderEntry type="module" module-name="expo-font-android-expo-font" />
+    <orderEntry type="module" module-name="expo-keep-awake-android-expo-keep-awake" />
+    <orderEntry type="module" module-name="expo-linear-gradient-android-expo-linear-gradient" />
+    <orderEntry type="module" module-name="expo-localization-android-expo-localization" />
+    <orderEntry type="module" module-name="expo-sqlite-android-expo-sqlite" />
+    <orderEntry type="module" module-name="unimodules-barcode-scanner-interface-android-unimodules-barcode-scanner-interface" />
+    <orderEntry type="module" module-name="unimodules-camera-interface-android-unimodules-camera-interface" />
+    <orderEntry type="module" module-name="unimodules-constants-interface-android-unimodules-constants-interface" />
+    <orderEntry type="module" module-name="unimodules-face-detector-interface-android-unimodules-face-detector-interface" />
+    <orderEntry type="module" module-name="unimodules-file-system-interface-android-unimodules-file-system-interface" />
+    <orderEntry type="module" module-name="unimodules-font-interface-android-unimodules-font-interface" />
+    <orderEntry type="module" module-name="unimodules-sensors-interface-android-unimodules-sensors-interface" />
+    <orderEntry type="module" module-name="unimodules-task-manager-interface-android-unimodules-task-manager-interface" />
+    <orderEntry type="module" module-name="unimodules-app-loader-android-unimodules-app-loader" />
+    <orderEntry type="module" module-name="masked-view-android-react-native-community_masked-view" />
+    <orderEntry type="module" module-name="netinfo-android-react-native-community_netinfo" />
+    <orderEntry type="module" module-name="amazon-cognito-identity-js-android-amazon-cognito-identity-js" />
+    <orderEntry type="module" module-name="react-native-document-picker-android-react-native-document-picker" />
+    <orderEntry type="module" module-name="react-native-file-viewer-android-react-native-file-viewer" />
+    <orderEntry type="module" module-name="react-native-gesture-handler-android-react-native-gesture-handler" />
+    <orderEntry type="module" module-name="react-native-image-crop-picker-android-react-native-image-crop-picker" />
+    <orderEntry type="module" module-name="react-native-permissions" />
+    <orderEntry type="module" module-name="react-native-reanimated-android-react-native-reanimated" />
+    <orderEntry type="module" module-name="react-native-screens-android-react-native-screens" />
     <orderEntry type="module" module-name="react-native-svg" />
-    <orderEntry type="module" module-name="android-react-native-vector-icons" />
-    <orderEntry type="module" module-name="android-rn-fetch-blob" />
+    <orderEntry type="module" module-name="react-native-vector-icons-android-react-native-vector-icons" />
+    <orderEntry type="module" module-name="rn-fetch-blob-android-rn-fetch-blob" />
   </component>
 </module>

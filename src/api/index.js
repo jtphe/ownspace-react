@@ -109,7 +109,6 @@ const api = {
         identityId: payload.identityId
       })
         .then(result => {
-          console.log('result', result);
           return result;
         })
         .catch(err => console.log(err));
@@ -394,16 +393,32 @@ const api = {
    */
   async getPictureUrl(payload) {
     try {
-      return Promise.resolve(
-        Storage.get(payload, {
-          expires: 604800,
-          level: 'protected'
-        })
-          .then(result => {
-            return result;
+      if (payload.shared) {
+        // Get the group's users picture
+        return Promise.resolve(
+          Storage.get(payload.pictureName, {
+            expires: 604800,
+            identityId: payload.identityId,
+            level: 'protected'
           })
-          .catch(err => console.log(err))
-      );
+            .then(result => {
+              return result;
+            })
+            .catch(err => console.log(err))
+        );
+      } else {
+        // Get the user picture
+        return Promise.resolve(
+          Storage.get(payload, {
+            expires: 604800,
+            level: 'protected'
+          })
+            .then(result => {
+              return result;
+            })
+            .catch(err => console.log(err))
+        );
+      }
     } catch (err) {
       console.log('Error while getting picture url api =>', err);
     }
@@ -538,25 +553,28 @@ const api = {
           email: payload.email,
           type: payload.type,
           createdAt: payload.createdAt,
-          updatedAt: payload.updatedAt
-        })
-      );
-    } else {
-      return Promise.resolve(
-        right.Mutation.addUsersToFolder({
-          document: payload.document,
-          read: payload.read,
-          edit: payload.edit,
-          user: payload.user,
-          firstname: payload.firstname,
-          lastname: payload.lastname,
-          email: payload.email,
-          type: payload.type,
-          createdAt: payload.createdAt,
-          updatedAt: payload.updatedAt
+          updatedAt: payload.updatedAt,
+          path: payload.path,
+          pictureName: payload.pictureName
         })
       );
     }
+    // else {
+    //   return Promise.resolve(
+    //     right.Mutation.addUsersToFolder({
+    //       document: payload.document,
+    //       read: payload.read,
+    //       edit: payload.edit,
+    //       user: payload.user,
+    //       firstname: payload.firstname,
+    //       lastname: payload.lastname,
+    //       email: payload.email,
+    //       type: payload.type,
+    //       createdAt: payload.createdAt,
+    //       updatedAt: payload.updatedAt
+    //     })
+    //   );
+    // }
   },
   /**
    * Loads the users with whom the document is shared

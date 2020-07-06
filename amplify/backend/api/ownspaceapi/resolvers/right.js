@@ -16,9 +16,11 @@ const right = {
       email,
       type,
       createdAt,
-      updatedAt
+      updatedAt,
+      path,
+      pictureName
     }) => {
-      const query = `mutation addUserToFile($document: ID! $read: Boolean! $edit: Boolean! $user: ID! $firstname: String $lastname: String $email: String $type: String! $createdAt: String $updatedAt: String) {
+      const query = `mutation addUserToFile($document: ID! $read: Boolean! $edit: Boolean! $user: ID! $firstname: String $lastname: String $email: String $type: String! $createdAt: String $updatedAt: String $path: String! $pictureName: String) {
           createRight(input:{
                 document:$document
                 read:$read
@@ -30,6 +32,8 @@ const right = {
                 type:$type
                 createdAt:$createdAt
                 updatedAt:$updatedAt
+                path:$path
+                pictureName:$pictureName
               }){
                 document,
                 user
@@ -46,7 +50,9 @@ const right = {
           email,
           type,
           createdAt,
-          updatedAt
+          updatedAt,
+          path,
+          pictureName
         })
       );
       return res.data.createRight;
@@ -178,7 +184,8 @@ const right = {
             user,
             firstname,
             lastname,
-            email
+            email,
+            pictureName
           }
         }
       }`;
@@ -197,7 +204,8 @@ const right = {
             }, limit: 100){
               items{
                 read,
-                edit
+                edit,
+                path
               }
             }
           }`;
