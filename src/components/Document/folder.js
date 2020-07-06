@@ -30,7 +30,6 @@ import {
   OWNSPACE_GRAY,
   OWNSPACE_LIGHT_GRAY
 } from '@constants';
-import { Actions } from 'react-native-router-flux';
 
 /**
  * Animation that makes slide in the menu from the bottom of the screen.
@@ -48,7 +47,7 @@ const Folder = ({ folder, user, groupUsers }) => {
   const [password, setPassword] = useState('');
   const [passwordCheckVisible, setPasswordCheckVisible] = useState(false);
   const isOwner = folder.owner === user.id;
-  const { isProtected, edit, shared, owner } = folder;
+  const { isProtected, edit } = folder;
 
   /**
    * Open the folder
@@ -234,7 +233,7 @@ const Folder = ({ folder, user, groupUsers }) => {
               }}
             >
               <View>
-                <MenuOption
+                {/* <MenuOption
                   customStyles={{
                     optionWrapper: styles.menuOptions
                   }}
@@ -259,7 +258,7 @@ const Folder = ({ folder, user, groupUsers }) => {
                       {i18n.t('document.share')}
                     </Text>
                   </View>
-                </MenuOption>
+                </MenuOption> */}
                 {isOwner || edit ? (
                   <MenuOption
                     customStyles={{
