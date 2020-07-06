@@ -261,9 +261,9 @@ function* loadFiles({ folder }) {
         file.read = rights.items[0].read;
         file.edit = rights.items[0].edit;
         file.shared = true;
+        file.path = rights.items[0].path;
 
-        // Only display the shared files on the home
-        if (file.parent === path[0].id.toString()) {
+        if (path[0].id === -1) {
           result.items.push(file);
         }
       }
@@ -278,6 +278,26 @@ function* loadFiles({ folder }) {
         };
         // Get the shared users of the file
         const sharedUsers = yield call(api.loadSharedUser, payloadFile);
+        if (sharedUsers.items.length > 0) {
+          for (let j = 0; j < sharedUsers.items.length; j++) {
+            const sharedUser = sharedUsers.items[j];
+            if (sharedUser.pictureName) {
+              payload.owner = sharedUser.user;
+              const res = yield call(api.getIdentityId, payload);
+              if (res) {
+                const payloadPicture = {
+                  pictureName: sharedUser.pictureName,
+                  shared: true,
+                  identityId: res.identityId
+                };
+                sharedUser.pictureUrl = yield call(
+                  api.getPictureUrl,
+                  payloadPicture
+                );
+              }
+            }
+          }
+        }
         element.sharedUsers = sharedUsers.items;
         finalFilesList.push(element);
       }
@@ -641,12 +661,24 @@ function* addUsersToDocument({ payload }) {
   try {
     const user = yield select(getUser);
     const usersAdded = [];
+
     for (let i = 0; i < payload.list.length; i++) {
       const element = payload.list[i];
       if (element.id === payload.document.owner) {
         showToast(i18n.t('shareModal.cantAddOwner'), false);
       } else if (element.id !== user.id) {
-        console.log('element', element);
+        if (element.pictureName) {
+          payload.owner = element.id;
+          const res = yield call(api.getIdentityId, payload);
+          if (res) {
+            const payloadPicture = {
+              pictureName: element.pictureName,
+              shared: true,
+              identityId: res.identityId
+            };
+            element.pictureUrl = yield call(api.getPictureUrl, payloadPicture);
+          }
+        }
         const finalPayload = {
           type: payload.type,
           document: payload.document.id,
@@ -657,20 +689,25 @@ function* addUsersToDocument({ payload }) {
           lastname: element.lastname === null ? '' : element.lastname,
           email: element.email,
           createdAt: dateNow,
-          updatedAt: dateNow
+          updatedAt: dateNow,
+          path: payload.path,
+          pictureName: element.pictureName,
+          pictureUrl: element.pictureUrl
         };
+
         yield call(api.addUsersToDocument, finalPayload);
-        if (payload.type === 'folder') {
-          const path = payload.document
-            ? [{ name: payload.document.name, id: payload.document.id }]
-            : [{ id: -1 }];
-          const { owner } = payload.document;
-          payload.pathId = path;
-          payload.userId = owner;
-          const folderFiles = yield call(api.getFilesId, payload);
-          console.log('folderFiles', folderFiles);
-        }
+        // if (payload.type === 'folder') {
+        //   const path = payload.document
+        //     ? [{ name: payload.document.name, id: payload.document.id }]
+        //     : [{ id: -1 }];
+        //   const { owner } = payload.document;
+        //   payload.pathId = path;
+        //   payload.userId = owner;
+        //   const folderFiles = yield call(api.getFilesId, payload);
+        //   console.log('folderFiles', folderFiles);
+        // }
         usersAdded.push(finalPayload);
+
         yield put({
           type: M_ADD_USERS_TO_DOCUMENT,
           document: payload.document.id,
@@ -680,6 +717,7 @@ function* addUsersToDocument({ payload }) {
         showToast(i18n.t('shareModal.cantAddOneSelf'), false);
       }
     }
+
     if (usersAdded.length > 0) {
       Actions.refresh({ usersAdded });
     }

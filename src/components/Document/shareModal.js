@@ -21,6 +21,7 @@ import showToast from '@utils/showToast';
  * @param {Object[]} users - The users of the group
  * @param {string} documentType - The type of document
  * @param {boolean} isOwner - If the current user is the owner of the document or not
+ * @param {boolean} edit - If the shared user has edit right on the document
  */
 class ShareModal extends React.Component {
   constructor(props) {
@@ -70,7 +71,8 @@ class ShareModal extends React.Component {
       const payload = {
         list: this.state.newInvitationsList,
         document: this.props.document,
-        type: this.props.documentType
+        type: this.props.documentType,
+        path: this.props.path
       };
       this.props.dispatch(addUsersToDocument(payload));
       this.setState({
@@ -113,18 +115,39 @@ class ShareModal extends React.Component {
   };
 
   /**
+   * Get the dropdown's color according to the user's rights on the document
+   */
+  _getColor = item => {
+    // If user is owner or can edit
+    if (this.props.isOwner || this.props.edit) {
+      if (item === 'baseColor') {
+        return 'rgba(0, 0, 0, .38)';
+      } else if (item === 'textColor') {
+        return 'rgba(0, 0, 0, .87)';
+      } else {
+        return 'rgba(0, 0, 0, .54)';
+      }
+    } else {
+      return '#e6e6e6';
+    }
+  };
+
+  /**
    * Render the ShareModal class component
    * @returns {React.Component} - ShareModal component
    */
   render() {
-    const rights = [
-      {
-        value: i18n.t('shareModal.read')
-      },
-      {
-        value: i18n.t('shareModal.edit')
-      }
-    ];
+    let rights = [];
+    if (this.props.isOwner === true || this.props.edit === true) {
+      rights = [
+        {
+          value: i18n.t('shareModal.read')
+        },
+        {
+          value: i18n.t('shareModal.edit')
+        }
+      ];
+    }
 
     return (
       <View style={styles.globalContainer}>
@@ -153,6 +176,9 @@ class ShareModal extends React.Component {
               containerStyle={
                 Platform.OS === 'ios' ? styles.dropdown : styles.dropdownAndroid
               }
+              baseColor={this._getColor('baseColor')}
+              textColor={this._getColor('textColor')}
+              itemColor={this._getColor('itemColor')}
             />
           </View>
           <View style={styles.listsContainer}>
@@ -161,6 +187,7 @@ class ShareModal extends React.Component {
                 guests={this.state.guestsList}
                 document={this.props.document.id}
                 isOwner={this.props.isOwner}
+                edit={this.props.edit}
               />
             ) : null}
             {this.state.newInvitationsList.length > 0 ? (

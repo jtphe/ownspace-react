@@ -244,7 +244,8 @@ const Folder = ({ folder, user, groupUsers }) => {
                       document: folder,
                       users: groupUsers,
                       documentType: 'folder',
-                      isOwner
+                      isOwner,
+                      edit
                     })
                   }
                 >

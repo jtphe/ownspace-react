@@ -11,14 +11,16 @@ import Icon from 'react-native-vector-icons/Feather';
 import { CLIENT_COLOR_PRIMARY, CLIENT_COLOR_SECONDARY } from '@constants';
 import { useDispatch } from 'react-redux';
 import { removeUserFromDocument } from '@store/modules/document/actions';
+import Avatar from '@shared/Avatar';
 
 /**
  * The ItemGuest component
  * @param {Object} item - The guest item
  * @param {number} document - Id of the document
  * @param {boolean} isOwner - If the current user is the owner of the document
+ * @param {boolean} edit - If the current user has the edit right on the document
  */
-const ItemGuest = ({ item, document, isOwner, guests }) => {
+const ItemGuest = ({ item, document, isOwner, guests, edit }) => {
   const dispatch = useDispatch();
 
   /**
@@ -40,6 +42,9 @@ const ItemGuest = ({ item, document, isOwner, guests }) => {
    */
   return (
     <View style={styles.contentContainer}>
+      <View style={styles.containerAvatar}>
+        <Avatar image={item.pictureUrl} size={30} borderRadius={50} />
+      </View>
       {item.firstname && item.lastname ? (
         <View style={styles.memberItem}>
           <Text style={styles.memberName}>
@@ -49,7 +54,7 @@ const ItemGuest = ({ item, document, isOwner, guests }) => {
       ) : (
         <Text style={styles.memberNameEmail}>{item.email}</Text>
       )}
-      {isOwner ? (
+      {isOwner || edit ? (
         <TouchableOpacity
           style={styles.icon}
           onPress={() => _removeUserFromDocument()}
@@ -67,7 +72,7 @@ const ItemGuest = ({ item, document, isOwner, guests }) => {
  * @param {Object} document - The object document
  * @param {boolean} isOwner - If the current user is the owner of the document
  */
-const SharedList = ({ guests, document, isOwner }) => {
+const SharedList = ({ guests, document, isOwner, edit }) => {
   if (guests === null || guests.length === 0) {
     return null;
   }
@@ -96,6 +101,7 @@ const SharedList = ({ guests, document, isOwner }) => {
             document={document}
             isOwner={isOwner}
             guests={guests}
+            edit={edit}
           />
         )}
       />
@@ -148,7 +154,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold'
   },
-  container: { height: 200 }
+  container: { height: 200 },
+  containerAvatar: { marginTop: 8, marginRight: 6 }
 });
 
 SharedList.defaultProps = {

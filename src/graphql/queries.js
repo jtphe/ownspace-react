@@ -169,6 +169,8 @@ export const getRight = /* GraphQL */ `
       lastname
       email
       type
+      path
+      pictureName
     }
   }
 `;
@@ -191,6 +193,8 @@ export const listRights = /* GraphQL */ `
         lastname
         email
         type
+        path
+        pictureName
       }
       nextToken
     }

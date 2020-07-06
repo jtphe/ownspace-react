@@ -7,7 +7,7 @@ import MenuPlus from './menuPlus';
 import HomeList from '@components/Document/index';
 import { Auth } from 'aws-amplify';
 import { connect, useDispatch } from 'react-redux';
-import { loadUser } from '@store/modules/user/actions';
+import { loadUser, loadGroupUsers } from '@store/modules/user/actions';
 import NetInfo from '@react-native-community/netinfo';
 import { createSelector } from 'reselect';
 import { getIsInternetReachable } from '@store/modules/app/selectors';
@@ -64,6 +64,7 @@ const Home = ({ userJustCreated, isConnectedToInternet }) => {
       token: user.signInUserSession.idToken.jwtToken
     };
     dispatch(loadUser(payload));
+    dispatch(loadGroupUsers());
   };
 
   /**
