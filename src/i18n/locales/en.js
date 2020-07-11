@@ -101,7 +101,8 @@ export default {
     passwordInfo:
       'Please choose a strong password (at least 8 characters, upper case, lower case and special characters).',
     update: 'Update',
-    cantEdit: "You cannot edit user's email"
+    cantEdit: "You cannot edit user's email",
+    storage: '%{storageUsed} on %{totalStorage} (%{percentage} %)'
   },
   document: {
     home: 'Home',
@@ -150,7 +151,8 @@ export default {
       'Are you sure you want to remove the password from the %{folder} folder ?',
     removeFilePassword: 'Remove the password from the %{file} file',
     confirmRemoveFilePassword:
-      'Are you sure you want to remove the password of the %{file} file ?'
+      'Are you sure you want to remove the password of the %{file} file ?',
+    noStorage: "You don't have enough space to add another document..."
   },
   picture: {
     imported: 'Image imported'

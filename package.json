@@ -21,7 +21,7 @@
     "esdoc-jsx-plugin": "^1.0.0",
     "esdoc-react-plugin": "^1.0.1",
     "esdoc-standard-plugin": "^1.0.0",
-    "expo": "~38.0.8",
+    "expo": "36.0.2",
     "expo-localization": "~8.1.0",
     "i18n-js": "^3.5.1",
     "immutability-helper": "^3.1.1",
@@ -57,8 +57,8 @@
     "rn-fetch-blob": "^0.12.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.4",
-    "babel-preset-expo": "~8.2.3",
+    "@babel/core": "^7.9.6",
+    "babel-preset-expo": "8.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",

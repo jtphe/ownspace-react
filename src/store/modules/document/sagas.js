@@ -44,7 +44,11 @@ import {
   U_REMOVE_USERS_FROM_DOCUMENT,
   M_REMOVE_USERS_FROM_DOCUMENT
 } from './actions';
-import { getUser } from '@store/modules/user/selectors';
+import {
+  getUser,
+  getUserStorageSpaceUsed,
+  getUserTotalStorageSpace
+} from '@store/modules/user/selectors';
 import {
   getCurrentPathId,
   getCurrentPathString,
@@ -340,32 +344,44 @@ function* addFileToCache({ path }) {
 function* addSelectedPicture({ payload }) {
   try {
     const user = yield select(getUser);
+    const storageSpaceUsed = yield select(getUserStorageSpaceUsed);
+    const totalStorageSpace = yield select(getUserTotalStorageSpace);
     const currentPathId = yield select(getCurrentPathId);
     const nbFiles = yield select(getNbFiles);
 
-    payload.owner = user.id;
-    payload.parent = currentPathId;
-    payload.createdAt = dateNow;
-    payload.updatedAt = dateNow;
+    if (storageSpaceUsed + payload.size < totalStorageSpace) {
+      payload.owner = user.id;
+      payload.parent = currentPathId;
+      payload.createdAt = dateNow;
+      payload.updatedAt = dateNow;
+      payload.storage = storageSpaceUsed + payload.size;
 
-    yield put({ type: M_SET_UPLOADING_FILE, payload });
-    yield call(api.addSelectedFileToS3, payload);
+      yield put({ type: M_SET_UPLOADING_FILE, payload });
+      yield call(api.addSelectedFileToS3, payload);
+      // Update the storageSpaceUsed
+      yield call(api.updateStorageSpaceUsed, payload);
+      // Update the number of files in the folder
+      if (currentPathId !== -1) {
+        const folderPayload = {
+          id: payload.parent,
+          nbFiles,
+          updatedAt: payload.updatedAt
+        };
+        yield call(api.updateFolderNbFiles, folderPayload);
+      }
 
-    // Update the number of files in the folder
-    if (currentPathId !== -1) {
-      const folderPayload = {
-        id: payload.parent,
-        nbFiles,
-        updatedAt: payload.updatedAt
-      };
-      yield call(api.updateFolderNbFiles, folderPayload);
+      const image = yield call(api.addSelectedFile, payload);
+      image.sharedUsers = [];
+      yield put({ type: M_REMOVE_UPLOADING_FILE });
+      yield put({ type: M_ADD_SELECTED_PICTURE, image });
+      yield put({
+        type: 'M_UPDATE_STORAGE_SPACE_USED',
+        storage: payload.storage
+      });
+      showToast(i18n.t('picture.imported', true));
+    } else {
+      showToast(i18n.t('document.noStorage', true));
     }
-
-    const image = yield call(api.addSelectedFile, payload);
-    image.sharedUsers = [];
-    yield put({ type: M_REMOVE_UPLOADING_FILE });
-    yield put({ type: M_ADD_SELECTED_PICTURE, image });
-    showToast(i18n.t('picture.imported', true));
   } catch (e) {
     console.log('Error while adding selected picture =>', e);
   }
@@ -374,31 +390,45 @@ function* addSelectedPicture({ payload }) {
 function* addDocument({ payload }) {
   try {
     const user = yield select(getUser);
+    const storageSpaceUsed = yield select(getUserStorageSpaceUsed);
+    const totalStorageSpace = yield select(getUserTotalStorageSpace);
     const currentPathId = yield select(getCurrentPathId);
     const nbFiles = yield select(getNbFiles);
 
-    payload.owner = user.id;
-    payload.parent = currentPathId;
-    payload.createdAt = dateNow;
-    payload.updatedAt = dateNow;
+    if (storageSpaceUsed + payload.size < totalStorageSpace) {
+      payload.owner = user.id;
+      payload.parent = currentPathId;
+      payload.createdAt = dateNow;
+      payload.updatedAt = dateNow;
+      payload.storage = storageSpaceUsed + payload.size;
 
-    yield put({ type: M_SET_UPLOADING_FILE, payload });
-    yield call(api.addSelectedFileToS3, payload);
+      yield put({ type: M_SET_UPLOADING_FILE, payload });
+      yield call(api.addSelectedFileToS3, payload);
 
-    const document = yield call(api.addSelectedFile, payload);
-    // Update the number of files in the folder
-    if (currentPathId !== -1) {
-      const folderPayload = {
-        id: payload.parent,
-        nbFiles,
-        updatedAt: payload.updatedAt
-      };
-      yield call(api.updateFolderNbFiles, folderPayload);
+      // Add the document to DynamoDB
+      const document = yield call(api.addSelectedFile, payload);
+      // Update the storageSpaceUsed
+      yield call(api.updateStorageSpaceUsed, payload);
+      // Update the number of files in the folder
+      if (currentPathId !== -1) {
+        const folderPayload = {
+          id: payload.parent,
+          nbFiles,
+          updatedAt: payload.updatedAt
+        };
+        yield call(api.updateFolderNbFiles, folderPayload);
+      }
+      document.sharedUsers = [];
+      yield put({ type: M_REMOVE_UPLOADING_FILE });
+      yield put({ type: M_ADD_DOCUMENT, document });
+      yield put({
+        type: 'M_UPDATE_STORAGE_SPACE_USED',
+        storage: payload.storage
+      });
+      showToast(i18n.t('document.imported', true));
+    } else {
+      showToast(i18n.t('document.noStorage', true));
     }
-    document.sharedUsers = [];
-    yield put({ type: M_REMOVE_UPLOADING_FILE });
-    yield put({ type: M_ADD_DOCUMENT, document });
-    showToast(i18n.t('document.imported', true));
   } catch (e) {
     console.log('Error while adding document =>', e);
   }
@@ -445,73 +475,27 @@ function* renameDocument({ payload }) {
 function* deleteDocument({ payload }) {
   try {
     const currentPathString = yield select(getCurrentPathString);
-    // const user = yield select(getUser);
+    const storageSpaceUsed = yield select(getUserStorageSpaceUsed);
     let documentPath = '';
     if (payload.documentPath === undefined) {
       documentPath = currentPathString + payload.name;
     }
-    // if (payload.nbFiles !== undefined) {
-    //   if (payload.nbFiles === 0) {
-    //     payload.path = `${documentPath}/`;
-    //     // yield call(api.deleteFileFromS3, payload);
-    //   } else {
-    //     console.log('BCP DE FICHIER');
-    //     payload.userId = user.id;
-    //     console.log('payload', payload);
-
-    //     const filesList = yield call(api.loadFiles, payload);
-    //     const foldersList = yield call(api.loadFolders, payload);
-
-    //     console.log('filesList', filesList);
-    //     console.log('foldersList', foldersList);
-
-    //     if (filesList.items.length > 0) {
-    //       for (let i = 0; i < filesList.items.length; i++) {
-    //         const element = filesList[i];
-    //         console.log('element file', element);
-    //         const filePayload = {
-    //           id: element.id,
-    //           path: `${documentPath}/${element.name}`
-    //         };
-    //         console.log('filePayload', filePayload);
-    //         // yield call(api.deleteFileFromS3, filePayload);
-    //         // yield call(api.deleteFileFromDB, filePayload);
-    //         // yield put({
-    //         //   type: M_DELETE_DOCUMENT,
-    //         //   id: payload.id,
-    //         //   documentType: 'file'
-    //         // });
-    //       }
-    //     }
-
-    //     if (foldersList.items.length > 0) {
-    //       for (let i = 0; i < foldersList.items.length; i++) {
-    //         const element = foldersList[i];
-    //         console.log('element folder', element);
-    //         const folderPayload = {
-    //           pathId: element.id,
-    //           nbFiles: element.nbFiles,
-    //           documentPath: `${documentPath}/${element.name}`
-    //         };
-    //         console.log('folderPayload', folderPayload);
-    //         // yield call({
-    //         //   type: U_DELETE_DOCUMENT,
-    //         //   folderPayload
-    //         // });
-    //       }
-    //     }
-    //   }
-    // } else {
     payload.path = documentPath;
+    payload.storage = storageSpaceUsed - payload.size;
     yield call(api.deleteFileFromS3, payload);
     yield call(api.deleteFileFromDB, payload);
+    // Update the storageSpaceUsed
+    yield call(api.updateStorageSpaceUsed, payload);
     yield put({
       type: M_DELETE_DOCUMENT,
       id: payload.id,
       documentType: 'file'
     });
+    yield put({
+      type: 'M_UPDATE_STORAGE_SPACE_USED',
+      storage: payload.storage
+    });
     showToast(showToast(i18n.t('file.deleted')));
-    // }
   } catch (e) {
     console.log('Error while deleting document =>', e);
   }
@@ -648,8 +632,11 @@ function* checkFilePasswordBeforeDelete({ payload }) {
     if (res === 200) {
       const filePayload = {
         name: payload.file.name,
-        id: payload.file.id
+        id: payload.file.id,
+        owner: payload.file.owner,
+        size: payload.file.size !== null ? payload.file.size : 0
       };
+
       yield put({ type: U_DELETE_DOCUMENT, payload: filePayload });
     }
   } catch (e) {

@@ -262,12 +262,12 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - rn-fetch-blob (0.12.0):
     - React-Core
-  - RNAWSCognito (4.3.0):
+  - RNAWSCognito (4.3.1):
     - JKBigInteger2 (= 0.0.5)
     - React
   - RNCMaskedView (0.1.10):
     - React
-  - RNFileViewer (2.0.2):
+  - RNFileViewer (2.1.1):
     - React
   - RNGestureHandler (1.6.1):
     - React
@@ -566,9 +566,9 @@ SPEC CHECKSUMS:
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
-  RNAWSCognito: 414956af952c20e3ad8b145eab190440fb4e6eeb
+  RNAWSCognito: cd5c8904204db774c630c49d222c3230f24ed77e
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
-  RNFileViewer: b815b353fdc08552766c6325e5b66ff52bb6b7af
+  RNFileViewer: db62d60dd19007c54b2c959b5e675a46d59f8a43
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNImageCropPicker: 38865ab4af1b0b2146ad66061196bc0184946855
   RNPermissions: 1888705aebcc81714efa5dbff94351e4388ae012

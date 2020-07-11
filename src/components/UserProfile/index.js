@@ -17,9 +17,15 @@ import { Actions } from 'react-native-router-flux';
 import Avatar from '@shared/Avatar';
 import { connect, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
-import { getUser, getPictureIsUploading } from '@store/modules/user/selectors';
+import {
+  getUser,
+  getPictureIsUploading,
+  getUserStorageSpaceUsed,
+  getUserTotalStorageSpace,
+  getIsLimitedStorage
+} from '@store/modules/user/selectors';
 import { getIsInternetReachable } from '@store/modules/app/selectors';
-import { Button } from 'react-native-paper';
+import { Button, ProgressBar } from 'react-native-paper';
 import {
   updateUserNames,
   signOut,
@@ -37,12 +43,29 @@ import NetInfo from '@react-native-community/netinfo';
  * Connect to the store and extract data
  */
 const mapStateToProps = createSelector(
-  [getUser, getPictureIsUploading, getIsInternetReachable],
-  (user, pictureIsUploading, isConnectedToInternet) => {
+  [
+    getUser,
+    getPictureIsUploading,
+    getIsInternetReachable,
+    getUserStorageSpaceUsed,
+    getUserTotalStorageSpace,
+    getIsLimitedStorage
+  ],
+  (
+    user,
+    pictureIsUploading,
+    isConnectedToInternet,
+    storageUsed,
+    totalStorage,
+    isLimited
+  ) => {
     return {
       user,
       pictureIsUploading,
-      isConnectedToInternet
+      isConnectedToInternet,
+      storageUsed,
+      totalStorage,
+      isLimited
     };
   }
 );
@@ -51,9 +74,20 @@ const mapStateToProps = createSelector(
  * The UserProfile component
  * @param {object} user - The user object
  */
-const UserProfile = ({ user, pictureIsUploading, isConnectedToInternet }) => {
+const UserProfile = ({
+  user,
+  pictureIsUploading,
+  isConnectedToInternet,
+  storageUsed,
+  totalStorage,
+  isLimited
+}) => {
   const [firstname, setFirstname] = useState(user.firstname);
   const [lastname, setLastname] = useState(user.lastname);
+  const percentage =
+    (storageUsed * 100) / totalStorage < 1
+      ? 0
+      : (parseFloat(storageUsed / totalStorage) * 100).toFixed(2)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -186,13 +220,13 @@ const UserProfile = ({ user, pictureIsUploading, isConnectedToInternet }) => {
               loading={true}
             />
           ) : (
-            <Avatar
-              style={styles.avatarPicture}
-              image={user.pictureUrl}
-              size={100}
-              borderRadius={50}
-            />
-          )}
+              <Avatar
+                style={styles.avatarPicture}
+                image={user.pictureUrl}
+                size={100}
+                borderRadius={50}
+              />
+            )}
         </TouchableOpacity>
         <View>
           {user.firstname !== null && user.lastname !== null ? (
@@ -200,8 +234,8 @@ const UserProfile = ({ user, pictureIsUploading, isConnectedToInternet }) => {
               {`${user.lastname} ${user.firstname}`}
             </Text>
           ) : (
-            <Text style={styles.profileName}>{user.email}</Text>
-          )}
+              <Text style={styles.profileName}>{user.email}</Text>
+            )}
           <Text style={styles.profileRole}>
             {i18n.t(`userProfile.${user.role}`).toUpperCase()}
           </Text>
@@ -270,6 +304,22 @@ const UserProfile = ({ user, pictureIsUploading, isConnectedToInternet }) => {
               {i18n.t('userProfile.updatePassword')}
             </Text>
           </TouchableOpacity>
+          {isLimited ? (
+            <View>
+              <Text style={styles.storageUsedText}>
+                {i18n.t('userProfile.storage', {
+                  storageUsed: octetToMoConverter(storageUsed),
+                  totalStorage: octetToMoConverter(totalStorage),
+                  percentage
+                })}
+              </Text>
+              <ProgressBar
+                style={styles.progressBar}
+                progress={percentage / 100}
+                color={CLIENT_COLOR_PRIMARY}
+              />
+            </View>
+          ) : null}
           <View style={styles.btnContainer}>
             <Button
               mode="contained"
@@ -377,7 +427,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     flexDirection: 'row',
-    marginTop: 30,
+    marginTop: 20,
     paddingVertical: 10,
     marginBottom: 10,
     justifyContent: 'space-between'
@@ -413,6 +463,14 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: 'center',
     fontWeight: 'bold'
+  },
+  progressBar: {
+    marginTop: 6,
+    borderRadius: 6,
+    height: 8
+  },
+  storageUsedText: {
+    marginTop: 20
   }
 });
 

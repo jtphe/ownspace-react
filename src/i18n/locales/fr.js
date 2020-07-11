@@ -150,7 +150,9 @@ export default {
       'Êtes-vous sûr de vouloir retirer le mot de passe du dossier %{folder} ?',
     removeFilePassword: 'Retirer le mot de passe du fichier %{file}',
     confirmRemoveFilePassword:
-      'Êtes-vous sûr de vouloir retirer le mot de passe du fichier %{file} ?'
+      'Êtes-vous sûr de vouloir retirer le mot de passe du fichier %{file} ?',
+    noStorage:
+      "Vous n'avez plus assez d'espace pour ajouter un autre document..."
   },
   picture: {
     imported: 'Image importée !'

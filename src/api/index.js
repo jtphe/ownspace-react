@@ -199,6 +199,7 @@ const api = {
    * @param {object} payload - The file id
    */
   deleteFileFromDB(payload) {
+    console.log('payload', payload);
     return Promise.resolve(
       document.Mutation.deleteFile({
         id: payload.id
@@ -483,6 +484,14 @@ const api = {
   getIdentityId(payload) {
     return Promise.resolve(
       user.Query.getIdentityId({
+        id: payload.owner
+      })
+    );
+  },
+  updateStorageSpaceUsed(payload) {
+    return Promise.resolve(
+      user.Mutation.updateStorageSpaceUsed({
+        size: payload.storage,
         id: payload.owner
       })
     );

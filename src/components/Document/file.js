@@ -214,7 +214,9 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
             if (!file.isProtected) {
               const payload = {
                 id: file.id,
-                name: file.name
+                owner: file.owner,
+                name: file.name,
+                size: file.size !== null ? file.size : 0
               };
               dispatch(deleteDocument(payload));
             } else {

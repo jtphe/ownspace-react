@@ -30,6 +30,8 @@ const user = {
                   group:$group
                   createdAt:$createdAt
                   updatedAt:$updatedAt
+                  limitedStorage:true,
+                  totalStorageSpace:2147483648
                 }){
                     id,
                     identityId,
@@ -114,6 +116,19 @@ const user = {
       const res = await API.graphql(
         graphqlOperation(query, { id, pictureUrl, pictureName })
       );
+      return res.data.updateUser;
+    },
+    updateStorageSpaceUsed: async ({ size, id }) => {
+      const query = `mutation updateStorageSpaceUsed($size: Float! $id: ID!) {
+        updateUser(input:{
+                storageSpaceUsed:$size    
+                id:$id
+            }){
+                id,
+                storageSpaceUsed
+            }
+          }`;
+      const res = await API.graphql(graphqlOperation(query, { size, id }));
       return res.data.updateUser;
     }
   },

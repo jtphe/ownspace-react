@@ -23,7 +23,6 @@ import { U_LOAD_FOLDERS, U_LOAD_FILES } from '@store/modules/document/actions';
 import { getUser, getPictureName } from '@store/modules/user/selectors';
 import moment from 'moment';
 import { GROUP_ID } from '@constants/index';
-
 const dateNow = +moment();
 
 function* createUser({ payload }) {
@@ -113,7 +112,7 @@ function* updateUserPassword({ payload }) {
 function* signOut() {
   try {
     yield call(api.signOutUser);
-    Actions.login();
+    Actions.login({type: 'reset'});
   } catch (e) {
     console.log('Error while signout =>', e);
   }
