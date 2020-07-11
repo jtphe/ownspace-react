@@ -22,7 +22,6 @@ import {
   addDocument
 } from '@store/modules/document/actions';
 import ImagePicker from 'react-native-image-crop-picker';
-import octetToMoConverter from '@utils/fileSizeConverter';
 import { createSelector } from 'reselect';
 import { getCurrentPathString } from '@store/modules/document/selectors';
 import DocumentPicker from 'react-native-document-picker';
@@ -89,34 +88,44 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
   const _openPhotoGallery = () => {
     check(PERMISSIONS.IOS.PHOTO_LIBRARY)
       .then(res => {
-        switch (res) {
-          case RESULTS.BLOCKED:
-            Alert.alert(
-              i18n.t('filesMenu.photosPermissions'),
-              i18n.t('filesMenu.needPhotosPermissions'),
-              [
-                {
-                  text: i18n.t('button.cancel'),
-                  style: 'cancel'
-                },
-                {
-                  text: i18n.t('filesMenu.goToSettings'),
-                  onPress: () => Linking.openURL('app-settings:')
-                }
-              ]
-            );
-            break;
-          case RESULTS.GRANTED:
-            setTimeout(() => {
-              ImagePicker.openPicker({
-                multiple: false,
-                cropping: true,
-                includeBase64: true
-              }).then(image => {
-                _onSelectedPicture(image);
-              });
-            }, 500);
-            break;
+        if (Platform.OS === 'android') {
+          setTimeout(() => {
+            ImagePicker.openPicker({
+              multiple: false,
+              includeBase64: true
+            }).then(image => {
+              _onSelectedPicture(image);
+            });
+          }, 500);
+        } else {
+          switch (res) {
+            case RESULTS.BLOCKED:
+              Alert.alert(
+                i18n.t('filesMenu.photosPermissions'),
+                i18n.t('filesMenu.needPhotosPermissions'),
+                [
+                  {
+                    text: i18n.t('button.cancel'),
+                    style: 'cancel'
+                  },
+                  {
+                    text: i18n.t('filesMenu.goToSettings'),
+                    onPress: () => Linking.openURL('app-settings:')
+                  }
+                ]
+              );
+              break;
+            case RESULTS.GRANTED:
+              setTimeout(() => {
+                ImagePicker.openPicker({
+                  multiple: false,
+                  includeBase64: true
+                }).then(image => {
+                  _onSelectedPicture(image);
+                });
+              }, 500);
+              break;
+          }
         }
       })
       .catch(error => console.log('Error =>', error));
@@ -145,7 +154,7 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
               ]
             );
             break;
-          case RESULTS.DENIED:
+          case RESULTS.GRANTED:
             ImagePicker.openCamera({
               width: 300,
               height: 400,
@@ -174,7 +183,7 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
         const payload = {
           name: document.name,
           type: document.type ? document.type : 'application/octet-stream',
-          size: parseFloat(octetToMoConverter(document.size)),
+          size: document.size,
           absolutePath: document.uri,
           path: currentPathString + document.name
         };
@@ -198,7 +207,7 @@ const MenuPlus = ({ setRefPlus, currentPathString }) => {
           ? image.filename
           : `${Date.now()}.${image.path.split('.').pop()}`,
       type: image.mime,
-      size: parseFloat(octetToMoConverter(image.size)),
+      size: image.size,
       absolutePath: image.path,
       path:
         Platform.OS === 'ios'

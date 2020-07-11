@@ -68,6 +68,14 @@ export default function reducer(state = initialState, action) {
           $set: false
         }
       });
+    case 'M_UPDATE_STORAGE_SPACE_USED':
+      return update(state, {
+        user: {
+          storageSpaceUsed: {
+            $set: action.storage
+          }
+        }
+      });
     case 'M_RESET_USER_STORE':
       return initialState;
     default:
