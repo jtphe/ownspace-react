@@ -192,5 +192,13 @@ export default {
     needPhotosPermissions:
       "Veuillez modifier les permissions afin qu'OwnSpace puisse envoyer vos photos",
     goToSettings: 'Modifier'
+  },
+  onBoarding: {
+    titlePageOne: 'Sauvegarder vos documents',
+    subTitlePageOne: "Sauvegarder vos document rapidement et facilement afin de pouvoir y accéder depuis n'importe où.",
+    titlePageTwo: 'Partager vos documents',
+    subTitlePageTwo: 'Vos documents partagés seront accessibles par les professeurs et les autres élèves.',
+    titlePageThree: 'Sécuriser vos documents',
+    subTitlePageThree: "Vous pouvez ajouter un mot de passe sur vos documents afin d'augmenter leur sécurité.",
   }
 };

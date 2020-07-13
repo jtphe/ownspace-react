@@ -23,6 +23,7 @@ export const createUser = /* GraphQL */ `
       limitedStorage
       storageSpaceUsed
       totalStorageSpace
+      onBoarding
     }
   }
 `;
@@ -48,6 +49,7 @@ export const updateUser = /* GraphQL */ `
       limitedStorage
       storageSpaceUsed
       totalStorageSpace
+      onBoarding
     }
   }
 `;
@@ -73,6 +75,7 @@ export const deleteUser = /* GraphQL */ `
       limitedStorage
       storageSpaceUsed
       totalStorageSpace
+      onBoarding
     }
   }
 `;

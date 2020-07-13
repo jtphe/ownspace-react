@@ -31,7 +31,8 @@ const user = {
                   createdAt:$createdAt
                   updatedAt:$updatedAt
                   limitedStorage:true,
-                  totalStorageSpace:2147483648
+                  totalStorageSpace:2147483648,
+                  onBoarding: true
                 }){
                     id,
                     identityId,
@@ -45,7 +46,8 @@ const user = {
                     group,
                     limitedStorage,
                     storageSpaceUsed,
-                    totalStorageSpace
+                    totalStorageSpace,
+                    onBoarding
                 }
               }`;
       const res = await API.graphql(
@@ -130,6 +132,20 @@ const user = {
           }`;
       const res = await API.graphql(graphqlOperation(query, { size, id }));
       return res.data.updateUser;
+    },
+    updateUserOnBoarding: async ({ id, onBoarding, updatedAt }) => {
+      const query = `mutation updateUserOnBoarding($id: ID! $onBoarding: Boolean! $updatedAt: String) {
+        updateUser(input:{ 
+                id:$id
+                onBoarding:$onBoarding
+                updatedAt:$updatedAt
+            }){
+                id,
+                onBoarding
+            }
+          }`;
+      const res = await API.graphql(graphqlOperation(query, { id, onBoarding, updatedAt }));
+      return res.data.updateUser;
     }
   },
   Query: {
@@ -149,6 +165,7 @@ const user = {
           limitedStorage
           storageSpaceUsed
           totalStorageSpace
+          onBoarding
         }
       }`;
       const res = await API.graphql(graphqlOperation(query, { id }));

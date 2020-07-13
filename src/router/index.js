@@ -8,6 +8,7 @@ import SplashScreen from '@components/Scenes/splashScreen';
 import UserProfile from '@components/UserProfile/index';
 import PasswordModal from '@components/UserProfile/passwordModal';
 import ShareModal from '@components/Document/shareModal';
+import OnBoarding from '@components/Scenes/onBoardingScreen';
 
 /**
  * AppRouter defines all the routes of OwnSpace app
@@ -23,6 +24,13 @@ const AppRouter = () => {
           title="SplashScreen"
           hideNavBar
           initial
+        />
+        <Scene
+          key="onBoarding"
+          type={ActionConst.REPLACE}
+          component={OnBoarding}
+          title="OnBoardingScreen"
+          hideNavBar
         />
         <Scene
           key="login"

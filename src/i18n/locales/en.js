@@ -192,5 +192,13 @@ export default {
     needPhotosPermissions:
       'Please change the permissions for OwnSpace to send your photos',
     goToSettings: 'Change'
+  },
+  onBoarding: {
+    titlePageOne: 'Backup your documents',
+    subTitlePageOne: 'Back up your documents quickly and easily so you can access them from anywhere',
+    titlePageTwo: 'Share your documents',
+    subTitlePageTwo: 'Your shared documents will be accessible by teachers and other students.',
+    titlePageThree: 'Secure your documents',
+    subTitlePageThree: 'You can add a password to your documents to increase security.'
   }
 };

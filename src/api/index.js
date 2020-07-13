@@ -488,6 +488,10 @@ const api = {
       })
     );
   },
+  /**
+   * Update the storage space used
+   * @param {object} payload - The file id and size
+   */
   updateStorageSpaceUsed(payload) {
     return Promise.resolve(
       user.Mutation.updateStorageSpaceUsed({
@@ -495,6 +499,19 @@ const api = {
         id: payload.owner
       })
     );
+  },
+  /**
+   * Update the choice of user's onboarding
+   * @param {object} payload - The user id, onboarding state (activated or not) and the the current date
+   */
+  updateUserOnBoarding(payload){
+    return Promise.resolve(
+      user.Mutation.updateUserOnBoarding({
+        id: payload.id,
+        onBoarding: payload.onBoarding,
+        updatedAt: payload.updatedAt
+      })
+    )
   },
 
   // GROUP API

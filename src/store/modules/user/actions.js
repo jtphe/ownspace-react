@@ -12,6 +12,8 @@ export const M_UPDATE_USER_PICTURE = 'M_UPDATE_USER_PICTURE';
 export const M_PICTURE_IS_UPLOADING = 'M_PICTURE_IS_UPLOADING';
 export const U_UPDATE_USER_FORGOTTEN_PASSWORD =
   'U_UPDATE_USER_FORGOTTEN_PASSWORD';
+export const U_ON_BOARDING_DONE = 'U_ON_BOARDING_DONE';
+export const M_ON_BOARDING_DONE = 'M_ON_BOARDING_DONE';
 
 export const createUser = payload => ({
   type: U_CREATE_USER,
@@ -46,3 +48,8 @@ export const updateUserForgottenPassword = payload => ({
   type: U_UPDATE_USER_FORGOTTEN_PASSWORD,
   payload
 });
+
+export const onBoardingDone = payload => ({
+  type: U_ON_BOARDING_DONE,
+  payload
+})

@@ -5,7 +5,8 @@ import {
   M_UPDATE_USER_NAMES,
   M_SIGN_OUT,
   M_PICTURE_IS_UPLOADING,
-  M_UPDATE_USER_PICTURE
+  M_UPDATE_USER_PICTURE,
+  M_ON_BOARDING_DONE
 } from './actions';
 
 const initialState = {
@@ -73,6 +74,14 @@ export default function reducer(state = initialState, action) {
         user: {
           storageSpaceUsed: {
             $set: action.storage
+          }
+        }
+      });
+    case M_ON_BOARDING_DONE: 
+      return update(state, {
+        user: {
+          onBoarding: {
+            $set: action.onBoarding
           }
         }
       });
