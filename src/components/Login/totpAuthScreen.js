@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginBottom: 20,
     fontSize: 17,
-    opacity: 0.7
+    opacity: 0.8
   },
   input: {
     height: 50,
