@@ -15,6 +15,7 @@ type User @model {
   limitedStorage: Boolean
   storageSpaceUsed: Float
   totalStorageSpace: Float
+  onBoarding: Boolean
 }
 
 type Group @model {

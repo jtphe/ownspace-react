@@ -15,7 +15,9 @@ import {
   U_UPDATE_USER_PICTURE,
   M_UPDATE_USER_PICTURE,
   M_PICTURE_IS_UPLOADING,
-  U_UPDATE_USER_FORGOTTEN_PASSWORD
+  U_UPDATE_USER_FORGOTTEN_PASSWORD,
+  U_ON_BOARDING_DONE,
+  M_ON_BOARDING_DONE
 } from './actions';
 import showToast from '@utils/showToast';
 import { Storage } from 'aws-amplify';
@@ -46,7 +48,7 @@ function* createUser({ payload }) {
       })
       .catch(err => console.log(err));
     yield put({ type: M_CREATE_USER, user });
-    Actions.home({ userJustCreated: true });
+    Actions.onBoarding({ user: user.id })
   } catch (e) {
     console.log('Error while creating user =>', e);
   }
@@ -112,7 +114,7 @@ function* updateUserPassword({ payload }) {
 function* signOut() {
   try {
     yield call(api.signOutUser);
-    Actions.login({type: 'reset'});
+    Actions.login({ type: 'reset' });
   } catch (e) {
     console.log('Error while signout =>', e);
   }
@@ -157,6 +159,23 @@ function* updateUserForgottenPassword({ payload }) {
   }
 }
 
+function* updateUserOnBoarding({ payload }) {
+  try {
+    const newPayload = {
+      onBoarding: false,
+      id: payload.id
+    }
+    newPayload.updatedAt = dateNow;
+    const res = yield call(api.updateUserOnBoarding, newPayload);
+    if (res) {
+      yield put({ type: M_ON_BOARDING_DONE, onBoarding: res.onBoarding })
+      Actions.home({ userJustCreated: true });
+    }
+  } catch (e) {
+    console.log('Error while updating user onboarding =>', e);
+  }
+}
+
 export default function* watchUser() {
   yield takeLatest(U_CREATE_USER, createUser);
   yield takeLatest(U_LOAD_USER, loadUser);
@@ -168,4 +187,5 @@ export default function* watchUser() {
     U_UPDATE_USER_FORGOTTEN_PASSWORD,
     updateUserForgottenPassword
   );
+  yield takeLatest(U_ON_BOARDING_DONE, updateUserOnBoarding);
 }

@@ -20,6 +20,7 @@ export const getUser = /* GraphQL */ `
       limitedStorage
       storageSpaceUsed
       totalStorageSpace
+      onBoarding
     }
   }
 `;
@@ -47,6 +48,7 @@ export const listUsers = /* GraphQL */ `
         limitedStorage
         storageSpaceUsed
         totalStorageSpace
+        onBoarding
       }
       nextToken
     }
