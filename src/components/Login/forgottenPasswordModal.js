@@ -134,8 +134,8 @@ const styles = StyleSheet.create({
   },
   btnCancel: {
     backgroundColor: 'transparent',
-    borderWidth: 0.2,
-    borderRadius: 6,
+    borderWidth: Platform.OS === 'ios' ? 1: 0,
+    borderColor: OWNSPACE_GRAY,
     paddingVertical: 2,
     paddingHorizontal: 4
   },

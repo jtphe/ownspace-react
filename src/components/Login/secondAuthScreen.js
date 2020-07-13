@@ -245,7 +245,8 @@ const styles = StyleSheet.create({
   welcomeTitle: {
     fontSize: 24,
     color: 'white',
-    opacity: 0.4
+    opacity: 0.8,
+    paddingLeft: 6
   },
   textInputContainer: {
     paddingTop: 20
@@ -265,7 +266,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginBottom: 20,
     fontSize: 17,
-    opacity: 0.7
+    opacity: 0.8
   },
   btnSignIn: {
     backgroundColor: OWNSPACE_BLUE,

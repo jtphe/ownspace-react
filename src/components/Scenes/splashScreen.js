@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginBottom: 24
   },
-  sloganPartOne: { color: 'white', fontSize: 34, paddingTop: 2 },
+  sloganPartOne: { color: 'white', fontSize: 34, paddingTop: 6 },
   sloganPartTwo: {
     fontWeight: 'bold',
     color: 'white',

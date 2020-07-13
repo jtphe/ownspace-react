@@ -223,7 +223,8 @@ const styles = StyleSheet.create({
   welcomeTitle: {
     fontSize: 24,
     color: 'white',
-    opacity: 0.4
+    opacity: 0.6,
+    paddingLeft: 6
   },
   textInputContainer: {
     paddingTop: 20
@@ -253,6 +254,7 @@ const styles = StyleSheet.create({
   },
   btnForgottenPwd: {
     color: 'white',
+    fontWeight: 'bold',
     textDecorationLine: 'underline'
   },
   logo: { flex: 1, flexDirection: 'column', justifyContent: 'flex-end' },
