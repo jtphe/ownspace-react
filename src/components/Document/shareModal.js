@@ -188,6 +188,7 @@ class ShareModal extends React.Component {
                 document={this.props.document.id}
                 isOwner={this.props.isOwner}
                 edit={this.props.edit}
+                user={this.props.user}
               />
             ) : null}
             {this.state.newInvitationsList.length > 0 ? (
