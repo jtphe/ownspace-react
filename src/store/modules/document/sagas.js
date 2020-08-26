@@ -42,7 +42,8 @@ import {
   U_ADD_USERS_TO_DOCUMENT,
   M_ADD_USERS_TO_DOCUMENT,
   U_REMOVE_USERS_FROM_DOCUMENT,
-  M_REMOVE_USERS_FROM_DOCUMENT
+  M_REMOVE_USERS_FROM_DOCUMENT,
+  M_REMOVE_FILE
 } from './actions';
 import {
   getUser,
@@ -715,6 +716,8 @@ function* addUsersToDocument({ payload }) {
 
 function* removeUserFromDocument({ payload }) {
   try {
+    const user = yield select(getUser)
+
     let indexToRemove;
     const res = yield call(api.getRight, payload);
     if (res.items) {
@@ -726,7 +729,13 @@ function* removeUserFromDocument({ payload }) {
           user: payload.user,
           id: payload.document
         });
-
+        if (payload.user === user.id) {
+          yield put({
+            type: M_REMOVE_FILE,
+            file: payload.document
+          });
+          Actions.pop();
+        }
         for (let i = 0; i < payload.guests.length; i++) {
           const element = payload.guests[i];
           if (element.user === payload.user) {

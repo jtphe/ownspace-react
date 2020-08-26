@@ -451,7 +451,8 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
                       edit,
                       path: file.shared
                         ? file.path
-                        : currentPathString + file.name
+                        : currentPathString + file.name,
+                      user
                     })
                   }
                 >

@@ -19,7 +19,8 @@ import {
   M_ADD_PASSWORD_FILE,
   M_REMOVE_PASSWORD_FILE,
   M_ADD_USERS_TO_DOCUMENT,
-  M_REMOVE_USERS_FROM_DOCUMENT
+  M_REMOVE_USERS_FROM_DOCUMENT,
+  M_REMOVE_FILE
 } from './actions';
 
 const initialState = {
@@ -358,6 +359,21 @@ export default function reducer(state = initialState, action) {
           }
         }
       });
+    }
+    case M_REMOVE_FILE: {
+      let index;
+      for (let i = 0; i < state.files.length; i++) {
+        const element = state.files[i];
+        if(element.id === action.file){
+          index = i;
+          break;
+        }
+      }
+      return update(state,{
+        files: {
+          $splice: [[index, 1]]
+        }
+      })
     }
     default:
       return state;

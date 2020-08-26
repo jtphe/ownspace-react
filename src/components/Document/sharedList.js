@@ -20,9 +20,9 @@ import Avatar from '@shared/Avatar';
  * @param {boolean} isOwner - If the current user is the owner of the document
  * @param {boolean} edit - If the current user has the edit right on the document
  */
-const ItemGuest = ({ item, document, isOwner, guests, edit }) => {
+const ItemGuest = ({ item, document, isOwner, guests, edit, isItself }) => {
   const dispatch = useDispatch();
-
+  
   /**
    * Remove the user from the document
    */
@@ -54,7 +54,7 @@ const ItemGuest = ({ item, document, isOwner, guests, edit }) => {
       ) : (
         <Text style={styles.memberNameEmail}>{item.email}</Text>
       )}
-      {isOwner || edit ? (
+      {isOwner || edit || isItself ? (
         <TouchableOpacity
           style={styles.icon}
           onPress={() => _removeUserFromDocument()}
@@ -72,7 +72,7 @@ const ItemGuest = ({ item, document, isOwner, guests, edit }) => {
  * @param {Object} document - The object document
  * @param {boolean} isOwner - If the current user is the owner of the document
  */
-const SharedList = ({ guests, document, isOwner, edit }) => {
+const SharedList = ({ guests, document, isOwner, edit, user }) => {
   if (guests === null || guests.length === 0) {
     return null;
   }
@@ -102,6 +102,7 @@ const SharedList = ({ guests, document, isOwner, edit }) => {
             isOwner={isOwner}
             guests={guests}
             edit={edit}
+            isItself={user.id === item.user}
           />
         )}
       />
