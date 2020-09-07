@@ -193,7 +193,7 @@
     <orderEntry type="module" module-name="node_modules-react-native-document-picker-android-react-native-document-picker" />
     <orderEntry type="module" module-name="node_modules-react-native-file-viewer-android-react-native-file-viewer" />
     <orderEntry type="module" module-name="node_modules-react-native-gesture-handler-android-react-native-gesture-handler" />
-    <orderEntry type="module" module-name="node_modules-react-native-image-crop-picker-android-react-native-image-crop-picker~1" />
+    <orderEntry type="module" module-name="node_modules-react-native-image-crop-picker-android-react-native-image-crop-picker~2" />
     <orderEntry type="module" module-name="android-react-native-permissions" />
     <orderEntry type="module" module-name="node_modules-react-native-reanimated-android-react-native-reanimated" />
     <orderEntry type="module" module-name="node_modules-react-native-screens-android-react-native-screens" />

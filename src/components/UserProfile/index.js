@@ -143,39 +143,85 @@ const UserProfile = ({
   };
 
   const _updatePicture = () => {
-    check(PERMISSIONS.IOS.PHOTO_LIBRARY)
-      .then(res => {
-        switch (res) {
-          case RESULTS.BLOCKED:
-            Alert.alert(
-              i18n.t('filesMenu.photosPermissions'),
-              i18n.t('filesMenu.needPhotosPermissions'),
-              [
-                {
-                  text: i18n.t('button.cancel'),
-                  style: 'cancel'
-                },
-                {
-                  text: i18n.t('filesMenu.goToSettings'),
-                  onPress: () => Linking.openURL('app-settings:')
-                }
-              ]
-            );
-            break;
-          case RESULTS.GRANTED:
-            setTimeout(() => {
-              ImagePicker.openPicker({
-                multiple: false,
+    if (Platform.OS === 'ios') {
+      check(PERMISSIONS.IOS.PHOTO_LIBRARY)
+        .then(res => {
+          switch (res) {
+            case RESULTS.BLOCKED:
+              Alert.alert(
+                i18n.t('filesMenu.photosPermissions'),
+                i18n.t('filesMenu.needPhotosPermissions'),
+                [
+                  {
+                    text: i18n.t('button.cancel'),
+                    style: 'cancel'
+                  },
+                  {
+                    text: i18n.t('filesMenu.goToSettings'),
+                    onPress: () => Linking.openURL('app-settings:')
+                  }
+                ]
+              );
+              break;
+            case RESULTS.GRANTED:
+              setTimeout(() => {
+                ImagePicker.openPicker({
+                  multiple: false,
+                  cropping: true,
+                  includeBase64: true
+                }).then(image => {
+                  _onSelectedPicture(image);
+                });
+              }, 500);
+              break;
+            case RESULTS.UNAVAILABLE:
+              ImagePicker.openCamera({
+                width: 300,
+                height: 400,
                 cropping: true,
-                includeBase64: true
+                useFrontCamera: true
               }).then(image => {
                 _onSelectedPicture(image);
               });
-            }, 500);
-            break;
-        }
-      })
-      .catch(error => console.log('Error =>', error));
+              break;
+          }
+        })
+        .catch(error => console.log('Error =>', error));
+    } else {
+      check(PERMISSIONS.ANDROID.CAMERA)
+        .then(res => {
+          switch (res) {
+            case RESULTS.BLOCKED:
+              Alert.alert(
+                i18n.t('filesMenu.photosPermissions'),
+                i18n.t('filesMenu.needPhotosPermissions'),
+                [
+                  {
+                    text: i18n.t('button.cancel'),
+                    style: 'cancel'
+                  },
+                  {
+                    text: i18n.t('filesMenu.goToSettings'),
+                    onPress: () => Linking.openURL('app-settings:')
+                  }
+                ]
+              );
+              break;
+            case RESULTS.GRANTED:
+              setTimeout(() => {
+                ImagePicker.openPicker({
+                  multiple: false,
+                  cropping: true,
+                  includeBase64: true
+                }).then(image => {
+                  _onSelectedPicture(image);
+                });
+              }, 500);
+              break;
+          }
+        })
+        .catch(error => console.log('Error =>', error));
+    }
   };
 
   /**

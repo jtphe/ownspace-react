@@ -63,11 +63,9 @@ const Login = ({ isConnectedToInternet }) => {
       await Auth.signIn({
         username: email,
         password
+      }).then(user => {
+        Actions.twoFactor({ user });
       })
-        .then(user => {
-          console.log('successful sign in !');
-          Actions.twoFactor({ user });
-        })
         .catch(err => {
           showToast(i18n.t('loginPage.invalidPasswordEmail'), true);
           console.log('error while signing in =>', err);
@@ -179,12 +177,12 @@ const Login = ({ isConnectedToInternet }) => {
             </View>
           </View>
         ) : (
-          <ForgottenPasswordModal
-            setForgottenPassword={value => setForgottenPassword(value)}
-            username={email}
-            setEmail={value => setEmail(value)}
-          />
-        )}
+            <ForgottenPasswordModal
+              setForgottenPassword={value => setForgottenPassword(value)}
+              username={email}
+              setEmail={value => setEmail(value)}
+            />
+          )}
         <View style={styles.logo}>
           <Logo />
         </View>

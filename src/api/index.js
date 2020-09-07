@@ -199,7 +199,6 @@ const api = {
    * @param {object} payload - The file id
    */
   deleteFileFromDB(payload) {
-    console.log('payload', payload);
     return Promise.resolve(
       document.Mutation.deleteFile({
         id: payload.id
@@ -504,7 +503,7 @@ const api = {
    * Update the choice of user's onboarding
    * @param {object} payload - The user id, onboarding state (activated or not) and the the current date
    */
-  updateUserOnBoarding(payload){
+  updateUserOnBoarding(payload) {
     return Promise.resolve(
       user.Mutation.updateUserOnBoarding({
         id: payload.id,
