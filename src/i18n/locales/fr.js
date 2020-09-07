@@ -123,7 +123,9 @@ export default {
     renameFileTitle: 'Renommer le fichier',
     renameFilePlaceholder: 'Entrer un nom de fichier',
     share: 'Partager',
+    sharedUsers: 'Utilisateurs partagés',
     protect: 'Protéger avec un mot de passe',
+    newProtect: 'Modifier le mot de passe',
     unprotect: 'Retirer le mot de passe',
     renameFolder: 'Renommer le dossier',
     renameFile: 'Renommer le fichier',
@@ -139,9 +141,9 @@ export default {
     confirmDeleteFolder:
       'Êtes-vous sûr de vouloir supprimer le dossier %{folder} et tout son contenu ?',
     addFolderPassword: 'Ajouter un mot de passe au dossier',
-    renewFolderPassword: 'Ajouter un nouveau mot de passe au dossier',
+    renewFolderPassword: 'Modifier le mot de passe du dossier',
     addFilePassword: 'Ajouter un mot de passe au fichier',
-    renewFilePassword: 'Ajouter un nouveau mot de passe au fichier',
+    renewFilePassword: 'Modifier le mot de passe du fichier',
     passwordPlaceholder: 'Entrer un mot de passe...',
     enterFolderPassword: 'Entrer le mot de passe du dossier',
     enterFilePassword: 'Entrer le mot de passe du fichier',
@@ -193,7 +195,7 @@ export default {
       "Veuillez modifier les permissions afin qu'OwnSpace puisse envoyer vos photos",
     goToSettings: 'Modifier'
   },
-  onBoarding: {
+  onBoarding: {
     titlePageOne: 'Sauvegarder vos documents',
     subTitlePageOne: "Sauvegarder vos document rapidement et facilement afin de pouvoir y accéder depuis n'importe où.",
     titlePageTwo: 'Partager vos documents',

@@ -446,7 +446,6 @@ function* renameDocument({ payload }) {
     const absolutePath = yield call(api.downloadFile, payload);
     payload.path = newPath;
     payload.absolutePath = absolutePath;
-
     // Upload the file downloaded with the new name to S3
     const res = yield call(api.addSelectedFileToS3, payload);
     // If the file with the new name is uploaded on S3
@@ -609,18 +608,21 @@ function* checkFilePassword({ payload }) {
   }
 }
 
-function* removePasswordFile({ payload }) {
+function* checkFilePasswordBeforeRemove({ payload }) {
   try {
     payload.updatedAt = dateNow;
-    const res = yield call(api.removePasswordFile, payload);
-    if (res) {
-      yield put({
-        type: M_REMOVE_PASSWORD_FILE,
-        id: payload.id,
-        isProtected: res.isProtected,
-        updatedAt: dateNow
-      });
-      showToast(i18n.t('folder.passwordRemoved'), true);
+    const res = yield call(api.checkFilePassword, payload);
+    if (res === 200) {
+      const bar = yield call(api.removePasswordFile, payload);
+      if (bar) {
+        yield put({
+          type: M_REMOVE_PASSWORD_FILE,
+          id: bar.id,
+          isProtected: bar.isProtected,
+          updatedAt: dateNow
+        });
+        showToast(i18n.t('folder.passwordRemoved'), true);
+      }
     }
   } catch (e) {
     console.log('Error while removing the file password =>', e);
@@ -769,7 +771,7 @@ export default function* watchDocument() {
   yield takeLatest(U_REMOVE_PASSWORD_FOLDER, removePasswordFolder);
   yield takeLatest(U_ADD_PASSWORD_FILE, addPasswordFile);
   yield takeLatest(U_CHECK_FILE_PASSWORD, checkFilePassword);
-  yield takeLatest(U_REMOVE_PASSWORD_FILE, removePasswordFile);
+  yield takeLatest(U_REMOVE_PASSWORD_FILE, checkFilePasswordBeforeRemove);
   yield takeLatest(
     U_CHECK_FILE_PASSWORD_BEFORE_DELETE,
     checkFilePasswordBeforeDelete
