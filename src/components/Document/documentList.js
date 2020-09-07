@@ -39,7 +39,7 @@ const DocumentList = ({
             <FlatList
               data={document}
               extraData={document}
-              keyExtractor={item => item.id}
+              keyExtractor={item => item.id.toString()}
               renderItem={({ item }) =>
                 item.nbFiles >= 0 ? (
                   <Folder
@@ -49,13 +49,13 @@ const DocumentList = ({
                     groupUsers={groupUsers}
                   />
                 ) : (
-                  <File
-                    file={item}
-                    currentPathString={currentPathString}
-                    user={user}
-                    groupUsers={groupUsers}
-                  />
-                )
+                    <File
+                      file={item}
+                      currentPathString={currentPathString}
+                      user={user}
+                      groupUsers={groupUsers}
+                    />
+                  )
               }
             />
             <FlatList
@@ -73,13 +73,13 @@ const DocumentList = ({
         <Text>
           {nbFolders > 0
             ? `${i18n.t('document.nbFolder', {
-                count: nbFolders
-              })}`
+              count: nbFolders
+            })}`
             : null}
           {nbFiles > 0
             ? `${i18n.t('document.nbFile', {
-                count: nbFiles
-              })}`
+              count: nbFiles
+            })}`
             : null}
         </Text>
       </View>

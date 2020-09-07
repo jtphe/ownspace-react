@@ -193,20 +193,20 @@ const SecondAuthScreen = ({ user }) => {
             confirmNewPwd={() => confirmNewPwd()}
           />
         ) : (
-          <View>
-            {hasAuthApp ? (
-              <TotpAuthScreen
-                setToken={tkn => setToken(tkn)}
-                verifyTotpToken={() => verifyTotpToken()}
-              />
-            ) : (
-              <GenerateTotp
-                user={user}
-                setHasAuthApp={value => setHasAuthApp(value)}
-              />
-            )}
-          </View>
-        )}
+            <View>
+              {hasAuthApp ? (
+                <TotpAuthScreen
+                  setToken={tkn => setToken(tkn)}
+                  verifyTotpToken={() => verifyTotpToken()}
+                />
+              ) : (
+                  <GenerateTotp
+                    user={user}
+                    setHasAuthApp={value => setHasAuthApp(value)}
+                  />
+                )}
+            </View>
+          )}
       </View>
       <View style={styles.logo}>
         <Logo />

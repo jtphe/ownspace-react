@@ -207,7 +207,7 @@
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 5Z3QQU94B3;
+						DevelopmentTeam = VYTE2J68B5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -404,7 +404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 5Z3QQU94B3;
+				DEVELOPMENT_TEAM = VYTE2J68B5;
 				INFOPLIST_FILE = OwnSpace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

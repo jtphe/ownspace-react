@@ -91,7 +91,7 @@ function* createFile({ payload }) {
       const folderPayload = {
         id: payload.parent,
         nbFiles,
-        updatedAt: payload.updatedAt
+        updatedAt: dateNow
       };
       yield call(api.updateFolderNbFiles, folderPayload);
     }
@@ -366,7 +366,7 @@ function* addSelectedPicture({ payload }) {
         const folderPayload = {
           id: payload.parent,
           nbFiles,
-          updatedAt: payload.updatedAt
+          updatedAt: dateNow
         };
         yield call(api.updateFolderNbFiles, folderPayload);
       }
@@ -415,7 +415,7 @@ function* addDocument({ payload }) {
         const folderPayload = {
           id: payload.parent,
           nbFiles,
-          updatedAt: payload.updatedAt
+          updatedAt: dateNow
         };
         yield call(api.updateFolderNbFiles, folderPayload);
       }
@@ -464,7 +464,7 @@ function* renameDocument({ payload }) {
           type: M_RENAME_DOCUMENT,
           id: file.id,
           name: file.name,
-          updatedAt: file.updatedAt
+          updatedAt: dateNow
         });
       }
     }
@@ -511,7 +511,7 @@ function* addPasswordFolder({ payload }) {
         type: M_ADD_PASSWORD_FOLDER,
         id: payload.id,
         isProtected: res.isProtected,
-        updatedAt: res.updatedAt
+        updatedAt: dateNow
       });
       showToast(i18n.t('folder.passwordAdded'), true);
     }
@@ -618,7 +618,7 @@ function* removePasswordFile({ payload }) {
         type: M_REMOVE_PASSWORD_FILE,
         id: payload.id,
         isProtected: res.isProtected,
-        updatedAt: res.updatedAt
+        updatedAt: dateNow
       });
       showToast(i18n.t('folder.passwordRemoved'), true);
     }
