@@ -29,7 +29,8 @@ class ShareModal extends React.Component {
     this.state = {
       guestsList: this.props.document.sharedUsers,
       newInvitationsList: [],
-      currentRight: i18n.t('shareModal.read')
+      currentRight: i18n.t('shareModal.read'),
+      notReadOnly: this.props.shared && !this.props.read
     };
   }
 
@@ -133,6 +134,15 @@ class ShareModal extends React.Component {
   };
 
   /**
+   * Add a style if the user is read only
+   */
+  _getStyle = () => {
+    if (this.props.read) {
+      return { marginTop: 12 }
+    }
+  }
+
+  /**
    * Render the ShareModal class component
    * @returns {React.Component} - ShareModal component
    */
@@ -153,35 +163,38 @@ class ShareModal extends React.Component {
       <View style={styles.globalContainer}>
         <Header />
         <View style={styles.container}>
-          <Text style={styles.title}>{i18n.t('shareModal.share')}</Text>
-          <View style={styles.inputContainer}>
-            <Autocomplete
-              users={this.props.users}
-              usersToIgnore={
-                this.state.guestsList !== undefined &&
-                this.state.guestsList.length > 0
-                  ? this.state.newInvitationsList.concat(this.state.guestsList)
-                  : this.state.newInvitationsList
-              }
-              addNewUserToDocument={user => this._add(user)}
-            />
-            <Dropdown
-              value={i18n.t('shareModal.read')}
-              onChangeText={right =>
-                this.setState({
-                  currentRight: right
-                })
-              }
-              data={rights}
-              containerStyle={
-                Platform.OS === 'ios' ? styles.dropdown : styles.dropdownAndroid
-              }
-              baseColor={this._getColor('baseColor')}
-              textColor={this._getColor('textColor')}
-              itemColor={this._getColor('itemColor')}
-            />
-          </View>
-          <View style={styles.listsContainer}>
+          {this.props.isOwner || this.state.notReadOnly ?
+            <View>
+              <Text style={styles.title}>{i18n.t('shareModal.share')}</Text>
+              <View style={styles.inputContainer}>
+                <Autocomplete
+                  users={this.props.users}
+                  usersToIgnore={
+                    this.state.guestsList !== undefined &&
+                      this.state.guestsList.length > 0
+                      ? this.state.newInvitationsList.concat(this.state.guestsList)
+                      : this.state.newInvitationsList
+                  }
+                  addNewUserToDocument={user => this._add(user)}
+                />
+                <Dropdown
+                  value={i18n.t('shareModal.read')}
+                  onChangeText={right =>
+                    this.setState({
+                      currentRight: right
+                    })
+                  }
+                  data={rights}
+                  containerStyle={
+                    Platform.OS === 'ios' ? styles.dropdown : styles.dropdownAndroid
+                  }
+                  baseColor={this._getColor('baseColor')}
+                  textColor={this._getColor('textColor')}
+                  itemColor={this._getColor('itemColor')}
+                />
+              </View>
+            </View> : null}
+          <View style={[styles.listsContainer, this._getStyle()]}>
             {this.state.guestsList !== undefined ? (
               <SharedList
                 guests={this.state.guestsList}
@@ -208,12 +221,11 @@ class ShareModal extends React.Component {
             )}
           </View>
         </View>
-        <CustomButton confirmFunction={() => this._shareDocument()} />
+        <CustomButton confirmFunction={() => this._shareDocument()} readOnly={this.state.readOnly} />
       </View>
     );
   }
 }
-
 /**
  * Styles of SharedModal component
  */

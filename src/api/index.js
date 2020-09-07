@@ -287,7 +287,7 @@ const api = {
   removePasswordFile(payload) {
     return Promise.resolve(
       document.Mutation.removePasswordFile({
-        id: payload.id,
+        id: payload.file.id,
         updatedAt: payload.updatedAt
       })
     );

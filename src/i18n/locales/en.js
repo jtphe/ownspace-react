@@ -123,7 +123,9 @@ export default {
     renameFileTitle: 'Rename the file',
     renameFilePlaceholder: 'Enter a file name',
     share: 'Share',
+    sharedUsers: 'Shared users',
     protect: 'Protect with a password',
+    newProtect: 'Update the password',
     unprotect: 'Remove the password',
     renameFolder: 'Rename the folder',
     renameFile: 'Rename the file',
@@ -139,9 +141,9 @@ export default {
     confirmDeleteFolder:
       'Are you sure you want to delete the folder %{folder} and all its content ?',
     addFolderPassword: 'Add a password to the folder',
-    renewFolderPassword: 'Add a new password to the folder',
+    renewFolderPassword: "Update the folder's password",
     addFilePassword: 'Add a password to the file',
-    renewFilePassword: 'Add a new password to the file',
+    renewFilePassword: "Update the file's password",
     passwordPlaceholder: 'Enter a password...',
     newPasswordPlaceholder: 'Enter a new password...',
     enterFolderPassword: 'Enter the folder password',
@@ -152,7 +154,7 @@ export default {
     removeFilePassword: 'Remove the password from the %{file} file',
     confirmRemoveFilePassword:
       'Are you sure you want to remove the password of the %{file} file ?',
-    noStorage: "You don't have enough space to add another document..."
+    noStorage: "You don't have enough space to add another document...",
   },
   picture: {
     imported: 'Image imported'

@@ -34,7 +34,7 @@ import {
   deleteDocument,
   addPasswordFile,
   checkFilePassword,
-  removePasswordFile,
+  checkFilePasswordBeforeRemove,
   checkFilePasswordBeforeDelete
 } from '@store/modules/document/actions';
 import OwnSpaceDialog from '@shared/Dialog';
@@ -76,8 +76,9 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
     passwordBeforeDeleteVisible,
     setPasswordBeforeDeleteVisible
   ] = useState(false);
+  const [passwordBeforeRemove, setPasswordBeforeRemove] = useState(false);
   const isOwner = file.owner === user.id;
-  const { isProtected, edit, shared, owner } = file;
+  const { isProtected, edit, shared, owner, read } = file;
 
   /**
    * Open the document
@@ -240,7 +241,6 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
           oldName: file.name,
           owner: file.owner
         };
-
         dispatch(renameDocument(payload));
         dispatch({ type: 'M_SET_IS_RENAMED', renamed: false });
         _hideRenameFileModal();
@@ -273,6 +273,22 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
     setPassword('');
     setRenewVisible(false);
   };
+
+  /**
+   * Show the password modal before removing the old password
+   */
+  const _showPasswordBeforeRemove = () => {
+    setPasswordBeforeRemove(true);
+  }
+
+  /**
+   * Hide the password modal after removing or cancelling the old password
+   */
+  const _hidePasswordBeforeRemove = () => {
+    setPassword('')
+    setPasswordBeforeRemove(false)
+  }
+
 
   /**
    * Hide the modal that protect the file opening
@@ -321,6 +337,20 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
   };
 
   /**
+ * Check the password that protect the file before deleting it
+ */
+  const _checkPasswordBeforeRemove = () => {
+    if (password.length > 0) {
+      const payload = {
+        password,
+        file
+      };
+      dispatch(checkFilePasswordBeforeRemove(payload));
+      _hidePasswordBeforeRemove();
+    }
+  };
+
+  /**
    * Add a password to a file
    */
   const _addPassword = () => {
@@ -341,31 +371,9 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
     }
   };
 
-  /**
-   * Remove a password from a file
-   */
-  const _removePasswordFile = () => {
-    Alert.alert(
-      i18n.t('document.removeFilePassword', { file: file.name }),
-      i18n.t('document.confirmRemoveFilePassword', { file: file.name }),
-      [
-        {
-          text: i18n.t('button.cancel'),
-          style: 'cancel'
-        },
-        {
-          text: i18n.t('button.remove'),
-          onPress: () => {
-            const payload = {
-              id: file.id
-            };
-            dispatch(removePasswordFile(payload));
-          }
-        }
-      ]
-    );
-  };
-
+  const _filterUsers = () => {
+    return groupUsers.filter(user => user.id !== file.owner)
+  }
   /**
    * Render the File component
    * @returns {React.Component} - File component
@@ -445,27 +453,38 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
                   onSelect={() =>
                     Actions.shareModal({
                       document: file,
-                      users: groupUsers,
+                      users: _filterUsers(),
                       documentType: 'file',
                       isOwner,
                       edit,
                       path: file.shared
                         ? file.path
                         : currentPathString + file.name,
-                      user
+                      user,
+                      read,
+                      shared
                     })
                   }
                 >
-                  <View style={styles.options}>
+                  {read ? <View style={styles.options}>
                     <Icon
-                      name="user-plus"
+                      name="users"
                       size={25}
                       color={CLIENT_COLOR_PRIMARY}
                     />
                     <Text style={styles.textMenuOptions}>
-                      {i18n.t('document.share')}
+                      {i18n.t('document.sharedUsers')}
                     </Text>
-                  </View>
+                  </View> : <View style={styles.options}>
+                      <Icon
+                        name="user-plus"
+                        size={25}
+                        color={CLIENT_COLOR_PRIMARY}
+                      />
+                      <Text style={styles.textMenuOptions}>
+                        {i18n.t('document.share')}
+                      </Text>
+                    </View>}
                 </MenuOption>
                 {isOwner || edit ? (
                   <MenuOption
@@ -482,7 +501,7 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
                         color={CLIENT_COLOR_PRIMARY}
                       />
                       <Text style={styles.textMenuOptions}>
-                        {i18n.t('document.protect')}
+                        {isProtected ? i18n.t('document.newProtect') : i18n.t('document.protect')}
                       </Text>
                     </View>
                   </MenuOption>
@@ -493,7 +512,7 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
                       optionWrapper: styles.menuOptions
                     }}
                     value={3}
-                    onSelect={() => _removePasswordFile()}
+                    onSelect={() => _showPasswordBeforeRemove()}
                   >
                     <View style={styles.options}>
                       <Icon
@@ -602,6 +621,17 @@ const File = ({ file, currentPathString, user, groupUsers }) => {
         dialogPlaceholder={i18n.t('document.passwordPlaceholder')}
         setName={pwd => setPassword(pwd)}
         valid={_checkPasswordBeforeDelete}
+        btnValidName="validate"
+      />
+      <OwnSpaceDialog
+        visible={passwordBeforeRemove}
+        hide={_hidePasswordBeforeRemove}
+        name={password}
+        security={true}
+        dialogTitle={i18n.t('document.enterFilePassword')}
+        dialogPlaceholder={i18n.t('document.passwordPlaceholder')}
+        setName={pwd => setPassword(pwd)}
+        valid={_checkPasswordBeforeRemove}
         btnValidName="validate"
       />
     </View>

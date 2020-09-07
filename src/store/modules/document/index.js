@@ -364,12 +364,12 @@ export default function reducer(state = initialState, action) {
       let index;
       for (let i = 0; i < state.files.length; i++) {
         const element = state.files[i];
-        if(element.id === action.file){
+        if (element.id === action.file) {
           index = i;
           break;
         }
       }
-      return update(state,{
+      return update(state, {
         files: {
           $splice: [[index, 1]]
         }

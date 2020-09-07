@@ -116,7 +116,7 @@ export const checkFilePassword = payload => ({
   payload
 });
 
-export const removePasswordFile = payload => ({
+export const checkFilePasswordBeforeRemove = payload => ({
   type: U_REMOVE_PASSWORD_FILE,
   payload
 });

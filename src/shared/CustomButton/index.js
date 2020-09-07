@@ -9,7 +9,8 @@ import { CLIENT_COLOR_PRIMARY } from '@constants';
  * The CustomButton component
  * @param {function} confirmFunction - Confirm the function passed to the confirm button
  */
-const CustomButton = ({ confirmFunction }) => {
+const CustomButton = ({ confirmFunction, readOnly }) => {
+
   /**
    * Render the CustomButton component
    * @returns {React.Component} - CustomButton component
@@ -29,7 +30,7 @@ const CustomButton = ({ confirmFunction }) => {
       >
         {i18n.t('button.cancel')}
       </Button>
-      <Button
+      {readOnly === true || readOnly === undefined ? <Button
         mode="contained"
         uppercase={false}
         labelStyle={styles.confirmText}
@@ -38,7 +39,7 @@ const CustomButton = ({ confirmFunction }) => {
         onPress={() => confirmFunction()}
       >
         {i18n.t('button.validate')}
-      </Button>
+      </Button> : null}
     </View>
   );
 };
