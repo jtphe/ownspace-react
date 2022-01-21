@@ -1,8 +1,10 @@
-# OwnSpace ⛅️
-📁 Repository for the OwnSpace mobile application in React Native.
+# Good Food frontend 🍔
 
-Project developed for the 2019/2020 DSMC course, during my licence in the training center CCI Campus Colmar.
+📁 Dépôt git de l'application web Good Food en React.
 
-To know more about the project go see the [Wiki](https://github.com/jtphe/ownspace-react/wiki) ! 📖
+Projet développé dans le cadre de la formation MSI - Expert développement au CESI.
 
-💻 Made by [Jean-Thavorak Phe](https://jtphe.ddns.net)
+- 💻 Made by [Jean-Thavorak Phe](https://jtphe.ddns.net)
+- 💻 Made by Chamalaine Soufi
+- 💻 Made by Dai Cao
+- 💻 Made by Maxime Barbe
